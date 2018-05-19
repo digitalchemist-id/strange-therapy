@@ -1,0 +1,11 @@
+body{
+	background: rgb(0, 0, 0);
+	color: rgb(150, 150, 150);
+}
+
+canvas{
+	border:1px solid #888;
+	position: absolute;
+	margin:auto;
+	top:0; bottom:0; left:0; right:0;
+}
