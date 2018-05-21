@@ -33,31 +33,100 @@ let state;
 var tick = 0;
 let gradientShow = [false], gradientHide = [false];
 
-//box grpahics used for choices 
-let box = new Graphics();
-box.beginFill(0x888888, 0.25);
-box.drawRoundedRect(0, 0, 300, 30, 10);
-box.endFill();
 
 //new msg test
-let message = new Container();
-message.position.set(100, 100);
-app.stage.addChild(message);
-let myMsg = 'this is a new message';
-let myMsgTxt = new Text(myMsg, style);
-textMetrics = TextMetrics.measureText(myMsg, style);
-myMsgTxt.position.set(100, 100);
-e.addChild(myMsgTxt);
+/*
+let leftMessage = new Container();
+leftMessage.position.set(20, 100);
+app.stage.addChild(leftMessage);
+let myLeftMsg = 'this is a new message on the left';
+let myLeftTxt = new Text(myLeftMsg, style);
+textMetrics = TextMetrics.measureText(myLeftMsg, style);
+
+let leftBox = new Graphics();
+leftBox.beginFill(0x888888, 0.25);
+leftBox.drawRoundedRect(-15, -10, textMetrics.width + 30, textMetrics.height + 20, 10);
+leftBox.endFill();
+leftMessage.addChild(leftBox)
+
+myLeftTxt.position.set(0, 0);
+leftMessage.addChild(myLeftTxt);
+*/
 
 
-//make choice boxes
+//right msg test
+/*
+let rightMessage = new Container();
+rightMessage.position.set(340, 150);
+app.stage.addChild(rightMessage);
+let myRightMsg = 'this is a new message on the right';
+let myRightTxt = new Text(myRightMsg, style);
+textMetrics = TextMetrics.measureText(myRightMsg, style);
+myRightTxt.pivot.set(textMetrics.width, 0);
+
+let rightBox = new Graphics();
+rightBox.beginFill(0x888888, 0.25);
+rightBox.drawRoundedRect(-15, -10, textMetrics.width + 30, textMetrics.height + 20, 10);
+rightBox.endFill();
+rightBox.pivot.set(textMetrics.width, 0);
+rightMessage.addChild(rightBox)
+
+myRightTxt.position.set(0, 0);
+rightMessage.addChild(myRightTxt);
+*/
+
+function newMsg(message, align, yPos){
+    let xPos;
+    let myMsg = new Container();
+    
+    if(align == 'right'){
+        xPos = 340;
+    }
+    else if(align == 'left'){
+        xPos = 20;
+    }
+    else{
+        console.log("You did somethign wrong..");
+    }
+
+    myMsg.position.set(xPos, yPos);
+    app.stage.addChild(myMsg);
+    let newTxt = new Text(message, style);
+    newTxt.position.set(0, 0);
+    textMetrics = TextMetrics.measureText(message, style);
+
+    let txtBox = new Graphics();
+    txtBox.beginFill(0x888888, 0.25);
+    txtBox.drawRoundedRect(-15, -10, textMetrics.width + 30, textMetrics.height + 20, 10);
+    txtBox.endFill();
+
+    if(align == 'right'){
+        newTxt.pivot.set(textMetrics.width, 0);
+        txtBox.pivot.set(textMetrics.width, 0);
+    }
+
+    myMsg.addChild(newTxt);
+    myMsg.addChild(txtBox);
+}
+
+
+
+//box grpahics used for choices 
+let choiceBox = new Graphics();
+choiceBox.beginFill(0x888888, 0.25);
+choiceBox.drawRoundedRect(0, 0, 300, 30, 10);
+choiceBox.endFill();
+
+
+
+//make choice choiceBoxes
 for(var i = 0; i<3; ++i) {
         //new option
         option[i] = new Container();
         option[i].position.set(30, 500 + 40*i);
         app.stage.addChild(option[i]);
         //text container button
-        button[i] = new Sprite(box.generateCanvasTexture());
+        button[i] = new Sprite(choiceBox.generateCanvasTexture());
         button[i].interactive = true;
         button[i].buttonMode = true;
         option[i].addChild(button[i]);
@@ -87,7 +156,7 @@ function play(delta){
     //handle alpha values of options
     for(var i=0;i<3;++i){
         if(option[i].alpha < 1 && gradientShow[i]){
-            option[i].alpha += 0.05;
+            option[i].alpha += 0.10;
         }
         else if (option[i].alpha >= 1 && gradientShow[i]){
             option[i].alpha = 1;
@@ -95,7 +164,7 @@ function play(delta){
         }
 
         if(option[i].alpha > 0 && gradientHide[i]){
-            option[i].alpha -= 0.05;
+            option[i].alpha -= 0.10;
         }
         else if (option[i].alpha <= 0 && gradientHide[i]){
             option[i].alpha = 0;
@@ -105,6 +174,10 @@ function play(delta){
 }
 
 async function dev(){
+
+    newMsg('dev enter', 'right', 200);
+
+    await sleep(100);
 
     choose(['Choice 1', 'Choice 2!!!!!', 'Choice 3 and there'], 
     [
@@ -116,7 +189,12 @@ async function dev(){
 
 async function dev2(){
 
-    await sleep(2000);
+
+    await sleep(1000);
+
+    newMsg('dev2 enter', 'left', 250);
+
+    await sleep(100);
 
     choose(['Choice 1 again', 'Choice 2!!!!! again!', 'Choice 3 and there again'],
     [
@@ -127,6 +205,8 @@ async function dev2(){
 }
 
 function blank(){
+
+    newMsg('blank enter', 'right', 300)
 
 }
 

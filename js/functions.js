@@ -4,7 +4,7 @@ function noOp(){
 
 async function showOptions(click) {
     for(var i=0;i<3;++i){
-        await sleep(500);
+        await sleep(300);
         button[i].on('pointerdown', click[i]);
         option[i].visible = true;
         option[i].alpha = 0;
@@ -16,7 +16,7 @@ async function clearOptions(){
     for(var i = 0; i<3; ++i) {
         gradientHide[i] = true;
         button[i].off('pointerdown');
-        await sleep(500);
+        await sleep(300);
         option[i].visible = false;
     }
 }
