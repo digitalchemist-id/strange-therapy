@@ -35,6 +35,7 @@ var tick = 0;
 let gradientShow = [false], gradientHide = [false];
 let dialogueShow = false, dialogueHide = false;
 
+let pushCount;
 let dialogue = new Container();
 app.stage.addChild(dialogue);
 
@@ -44,16 +45,16 @@ app.stage.addChild(dialogue);
 
 async function newMsg(message, align, bgColor, txtColor){
 
-    dialogueHide = true;
+    textMetrics = TextMetrics.measureText(message, style);
+    pushCount = textMetrics.height + 30;
+    
     await sleep(150);
 
     let xPos;
     let myMsg = new Container();
 
-    textMetrics = TextMetrics.measureText(message, style);
     
-    dialogue.y -= textMetrics.height + 30;
-
+        
     if(align == 'right'){
         xPos = 330;
     }
@@ -80,10 +81,7 @@ async function newMsg(message, align, bgColor, txtColor){
     }
 
     myMsg.addChild(txtBox);
-    myMsg.addChild(newTxt);
-
-    dialogueShow = true;
-    
+    myMsg.addChild(newTxt);  
 }
 
 /**************
@@ -98,7 +96,7 @@ let character = function(config){
 
 character.prototype.speak = function(msg){
     newMsg(msg, this.align, this.bgColor, this.txtColor);
-    console.log(this.txtColor);
+    
 }
 
 M = new character({bgColor: 0xffffff, txtColor:0x000000, align: 'left'});
@@ -119,21 +117,21 @@ choiceBox.endFill();
 //make choice choiceBoxes
 for(var i = 0; i<3; ++i) {
 
-        //new option
-        option[i] = new Container();
-        option[i].position.set(30, 500 + 40*i);
-        app.stage.addChild(option[i]);
-        //text container button
-        button[i] = new Sprite(choiceBox.generateCanvasTexture());
-        button[i].interactive = true;
-        button[i].buttonMode = true;
-        option[i].addChild(button[i]);
-        //add text
-        text[i] = new Text(' ', style);
-        text[i].x = 300/2;
-        text[i].y = 8;
-        option[i].addChild(text[i]);
-        option[i].visible = false;
+    //new option
+    option[i] = new Container();
+    option[i].position.set(30, 500 + 40*i);
+    app.stage.addChild(option[i]);
+    //text container button
+    button[i] = new Sprite(choiceBox.generateCanvasTexture());
+    button[i].interactive = false;
+    button[i].buttonMode = true;
+    option[i].addChild(button[i]);
+    //add text
+    text[i] = new Text(' ', style);
+    text[i].x = 300/2;
+    text[i].y = 8;
+    option[i].addChild(text[i]);
+    option[i].visible = false;
 }
 
 
@@ -175,32 +173,21 @@ function play(delta){
         }
     }
 
-    //handle alpha value of dialogue
-    if(dialogue.alpha < 1 && dialogueShow){
-        dialogue.alpha += 0.50;
-    }
-    else if (dialogue.alpha >= 1 && dialogueShow){
-        dialogue.alpha = 1;
-        dialogueShow = false;
-    }
-    if(dialogue.alpha > 0 && dialogueHide){
-        dialogue.alpha -= 0.50;
-    }
-    else if (dialogue.alpha <= 0 && dialogueHide){
-        dialogue.alpha = 0;
-        dialogueHide = false;
+    //handle push of dialogue
+    if(pushCount > 0){
+        dialogue.y -= 10;
+        pushCount -= 10;
     }
 }
 
 async function dev(){
 
     M.speak('dev enter');
-    await sleep(1000);
+    await sleep(300);    
     P.speak('hello');
-    await sleep(1000);
+    await sleep(300);    
     P.speak('welcome');
-    await sleep(1000);
-
+    await sleep(300);
 
     await sleep(100);
 
@@ -217,7 +204,7 @@ async function dev2(){
 
     await sleep(1000);
 
-    newMsg('dev2 enter', 'left', 250);
+    M.speak('dev2 enter', 'left', 250);
 
     
 
@@ -233,7 +220,7 @@ async function dev2(){
 
 async function blank(){
 
-    newMsg('blank enter', 'right', 300);
+    M.speak('blank enter', 'right', 300);
     await sleep(1000);
     dialogue.visible = false;
 
