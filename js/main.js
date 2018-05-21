@@ -10,11 +10,13 @@ let app = new Application({
 
 document.body.appendChild(app.view);
 
-
 loader
-    .add("images/example.png")
+    .add("images/example.png")//example image
     .load(setup);
 
+/***********************************
+***variables across the functions***
+***********************************/
 var style = new TextStyle ({
     fontFamily : 'Arial',
     fontSize: 14,
@@ -23,7 +25,6 @@ var style = new TextStyle ({
     wordWrapWidth: 300 
 });
 
-//variables across the functions
 const button = [];
 
 var text = [];
@@ -32,71 +33,44 @@ let option = [];
 let state;
 var tick = 0;
 let gradientShow = [false], gradientHide = [false];
+let dialogueShow = false, dialogueHide = false;
 
+let dialogue = new Container();
+app.stage.addChild(dialogue);
 
-//new msg test
-/*
-let leftMessage = new Container();
-leftMessage.position.set(20, 100);
-app.stage.addChild(leftMessage);
-let myLeftMsg = 'this is a new message on the left';
-let myLeftTxt = new Text(myLeftMsg, style);
-textMetrics = TextMetrics.measureText(myLeftMsg, style);
+/***************
+****Messages****
+***************/
 
-let leftBox = new Graphics();
-leftBox.beginFill(0x888888, 0.25);
-leftBox.drawRoundedRect(-15, -10, textMetrics.width + 30, textMetrics.height + 20, 10);
-leftBox.endFill();
-leftMessage.addChild(leftBox)
+async function newMsg(message, align, bgColor, txtColor){
 
-myLeftTxt.position.set(0, 0);
-leftMessage.addChild(myLeftTxt);
-*/
+    dialogueHide = true;
+    await sleep(150);
 
-
-//right msg test
-/*
-let rightMessage = new Container();
-rightMessage.position.set(340, 150);
-app.stage.addChild(rightMessage);
-let myRightMsg = 'this is a new message on the right';
-let myRightTxt = new Text(myRightMsg, style);
-textMetrics = TextMetrics.measureText(myRightMsg, style);
-myRightTxt.pivot.set(textMetrics.width, 0);
-
-let rightBox = new Graphics();
-rightBox.beginFill(0x888888, 0.25);
-rightBox.drawRoundedRect(-15, -10, textMetrics.width + 30, textMetrics.height + 20, 10);
-rightBox.endFill();
-rightBox.pivot.set(textMetrics.width, 0);
-rightMessage.addChild(rightBox)
-
-myRightTxt.position.set(0, 0);
-rightMessage.addChild(myRightTxt);
-*/
-
-function newMsg(message, align, yPos){
     let xPos;
     let myMsg = new Container();
+
+    textMetrics = TextMetrics.measureText(message, style);
     
+    dialogue.y -= textMetrics.height + 30;
+
     if(align == 'right'){
-        xPos = 340;
+        xPos = 330;
     }
     else if(align == 'left'){
-        xPos = 20;
+        xPos = 30;
     }
     else{
         console.log("You did somethign wrong..");
     }
 
-    myMsg.position.set(xPos, yPos);
-    app.stage.addChild(myMsg);
-    let newTxt = new Text(message, style);
+    myMsg.position.set(xPos, 200 - dialogue.y);
+    dialogue.addChild(myMsg);
+    let newTxt = new Text(message, {fontFamily: 'Arial', fontSize: 14, fill: txtColor, wordWrap: true, wordWrapWidth: 300});
     newTxt.position.set(0, 0);
-    textMetrics = TextMetrics.measureText(message, style);
 
     let txtBox = new Graphics();
-    txtBox.beginFill(0x888888, 0.25);
+    txtBox.beginFill(bgColor, 0.5);
     txtBox.drawRoundedRect(-15, -10, textMetrics.width + 30, textMetrics.height + 20, 10);
     txtBox.endFill();
 
@@ -105,10 +79,35 @@ function newMsg(message, align, yPos){
         txtBox.pivot.set(textMetrics.width, 0);
     }
 
-    myMsg.addChild(newTxt);
     myMsg.addChild(txtBox);
+    myMsg.addChild(newTxt);
+
+    dialogueShow = true;
+    
 }
 
+/**************
+***character***
+**************/
+
+let character = function(config){
+    this.bgColor = config.bgColor;
+    this.txtColor= config.txtColor;
+    this.align = config.align;
+}
+
+character.prototype.speak = function(msg){
+    newMsg(msg, this.align, this.bgColor, this.txtColor);
+    console.log(this.txtColor);
+}
+
+M = new character({bgColor: 0xffffff, txtColor:0x000000, align: 'left'});
+P = new character({bgColor: 0x008888, txtColor:0xffffff, align: 'right'});
+
+
+/*************
+***choices****
+*************/
 
 
 //box grpahics used for choices 
@@ -117,10 +116,9 @@ choiceBox.beginFill(0x888888, 0.25);
 choiceBox.drawRoundedRect(0, 0, 300, 30, 10);
 choiceBox.endFill();
 
-
-
 //make choice choiceBoxes
 for(var i = 0; i<3; ++i) {
+
         //new option
         option[i] = new Container();
         option[i].position.set(30, 500 + 40*i);
@@ -137,6 +135,11 @@ for(var i = 0; i<3; ++i) {
         option[i].addChild(text[i]);
         option[i].visible = false;
 }
+
+
+/***********************
+***setup and gameplay***
+***********************/
 
 function setup() {     
     
@@ -171,11 +174,33 @@ function play(delta){
             gradientHide[i] = false;
         }
     }
+
+    //handle alpha value of dialogue
+    if(dialogue.alpha < 1 && dialogueShow){
+        dialogue.alpha += 0.50;
+    }
+    else if (dialogue.alpha >= 1 && dialogueShow){
+        dialogue.alpha = 1;
+        dialogueShow = false;
+    }
+    if(dialogue.alpha > 0 && dialogueHide){
+        dialogue.alpha -= 0.50;
+    }
+    else if (dialogue.alpha <= 0 && dialogueHide){
+        dialogue.alpha = 0;
+        dialogueHide = false;
+    }
 }
 
 async function dev(){
 
-    newMsg('dev enter', 'right', 200);
+    M.speak('dev enter');
+    await sleep(1000);
+    P.speak('hello');
+    await sleep(1000);
+    P.speak('welcome');
+    await sleep(1000);
+
 
     await sleep(100);
 
@@ -194,6 +219,8 @@ async function dev2(){
 
     newMsg('dev2 enter', 'left', 250);
 
+    
+
     await sleep(100);
 
     choose(['Choice 1 again', 'Choice 2!!!!! again!', 'Choice 3 and there again'],
@@ -204,9 +231,11 @@ async function dev2(){
     ]);
 }
 
-function blank(){
+async function blank(){
 
-    newMsg('blank enter', 'right', 300)
+    newMsg('blank enter', 'right', 300);
+    await sleep(1000);
+    dialogue.visible = false;
 
 }
 
