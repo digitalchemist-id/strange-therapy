@@ -23,6 +23,7 @@ var style = new TextStyle ({
     wordWrapWidth: 300 
 });
 
+//variables across the functions
 const button = [];
 
 var text = [];
@@ -32,10 +33,22 @@ let state;
 var tick = 0;
 let gradientShow = [false], gradientHide = [false];
 
+//box grpahics used for choices 
 let box = new Graphics();
 box.beginFill(0x888888, 0.25);
 box.drawRoundedRect(0, 0, 300, 30, 10);
 box.endFill();
+
+//new msg test
+let message = new Container();
+message.position.set(100, 100);
+app.stage.addChild(message);
+let myMsg = 'this is a new message';
+let myMsgTxt = new Text(myMsg, style);
+textMetrics = TextMetrics.measureText(myMsg, style);
+myMsgTxt.position.set(100, 100);
+e.addChild(myMsgTxt);
+
 
 //make choice boxes
 for(var i = 0; i<3; ++i) {
@@ -116,6 +129,10 @@ async function dev2(){
 function blank(){
 
 }
+
+
+
+
 
     
 /*
