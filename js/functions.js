@@ -2,6 +2,10 @@ function noOp(){
     console.log("noOp");
 }
 
+function clearCount(){
+    count = 0;
+}
+
 async function showOptions() {
     for(var i=0;i<3;++i){
         await sleep(300);
@@ -21,7 +25,6 @@ async function clearOptions(){
     }
 }
 
-
 function choose(arg, click) {
     for(var i = 0; i<3; ++i) {
         text[i].text = arg[i];
@@ -32,6 +35,14 @@ function choose(arg, click) {
     showOptions();
 }
 
+function checkMsgPush() {
+    if(pushCount > 0){
+        msgArray.forEach(function(element){
+            element.position.y -= pushHeight/5;
+        });
+        pushCount -= pushHeight/5;
+    }
+}
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

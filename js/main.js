@@ -3,7 +3,8 @@ let app = new Application({
     width: 360, 
     height: 640,                       
     antialiasing: true, 
-    transparent: false, 
+    transparent: false,
+    backgroundColor: 0x1099bb,
     resolution: 1
   }
 );
@@ -17,6 +18,27 @@ loader
 /***********************************
 ***variables across the functions***
 ***********************************/
+
+//setup
+let state;
+let fqueue = [];
+var count = 0;
+var queue = 0, signal = false;
+
+//message
+var msgArray = [];
+var pushCount, pushHeight;
+let msgLine = new Graphics();
+msgLine.lineStyle(4, 0xffd900, 1);
+msgLine.moveTo(0, 240);
+msgLine.lineTo(360, 240);
+app.stage.addChild(msgLine);
+
+//choices
+let textMetrics;
+const button = [];
+var text = [];
+let option = [];
 var style = new TextStyle ({
     fontFamily : 'Arial',
     fontSize: 14,
@@ -24,89 +46,7 @@ var style = new TextStyle ({
     wordWrap: true,
     wordWrapWidth: 300 
 });
-
-const button = [];
-
-var text = [];
-let textMetrics;
-let option = [];
-let state;
-var tick = 0;
 let gradientShow = [false], gradientHide = [false];
-let dialogueShow = false, dialogueHide = false;
-
-let pushCount;
-let dialogue = new Container();
-app.stage.addChild(dialogue);
-
-/***************
-****Messages****
-***************/
-
-async function newMsg(message, align, bgColor, txtColor){
-
-    textMetrics = TextMetrics.measureText(message, style);
-    pushCount = textMetrics.height + 30;
-    
-    await sleep(150);
-
-    let xPos;
-    let myMsg = new Container();
-
-    
-        
-    if(align == 'right'){
-        xPos = 330;
-    }
-    else if(align == 'left'){
-        xPos = 30;
-    }
-    else{
-        console.log("You did somethign wrong..");
-    }
-
-    myMsg.position.set(xPos, 200 - dialogue.y);
-    dialogue.addChild(myMsg);
-    let newTxt = new Text(message, {fontFamily: 'Arial', fontSize: 14, fill: txtColor, wordWrap: true, wordWrapWidth: 300});
-    newTxt.position.set(0, 0);
-
-    let txtBox = new Graphics();
-    txtBox.beginFill(bgColor, 0.5);
-    txtBox.drawRoundedRect(-15, -10, textMetrics.width + 30, textMetrics.height + 20, 10);
-    txtBox.endFill();
-
-    if(align == 'right'){
-        newTxt.pivot.set(textMetrics.width, 0);
-        txtBox.pivot.set(textMetrics.width, 0);
-    }
-
-    myMsg.addChild(txtBox);
-    myMsg.addChild(newTxt);  
-}
-
-/**************
-***character***
-**************/
-
-let character = function(config){
-    this.bgColor = config.bgColor;
-    this.txtColor= config.txtColor;
-    this.align = config.align;
-}
-
-character.prototype.speak = function(msg){
-    newMsg(msg, this.align, this.bgColor, this.txtColor);
-    
-}
-
-M = new character({bgColor: 0xffffff, txtColor:0x000000, align: 'left'});
-P = new character({bgColor: 0x008888, txtColor:0xffffff, align: 'right'});
-
-
-/*************
-***choices****
-*************/
-
 
 //box grpahics used for choices 
 let choiceBox = new Graphics();
@@ -140,17 +80,31 @@ for(var i = 0; i<3; ++i) {
 ***********************/
 
 function setup() {     
-    
-    app.ticker.add(delta => gameLoop(delta));
 
     dev();
 
     state = play;
+    
+    app.ticker.add(delta => gameLoop(delta));
 }
 
 function gameLoop(delta){
+    ++count;
+
     state(delta);
-    //console.log(option[0].alpha + " " + gradientShow + " " + gradientHide);
+
+    if(queue>1){
+        --queue;
+    } else if (queue==1) {
+        --queue;
+        signal = true;
+    } else if (queue==0) {
+        signal = false;
+        if(fqueue.length != 0){
+            fqueue[0](); 
+            fqueue.splice(0, 1);
+        }
+    }
 }
 
 function play(delta){
@@ -173,23 +127,20 @@ function play(delta){
         }
     }
 
-    //handle push of dialogue
-    if(pushCount > 0){
-        dialogue.y -= 10;
-        pushCount -= 10;
-    }
+    checkMsgPush();
 }
 
 async function dev(){
 
-    M.speak('dev enter');
-    await sleep(300);    
-    P.speak('hello');
-    await sleep(300);    
-    P.speak('welcome');
-    await sleep(300);
-
-    await sleep(100);
+    M.s('dev enter');
+    P.s('hello');
+    P.s('welcome');
+    M.s('Hi Ho');
+    P.s('don\'t make me do this');
+    M.s('do what?');
+    P.s('make you read all this long sentence, you know. I\'m gonna go double');
+    P.s('You know what');
+    P.s('this is messed up')
 
     choose(['Choice 1', 'Choice 2!!!!!', 'Choice 3 and there'], 
     [
@@ -222,27 +173,4 @@ async function blank(){
 
     M.speak('blank enter', 'right', 300);
     await sleep(1000);
-    dialogue.visible = false;
-
 }
-
-
-
-
-
-    
-/*
-    var textTest = 'basic text testing 한글 테스트';
-
-    var text = new Text(textTest, style);
-    text.x = 50;
-    text.y = 508;
-    app.stage.addChild(text);
-
-    let textMetrics = TextMetrics.measureText(textTest, style);
-    console.log('width: ' + textMetrics.width + '\n height: ' + textMetrics.height);
-*/
-
-    
-
-
