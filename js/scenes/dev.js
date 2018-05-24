@@ -1,35 +1,30 @@
 function dev(){
 
-    M.t('dev enter');
-    P.t('hello');
-    P.t('welcome');
-    M.t('Hi Ho');
-    P.t('don\'t make me do this');
-    M.t('do what?');
-    P.t('make you read all this long sentence, you know. I\'m gonna go double');
-    P.t('You know what');
-    P.t('this is messed up');
+    M.s('dev enter');
+    P.s('hello');
+    M.s('welcome');
+    P.t('man this stinks');
 
-    choice.t({
-        'choice 1': function(message) {console.log("clicked 1!"); choice.hide(); dev2(message);},
-        'choice 2': function(message) {console.log("clicked 2!"); choice.hide(); dev2(message);},
-        'choice 3': function(message) {console.log("clicked 3!"); choice.hide(); dev2(message);}
+    choice.s({
+        'choice 1': function(msg) {console.log("clicked 1!"); choice.hide(); dev2(msg);},
+        'choice 2': function(msg) {console.log("clicked 2!"); choice.hide(); dev2(msg);},
+        'choice 3 and this text is reallllly long': function(msg) {console.log("clicked 3!"); choice.hide(); dev2(msg);}
     });
 }
 
-function dev2(message){
-    P.t(message);
+function dev2(msg){
+    P.s(msg);
     M.t('Oh you clicked that')
     M.t('dev2 enter');
 
     choice.t({
-        'Choice 1 again': function() {console.log("clicked 1 this time!"); choice.hide(); blank();},
-        'Choice 2!!!!! again!': function() {console.log("clicked 2 this time!"); choice.hide(); blank();},
-        'Choice 3 and there again': function() {console.log("clicked 3 this time!"); choice.hide(); blank();}
+        'Choice 1 again': function(msg) {console.log("clicked 1 this time!"); choice.hide(); blank(msg);},
+        'Choice 2!!!!! again!': function(msg) {console.log("clicked 2 this time!"); choice.hide(); blank(msg);},
+        'Choice 3 and there again': function(msg) {console.log("clicked 3 this time!"); choice.hide(); blank(msg);}
     });
 }
 
-function blank(){
-
+function blank(msg){
+    P.t(msg);
     M.t('blank enter');
 }

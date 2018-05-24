@@ -17,6 +17,16 @@ let state;
 let fqueue = [];
 var queue = 0, signal = false;
 var holdQueue = false;
+var skipQueue = false;
+
+//clickable transparent skip box
+clickBox = new Graphics();
+clickBox.beginFill(0x000000, 0);
+clickBox.drawRect(0, 0, 360, 640);
+clickBox.endFill();
+clickBox.interactive = true;
+clickBox.on('pointerdown', function(){console.log('clicked!'); skipQueue = true;});
+app.stage.addChild(clickBox);
 
 var style = new TextStyle ({
     fontFamily : 'Arial',

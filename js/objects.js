@@ -18,6 +18,7 @@ let Message = function(txt, align, bgColor, txtColor) {
     });
     this.textMetrics = TextMetrics.measureText(txt, this.style);
     this.msgContainer = new Container();
+    this.speak = false;
 }
 
 Message.prototype.setup = function() {
@@ -25,6 +26,17 @@ Message.prototype.setup = function() {
 
     let txtBox = new Graphics();
     txtBox.beginFill(this.bgColor, 0.5);
+    if(this.speak == true && this.align == 'left') {
+        txtBox.moveTo(-25, -3);
+        txtBox.lineTo(-15, -3);
+        txtBox.lineTo(-15, -3 + 10);
+        txtBox.lineTo(-25, -3);
+    } else if(this.speak == true && this.align == 'right') {
+        txtBox.moveTo(this.textMetrics.width + 15, -3);
+        txtBox.lineTo(this.textMetrics.width + 15 + 10, -3);
+        txtBox.lineTo(this.textMetrics.width + 15, -3 + 10);
+        txtBox.lineTo(this.textMetrics.width + 15, -3);
+    }
     txtBox.drawRoundedRect(-15, -10, this.textMetrics.width + 30, this.textMetrics.height + 20, 10);
     txtBox.endFill();
     this.msgContainer.addChild(txtBox);
@@ -37,7 +49,7 @@ Message.prototype.setup = function() {
     }
     this.msgContainer.addChild(msgTxt);
 
-    msgArray.push(this.msgContainer);
+    
 }
 
 Message.prototype.draw = function() {
@@ -47,6 +59,7 @@ Message.prototype.draw = function() {
     pushHeight = this.textMetrics.height + 25;
     pushCount = this.textMetrics.height + 24; // - 1 to prevent pushing further
     this.msgContainer.position.y = 250;
+    msgArray.push(this.msgContainer);
     app.stage.addChild(this.msgContainer);
 }
 
@@ -63,6 +76,7 @@ let Character = function(config){
 //s is for speak - to be implemented
 Character.prototype.s = function(txt){
     newMsg = new Message(txt, this.align, this.bgColor, this.txtColor);
+    newMsg.speak = true;
     newMsg.setup();
     fqueue.push(newMsg.draw.bind(newMsg));//bind method lets this function work in ticker
 }
@@ -82,20 +96,8 @@ P = new Character({bgColor: 0x008888, txtColor:0xffffff, align: 'right'});
 ************/
 
 let Choice = function(){
-    this.textMetrics;
+
     this.interval = 300;
-    this.gradientShow = [false];
-    this.gradientHide = [false];
-
-    this.button = [];
-    this.text = [];
-    this.option = [];
-
-    this.Box = new Graphics();
-    this.Box.beginFill(0x888888, 0.25);
-    this.Box.drawRoundedRect(0, 0, 300, 30, 10);
-    this.Box.endFill();
-
     this.style = new TextStyle ({
         fontFamily : 'Arial',
         fontSize: 14,
@@ -103,6 +105,29 @@ let Choice = function(){
         wordWrap: true,
         wordWrapWidth: 300 
     });
+    this.alpha = 1;
+
+    this.textMetrics;
+    this.gradientShow = [false];
+    this.gradientHide = [false];
+
+    this.button = [];
+    this.text = [];
+    this.option = [];
+    this.speech = [];
+  
+    this.box = new Graphics();
+    this.box.beginFill(0x888888, this.alpha);
+    this.box.drawRoundedRect(0, 0, 300, 30, 10);
+    this.box.endFill();
+
+    this.tail = new Graphics();
+    this.tail.beginFill(0x888888, this.alpha);
+    this.tail.moveTo(0, 0);
+    this.tail.lineTo(10, 10);
+    this.tail.lineTo(0, 10);
+    this.tail.lineTo(0, 0);
+    this.tail.endFill();
 
     for(var i = 0; i<3; ++i) {
         //new option
@@ -110,10 +135,14 @@ let Choice = function(){
         this.option[i].position.set(30, 500 + 40*i);
         app.stage.addChild(this.option[i]);
         //text container button
-        this.button[i] = new Sprite(this.Box.generateCanvasTexture());
+        this.button[i] = new Sprite(this.box.generateCanvasTexture());
         this.button[i].interactive = false;
         this.button[i].buttonMode = true;
         this.option[i].addChild(this.button[i]);
+        //add tail
+        this.speech[i] = new Sprite(this.tail.generateCanvasTexture());
+        this.speech[i].position.set(300, 12);
+        this.option[i].addChild(this.speech[i]);
         //add text
         this.text[i] = new Text(' ', this.style);
         this.text[i].x = 300/2;
@@ -150,6 +179,7 @@ Choice.prototype.t = async function(obj) {
     var labels = Object.keys(obj);
 
     for(var i = 0; i<3; ++i) {
+        this.speech[i].visible = false;
         this.text[i].text = labels[i];
         this.textMetrics = TextMetrics.measureText(labels[i], this.style);
         this.text[i].x = 300/2 - this.textMetrics.width/2;
@@ -159,7 +189,27 @@ Choice.prototype.t = async function(obj) {
             }
         )(obj[labels[i]], labels[i]));
     }
-    fqueue.push(this.show.bind(this)); //I don't understand this part yet.
+    fqueue.push(this.show.bind(this)); //I don't understand this part... yet.
 }
+
+Choice.prototype.s = async function(obj) {
+    await sleep(3*this.interval); //prevent crashing between choices. This soltion makes impossible to add messages after choice in a function but...
+    
+    var labels = Object.keys(obj);
+
+    for(var i = 0; i<3; ++i) {
+        this.speech[i].visible = true;
+        this.text[i].text = labels[i];
+        this.textMetrics = TextMetrics.measureText(labels[i], this.style);
+        this.text[i].x = 300/2 - this.textMetrics.width/2;
+        this.button[i].on('pointerdown', (
+            function(callback,message){
+                return function(){callback(message);};
+            }
+        )(obj[labels[i]], labels[i]));
+    }
+    fqueue.push(this.show.bind(this)); //I don't understand this part... yet.
+}
+
 
 choice = new Choice();

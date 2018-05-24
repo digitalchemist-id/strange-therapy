@@ -8,11 +8,26 @@ function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-/*
-function clearCount(){
-    count = 0;
+function handleQueue() {
+    if(!holdQueue){
+        if(queue>1){
+            --queue;
+        } else if (queue==1) {
+            --queue;
+            signal = true; console.log('trigger');
+        } else if (queue==0) {
+            signal = false;
+            if(fqueue.length != 0){
+                fqueue[0](); 
+                fqueue.splice(0, 1);
+            }
+        }
+    }
+    if(pushCount <= 0 && skipQueue){
+        skipQueue = false;
+        queue = 0;
+    }
 }
-*/
 
 //choices
 
@@ -41,9 +56,19 @@ function handleGradient() {
 
 function checkMsgPush() {
     if(pushCount > 0){
-        msgArray.forEach(function(element){
-            element.position.y -= pushHeight/5;
-        });
+        msgArray.forEach(
+            function(element){
+                element.position.y -= pushHeight/5;
+            }
+        );
         pushCount -= pushHeight/5;
     }
+    msgArray.forEach(
+        function(element, index, array){
+            if(element.position.y < -100){
+                element.destroy();
+                array.splice(0, 1);
+            }
+        }
+    );
 }

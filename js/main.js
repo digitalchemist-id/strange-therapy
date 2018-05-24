@@ -20,24 +20,11 @@ function setup() {
 function gameLoop(delta){
 
     state(delta);
-
-    if(!holdQueue){
-        if(queue>1){
-            --queue;
-        } else if (queue==1) {
-            --queue;
-            signal = true; console.log('trigger');
-        } else if (queue==0) {
-            signal = false;
-            if(fqueue.length != 0){
-                fqueue[0](); 
-                fqueue.splice(0, 1);
-            }
-        }
-    }
 }
 
 function play(delta){
+
+    handleQueue();
     handleGradient();
     checkMsgPush();
 }
