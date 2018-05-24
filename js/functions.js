@@ -1,39 +1,43 @@
+//system
+
 function noOp(){
     console.log("noOp");
 }
 
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+/*
 function clearCount(){
     count = 0;
 }
+*/
 
-async function showOptions() {
+//choices
+
+function handleGradient() {
+    //handle alpha values of options
     for(var i=0;i<3;++i){
-        await sleep(300);
-        button[i].interactive = true;
-        option[i].visible = true;
-        option[i].alpha = 0;
-        gradientShow[i] = true;
+        if(choice.option[i].alpha < 1 && choice.gradientShow[i]){
+            choice.option[i].alpha += 0.10;
+        }
+        else if (choice.option[i].alpha >= 1 && choice.gradientShow[i]){
+            choice.option[i].alpha = 1;
+            choice.gradientShow[i] = false;
+        }
+
+        if(choice.option[i].alpha > 0 && choice.gradientHide[i]){
+            choice.option[i].alpha -= 0.10;
+        }
+        else if (choice.option[i].alpha <= 0 && choice.gradientHide[i]){
+            choice.option[i].alpha = 0;
+            choice.gradientHide[i] = false;
+        }
     }
 }
 
-async function clearOptions(){
-    for(var i = 0; i<3; ++i) {
-        gradientHide[i] = true;
-        button[i].off('pointerdown');
-        await sleep(300);
-        option[i].visible = false;
-    }
-}
-
-function choose(arg, click) {
-    for(var i = 0; i<3; ++i) {
-        text[i].text = arg[i];
-        textMetrics = TextMetrics.measureText(arg[i], style);
-        text[i].x = 300/2 - textMetrics.width/2;
-        button[i].on('pointerdown', click[i]);
-    }
-    showOptions();
-}
+//messages
 
 function checkMsgPush() {
     if(pushCount > 0){
@@ -42,8 +46,4 @@ function checkMsgPush() {
         });
         pushCount -= pushHeight/5;
     }
-}
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
 }

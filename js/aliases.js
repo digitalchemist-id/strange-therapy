@@ -8,3 +8,4 @@ let Application = PIXI.Application,
     Text = PIXI.Text,
     TextStyle = PIXI.TextStyle;
     TextMetrics = PIXI.TextMetrics;
+    
