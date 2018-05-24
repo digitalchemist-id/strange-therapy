@@ -15,7 +15,7 @@ let app = new Application({
 //setup
 let state;
 let fqueue = [];
-var queue = 0, signal = false;
+var queue = 0, signal = false; //delete signal if not needed
 var holdQueue = false;
 var skipQueue = false;
 
