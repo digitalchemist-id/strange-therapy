@@ -18,13 +18,20 @@ function dev2(msg){
     M.t('dev2 enter');
 
     choice.t({
-        'Choice 1 again': function(msg) {console.log("clicked 1 this time!"); choice.hide(); blank(msg);},
-        'Choice 2!!!!! again!': function(msg) {console.log("clicked 2 this time!"); choice.hide(); blank(msg);},
-        'Choice 3 and there again': function(msg) {console.log("clicked 3 this time!"); choice.hide(); blank(msg);}
+        'Choice 1 again': function(msg) {console.log("clicked 1 this time!"); choice.hide(); P.s(msg); blank();},
+        'Choice 2!!!!! again!': function(msg) {console.log("clicked 2 this time!"); choice.hide(); P.s(msg); blank();},
+        'Choice 3 and there again': function(msg) {console.log("clicked 3 this time!"); choice.hide(); P.s(msg); blank();}
     });
 }
 
-function blank(msg){
-    P.t(msg);
-    M.t('blank enter');
+function blank(){
+    fqueue.push(clearMsg);
+    dev3();
+}
+
+async function dev3(){
+    await sleep(3000);
+
+    M.s('welcome to dev3');
+    M.s('Now I\'m ready to start writing');
 }

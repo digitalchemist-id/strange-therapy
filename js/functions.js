@@ -72,3 +72,14 @@ function checkMsgPush() {
         }
     );
 }
+
+function clearMsg() {
+    console.log(msgArray);
+    msgArray.forEach(
+        function(element, index, array){
+            element.destroy();
+        }
+    );
+    msgArray = [];
+    console.log(msgArray);
+}
