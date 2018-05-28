@@ -1,26 +1,34 @@
 function dev(){
 
-    M.s('dev enter');
-    P.s('hello');
-    M.s('welcome');
-    P.t('man this stinks');
+    M.s('Me');
+    P.s('Player');
+    T.t('text');
+    Gm.s('Grandma');
+    V.s('Vet');
+    F.s('Friend');
+    Gf.s('Gf');
+
 
     choice.s({
         'choice 1': function(msg) {console.log("clicked 1!"); choice.hide(); dev2(msg);},
         'choice 2': function(msg) {console.log("clicked 2!"); choice.hide(); dev2(msg);},
-        'choice 3 and this text is reallllly long': function(msg) {console.log("clicked 3!"); choice.hide(); dev2(msg);}
+        'choice 3': function(msg) {console.log("clicked 3!"); choice.hide(); dev2(msg);}
     });
 }
 
 function dev2(msg){
+
     P.s(msg);
-    M.t('Oh you clicked that')
+    M.t('Oh you clicked that');
+    
+    
+    
     M.t('dev2 enter');
 
     choice.t({
         'Choice 1 again': function(msg) {console.log("clicked 1 this time!"); choice.hide(); P.s(msg); blank();},
         'Choice 2!!!!! again!': function(msg) {console.log("clicked 2 this time!"); choice.hide(); P.s(msg); blank();},
-        'Choice 3 and there again': function(msg) {console.log("clicked 3 this time!"); choice.hide(); P.s(msg); blank();}
+        //'Choice 3 and there again': function(msg) {console.log("clicked 3 this time!"); choice.hide(); P.s(msg); blank();}
     });
 }
 
