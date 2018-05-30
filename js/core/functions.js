@@ -13,20 +13,20 @@ function sleep(ms) {
 function handleGradient() {
     //handle alpha values of options
     for(var i=0;i<3;++i){
-        if(choice.option[i].alpha < 1 && choice.gradientShow[i]){
-            choice.option[i].alpha += 0.10;
+        if(C.option[i].alpha < 1 && C.gradientShow[i]){
+            C.option[i].alpha += 0.10;
         }
-        else if (choice.option[i].alpha >= 1 && choice.gradientShow[i]){
-            choice.option[i].alpha = 1;
-            choice.gradientShow[i] = false;
+        else if (C.option[i].alpha >= 1 && C.gradientShow[i]){
+            C.option[i].alpha = 1;
+            C.gradientShow[i] = false;
         }
 
-        if(choice.option[i].alpha > 0 && choice.gradientHide[i]){
-            choice.option[i].alpha -= 0.10;
+        if(C.option[i].alpha > 0 && C.gradientHide[i]){
+            C.option[i].alpha -= 0.10;
         }
-        else if (choice.option[i].alpha <= 0 && choice.gradientHide[i]){
-            choice.option[i].alpha = 0;
-            choice.gradientHide[i] = false;
+        else if (C.option[i].alpha <= 0 && C.gradientHide[i]){
+            C.option[i].alpha = 0;
+            C.gradientHide[i] = false;
         }
     }
 }

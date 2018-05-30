@@ -1,45 +1,78 @@
 function dev(){
+    $ = {}; //So this is an object. /ncase
 
-    M.s('Me');
-    P.s('Player');
-    T.t('text');
-    Gm.s('Grandma');
-    V.s('Vet');
-    F.s('Friend');
-    Gf.s('Gf');
+    bg.visible = true;
+    //clock ticking
 
+    T.t('Question #10 c)')
+    T.t('Of the following compounds');
+    T.t('which has higher boling point?');
+    Q.fqueue.push(function(){
+        bunny.visible = true;
+    }
 
-    choice.s({
-        'choice 1': function(msg) {console.log("clicked 1!"); choice.hide(); dev2(msg);},
-        'choice 2': function(msg) {console.log("clicked 2!"); choice.hide(); dev2(msg);},
-        'choice 3': function(msg) {console.log("clicked 3!"); choice.hide(); dev2(msg);}
+    );
+    
+    T.t('1. pentane');
+    T.t('2. 2,2-dimethylpropane');
+
+    C.t({
+        '1. pentane': function(msg) {
+            P.t('is it...');
+            P.t(msg + '?');
+            $.test_1_is_correct = true;
+            C.hide();
+            after_test_1();
+        },
+        '2. 2,2-dimethylpropane': function(msg) {
+            P.t('is it...');
+            P.t(msg + '?');
+            $.test_1_is_correct = false;
+            C.hide();
+            after_test_1();
+        },
+        'dimethyl... what?': function(msg) {
+            P.t(msg);
+            P.t('I\'m pretty sure I don\'t know what this question is talking about');
+            P.t('I\'ll go with 2. 2,2-dimethylpropane because I like the way it sounds');
+            P.t('If it sounds the way I think it does, that is');
+            $.test_1_is_correct = false;
+            C.hide();
+            after_test_1();
+        }
     });
+
 }
 
-function dev2(msg){
+function after_test_1(){
 
-    P.s(msg);
-    M.t('Oh you clicked that');
     
-    
-    
-    M.t('dev2 enter');
+    //alarm ringing
+    A.s('Time\'s up!');
 
-    choice.t({
-        'Choice 1 again': function(msg) {console.log("clicked 1 this time!"); choice.hide(); P.s(msg); blank();},
-        'Choice 2!!!!! again!': function(msg) {console.log("clicked 2 this time!"); choice.hide(); P.s(msg); blank();},
-        //'Choice 3 and there again': function(msg) {console.log("clicked 3 this time!"); choice.hide(); P.s(msg); blank();}
+    Q.do(function(){
+        resources.cellphone.sound.play();
     });
+    Q.wait(1000);
+
+    A.s('Everyone turn your tests in!');
+    //turns test in 
+    Q.wait(2000);
+
+    P.t('Oh');
+    if($.test_1_is_correct){
+        P.t('That didn\'t go so bad');
+        P.t('Actually, it was better than I expected');
+    } else {
+        P.t('That did\'t go so well');
+    }
+
 }
 
-function blank(){
-    fqueue.push(clearMsg);
-    dev3();
-}
-
-async function dev3(){
-    await sleep(3000);
-
-    M.s('welcome to dev3');
-    M.s('Now I\'m ready to start writing');
-}
+/*for copy and paste
+C.s({
+    "": function(msg) { C.hide();},
+    "": function(msg) { C.hide();},
+    "": function(msg) { C.hide();}
+});
+*/

@@ -11,7 +11,7 @@ loader
     .add("images/sprite/bunny.png")
     .add("cellphone", "sounds/cellphone_vibrate.wav")
     .add("bgm", "sounds/feelings_of_twilight.mp3")
-    .add("send", "sounds/send.wav")
+    //.add("send", "sounds/send.wav")
     .load(setup);
 
 function setup() {
@@ -39,16 +39,16 @@ function setup() {
     animExample.animationSpeed = 0.1;
     animExample.play();
 
-    app.stage.addChild(animExample);
+    //app.stage.addChild(animExample);
 
     //const sound = PIXI.sound.Sound.from(resources["sounds/feelings_of_twilight.mp3"]);
 	//const cellphone = PIXI.sound.Sound.from(resources["sounds/cellphone_vibrate.wav"]);
 	//cellphone.loop=true;
 
 	resources.bgm.sound.loop = true;
-	resources.bgm.sound.play();
+	
 
-    start_test_1();
+    start_intro();
 
     state = play;
     

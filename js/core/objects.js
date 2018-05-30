@@ -30,6 +30,7 @@ let Q = {
             this.skipQueue = false;
             this.queue = 0;
         }
+        //console.log(this.queue);
         //console.log(this.queue +', '+ this.canSkip);
     }, //A lot messy
     addQueue: function() {
@@ -114,14 +115,14 @@ Message.prototype.setup = function() {
 
 Message.prototype.draw = function() {
     //console.log('draw called ' + this.textMetrics.height);
-    Q.queue += Math.floor(this.textMetrics.width/2) + 40; //adjusts speed of autoskip
+    Q.queue += Math.floor(this.textMetrics.width/2.5) + 40; //adjusts speed of autoskip
     //console.log(queue);
     pushHeight = this.textMetrics.height + 25;
     pushCount = this.textMetrics.height + 24; // - 1 to prevent pushing further
     this.msgContainer.position.y = 250;
     msgArray.push(this.msgContainer);
     app.stage.addChild(this.msgContainer);
-    resources.send.sound.play();
+    //resources.send.sound.play();
 }
 
 /**************
@@ -181,6 +182,7 @@ let Choice = function(){
         wordWrap: true,
         wordWrapWidth: 300 
     });
+    this.color = 0xffffff;
     this.alpha = 0.7;
     this.n;
 
@@ -194,12 +196,12 @@ let Choice = function(){
     this.speech = [];
   
     this.box = new Graphics();
-    this.box.beginFill(0xffffff, this.alpha);
+    this.box.beginFill(this.color, this.alpha);
     this.box.drawRoundedRect(0, 0, 300, 30, 10);
     this.box.endFill();
 
     this.tail = new Graphics();
-    this.tail.beginFill(0x888888, this.alpha);
+    this.tail.beginFill(this.color, this.alpha);
     this.tail.moveTo(0, 0);
     this.tail.lineTo(10, 10);
     this.tail.lineTo(0, 10);
@@ -250,45 +252,52 @@ Choice.prototype.hide = async function(){
     Q.holdQueue = false;
 }
 
-Choice.prototype.t = async function(obj) {
-    await sleep(3*this.interval); //prevent crashing between choices. This soltion makes impossible to add messages after choice in a function
-    
-    var labels = Object.keys(obj); //get the keys and make an array of them
-    this.n = labels.length;
+Choice.prototype.t = async function(obj) {    
+    Q.fqueue.push(function(){
+            var labels = Object.keys(obj); //get the keys and make an array of them
+            this.n = labels.length;
 
-    for(var i = 0; i < this.n; ++i) {
-        this.speech[i].visible = false;
-        this.text[i].text = labels[i];
-        this.textMetrics = TextMetrics.measureText(labels[i], this.style);
-        this.text[i].x = 300/2 - this.textMetrics.width/2;
-        this.button[i].on('pointerdown', (
-            function(callback,message){
-                return function(){callback(message);};
+            for(var i = 0; i < this.n; ++i) {
+                this.speech[i].visible = false;
+                this.text[i].text = labels[i];
+                this.textMetrics = TextMetrics.measureText(labels[i], this.style);
+                this.text[i].x = 300/2 - this.textMetrics.width/2;
+                this.button[i].on('pointerdown', (
+                    function(callback,message){
+                        return function(){callback(message);};
+                    }
+                )(obj[labels[i]], labels[i]));
             }
-        )(obj[labels[i]], labels[i]));
-    } //ncase/
-    Q.fqueue.push(this.show.bind(this));
+        }.bind(this)
+    );
+    Q.fqueue.push(
+        this.show.bind(this)
+    );
 }
 
 Choice.prototype.s = async function(obj) {
-    await sleep(3*this.interval); //prevent crashing between choices. This soltion makes impossible to add messages after choice in a function but...
+    Q.fqueue.push(function(){
+            var labels = Object.keys(obj);
+            this.n = labels.length;
     
-    var labels = Object.keys(obj);
-    this.n = labels.length;
-
-    for(var i = 0; i < this.n; ++i) {
-        this.speech[i].visible = true;
-        this.text[i].text = labels[i];
-        this.textMetrics = TextMetrics.measureText(labels[i], this.style);
-        this.text[i].x = 300/2 - this.textMetrics.width/2;
-        this.button[i].on('pointerdown', (
-            function(callback,message){
-                return function(){callback(message);};
+            for(var i = 0; i < this.n; ++i) {
+                this.speech[i].visible = true;
+                this.text[i].text = labels[i];
+                this.textMetrics = TextMetrics.measureText(labels[i], this.style);
+                this.text[i].x = 300/2 - this.textMetrics.width/2;
+                this.button[i].on('pointerdown', (
+                    function(callback,message){
+                        return function(){callback(message);};
+                    }
+                )(obj[labels[i]], labels[i]));
             }
-        )(obj[labels[i]], labels[i]));
-    }
+        }.bind(this)
+    );
     Q.fqueue.push(this.show.bind(this));
 }
 
-choice = new Choice();
+//making 2 choices in a function is still impossible because callback gets pushed into fqueue after choice was made
+//while other functions that should execute later gets pushed into fqueue immediately
+
+C = new Choice();
 
