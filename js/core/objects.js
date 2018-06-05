@@ -114,8 +114,14 @@ Message.prototype.setup = function() {
 }
 
 Message.prototype.draw = function() {
-    //console.log('draw called ' + this.textMetrics.height);
-    Q.queue += Math.floor(this.textMetrics.width/2.5) + 40; //adjusts speed of autoskip
+
+    var txtLength = 0;
+
+    this.textMetrics.lineWidths.forEach(function(element){
+        txtLength += element;
+    });
+    //console.log(txtLength);
+    Q.queue += Math.floor(txtLength/2.5) + 50; //adjusts speed of autoskip
     //console.log(queue);
     pushHeight = this.textMetrics.height + 25;
     pushCount = this.textMetrics.height + 24; // - 1 to prevent pushing further
@@ -185,6 +191,7 @@ let Choice = function(){
     this.color = 0xffffff;
     this.alpha = 0.7;
     this.n;
+    this.length = 320;
 
     this.textMetrics;
     this.gradientShow = [false];
@@ -197,7 +204,7 @@ let Choice = function(){
   
     this.box = new Graphics();
     this.box.beginFill(this.color, this.alpha);
-    this.box.drawRoundedRect(0, 0, 300, 30, 10);
+    this.box.drawRoundedRect(0, 0, this.length, 30, 10);
     this.box.endFill();
 
     this.tail = new Graphics();
@@ -211,7 +218,7 @@ let Choice = function(){
     for(var i = 0; i<3; ++i) {
         //new option
         this.option[i] = new Container();
-        this.option[i].position.set(30, 500 + 40*i);
+        this.option[i].position.set((360 - this.length)/2, 500 + 40*i);
         app.stage.addChild(this.option[i]);
         //text container button
         this.button[i] = new Sprite(this.box.generateCanvasTexture());
@@ -220,12 +227,12 @@ let Choice = function(){
         this.option[i].addChild(this.button[i]);
         //add tail
         this.speech[i] = new Sprite(this.tail.generateCanvasTexture());
-        this.speech[i].position.set(300, 12);
+        this.speech[i].position.set(this.length, 12);
         this.option[i].addChild(this.speech[i]);
         //add text
         this.text[i] = new Text(' ', this.style);
-        this.text[i].x = 300/2;
-        this.text[i].y = 8;
+        //this.text[i].x = 300/2;
+        this.text[i].y = 7;
         this.option[i].addChild(this.text[i]);
         this.option[i].visible = false;
     }
@@ -235,17 +242,21 @@ Choice.prototype.show = async function(){
     Q.holdQueue = true;
     for(var i=0;i<this.n;++i){
         await sleep(this.interval);
-        this.button[i].interactive = true;
         this.option[i].visible = true;
         this.option[i].alpha = 0;
         this.gradientShow[i] = true;
     }
+    for(var i=0;i<this.n;++i){
+        this.button[i].interactive = true;
+    }
 }
 
 Choice.prototype.hide = async function(){
+    for(var i = 0; i<this.n; ++i){
+        this.button[i].off('pointerdown');
+    }
     for(var i = 0; i<this.n; ++i) {
         this.gradientHide[i] = true;
-        this.button[i].off('pointerdown');
         await sleep(this.interval);
         this.option[i].visible = false;
     }
@@ -261,7 +272,7 @@ Choice.prototype.t = async function(obj) {
                 this.speech[i].visible = false;
                 this.text[i].text = labels[i];
                 this.textMetrics = TextMetrics.measureText(labels[i], this.style);
-                this.text[i].x = 300/2 - this.textMetrics.width/2;
+                this.text[i].x = this.length/2 - this.textMetrics.width/2;
                 this.button[i].on('pointerdown', (
                     function(callback,message){
                         return function(){callback(message);};
@@ -284,7 +295,7 @@ Choice.prototype.s = async function(obj) {
                 this.speech[i].visible = true;
                 this.text[i].text = labels[i];
                 this.textMetrics = TextMetrics.measureText(labels[i], this.style);
-                this.text[i].x = 300/2 - this.textMetrics.width/2;
+                this.text[i].x = this.length/2 - this.textMetrics.width/2;
                 this.button[i].on('pointerdown', (
                     function(callback,message){
                         return function(){callback(message);};
@@ -298,6 +309,7 @@ Choice.prototype.s = async function(obj) {
 
 //making 2 choices in a function is still impossible because callback gets pushed into fqueue after choice was made
 //while other functions that should execute later gets pushed into fqueue immediately
+//There might be a bug of choices not showing when screen clicked too fast
 
 C = new Choice();
 

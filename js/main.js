@@ -47,8 +47,25 @@ function setup() {
 
 	resources.bgm.sound.loop = true;
 	
+    //dev
+    $ = {};
+    //
 
-    start_intro();
+    if(!$.istrue){
+        console.log("false");
+    }
+    
+    if($.istrue){
+        console.log("true");
+    } else {
+        console.log("not true");
+    }
+    
+    $.count = 0;
+    $.count += 1;
+    console.log($.count);
+
+    room1_8_msg();
 
     state = play;
     

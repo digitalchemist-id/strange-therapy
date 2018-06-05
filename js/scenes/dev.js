@@ -71,8 +71,8 @@ function after_test_1(){
 
 /*for copy and paste
 C.s({
-    "": function(msg) { C.hide();},
-    "": function(msg) { C.hide();},
-    "": function(msg) { C.hide();}
-});
+        "": function(msg) { C.hide();},
+        "": function(msg) { C.hide();},
+        "": function(msg) { C.hide();}
+    });
 */
