@@ -1,12 +1,17 @@
-//timeline = 1, June 12th
-//Organic Chemistry 1 finals 
+//timeline = 1, June 8th Wed
+//Organic Chemistry 1
+//Going home to see my dog
 
-function start_test1(){
+async function start_test1(){
+	//loader
 	resources.bgm.sound.stop();	
+
+	await sleep(1000);
+	blackout.visible = false;
 
 	//clock ticking
 	Q.wait(1000);
-	T.t('2016 Spring Semester Organic Chemistry 1 finals');
+	//T.t('2016 Spring Semester Organic Chemistry 1 finals');
 	T.t('Question #10 c)');
 	T.t('Of the following compounds');
 	T.t('which has higher boling point?');
@@ -15,8 +20,8 @@ function start_test1(){
 	T.t('2. 2,2-dimethylpropane');
 
 	P.t("Okay");
-	P.t("To solve this one - ");
-	P.t("Step one, don't panic");
+	P.t("To solve this question");
+	P.t("Step one - don't panic");
 
 	C.t({
         "[Panic]": function(msg) { 
@@ -33,12 +38,13 @@ function start_test1(){
 
 
 function test1_choose(){
-	if(test1_panicked){
+	if($.test1_panicked){
 		P.t("But I've never even heard of -");
     	P.t("2,2-dimethylpropane");
     	P.t("Is that even a word?");
     	P.t("Why does it have numbers in it?");
-    	P.t("Let's just choose one")
+    	P.t("I don't care...")
+    	P.t("Let's just choose one");
 	} else {
 		P.t("I didn't panic");
 		P.t("Cool.");
@@ -67,7 +73,7 @@ function test1_choose(){
         	C.hide();
         	test1_after();
         },
-        'dimethyl... what?': function(msg) {
+        'dimeth... what?': function(msg) {
         	P.t(msg);
         	P.t('Uh');
         	P.t('I\'ll just go with 2,2-dimethylpropane because I like the way it sounds');
@@ -80,7 +86,6 @@ function test1_choose(){
 }
 
 function test1_after(){
-
 
 	Q.do(function(){
 		resources.cellphone.sound.play();
@@ -101,37 +106,18 @@ function test1_after(){
 		P.t('Actually, it was better than I expected');
 	} else {
 		P.t('That did\'t go so well');
+		P.t("Actually, that was kinda terrible...");
 		P.t('Let\'s just forget about it quickly and prepare for the next one quick');
 	}
 
-	P.t('My first semester with a major...');
-	P.t('It have been a tough one');
-	P.t('I had to work hard to catch up');
-	P.t('And FINALLY now it\'s almost over');
-	P.t('Just 3 more finals');
-	P.t('And a few essays and projects to go');
-	//
-	P.t('Uh... Haven\'t got to sleep properly');
-	P.t('Man, I\'m just really looking forward to that summer break');
-	P.t("I just wanna go home spend time with Jaya");
-	P.t("I haven't visited in weeks...");
-	P.t("He'll miss me so much");
-	P.t("I miss him too");
-	P.t("But right now, I have so much things to take care of");
-
-	P.t('So...');
-	P.t('Next test is...');
-	P.t('Oh it\'s tomorrow');
-	P.t('Basic Computer Methods');
-	P.t('I\'d better hurry now');
-	P.t('No time to waste');
-
 	Q.do(end_test1);
-
 }
 
-async function end_test1(){
-	await sleep(2500);
-	clearMsg();
-	start_room1();
+function end_test1(){
+	Q.wait(2000);
+	Q.do(clearMsg);
+	Q.do(start_metro1);
+	Q.do(function(){
+		blackout.visible = true;
+	});
 }

@@ -1,3 +1,5 @@
-//timeline = 10
-//talk to your friend or don't
-//say goodbye to your Gf or don't
+//timeline = 10 June 15th Wed
+//when I returned from test 3, I found out that he threw up everything I fed him
+//I kept trying to make him eat.
+//suddenly he screams with pain
+//And I immediately take him to vet...

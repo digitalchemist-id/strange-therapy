@@ -8,3 +8,10 @@
 //consequences of your choices are very unforgiving, nor is time 
 //If love could could have saved him
 //he would have lived forever
+//You had fewer options 
+//I made you choose the things I couldn't
+//I also made you choose the things I wouldn't
+
+function start_outro() {
+	
+}

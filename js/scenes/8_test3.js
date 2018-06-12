@@ -1,5 +1,5 @@
-//timeline = 7 June 15th
-//engineering mathematics test
+//timeline = 8 June 15th Wed
+//engineering mathematics
 
 function start_test3(){	
 
@@ -9,7 +9,7 @@ function start_test3(){
 	T.t("Find Laplace transform of f(t) when");
 	T.t("f(t) = sinh²(t)");
 
-	if(/*studied*/) {
+	if(/*studied*/1) {
 		P.t("Laplace transform of f is L(f)");
 		P.t("L(f') = sL(f) - f(0)");
 		P.t("f'(t) = 2sinh(t)cosh(t)");

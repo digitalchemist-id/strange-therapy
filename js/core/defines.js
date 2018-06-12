@@ -34,3 +34,15 @@ msgLine.moveTo(0, 240);
 msgLine.lineTo(360, 240);
 app.stage.addChild(msgLine);
 
+let choiceLine = new Graphics();
+choiceLine.lineStyle(4, 0xffd900, 1);
+choiceLine.moveTo(0, 490);
+choiceLine.lineTo(360, 490);
+app.stage.addChild(choiceLine);
+
+let blackout = new Graphics();
+blackout.beginFill(0x000000, 1);
+blackout.drawRect(0, 0, 360, 640);
+blackout.endFill();
+app.stage.addChild(blackout); //NOT YET IMPLEMENTED need to addchild at the frontmost
+blackout.visible = false;

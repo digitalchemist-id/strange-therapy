@@ -48,11 +48,12 @@ function setup() {
 	resources.bgm.sound.loop = true;
 	
     //dev
-    $ = {};
-    //
-
+    $ = {};//So this is an object. /ncase
+    
     if(!$.istrue){
         console.log("false");
+    } else{
+        console.log("not false");
     }
     
     if($.istrue){
@@ -64,8 +65,10 @@ function setup() {
     $.count = 0;
     $.count += 1;
     console.log($.count);
+    //
 
-    room1_8_msg();
+    start_test1();
+    //start_intro():
 
     state = play;
     

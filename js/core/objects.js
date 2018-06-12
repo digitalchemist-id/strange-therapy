@@ -131,6 +131,23 @@ Message.prototype.draw = function() {
     //resources.send.sound.play();
 }
 
+Message.prototype.panic = function() {
+
+    var txtLength = 0;
+
+    this.textMetrics.lineWidths.forEach(function(element){
+        txtLength += element;
+    });
+    Q.queue += 10;//panic
+    Q.canSkip = false;//unskippable
+    pushHeight = this.textMetrics.height + 25;
+    pushCount = this.textMetrics.height + 24; // - 1 to prevent pushing further
+    this.msgContainer.position.y = 250;
+    msgArray.push(this.msgContainer);
+    app.stage.addChild(this.msgContainer);
+    //resources.send.sound.play();
+}
+
 /**************
 ***character***
 **************/
@@ -155,6 +172,12 @@ Character.prototype.t = function(txt){
     newMsg = new Message(txt, this.align, this.bgColor, this.txtColor);
     newMsg.setup();
     Q.fqueue.push(newMsg.draw.bind(newMsg));
+}
+
+Character.prototype.panic = function(txt){
+    newMsg = new Message(txt, this.align, this.bgColor, this.txtColor);
+    newMsg.setup();
+    Q.fqueue.push(newMsg.panic.panic(newMsg));
 }
 
 //Me - black

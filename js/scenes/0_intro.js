@@ -4,9 +4,7 @@
 
 function start_intro(){
 
-	$ = {}; //So this is an object. /ncase
-
-	resources.bgm.sound.play();
+		resources.bgm.sound.play();
 
 	M.s('Hi! Nice to meet you');
 

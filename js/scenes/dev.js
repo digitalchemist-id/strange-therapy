@@ -71,8 +71,32 @@ function after_test_1(){
 
 /*for copy and paste
 C.s({
-        "": function(msg) { C.hide();},
-        "": function(msg) { C.hide();},
-        "": function(msg) { C.hide();}
+        "": function(msg) {
+            P.s(msg);
+            C.hide();
+        },
+        "": function(msg) {
+            P.s(msg);
+            C.hide();
+        },
+        "": function(msg) {
+            P.s(msg);
+            C.hide();
+        }
+    });
+
+C.t({
+        "": function(msg) {
+            P.t(msg);
+            C.hide();
+        },
+        "": function(msg) {
+            P.t(msg);
+            C.hide();
+        },
+        "": function(msg) {
+            P.t(msg);
+            C.hide();
+        }
     });
 */

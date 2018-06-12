@@ -1,7 +1,7 @@
-//timeline = 11 June 16th
+//timeline = 13 June 16th Thu
 //Physical Chemistry 1
 
-unction start_test4(){	
+function start_test4(){	
 
 	//clock ticking
 	Q.wait(1000);
@@ -11,8 +11,9 @@ unction start_test4(){
 	T.t("b) dG = pdV - TdS");
 	T.t("c) dG = Vdp - SdT");
 
-	if(/*studied*/) {
+	if(/*studied*/1) {
 		P.t("G is Gibbs free energy. It is defined by G = H - TS");
+		P.t("This question is asking what the exact differential of G is")
 		P.t("H is enthalpy. It is defined by H = U + pV");
 		P.t("U, p, V, T and S means internal energy, pressure, volume, temperature, and entropy respectively.");
 		P.t("I also recall the fundamental equation");
@@ -42,5 +43,9 @@ unction start_test4(){
 }
 
 function test4_after(){
+
+}
+
+function end_test4(){
 
 }
