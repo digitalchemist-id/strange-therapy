@@ -328,7 +328,7 @@ function room_dont_panic() {
 function end_room(){
 	Q.wait(2000);
 	Q.do(clearMsg);
-	Q.do(start_room);
+	Q.do(start_vet1);
 	Q.do(function(){
 		blackout.visible = true;
 	});

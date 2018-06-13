@@ -186,13 +186,13 @@ M = new Character({bgColor:0x000000, txtColor:0xffffff, align: 'left'});
 P = new Character({bgColor:0xffffff, txtColor:0x000000, align: 'right'});
 //Text - gray
 T = new Character({bgColor:0x888888, txtColor:0xffffff, align: 'left'});
-//Grandmother - yellowish
+//Grandmother
 Gm = new Character({bgColor:0xbf9f48, txtColor:0xffffff, align: 'left'});
-//Vet - greenish
+//Vet
 V = new Character({bgColor:0x177748, txtColor:0xffffff, align: 'left'});
-//Friend - blueish
+//Friend
 F = new Character({bgColor:0x004d47, txtColor:0xffffff, align: 'left'});
-//Girlfriend - pinkish
+//Girlfriend
 Gf = new Character({bgColor:0xb15647, txtColor:0xffffff, align: 'left'});
 //Assistant
 A = new Character({bgColor:0x6b503c, txtColor:0xffffff, align: 'left'});
