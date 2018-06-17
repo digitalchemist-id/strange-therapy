@@ -40,6 +40,9 @@ choiceLine.moveTo(0, 490);
 choiceLine.lineTo(360, 490);
 app.stage.addChild(choiceLine);
 
+//var cover = new PIXI.display.Group(1, false);
+//app.stage.addChild(new PIXI.display.Layer(cover));
+
 let blackout = new Graphics();
 blackout.beginFill(0x000000, 1);
 blackout.drawRect(0, 0, 360, 640);

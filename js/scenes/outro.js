@@ -11,6 +11,7 @@
 //You had fewer options 
 //I made you choose the things I couldn't
 //I also made you choose the things I wouldn't
+//(replay) You're not special
 
 function start_outro() {
 	

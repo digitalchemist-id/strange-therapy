@@ -32,6 +32,7 @@ async function start_room() {
 	P.t("This just reminds me...");
 	if(!$.friend_msg1_checked){
 		P.t("I completely forgot about my friend's message");
+		Q.wait(1000);
 		F.s("I just finished doing my part in the presentation. Sent you through a mail. Check them and integrate the formats with other parts when you've got time");
 		F.s("Are you done with your part too?");
 		P.s("Shoot...");
@@ -39,8 +40,7 @@ async function start_room() {
 		P.t("I completely forgot to text my friend back");
 		P.t("Shoot...");
 	}
-	P.t("I was supposed to finish my part in the presentation...");
-	P.t("By this weekend");
+	P.t("I was supposed to finish my part in the presentation by tomorrow");
 	P.t("Hmm...");
 	if($.project_under_control){
 		P.t("I mean, I finished it most of it days ago");
@@ -62,7 +62,7 @@ async function start_room() {
             } else {
             	P.t("I didn't reply my friend back when he asked me about the project but...");
             }
-            P.t("That's what I'm going to do");
+            P.t("I'm gonna keep my promise");
             P.t("No more procrastinating");
             C.hide();
             room_call();
@@ -91,7 +91,6 @@ function room_call(){
 	P.t("It's been forever since I've ever got a phone call");
 	P.t("it's from grandma...?");
 	P.t("Why would she call me?");
-	P.t("Could it be...");
 	//P.t("Is it because I haven't visited home in a while?");
 
 	C.t({
@@ -144,7 +143,7 @@ function room_msg(msg){
 	Q.wait(1000);
 
 	P.t("Now she sent me a text");
-	P.t("Now that's strange");
+	P.t("...");
 	P.t("She calls me once in a while but I she never texts me");
 	P.t("Is it something urgent...?");
 	C.t({
@@ -177,6 +176,7 @@ function room_msg_2(){
 	P.s("Grandma...");
 	P.s("What happened?");
 	Gm.s("Well");
+	Q.do(room_unite);
 }
 
 
@@ -228,12 +228,12 @@ function room_choose(){
 
 	C.t({
         "[panic]": function(msg) {
-            P.t(msg);
+        	$.room_panicked = true;
             C.hide();
             room_panic();
         },
         "[don't panic]": function(msg) {
-            P.t(msg);
+        	$.room_panicked = false;
             C.hide();
             room_dont_panic();
         }
@@ -260,7 +260,6 @@ async function room_panic() {
 		P.panic("Maybe I already knew");
 		P.panic("I somehow already knew");
 		P.panic("But I didn't want to admit");
-		P.panic("And I'm being punished for it");
 	} else {
 		P.panic("And I was so confident that he wasn't sick");
 		P.panic("Freaking idiot");
@@ -273,11 +272,13 @@ async function room_panic() {
 	P.panic("And I...");
 	P.panic("I can't believe...");
 	P.panic("I let this happen...");
-	P.panic("I'm so sorry...");
+	//P.panic("I'm so sorry...");
 	Q.do(end_room);
 	
 	//A blackout during the popups - index matters
-	await sleep(3000);
+	await sleep(2800);
+
+	clearMsg();
 	blackout.visible = true;
 	
 }
@@ -288,7 +289,7 @@ function room_dont_panic() {
 	P.t("Is to not panic");
 	P.t("Let's try not to panic");
 	Q.wait(2000);
-	P.t("Hospitalized");
+	P.t("Hospitalized...");
 	P.t("But he always refuse to stay in small containers");
 	P.t("I know he'd NEVER let himself be hospitalized");
 	P.t("He's freaking too scared of entering anywhere closed");

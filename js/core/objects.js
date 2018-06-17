@@ -133,12 +133,7 @@ Message.prototype.draw = function() {
 
 Message.prototype.panic = function() {
 
-    var txtLength = 0;
-
-    this.textMetrics.lineWidths.forEach(function(element){
-        txtLength += element;
-    });
-    Q.queue += 10;//panic
+    Q.queue += 5;//panic
     Q.canSkip = false;//unskippable
     pushHeight = this.textMetrics.height + 25;
     pushCount = this.textMetrics.height + 24; // - 1 to prevent pushing further
@@ -177,7 +172,7 @@ Character.prototype.t = function(txt){
 Character.prototype.panic = function(txt){
     newMsg = new Message(txt, this.align, this.bgColor, this.txtColor);
     newMsg.setup();
-    Q.fqueue.push(newMsg.panic.panic(newMsg));
+    Q.fqueue.push(newMsg.panic.bind(newMsg));
 }
 
 //Me - black

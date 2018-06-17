@@ -23,7 +23,7 @@ async function start_metro1(){
 	Q.wait(1000);
 	P.t("It takes about an hour and a half to get home");
 	P.t("I'm going there right now");
-	P.t("But Am I doing the right thing?");
+	P.t("But am I doing the right thing?");
 	P.t("I just have to many things to take care of...");
 	P.t("Maybe I should have stayed");
 
@@ -39,7 +39,7 @@ async function start_metro1(){
 	P.t("Should I have stayed?");
 
 	C.s({
-        "I won't be able to focus for next two hours anyway": function(msg) {
+        "I won't focus for next two hours anyway": function(msg) {
         	P.t(msg);
         	P.t("So it doesn't matter")
         	C.hide();

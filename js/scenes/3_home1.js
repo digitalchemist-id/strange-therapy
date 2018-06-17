@@ -12,7 +12,7 @@ async function start_home1() {
 	//dog greets me
 	P.s("Oh..");
 	//I greet him
-	P.s("Yes, I missed you too very much");
+	P.s("Yes, I missed you too");
 	P.s("...");
 	P.s("Huh?");
 	P.s("How did you lose so much weight?");
@@ -32,8 +32,8 @@ async function start_home1() {
 	P.s("Busy as hell...");
 	P.s("Busier than ever actaully");
 	P.s("But my semester ends soon");
-	Gm.s("That's great");
 	P.s("It ends in about a week");
+	Gm.s("That's great");
 	Q.wait(1000);
 	P.s("Grandma...");
 	P.s("How has he lost so much weight?");
@@ -217,7 +217,7 @@ function home1_2(){
 function home1_3(){
 	Gm.s("The vet said something about its sugar and other stuff being low");
 	Gm.s("I didn't understand much of the details but");
-	Gm.s("I told you it's an old dog...");
+	Gm.s("I told you it's an old dog");
 	P.s("How is he...");
 	P.s("I mean...");
 	P.s("Is it serious?");

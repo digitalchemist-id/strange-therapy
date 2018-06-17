@@ -67,7 +67,7 @@ function setup() {
     console.log($.count);
     //
 
-    start_test1();
+    room_choose();
     //start_intro():
 
     state = play;
