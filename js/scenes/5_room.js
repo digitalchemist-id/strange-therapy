@@ -240,7 +240,7 @@ function room_choose(){
     });
 }
 
-async function room_panic() {
+function room_panic() {
 
 	P.panic("Hospitalized");
 	P.panic("But he always refuse to stay in small containers");
@@ -272,19 +272,15 @@ async function room_panic() {
 	P.panic("And I...");
 	P.panic("I can't believe...");
 	P.panic("I let this happen...");
-	//P.panic("I'm so sorry...");
-	Q.do(end_room);
-	
-	//A blackout during the popups - index matters
-	await sleep(2800);
-
-	clearMsg();
-	blackout.visible = true;
-	
+	Q.do(clearMsg);
+	Q.do(function(){
+		blackout.visible = true;
+	});
+	Q.do(end_room);	
 }
 
 function room_dont_panic() {
-	P.t("First step to solving");
+	P.t("The first step to solving");
 	P.t("Every hard problem");
 	P.t("Is to not panic");
 	P.t("Let's try not to panic");
@@ -308,7 +304,6 @@ function room_dont_panic() {
 		P.t("Maybe I already knew");
 		P.t("I somehow already knew");
 		P.t("But I didn't want to admit");
-		P.t("And I'm being punished for it");
 	} else {
 		P.t("And I was so confident that he wasn't sick");
 		P.t("Freaking idiot");

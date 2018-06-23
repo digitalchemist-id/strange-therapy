@@ -41,17 +41,18 @@ async function start_home2(){
 		P.t("I have too much things to do");
 	} else {
 		P.t("I managed to hold on yesterday");
-		P.t("But haven't got to talk to anyone about this...");
+		P.t("But haven't told anyone...");
 	}
 	P.t("Should I talk to my girlfriend about this?");
 	C.t({
         "[Text her]": function(msg) {
-            P.t(msg);
+        	$.gf_texted = true;
             C.hide();
             home2_gf_text();
         },
         "[Don't]": function(msg) {
-            P.t(msg);
+        	$.gf_texted = false;
+        	$.gf_told = false;
             P.t("She's too busy");
             P.t("What's the point of telling be girlfriend that my dog is sick?");
             P.t("It's not like she can help with anything");
@@ -72,6 +73,7 @@ function home2_gf_text() {
 	        "I have something to tell you": function(msg) {
 	            P.s(msg);
 	            if(not_nice_to_gf < 1){
+	            	$.gf_told = true;
 	            	Gf.s("Oh what is it?");
 	            	Gf.s("Something urgent?");
 	            	P.s("Actually");
@@ -86,6 +88,7 @@ function home2_gf_text() {
 	            	Gf.s("That's terrible news...");
 	            	Q.do(home2_gf_text_2);
 	            } else {
+	            	$.gf_told = false;
 	                Gf.s("Umm...");
 	                Gf.s("Now is not the perfect time for a talk");
 	                Gf.s("Can it wait?");
@@ -98,6 +101,7 @@ function home2_gf_text() {
 	            C.hide();
 	     	},
 	        "My dog is really sick": function(msg) {
+	        $.gf_told = false;
 	            P.s(msg);
 	            P.s("He was hospitalized yesterday");
 	            P.s("Right now I'm at parent's house. I picked him up this morning");
@@ -111,6 +115,7 @@ function home2_gf_text() {
 	            C.hide();
 	        },
 	        "Well... good luck": function(msg) {
+	        	$.gf_told = false;
 	            P.s(msg);
 	            Gf.s("Thanks");
 	            Gf.s("Good luck you too");
@@ -133,8 +138,8 @@ function home2_gf_text_2() {
 	Gf.s("Are you okay?");
 	Gf.s("You have a test tomorrow don't you?");
 	P.s("Yeah...");
-	P.s("I'll stay here to take care of my dog");
 	P.s("I'll only stay away for the tests");
+	P.s("I need to take care of him");
 	Gf.s("I think that's a good decision");
 	Gf.s("I'll make sure I visit after my tests are done");
 	Gf.s("He's gonna be fine...");
@@ -294,7 +299,7 @@ function home2_project_talk(){
 	P.s("It seems like his liver is dysfunctional");
 	F.s("Shit");
 	F.s("I'm sorry man");
-	P.s("I... I couldn't finish my part yet");
+	P.s("I couldn't finish my part yet");
 	P.s("And I also need to study for the test tomorrow");
 	P.s("I don't think I can participate in the preparations for the presentation later cuz I really can't leave his side");
 	P.s("I'm so out of my mind right now");

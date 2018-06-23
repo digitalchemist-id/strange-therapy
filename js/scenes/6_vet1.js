@@ -23,6 +23,7 @@ async function start_vet1() {
 	V.s("Did you come because you were so worried?");
 	C.s({
         "That's none of your business": function(msg) {
+            $.rude_to_vet = true;
             P.s(msg);
             V.s("Hm");
             V.s("Okay...");
@@ -80,7 +81,7 @@ function vet1_about(){
             V.s("Could be presense of stones...");
             V.s("Worst case, it could be tumor");
             V.s("...A cancer");
-            P.t("Cancer");
+            P.t("A cancer");
             P.t("...");
             P.t("Is it worse than aging?");
             C.hide();

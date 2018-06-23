@@ -33,13 +33,11 @@ let Q = {
         //console.log(this.queue);
         //console.log(this.queue +', '+ this.canSkip);
     }, //A lot messy
-    addQueue: function() {
-        this.queue += this.framecount;
-        this.canSkip = false;
-    },
     wait: function(ms){
-        this.framecount = Math.floor(ms*60/1000); //so this works without defining before
-        this.fqueue.push(this.addQueue.bind(this));
+        this.fqueue.push(function(){
+            this.queue += Math.floor(ms*60/1000);
+            this.canSkip = false;
+        }.bind(this));
     },
     do: function(foo){
         this.fqueue.push(foo);

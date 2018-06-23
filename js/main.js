@@ -62,12 +62,14 @@ function setup() {
         console.log("not true");
     }
     
+    //undefined acts like false
+
     $.count = 0;
     $.count += 1;
     console.log($.count);
     //
 
-    room_choose();
+    home3_not_panic();
     //start_intro():
 
     state = play;
@@ -85,4 +87,5 @@ function play(delta){
     Q.handleQueue();
     handleGradient();
     checkMsgPush();
+    console.log(Q.queue);
 }

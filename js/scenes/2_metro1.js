@@ -172,6 +172,7 @@ function metro1_gf_msg(){
 	    "[Don't]": function(msg) {
 	    	$.not_nice_to_gf = 1
 	    	$.gf_msg1_checked = false;
+	    	$.gf_msg1_replied = false;
 	    	P.t("This moment...");
 	    	P.t("This moment of peace is really important to me");
 	    	P.t("I don't know if I'll ever get to rest a single moment if I don't now");
