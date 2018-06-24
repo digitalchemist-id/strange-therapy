@@ -1,8 +1,10 @@
 //timeline = 13 June 16th Thu
 //Physical Chemistry 1
 
-function start_test4(){	
+async function start_test4(){	
 
+	await sleep(1000);
+	blackout.visible = false;
 	//clock ticking
 	Q.wait(1000);
 	T.t("Question #1");
@@ -11,17 +13,16 @@ function start_test4(){
 	T.t("b) dG = pdV - TdS");
 	T.t("c) dG = Vdp - SdT");
 
-	if(/*studied*/1) {
+	if($.test4_studied) {
 		P.t("G is Gibbs free energy. It is defined by G = H - TS");
 		P.t("This question is asking what the exact differential of G is")
 		P.t("H is enthalpy. It is defined by H = U + pV");
 		P.t("U, p, V, T and S means internal energy, pressure, volume, temperature, and entropy respectively.");
 		P.t("I also recall the fundamental equation");
 		P.t("dU = TdS - pdV");
+		P.t("So the exact differential of G is equal to...");
 	} else {
 	}
-	P.t("...");
-	P.t("So the exact differential of G is equal to...");
 	
 	C.s({
         "a) dG = TdS + Vdp": function(msg) {
@@ -43,9 +44,25 @@ function start_test4(){
 }
 
 function test4_after(){
+	Q.do(function(){
+		resources.cellphone.sound.play();
+	});
+	Q.wait(1000);
+	
+	//alarm ringing
+	A.s('Time\'s up!');
 
+	A.s('Everyone turn your tests in!');
+	//turns test in 
+	Q.wait(2000);
+	Q.do(end_test4);
 }
 
 function end_test4(){
-
+	Q.wait(2000);
+	Q.do(clearMsg);
+	Q.do(start_metro3);
+	Q.do(function(){
+		blackout.visible = true;
+	});
 }

@@ -13,6 +13,25 @@
 //I also made you choose the things I wouldn't
 //(replay) You're not special
 
-function start_outro() {
+async function start_metro3(){	
+
+	await sleep(3000);
+	blackout.visible = false;
+
+	M.s("He passed away 2 days after that");
 	
+	C.s({
+        "[Sob]": function(msg) {
+            P.s(msg);
+            C.hide();
+        },
+        "": function(msg) {
+            P.s(msg);
+            C.hide();
+        },
+        "": function(msg) {
+            P.s(msg);
+            C.hide();
+        }
+    });
 }

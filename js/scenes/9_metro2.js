@@ -57,46 +57,6 @@ function metro2_gf_msg(){
 	Q.do(metro2_gf_msg_choose);
 }
 
-function metro2_gf_msg_choose(){
-	C.s({
-        "I can't really leave his side for now...": function(msg) {
-            P.s(msg);
-            P.s("Sorry");
-            Gf.s("Don't worry");
-            Gf.s("Of course I understand");
-            Gf.s("It'll be fine");
-            Gf.s("Let's talk more tomorrow okay?");
-            P.s("Yeah");
-            C.hide();
-            end_metro2();
-        },
-        "I think I will": function(msg) {
-            P.s(msg);
-            P.s("He's getting better so");
-            P.s("Spending like an hour outside... I think it'll be okay");
-            Gf.s("That's great");
-            Gf.s("I'll see you tomorrow then");
-            P.s("See you");
-            C.hide();
-            end_metro2();
-        },
-        "Could you visit?": function(msg) {
-            P.s(msg);
-            P.s("I don't think I can leave him alone while I'm with you");
-            P.s("So it'd be nice if you visit");
-            P.s("See each other and talk");
-            Gf.s("Yeah");
-            Gf.s("I mean, I said I would visit so");
-            Gf.s("I'll go to your place");
-            Gf.s("Maybe we can take him outside if he's in a good condition");
-            Gf.s("Getting some air might help him");
-            P.s("Maybe");
-            C.hide();
-            end_metro2();
-        }
-    });
-}
-
 function metro2_gf_sthwrong(){
 	Gf.s("I'm done with the tests");
 	Gf.s("Finally...");
@@ -129,6 +89,7 @@ function metro2_gf_sthwrong(){
             end_metro2();
         },
         "No, it's not alright": function(msg) {
+            $.gf_told = true;
             P.s(msg);
             P.s("My dog was hospitalized last Sunday");
             P.s("I picked him up and I'm trying to take care of him at my parent's house");
@@ -205,6 +166,46 @@ function metro2_gf_sthwrong_why(){
             Gf.s("We don't have too much time together you know...");
             C.hide();
             metro2_gf_msg_choose();
+        }
+    });
+}
+
+function metro2_gf_msg_choose(){
+    C.s({
+        "I can't really leave his side for now...": function(msg) {
+            P.s(msg);
+            P.s("Sorry");
+            Gf.s("Don't worry");
+            Gf.s("Of course I understand");
+            Gf.s("It'll be fine");
+            Gf.s("Let's talk more tomorrow okay?");
+            P.s("Yeah");
+            C.hide();
+            end_metro2();
+        },
+        "I think I will": function(msg) {
+            P.s(msg);
+            P.s("He's getting better so");
+            P.s("Spending like an hour outside... I think it'll be okay");
+            Gf.s("That's great");
+            Gf.s("I'll see you tomorrow then");
+            P.s("See you");
+            C.hide();
+            end_metro2();
+        },
+        "Could you visit?": function(msg) {
+            P.s(msg);
+            P.s("I don't think I can leave him alone while I'm with you");
+            P.s("So it'd be nice if you visit");
+            P.s("See each other and talk");
+            Gf.s("Yeah");
+            Gf.s("I mean, I said I would visit so");
+            Gf.s("I'll go to your place");
+            Gf.s("Maybe we can take him outside if he's in a good condition");
+            Gf.s("Getting some air might help him");
+            P.s("Maybe");
+            C.hide();
+            end_metro2();
         }
     });
 }

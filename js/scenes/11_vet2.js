@@ -193,8 +193,8 @@ function vet2_euthanasia() {
         "If it'll make him comfortable...": function(msg) {
             P.s(msg);
             P.s("I...");
-            P.s("I'll consider");
-            V.s("You should take your time");
+            V.s("You should take your time to consider");
+            V.s("Spend rest of the time with him");
             C.hide();
             vet2_5();
         },
@@ -202,6 +202,7 @@ function vet2_euthanasia() {
             P.s(msg);
             V.s("I understand");
             V.s("You should take your time to consider");
+            V.s("Spend rest of the time with him");
             C.hide();
             vet2_5();
         },

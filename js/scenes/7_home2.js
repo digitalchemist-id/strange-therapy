@@ -216,7 +216,7 @@ function home2_project_no(){
             }
             F.s("Everyone takes tests");
             F.s("Everyone's busy as hell");
-            F.s("I'm just living on caffeine since forever");
+            F.s("I'm just living on caffeine since I don't know when");
             F.s("When people promise they do it because they care");
             F.s("You...");
             F.s("You just don't care");
@@ -228,7 +228,7 @@ function home2_project_no(){
         "My dog is very sick": function(msg) {
         	$.friend_told = true;
             P.s(msg);
-            P.s("Vet said that it could be cancer...");//
+            P.s("Vet said that it could even be cancer...");//
             P.s("I can't leave his side");
             P.s("He needs to be taken care of");
             Q.wait(1000);
@@ -308,7 +308,8 @@ function home2_project_talk(){
 	F.s("Don't worry about it");
 	F.s("I mean our project is important");
 	F.s("But we can take care of things you can't while you're...");
-	F.s("Caught up in that situation");
+	F.s("Caught up in that...");
+	F.s("Situation");
 	P.s("I'm sorry");
 	F.s("Don't say it");
 	F.s("Just join us later when he gets better");
