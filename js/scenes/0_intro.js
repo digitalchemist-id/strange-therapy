@@ -1,22 +1,32 @@
 //timeline = 0
 //I can pretend to be a therpist for some people, while I should tell them I'm really not
-//This 'strange' therapy is meant to cure me
+//This 'strange' therapy
 
 function start_intro(){
 
-		resources.bgm.sound.play();
+	resources.bgm.sound.play();
 
 	M.s('Hi! Nice to meet you');
 
 	C.s({
-	    'Hi! real nice to meet you too!': function(msg) {P.s(msg); C.hide(); end_intro();},
-	    'What? Who are you?': function(msg) {P.s(msg); C.hide(); end_intro();},
-	    'What? Where am I?': function(msg) {P.s(msg); C.hide(); end_intro();}
-	});
+        "": function(msg) {
+            P.s(msg);
+            C.hide();
+        },
+        "": function(msg) {
+            P.s(msg);
+            C.hide();
+        },
+        "": function(msg) {
+            P.s(msg);
+            C.hide();
+        }
+    });
 }
 
 async function end_intro(){
 	await sleep(2500);
+	resources.bgm.sound.stop();
 	clearMsg();
 	start_test1();
 }

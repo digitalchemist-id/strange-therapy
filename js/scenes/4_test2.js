@@ -52,6 +52,7 @@ async function start_test2(){
         },
         "0.5": function(msg) {
         	$.test2_correct = true;
+        	$.test2_correct++;
         	P.t(msg);
         	C.hide();
         	test2_after();

@@ -224,8 +224,10 @@ function vet2_5(){
 		V.s("You were wearing your highschool uniform");
 		V.s("And his hair was all cut very carelessly");
 		V.s("He was already an old dog back then - 10 years old at least");
-		V.s("Now he's older ");
-		V.s("It must be hard for you but...");
+		V.s("Now he's older");
+        V.s("It could be something he already had way back then");
+		V.s("Something innate");
+        V.s("It must be hard for you but...");
 		V.s("I think he was lucky to have you");
 		V.s("And I think he thinks the way I do too");
 		V.s("What happens now is... what must happen");

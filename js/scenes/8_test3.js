@@ -29,17 +29,18 @@ async function start_test3(){
 	
 	C.s({
         "2s/(s² - 4)": function(msg) {
-        	$.test1_correct = false;
+        	$.test3_correct = false;
         	C.hide();
         	test3_after();
         },
         "2/s(s² - 4)": function(msg) {
-        	$.test1_correct = true;
+        	$.test3_correct = true;
+        	$.test1_correct++;
         	C.hide();
         	test3_after();
         },
         "2/(s² - 4) + s": function(msg) {
-        	$.test1_correct = false;
+        	$.test3_correct = false;
         	C.hide();
         	test3_after();
         }
@@ -61,7 +62,7 @@ function test3_after(){
 
 	P.t("Another one down");
 	P.t("Now there's only one left");
-	if($.test2_correct){
+	if($.test3_correct){
 		P.t("Yessssss");
 		P.t("Yesssssssssssssssss");
 		P.t("FINALLY");

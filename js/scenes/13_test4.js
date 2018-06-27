@@ -26,17 +26,18 @@ async function start_test4(){
 	
 	C.s({
         "a) dG = TdS + Vdp": function(msg) {
-        	$.test1_correct = false;
+        	$.test4_correct = false;
         	C.hide();
         	test4_after();
         },
         "b) dG = pdV - TdS": function(msg) {
-        	$.test1_correct = false;
+        	$.test4_correct = false;
         	C.hide();
         	test4_after();
         },
         "c) dG = Vdp - SdT": function(msg) {
-        	$.test1_correct = true;
+        	$.test4_correct = true;
+        	$.test_correct++;
         	C.hide();
         	test4_after();
         }

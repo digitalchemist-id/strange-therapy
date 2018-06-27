@@ -63,6 +63,7 @@ function test1_choose(){
 			P.t('is it...');
 			P.t(msg + '?');
 			$.test1_correct = true;
+			$.test_correct = 1;
 			C.hide();
 			test1_after();
 		},
@@ -70,6 +71,7 @@ function test1_choose(){
         	P.t('is it...');
         	P.t(msg + '?');
         	$.test1_correct = false;
+        	$.test_correct = 0;
         	C.hide();
         	test1_after();
         },
@@ -79,6 +81,7 @@ function test1_choose(){
         	P.t('I\'ll just go with 2,2-dimethylpropane because I like the way it sounds');
         	P.t('If it sounds the way I think, that is');
         	$.test1_correct = false;
+        	$.test_correct = 0;
         	C.hide();
         	test1_after();
         }
