@@ -1,10 +1,8 @@
 //timeline = 1, June 8th Wed
-//Organic Chemistry 1
-//Going home to see my dog
 
 async function start_test1(){
 	//loader
-	resources.bgm.sound.stop();	
+	
 
 	await sleep(1000);
 	blackout.visible = false;
@@ -39,11 +37,11 @@ async function start_test1(){
 
 function test1_choose(){
 	if($.test1_panicked){
-		P.t("But I've never even heard of -");
-    	P.t("2,2-dimethylpropane");
-    	P.t("Is that even a word?");
-    	P.t("Why does it have numbers in it?");
-    	P.t("I don't care...")
+		P.panic("But I've never even heard of -");
+    	P.panic("2,2-dimethylpropane");
+    	P.panic("Is that even a word?");
+    	P.panic("Why does it have numbers in it?");
+    	P.t("Gosh... I just don't care")
     	P.t("Let's just choose one");
 	} else {
 		P.t("I didn't panic");

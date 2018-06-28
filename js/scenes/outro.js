@@ -7,7 +7,7 @@ async function start_outro(){
 	await sleep(3000);
 	blackout.visible = false;
 
-	if(/*didn't like music*/){
+	if($.music_off){
 		P.s("This music...");
 		M.s("Oh yeah");
 		M.s("You said you didn't like it");
@@ -18,7 +18,7 @@ async function start_outro(){
 		P.s("After that?");
 		M.s("After that...");
 	}
-	M.s("He passed away 2 days after that, in my arms");
+	M.s("He passed away 2 days after that");
 	
 	C.s({
         "*Sob*": function(msg) {
