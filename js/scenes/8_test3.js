@@ -6,12 +6,13 @@ async function start_test3(){
 
 	await sleep(3000);
 	blackout.visible = false;
+	bg_test.visible = true;
 	//clock ticking
 	Q.wait(500);
 	T.t("Question #2-2");
 	T.t("Find Laplace transform of f(t) when");
 	T.t("f(t) = sinh²(t)");
-
+	Q.wait(1000);
 	if($.test3_studied) {
 		P.t("Laplace transform of f is L(f)");
 		P.t("L(f') = sL(f) - f(0)");
@@ -24,7 +25,7 @@ async function start_test3(){
 		P.t("I like this question");
 		P.t("It's short and simple");
 		P.t("...");
-		P.t("Anyway... the answer");
+		P.t("Except for the fact that I have to answer it");
 	}
 	
 	C.s({
@@ -70,6 +71,7 @@ function test3_after(){
 		P.t("I'm not so sure if I care anymore");
 		P.t("This semester already feels so over to me");
 	}
+	Q.do(end_test3);
 }
 
 function end_test3(){
@@ -78,5 +80,6 @@ function end_test3(){
 	Q.do(start_metro2);
 	Q.do(function(){
 		blackout.visible = true;
+		bg_test.visible = false;
 	});
 }

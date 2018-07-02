@@ -7,7 +7,7 @@ document.body.appendChild(app.view);
 loader
     .add("images/example.png")//example image
     .add("images/anim/cat.json")
-    .add("images/bg/bgexample.png")
+    .add("images/bg/test.png")
     .add("images/sprite/bunny.png")
     .add("cellphone", "sounds/cellphone_vibrate.wav")
     .add("bgm", "sounds/feelings_of_twilight.mp3")
@@ -16,8 +16,9 @@ loader
 
 function setup() {
 
+    //bg
+    bg_test = new Sprite(resources["images/bg/test.png"].texture);
 	//sprites
-	bg = new Sprite(resources["images/bg/bgexample.png"].texture);
 	bunny = new Sprite(resources["images/sprite/bunny.png"].texture);
 
 	//anims
@@ -29,9 +30,10 @@ function setup() {
 
 	var animExample = new PIXI.extras.AnimatedSprite(animExampleArray);
 
-	bg.visible = false;
-	app.stage.addChildAt(bg, 0);
+	app.stage.addChildAt(bg_test, 0);
 	app.stage.addChild(bunny);
+
+    bg_test.visible = false;
 
 	animExample.x = app.screen.width / 2;
     animExample.y = app.screen.height / 2;
@@ -47,30 +49,28 @@ function setup() {
 
 	resources.bgm.sound.loop = true;
 	
-    //dev
-    $ = {};//So this is an object. /ncase
+    // //dev
     
-    if(!$.istrue){
-        console.log("false");
-    } else{
-        console.log("not false");
-    }
+    // if(!$.istrue){
+    //     console.log("false");
+    // } else{
+    //     console.log("not false");
+    // }
     
-    if($.istrue){
-        console.log("true");
-    } else {
-        console.log("not true");
-    }
+    // if($.istrue){
+    //     console.log("true");
+    // } else {
+    //     console.log("not true");
+    // }
     
-    //undefined acts like false
+    // //undefined acts like false
 
-    $.count = 0;
-    $.count += 1;
-    console.log($.count);
-    //
-
-    home3_not_panic();
-    //start_intro():
+    // $.count = 0;
+    // $.count += 1;
+    // console.log($.count);
+    // //
+    $ = {};
+    start_intro();
 
     state = play;
     
@@ -87,5 +87,5 @@ function play(delta){
     Q.handleQueue();
     handleGradient();
     checkMsgPush();
-    console.log(Q.queue);
+    //console.log(Q.queue);
 }

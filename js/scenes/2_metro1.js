@@ -38,7 +38,7 @@ async function start_metro1(){
 	Q.wait(1000);
 	P.t("Should I have stayed?");
 
-	C.s({
+	C.t({
         "I won't focus for next two hours anyway": function(msg) {
         	P.t(msg);
         	P.t("So it doesn't matter")
@@ -60,12 +60,12 @@ async function start_metro1(){
 }
 
 function metro1_friend_msg(){
-	P.t("If I don't visit home right now I won't have time to do until the end of the semester");
-	P.t("Because tomorrow's classes are either canceled or over");
-	P.t("And next test is Saturday");
-	P.t("Next week's classes are not canceled");
-	P.t("And plenty more tests are coming up");
-	P.t("This is my only chance before the end of the semester...");
+	// P.t("If I don't visit home right now I won't have time to do until the end of the semester-");
+	// P.t("Because tomorrow's classes are either canceled or over");
+	// P.t("And next test is Saturday");
+	// P.t("Next week's classes are not canceled");
+	// P.t("And plenty more tests are coming up");
+	// P.t("This is my only chance before the end of the semester...");
 
 	Q.do(function(){
 		resources.cellphone.sound.play();
@@ -74,7 +74,7 @@ function metro1_friend_msg(){
 
 	P.t("A message...");
 	P.t("It's from my clubmate");
-	P.t("Oh I almost forgot");
+	P.t("Oh man... I almost forgot...");
 	P.t("It's gotta be about the club project...")
 
 	C.t({
@@ -236,12 +236,12 @@ function metro1_gf_dialogue() {
 	    	Gf.s("How many test did you say you have left?");
 	    	P.s("I have a few");
 	    	P.s("3 actually");
-	    	Gf.s("Let's just... try not to lose too much sanity");
+	    	Gf.s("It'll be over soon... Try not to lose too much sanity");
 	    	P.s("Okay");
 	    	P.s("if I have any left");
 	    	Gf.s("XD");
 	    	C.hide();
-	    	metro1_gf_dialogue_2()();
+	    	metro1_gf_dialogue_2();
 	    },
 	    "[ignore]": function(msg) {
 	    	$.not_nice_to_gf++;

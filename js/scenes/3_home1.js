@@ -46,7 +46,7 @@ async function start_home1() {
 	P.s("I know that...");
 	P.s("And I really appreciate that");
 	P.s("But...");
-	Gm.s("It seemed not its usual 'energetic state' recently");
+	Gm.s("It seemed not its usual energetic state recently");
 	Gm.s("Maybe you should take it to a vet");
 	C.s({
         "Oh come on, he's not sick": function(msg) {

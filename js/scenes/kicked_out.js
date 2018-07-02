@@ -23,7 +23,7 @@ function kicked_out(){
             C.hide();
             kicked_out_1();
         },
-        "What about the game? I haven't even got to play it!": function(msg) {
+        "I haven't even got to play my game yet!": function(msg) {
             P.s(msg);
             P.s("There's no game without a player! Why did you even make this if you're not gonna let people play?");
             M.s("You had your game");
@@ -33,6 +33,7 @@ function kicked_out(){
             kicked_out_1();
         },
         "What a terrible game": function(msg){
+            P.s(msg);
         	P.s("It WAS a waste of time, after all");
         	C.hide();
         }

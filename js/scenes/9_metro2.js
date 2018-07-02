@@ -6,11 +6,11 @@ async function start_metro2(){
 	//setup
 	await sleep(1000);
 	blackout.visible = false;
-
+    Q.wait(3000);
 	P.t("How many times have I crossed this river?");
 	P.t("Must've been hell lot");
 	Q.wait(1000);
-	P.t("But I never get tired of staring at this view");
+	P.t("But somehow I never get tired of staring at this view");
 	Q.wait(1000);
 	Q.do(function(){
 		resources.cellphone.sound.play();
@@ -34,8 +34,8 @@ async function start_metro2(){
 }
 
 function metro2_gf_msg(){
-	Gf.s("I'm done with the tests");
-	Gf.s("Finally");
+	Gf.s("I've finally finished all of my tests");
+	Gf.s("FINALLY");
 	Gf.s("I'm checking out from the dorm and going home tomorrow");
 	Gf.s("You doing well?");
 	P.s("I just finished my second last test");
@@ -58,8 +58,8 @@ function metro2_gf_msg(){
 }
 
 function metro2_gf_sthwrong(){
-	Gf.s("I'm done with the tests");
-	Gf.s("Finally...");
+	Gf.s("I've finally finished all of my tests");
+	Gf.s("FINALLY...");
 	Gf.s("I'm checking out from the dorm and going home tomorrow");
 	if(!$.gf_msg1_replied){
 		Gf.s("Are you okay?");
@@ -80,7 +80,7 @@ function metro2_gf_sthwrong(){
             if($.gf_texted){
             	P.s("It was nothing important");
             }
-            Gf.s("You could have at least");
+            Gf.s("You could have at least-");
             Gf.s("You know what? nevermind...");
             Gf.s("Let's talk tomorrow");
             Gf.s("When your finals are over");

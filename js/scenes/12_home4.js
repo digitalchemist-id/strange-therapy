@@ -85,6 +85,7 @@ function home4_choice(){
             P.t("It's very unfortunate");
             P.t("That I can't be at two places at one time");
             P.t("All I can do is hope");
+            P.t("So please...");
             P.t("Please...");
             C.hide();
             end_home4();
@@ -247,6 +248,7 @@ function home4_grandma(){
 }
 
 function end_home4(){
+    Q.wait(2000);
 	Q.do(clearMsg);
 	Q.do(function(){
 		blackout.visible = true;

@@ -33,17 +33,17 @@ async function start_home2(){
 	P.t("Around 3 hours of commute plus another 3 by test itself...");
 	Q.wait(1000);
 	P.t("...");
-	P.t("It's okay");
-
+	P.t("I can handle it");
+	Q.wait(1000);
 	if($.room_panicked){
-		P.t("I completely panicked there yesterday..");
+		P.t("I completely panicked yesterday..");
 		P.t("I shouldn't let that happen again");
 		P.t("I have too much things to do");
 	} else {
-		P.t("I managed to hold on yesterday");
-		P.t("But haven't told anyone...");
+		P.t("I managed to hold on yesterday-");
+		P.t("But haven't told anyone about this yet...");
 	}
-	P.t("Should I talk to my girlfriend about this?");
+	P.t("Should I tell my girlfriend about this?");
 	C.t({
         "[Text her]": function(msg) {
         	$.gf_texted = true;
@@ -64,6 +64,7 @@ async function start_home2(){
 }
 
 function home2_gf_text() {
+	Q.wait(2000);
 	P.s("How are you doing?");
 	Q.wait(1000);
 	if($.not_nice_to_gf < 2){
@@ -313,7 +314,8 @@ function home2_project_talk(){
 	P.s("I'm sorry");
 	F.s("Don't say it");
 	F.s("Just join us later when he gets better");
-	Q.wait(1000);
+	Q.wait(3000);
+	P.t("Whew...");
 	P.t("He's a good friend");
 	P.t("What a relief...");
 	end_home2();
@@ -323,7 +325,7 @@ function home2_project_talk(){
 function end_home2(){
 	Q.wait(2000);
 	Q.do(clearMsg);
-	Q.do(start_test4);
+	Q.do(start_test3);
 	Q.do(function(){
 		blackout.visible = true;
 	});

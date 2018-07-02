@@ -8,69 +8,77 @@ function start_intro(){
 	M.s("Welcome to strange therapy");
 
 	C.s({
-        "Uh... What IS this?": function(msg) {
+        "Uh... What is this?": function(msg) {
             P.s(msg);
             P.s("I thought I was gonna play a game");
             M.s("It is a game");
             M.s("But it's also a therapy...");
             C.hide();
+            intro_1();
         },
-        "Uh... Who ARE you?": function(msg) {
+        "Uh... Who are you?": function(msg) {
             P.s(msg);
             M.s("Why, I'm your therapist of course");
 			M.s("I'm also someone who made this game");
-            P.s("A game, a therapy...");
+            M.s("A game, a therapy...");
             C.hide();
+            intro_1();
         },
-        "Uh... Where AM I?": function(msg) {
+        "Uh... Where am I?": function(msg) {
             P.s(msg);
-            P.s("You're currently in a therapy session");
-            P.s("A therapy, a game...");
+            M.s("You're currently in a therapy session");
+            M.s("A therapy, a game...");
             C.hide();
+            intro_1();
         }
     });
 }
 
 function intro_1(){
 	M.s("An interactive story, a visual novel, a simulator, whatever you'd like to call it");
-	M.s("I personally want you to think that it's something like a therapy");
+	M.s("I personally want you to think that it's something kinda like a therapy");
 	P.s("Hmmm...");
-	M.s("You'll get what you came here in a minute");
+	M.s("You'll get what you came here for in a minute");
 	M.s("Before that, let's just get to know each other before you play this thing!");
 	M.s("You know, chat a little like they do in other therapies");
 	C.s({
-        "Just gimme my game": function(msg) {
+        "Just gimme my game!": function(msg) {
         	$.rude_to_me = 1;
             P.s(msg);
             P.s("I didn't click this thing to 'get to know you'");
             M.s("Oh...");
             M.s("Please be a little more patient");
+            M.s("Say...");
             C.hide();
+            intro_2();
         },
         "Alright. Nice to meet you": function(msg) {
             $.rude_to_me = 0;
             P.s(msg);
             M.s("Nice to meet you too");
             C.hide();
+            intro_2();
         },
         "Tell me more about this thing": function(msg) {
             $.rude_to_me = 0;
             P.s(msg);
-            P.s("Before that");
+            M.s("Before we get more into it...");
             C.hide();
+            intro_2();
         }
     });
 }
 
 function intro_2(){
-	P.s("What do you think of the music?");
-	P.s("I added it to a game cuz, what's a therapy without a good piano piece playing in the background?");
+	M.s("What do you think of the music?");
+	M.s("I added it to a game cuz, what's a therapy without a good piano piece playing in the background?");
 	C.s({
-        "It's okay": function(msg) {
+        "It's okay, I guess": function(msg) {
             P.s(msg);
-            P.s("Nothing wrong with it, I guess");
+            P.s("Nothing wrong with it");
             M.s("That's cool");
             C.hide();
+            intro_3();
         },
         "I love it!": function(msg) {
             P.s(msg);
@@ -78,15 +86,20 @@ function intro_2(){
             M.s("It's ----------- by --------");
             M.s("You can check more of his stuff out later in his soundcloud account");
             C.hide();
+            intro_3();
         },
-        "It kinda disturbs me": function(msg) {
+        "It kinda disturbs me...": function(msg) {
         	$.music_off = true;
             P.s(msg);
             M.s("Oh really?");
             M.s("Hm... Let me just turn it off then");
             Q.wait(1000);
-            resources.bgm.sound.stop();
+            Q.do(function(){resources.bgm.sound.stop();});
+            Q.wait(1000);
+            M.s("There");
+            P.s("Much better now");
             C.hide();
+            intro_3();
         }
     });
 }
@@ -107,6 +120,7 @@ function intro_3(){
             P.s("Looks pretty flash to me");
             M.s("Anyway...");
             C.hide();
+            intro_4();
         },
         "That's a lot to cover in a web game": function(msg) {
             $.webgame = true;
@@ -114,6 +128,7 @@ function intro_3(){
             M.s("Well...");
             M.s("Let's say I tried");
             C.hide();
+            intro_4();
         },
         "That's a lot to cover in a therapy": function(msg) {
         	$.therapy = true;
@@ -121,6 +136,7 @@ function intro_3(){
             M.s("I know right?");
             M.s("Let's just say at least I tried");
             C.hide();
+            intro_4();
         }
     });
 }
@@ -144,6 +160,7 @@ function intro_4(){
             P.s(msg);
             M.s("...");
             C.hide();
+            intro_5();
         },
         "Makes sense": function(msg) {
             P.s(msg);
@@ -151,18 +168,20 @@ function intro_4(){
             P.s("Does it...?");
             M.s("Why not?");
             C.hide();
+            intro_5();
         },
-        "'Strange'": function(msg) {
+        "'Strange', huh": function(msg) {
             P.s(msg);
             M.s("That's right");
             M.s("There's nothing wrong with being strange");
             C.hide();
+            intro_5();
         }     
     });
 }
 
 function intro_5(){
-	Q.wait(500);
+	Q.wait(1000);
 	M.s("While you're playing this game...");
 	M.s("You'll have to make choices, like you're doing right now");
 	M.s("Some of them are easy, but some are going to be not-so-easy");
@@ -177,6 +196,7 @@ function intro_5(){
             if($.rude_to_me > 2){
 				kicked_out();
 			} else {
+                M.s("Hm");
 				intro_6();
 			}
         },
@@ -184,28 +204,35 @@ function intro_5(){
             P.s(msg);
             M.s("That's great");
             C.hide();
+            intro_6();
         },
         "I'll see what happens": function(msg) {
             P.s(msg);
             M.s("You'll see soon enough");
             C.hide();
+            intro_6();
         }
     });
 }
 
 function intro_6(){
+    Q.wait(1000);
 	M.s("Shall we begin then?");
 	P.s("Yeah, I'm ready");
 	P.s("Let's get to it");
 	M.s("Let's go back to 2 years ago");
 	M.s("It was near the end of a semester, and you were just another crazy kid taking one test and another");
-	M.s("You were getting used to college life... and caffeine");
+	M.s("You were getting used to college life... and caffeine-");
 	M.s("So ready and excited for the summer break");
+    Q.do(end_intro);
 }
 
 function end_intro(){
-	Q.wait(2000);
-	Q.do(resources.bgm.sound.stop);
+	Q.wait(3000);
+	Q.do(function(){
+        resources.bgm.sound.stop();
+        blackout.visible = true;
+    });
 	Q.do(clearMsg);
 	Q.do(start_test1);
 }

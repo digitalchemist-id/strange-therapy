@@ -28,17 +28,17 @@ var style = new TextStyle ({
 var msgArray = [];
 var pushCount, pushHeight;
 
-let msgLine = new Graphics();
-msgLine.lineStyle(4, 0xffd900, 1);
-msgLine.moveTo(0, 240);
-msgLine.lineTo(360, 240);
-app.stage.addChild(msgLine);
+// let msgLine = new Graphics();
+// msgLine.lineStyle(4, 0xffd900, 1);
+// msgLine.moveTo(0, 240);
+// msgLine.lineTo(360, 240);
+// app.stage.addChild(msgLine);
 
-let choiceLine = new Graphics();
-choiceLine.lineStyle(4, 0xffd900, 1);
-choiceLine.moveTo(0, 490);
-choiceLine.lineTo(360, 490);
-app.stage.addChild(choiceLine);
+// let choiceLine = new Graphics();
+// choiceLine.lineStyle(4, 0xffd900, 1);
+// choiceLine.moveTo(0, 490);
+// choiceLine.lineTo(360, 490);
+// app.stage.addChild(choiceLine);
 
 //var cover = new PIXI.display.Group(1, false);
 //app.stage.addChild(new PIXI.display.Layer(cover));

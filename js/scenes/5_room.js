@@ -96,13 +96,11 @@ function room_call(){
 	C.t({
 	    "[Answer]": function(msg) {
 	    	$.Grandma_phone1_answered = true;
-	    	P.t(msg);
 	    	C.hide();
 	    	room_call_answered();
 	    },
 	    "[Don't]": function(msg) {
 	    	$.Grandma_phone1_answered = false;
-	    	P.t(msg);
 	    	if(!$.friend_msg1_checked && !$.gf_msg1_checked){
 		    	P.t("For gods sake!");
 		    	P.t("Why won't people just leave me alone when I want to stay alone?");
@@ -148,12 +146,10 @@ function room_msg(msg){
 	P.t("Is it something urgent...?");
 	C.t({
         "[Check message]": function(msg) {
-        	P.t(msg);
         	C.hide();
         	room_msg_2();
         },
         "[Don't]": function(msg) {
-        	P.t(msg);
         	P.t("I know I'm stressed out but...");
         	P.t("Something doesn't feel right");
         	P.t("I should probably check it");
@@ -168,7 +164,7 @@ function room_msg_2(){
 	P.t("...");
 	Q.wait(1000);
 	P.t("....");
-	Q.wait(1000);
+	Q.wait(3000);
 	//dialing sound
 	Gm.s("Hey!");
 	//Gm.s("It's been so long since you've come home");
@@ -316,7 +312,7 @@ function room_dont_panic() {
 	P.t("And I...");
 	P.t("I can't believe...");
 	P.t("I let this happen...");
-	P.t("I'm so sorry...");
+	P.t("...");
 	Q.do(end_room);
 
 }

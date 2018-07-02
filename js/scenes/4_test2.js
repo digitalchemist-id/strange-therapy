@@ -5,6 +5,7 @@ async function start_test2(){
 	//loader
 	await sleep(1000);
 	blackout.visible = false;
+	bg_test.visible = true;
 
 	//clock ticking
 	Q.wait(1000);
@@ -97,5 +98,6 @@ function end_test2(){
 	Q.do(start_room);
 	Q.do(function(){
 		blackout.visible = true;
+		bg_test.visible = false;
 	});
 }

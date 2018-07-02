@@ -119,7 +119,7 @@ Message.prototype.draw = function() {
         txtLength += element;
     });
     //console.log(txtLength);
-    Q.queue += Math.floor(txtLength/2.5) + 50; //adjusts speed of autoskip
+    Q.queue += Math.floor(txtLength/2.2) + 50; //adjusts speed of autoskip
     //console.log(queue);
     pushHeight = this.textMetrics.height + 25;
     pushCount = this.textMetrics.height + 24; // - 1 to prevent pushing further

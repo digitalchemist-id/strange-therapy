@@ -37,7 +37,7 @@ async function start_vet1() {
             C.hide();
             vet1_about()
         },
-        "I just had to come": function(msg) {
+        "I just had to come...": function(msg) {
             P.s(msg);
             V.s("I understand");
             Q.wait(1000);
@@ -116,8 +116,8 @@ function vet1_about_2(){
     P.s("What kind of other issues?");
     V.s("The reason he had to be hospitalized");
     V.s("is because he was dehydrated and malnourished");
-    V.s("He was injected with Ringer's solution overnight");
-    V.s("He's better now");
+    V.s("He was injected with Ringer's solution overnight-");
+    V.s("So he's better now");
     V.s("But he's currently very weak");
     V.s("He's lost a lot of weight as I told you");
     V.s("And he's also old");
@@ -173,7 +173,8 @@ function vet1_about_2(){
             V.s("Instead of worrying, just focus on getting him fed for now");
             V.s("If you can do that properly, things can turn out to be much better than expected");
             V.s("Your role of staying positive is also very important in his curing");
-            P.s("I understand");
+            P.s("I'll...");
+            P.s("I'll try my best");
             C.hide();
             end_vet1();
         },

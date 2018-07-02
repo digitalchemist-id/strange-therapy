@@ -64,6 +64,7 @@ function vet2_1(){
         },
         "...": function(msg) {
             P.s(msg);
+            V.s("...");
             C.hide();
             vet2_2();
         }
@@ -98,7 +99,7 @@ function vet2_2(){
             C.hide();
             vet2_3();
         },
-        "This is all your fault": function(msg) {
+        "This is all YOUR fault": function(msg) {
         	$.rude_to_vet = true;
             P.s(msg);
             P.s("You said he could be cured");
@@ -127,7 +128,7 @@ function vet2_2(){
 function vet2_3(){
 	V.s("What remains from this point is");
 	V.s("Very painful stuff");
-	V.s("To relieve the amount of potential pain you both suffer");
+	V.s("To relieve the amount of potential pain you both suffer...");
 	V.s("You might want to consider other options");
 	
 	C.s({
@@ -152,8 +153,10 @@ function vet2_3(){
 }
 
 function vet2_4() {
-	V.s("I'm talking about euthanasia");
+	V.s("I'm talking about euthanasia-");
 	V.s("Putting him down");
+    V.s("It's an option a lot of people end up choosing");
+    V.s("Even those who love their pets very much");
 	C.s({
         "That's not happening": function(msg) {
             P.s(msg);
@@ -218,6 +221,7 @@ function vet2_euthanasia() {
 
 function vet2_5(){
 	if(!$.rude_to_vet){
+        Q.wait(2000);
 		V.s("Hey...");
 		V.s("I remember when you first visited here with him");
 		V.s("Just to check if he's just lost or abandoned");
@@ -237,6 +241,7 @@ function vet2_5(){
 }
 
 function end_vet2(){
+    Q.wait(2000);
 	Q.do(clearMsg);
 	Q.do(function(){
 		blackout.visible = true;

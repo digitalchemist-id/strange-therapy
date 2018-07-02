@@ -4,8 +4,9 @@ async function start_test1(){
 	//loader
 	
 
-	await sleep(1000);
+	await sleep(2000);
 	blackout.visible = false;
+	bg_test.visible = true;
 
 	//clock ticking
 	Q.wait(1000);
@@ -120,5 +121,6 @@ function end_test1(){
 	Q.do(start_metro1);
 	Q.do(function(){
 		blackout.visible = true;
+		bg_test.visible = false;
 	});
 }

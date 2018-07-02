@@ -5,6 +5,7 @@ async function start_test4(){
 
 	await sleep(1000);
 	blackout.visible = false;
+	bg_test.visible = true;
 	//clock ticking
 	Q.wait(1000);
 	T.t("Question #1");
@@ -24,19 +25,22 @@ async function start_test4(){
 	} else {
 	}
 	
-	C.s({
+	C.t({
         "a) dG = TdS + Vdp": function(msg) {
         	$.test4_correct = false;
+        	P.t(msg);
         	C.hide();
         	test4_after();
         },
         "b) dG = pdV - TdS": function(msg) {
         	$.test4_correct = false;
+        	P.t(msg);
         	C.hide();
         	test4_after();
         },
         "c) dG = Vdp - SdT": function(msg) {
         	$.test4_correct = true;
+        	P.t(msg);
         	$.test_correct++;
         	C.hide();
         	test4_after();
@@ -65,5 +69,6 @@ function end_test4(){
 	Q.do(start_metro3);
 	Q.do(function(){
 		blackout.visible = true;
+		bg_test.visible = false;
 	});
 }
