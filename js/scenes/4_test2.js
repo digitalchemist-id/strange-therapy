@@ -1,8 +1,11 @@
 //timeline = 4, June 11th Sat
-//Introduction to Chemical Processes
 
 async function start_test2(){	
 	//loader
+	await sleep(1000);
+	resources.room_low.sound.play();
+	resources.clock.sound.play();
+
 	await sleep(1000);
 	blackout.visible = false;
 	bg_test.visible = true;
@@ -64,7 +67,7 @@ async function start_test2(){
 function test2_after(){
 
 	Q.do(function(){
-		resources.cellphone.sound.play();
+		resources.clock.sound.stop();
 	});
 	Q.wait(1000);
 	
@@ -97,6 +100,7 @@ function end_test2(){
 	Q.do(clearMsg);
 	Q.do(start_room);
 	Q.do(function(){
+		resources.room_low.sound.stop();
 		blackout.visible = true;
 		bg_test.visible = false;
 	});

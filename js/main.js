@@ -9,9 +9,21 @@ loader
     .add("images/anim/cat.json")
     .add("images/bg/test.png")
     .add("images/sprite/bunny.png")
-    .add("cellphone", "sounds/cellphone_vibrate.wav")
-    .add("bgm", "sounds/feelings_of_twilight.mp3")
-    //.add("send", "sounds/send.wav")
+    .add("clock", "sounds/clock.wav")
+    .add("dog_pain", "sounds/dog_pain.wav")
+    .add("dog_whine", "sounds/dog_whine.mp3")
+    .add("door_close", "sounds/door_close.wav")
+    .add("door_open", "sounds/door_open.wav")
+    .add("twilight", "sounds/feelings_of_twilight.mp3")
+    .add("metro_inside", "sounds/metro_inside.wav")
+    .add("phone_call", "sounds/phone_call.wav")
+    .add("phone_vib", "sounds/phone_vib.wav")
+    .add("room", "sounds/room.wav")
+    .add("room_high", "sounds/room_high.wav")
+    .add("room_low", "sounds/room_low.wav")
+    .add("send", "sounds/send.wav")
+    .add("send_high", "sounds/send_high.wav")
+    .add("seng_low", "sounds/send_low.wav")
     .load(setup);
 
 function setup() {
@@ -43,12 +55,15 @@ function setup() {
 
     //app.stage.addChild(animExample);
 
-    //const sound = PIXI.sound.Sound.from(resources["sounds/feelings_of_twilight.mp3"]);
-	//const cellphone = PIXI.sound.Sound.from(resources["sounds/cellphone_vibrate.wav"]);
-	//cellphone.loop=true;
+	resources.clock.sound.loop = true;
+    resources.twilight.sound.loop = true;
+    resources.metro_inside.sound.loop = true;
+    resources.phone_call.sound.loop = true;
+	resources.room.sound.loop = true;
+    resources.room_high.sound.loop = true;
+    resources.room_low.sound.loop = true;
+    
 
-	resources.bgm.sound.loop = true;
-	
     // //dev
     
     // if(!$.istrue){
@@ -68,8 +83,8 @@ function setup() {
     // $.count = 0;
     // $.count += 1;
     // console.log($.count);
-    // //
     $ = {};
+
     start_intro();
 
     state = play;

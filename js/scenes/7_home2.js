@@ -1,48 +1,43 @@
 //timeline = 7 June 12th Sun
-//I decided to stay home with him and only stay away for the tests
-//I fed him 4 times a day soaked dog food and canned food for him to eat more easily
-//text her or no?
-//tell my friend or no?
-//give up project and study or work on the project?
-//destiny, struggle, straightforward
-//denial, rude, careful
-//desperate, realistic
 
 async function start_home2(){
-	await sleep(1000);
+	await sleep(2000);
+	resources.room.sound.play();
+
+	await sleep(2000);
 	blackout.visible = false;
 	
-	//microwave ding
+	Q.wait(3000);
 	P.t("Two spoonful of these mixed with soaked dog food");
 	P.t("Microwaved");
 	P.t("There");
-	P.t("Here it is");
-	P.t("You need to eat it");
+	Q.wait(2000);
+	P.s("Here it is");
+	P.s("You need to eat it");
 
 	Q.wait(1000);
-	P.t("Oh...")
-	P.t("Thank god");
-	Q.wait(1000);
-	P.t("Drink some water too");
-	P.t("Whoo...");
+	P.s("Drink some water too");
+	P.t("Whew...");
 	P.t("It's okay");
 	P.t("I'll stay by your side until you're well");
 	P.t("I'll feed you 4 times a day, make sure you drink...");
-	P.t("And check your every excretion too");
+	P.t("And check every excretion too");
 	P.t("I'll only stay away for tests");
 	P.t("Around 3 hours of commute plus another 3 by test itself...");
 	Q.wait(1000);
 	P.t("...");
 	P.t("I can handle it");
-	Q.wait(1000);
+	Q.wait(3000);
+	P.t("Hm...");
 	if($.room_panicked){
-		P.t("I completely panicked yesterday..");
+		P.t("I was completely panicked yesterday..");
 		P.t("I shouldn't let that happen again");
-		P.t("I have too much things to do");
+		P.t("Maybe I need to talk to someone...");
 	} else {
 		P.t("I managed to hold on yesterday-");
 		P.t("But haven't told anyone about this yet...");
 	}
+	Q.wait(2000);
 	P.t("Should I tell my girlfriend about this?");
 	C.t({
         "[Text her]": function(msg) {
@@ -69,11 +64,11 @@ function home2_gf_text() {
 	Q.wait(1000);
 	if($.not_nice_to_gf < 2){
 		Gf.s("2 tests tomorrow");
-		Gf.s("So yeah");
+		Gf.s("So... yeah");
 		C.s({
 	        "I have something to tell you": function(msg) {
 	            P.s(msg);
-	            if(not_nice_to_gf < 1){
+	            if($.not_nice_to_gf < 1){
 	            	$.gf_told = true;
 	            	Gf.s("Oh what is it?");
 	            	Gf.s("Something urgent?");
@@ -87,7 +82,7 @@ function home2_gf_text() {
 	            	P.s("He said my dog's liver is dysfunctional...");
 	            	P.s("And that currently he's very weak and need to be fed to recover");
 	            	Gf.s("That's terrible news...");
-	            	Q.do(home2_gf_text_2);
+	            	home2_gf_text_2();
 	            } else {
 	            	$.gf_told = false;
 	                Gf.s("Umm...");
@@ -98,6 +93,7 @@ function home2_gf_text() {
 	                Gf.s("kk");
 	                Gf.s("I'll text you back");
 	            	P.s("Cool");
+	            	home2_project_msg();
 	            }
 	            C.hide();
 	     	},
@@ -112,7 +108,7 @@ function home2_gf_text() {
 	            P.s("He said my dog's liver is dysfunctional...");
 	            P.s("And that currently he's very weak and need to be fed to recover");
 	            Gf.s("That's terrible news...");
-	            Q.do(home2_gf_text_2);
+	            home2_gf_text_2();
 	            C.hide();
 	        },
 	        "Well... good luck": function(msg) {
@@ -153,24 +149,25 @@ function home2_gf_text_2() {
 }
 
 function home2_project_msg() {
-	Q.do(function(){
-		resources.cellphone.sound.play();
-	});
 	Q.wait(1000);
+	Q.do(function(){
+		resources.phone_vib.sound.play();
+	});
+	Q.wait(2000);
 	F.s("You still working on the project?");
 	F.s("Everyone else's file is ready except for yours");
-	Q.wait(500);
+	Q.wait(1000);
 	P.t("Oh no...");
 	P.t("I completely forgot about the project...");
 	P.t("What am I gonna do?");
-	P.t("I definitely won't have time to prepare for the tests if I start working on the project now");
+	P.t("I definitely won't have time to prepare for the next test if I start working on the project now");
 	C.t({
         "I can't do it": function(msg) {
         	$.test3_studied = true;
             P.t(msg);
+            P.t("All those group meetings and preparations... I just can't do it");
             P.t("I can't afford to leave my dog alone any longer");
             P.t("Staying away for the tests is already too long by itself");
-            P.t("All those group meetings and preparations... I just can't do it");
             C.hide();
             home2_project_no();
         },
@@ -179,6 +176,7 @@ function home2_project_msg() {
         	$.friend_told = false;
             P.t(msg);
             P.t("That means I'll have to stay away for longer...");
+            Q.wait(1000);
             P.t("But promises are promises");
             P.t("They're meant to be kept");
             C.hide();
@@ -196,12 +194,13 @@ function home2_project_msg() {
 }
 
 function home2_project_no(){
+	Q.wait(2000);
 	P.s("Actually...");
 	P.s("I have something to tell you");
 	F.s("What is it?");
 	P.s("This project...");
 	P.s("I'm out of it");
-	Q.wait(1000);
+	Q.wait(2000);
 	F.s("Is it because of the tests?");
 	C.s({
         "Yes. It is because of the tests": function(msg) {
@@ -221,6 +220,7 @@ function home2_project_no(){
             F.s("When people promise they do it because they care");
             F.s("You...");
             F.s("You just don't care");
+            $.dont_care = true;
             Q.wait(1000);
             P.s("I'm sorry");
             C.hide();
@@ -246,7 +246,7 @@ function home2_project_no(){
             F.s("I understand");
             F.s("I hope he gets better");
            	P.s("Thank you so much");
-           	P.s("Please tell others that I'm sorry");
+           	P.s("Please tell the others that I'm sorry");
             C.hide();
             end_home2();
         },
@@ -262,6 +262,8 @@ function home2_project_no(){
             F.s("And you abandon what you've started");
             F.s("Without telling me what the freaking reasons are");
             F.s("I can't believe this");
+            F.s("You don't even care about anything else but yourself do you?");
+            $.dont_care = true;
             F.s("I shouldn't have believed you");
             Q.wait(1000);
             P.s("I'm sorry...");
@@ -316,7 +318,6 @@ function home2_project_talk(){
 	F.s("Just join us later when he gets better");
 	Q.wait(3000);
 	P.t("Whew...");
-	P.t("He's a good friend");
 	P.t("What a relief...");
 	end_home2();
 }
@@ -327,6 +328,7 @@ function end_home2(){
 	Q.do(clearMsg);
 	Q.do(start_test3);
 	Q.do(function(){
+		resources.room.sound.stop();
 		blackout.visible = true;
 	});
 }

@@ -1,12 +1,10 @@
 //timeline = 5 June 11th Sat
-//it all starts with a phone call...
-//finish up your part in project
-//panic or don't
 
 async function start_room() {
-	
+	resources.room.sound.play();
+
 	//loader
-	await sleep(1000);
+	await sleep(3000);
 	blackout.visible = false;
 
 	Q.wait(1000);
@@ -24,15 +22,15 @@ async function start_room() {
 		P.t("No more torturing myself");
 		P.t("Studying few hours more or not won't even matter");
 	} else {
-		P.t("Few minutes of break");
-		P.t("Will help me focus more");
+		P.t("Few minutes of break will help me focus more");
 	}
+	Q.wait(3000);
 	//grabs a phone
 	P.t("Oh yeah");
 	P.t("This just reminds me...");
 	if(!$.friend_msg1_checked){
 		P.t("I completely forgot about my friend's message");
-		Q.wait(1000);
+		Q.wait(3000);
 		F.s("I just finished doing my part in the presentation. Sent you through a mail. Check them and integrate the formats with other parts when you've got time");
 		F.s("Are you done with your part too?");
 		P.s("Shoot...");
@@ -49,8 +47,7 @@ async function start_room() {
 		P.t("I mean, I did work on most of it while I was home");
 		P.t("But I haven't wrapped things up properly yet");
 	}
-	P.t("It's Saturday today and late at night");
-	P.t("I should do it when I've got time");
+
 	P.t("Should I work on it now instead of taking a break?");
 	
 	C.t({
@@ -81,10 +78,11 @@ async function start_room() {
 }
 
 function room_call(){
-	Q.do(function(){
-		resources.cellphone.sound.play();
-	});
 	Q.wait(1000);
+	Q.do(function(){
+		resources.phone_call.sound.play();
+	});
+	Q.wait(3000);
 
 	P.t("Huh?");
 	P.t("A phone call?");
@@ -96,6 +94,7 @@ function room_call(){
 	C.t({
 	    "[Answer]": function(msg) {
 	    	$.Grandma_phone1_answered = true;
+	    	resources.phone_call.sound.stop();
 	    	C.hide();
 	    	room_call_answered();
 	    },
@@ -103,13 +102,19 @@ function room_call(){
 	    	$.Grandma_phone1_answered = false;
 	    	if(!$.friend_msg1_checked && !$.gf_msg1_checked){
 		    	P.t("For gods sake!");
-		    	P.t("Why won't people just leave me alone when I want to stay alone?");
+		    	P.t("Why won't people just leave me alone?");
 		    	P.t("Cellphone must be worst human invention ever made");
+		    	Q.do(function(){
+		    		resources.phone_call.sound.stop();
+		    	});
 	    	} else {
 	    		P.t("Hm");
 	    		P.t("It's probably not important");
 	    		P.t("Maybe It's because of things I left at home");
 	    		P.t("Like the files I don't need anymore");
+	    		Q.do(function(){
+	    			resources.phone_call.sound.stop();
+	    		});
 	    	}
 	    	C.hide();
 	    	room_msg();
@@ -118,12 +123,13 @@ function room_call(){
 }
 
 function room_call_answered() {
+	Q.wait(2000);
 	P.s("Hello?");
 	Gm.s("Hey!");
 	Gm.s("Are you still busy with your homeworks and exams?");
 	P.s("Pretty much...");
 	P.s("Is something the matter?");
-	Gm.s("Yes");
+	Gm.s("Yes... actually");
 	Gm.s("Your dog is hospitalized");
 	Q.wait(2000);
 	P.s("...");
@@ -136,9 +142,9 @@ function room_call_answered() {
 function room_msg(msg){
 	Q.wait(1000);
 	Q.do(function(){
-		resources.cellphone.sound.play();
+		resources.phone_vib.sound.play();
 	});
-	Q.wait(1000);
+	Q.wait(3000);
 
 	P.t("Now she sent me a text");
 	P.t("...");
@@ -160,6 +166,7 @@ function room_msg(msg){
 }
 
 function room_msg_2(){
+	Q.wait(2000);
 	Gm.s("ARE YOU STILL BUSY? I CALLED BECASUE YOUR DOG IS HOSPITALIZED LOVE GRANDMA");
 	P.t("...");
 	Q.wait(1000);
@@ -185,8 +192,8 @@ function room_unite(){
 	Gm.s("It might even need a surgery");
 	P.s("...");
 	P.s("The office is close now right?");
-	Gm.s("Yes, it is");
-	P.s("And we have to take him tomorrow?");
+	Gm.s("It sure is");
+	P.s("And he needs to be picked up tomorrow...?");
 	Gm.s("Yes");
 	C.s({
         "I'll be there": function(msg) {
@@ -201,7 +208,7 @@ function room_unite2(){
 	Gm.s("You will?");
 	Gm.s("I thought you were-");
 	P.s("It's okay");
-	P.s("I can do that");
+	P.s("I can be there");
 	Gm.s("Okay");
 	Gm.s("I'll leave it to you, then");
 	Gm.s("Good night");
@@ -217,10 +224,10 @@ function room_unite2(){
 
 function room_choose(){
 	//hang up
-	Q.wait(1000);
-	P.s("Oh...");
+	Q.wait(4000);
+	P.t("...");
 	Q.wait(2000);
-	P.s("Oh......");
+	//P.s("Oh......");
 
 	C.t({
         "[panic]": function(msg) {
@@ -268,6 +275,7 @@ function room_panic() {
 	P.panic("And I...");
 	P.panic("I can't believe...");
 	P.panic("I let this happen...");
+	Q.wait(1500);
 	Q.do(clearMsg);
 	Q.do(function(){
 		blackout.visible = true;
@@ -322,6 +330,7 @@ function end_room(){
 	Q.do(clearMsg);
 	Q.do(start_vet1);
 	Q.do(function(){
+		resources.room.sound.stop();
 		blackout.visible = true;
 	});
 }

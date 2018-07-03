@@ -1,10 +1,10 @@
 //timeline = 14 June 16th Thu
-//text from Gf. answer or don't
-//text from friend. answer or don't
 
 async function start_metro3(){	
+    await sleep(2000);
+    resources.metro_inside.sound.play();
 
-	await sleep(1000);
+	await sleep(2000);
 	blackout.visible = false;
 
 	Q.wait(3000);
@@ -21,7 +21,7 @@ async function start_metro3(){
 
 function metro3_friend_told(){
 	Q.do(function(){
-		resources.cellphone.sound.play();
+		resources.phone_vib.sound.play();
 	});
 	Q.wait(1000);
 
@@ -87,7 +87,7 @@ function metro3_friend_told_check(){
 
 function metro3_friend_untold(){
 	Q.do(function(){
-		resources.cellphone.sound.play();
+		resources.phone_vib.sound.play();
 	});
 	Q.wait(1000);
 
@@ -144,7 +144,7 @@ function metro3_friend_untold_check(){
 
 function metro3_gf(){
 	Q.do(function(){
-		resources.cellphone.sound.play();
+		resources.phone_vib.sound.play();
 	});
 	Q.wait(1000);
 
@@ -199,6 +199,7 @@ function end_metro3(){
 	Q.do(clearMsg);
 	Q.do(start_outro);
 	Q.do(function(){
+        resources.metro_inside.sound.stop();
 		blackout.visible = true;
 	});
 }

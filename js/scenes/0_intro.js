@@ -2,7 +2,10 @@
 
 function start_intro(){
 
-	resources.bgm.sound.play();
+	resources.twilight.sound.play();
+    resources.room.sound.play();
+
+    Q.wait(1000);
 
 	M.s("Hi!");
 	M.s("Welcome to strange therapy");
@@ -94,7 +97,7 @@ function intro_2(){
             M.s("Oh really?");
             M.s("Hm... Let me just turn it off then");
             Q.wait(1000);
-            Q.do(function(){resources.bgm.sound.stop();});
+            Q.do(function(){resources.twilight.sound.stop();});
             Q.wait(1000);
             M.s("There");
             P.s("Much better now");
@@ -107,6 +110,8 @@ function intro_2(){
 
 function intro_3(){
 	P.s("So...");
+    Q.wait(500);
+    P.s("Umm...");
 	P.s("What's this therapy about?");
 	M.s("This therapy");
 	M.s("It's something about loss, life, love and hope");
@@ -115,7 +120,7 @@ function intro_3(){
             $.flashgame = true;
             P.s(msg);
             M.s("IT'S NOT FLASH");
-            M.s("This was written with html5 and javascript. They're totally different");
+            M.s("This was written with html5 and javascript. They're totally different from flash");
             P.s("Pfff, Whatever");
             P.s("Looks pretty flash to me");
             M.s("Anyway...");
@@ -133,6 +138,7 @@ function intro_3(){
         "That's a lot to cover in a therapy": function(msg) {
         	$.therapy = true;
             P.s(msg);
+            M.s("Yep");
             M.s("I know right?");
             M.s("Let's just say at least I tried");
             C.hide();
@@ -149,7 +155,7 @@ function intro_4(){
 	} else {
 		M.s("To be a little more precise, this therapy is about my personal experience");
 	}
-	M.s("You're gonna play as me from 2016 and go through what happened to me");
+	M.s("You're gonna play as me and go through what happened to me years ago");
 	M.s("What happened... or what could have happened");
 	P.s("I thought therapists listen, not talk");
 	M.s("That's why I named this 'strange' therapy");
@@ -181,7 +187,7 @@ function intro_4(){
 }
 
 function intro_5(){
-	Q.wait(1000);
+	Q.wait(3000);
 	M.s("While you're playing this game...");
 	M.s("You'll have to make choices, like you're doing right now");
 	M.s("Some of them are easy, but some are going to be not-so-easy");
@@ -220,9 +226,9 @@ function intro_6(){
 	M.s("Shall we begin then?");
 	P.s("Yeah, I'm ready");
 	P.s("Let's get to it");
-	M.s("Let's go back to 2 years ago");
-	M.s("It was near the end of a semester, and you were just another crazy kid taking one test and another");
-	M.s("You were getting used to college life... and caffeine-");
+	M.s("Let's go back to 2 years ago...");
+	M.s("You were getting used to college life - and caffein");
+    M.s("It was near the end of a semester, and you were just another crazy kid taking one test and another");
 	M.s("So ready and excited for the summer break");
     Q.do(end_intro);
 }
@@ -230,7 +236,8 @@ function intro_6(){
 function end_intro(){
 	Q.wait(3000);
 	Q.do(function(){
-        resources.bgm.sound.stop();
+        resources.twilight.sound.stop();
+        resources.room.sound.stop();
         blackout.visible = true;
     });
 	Q.do(clearMsg);

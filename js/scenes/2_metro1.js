@@ -1,9 +1,10 @@
 //timeline = 2 June 8th Wed
-//introducing my girlfriend and my friend
 
 async function start_metro1(){
+	await sleep(2000);
+	resources.metro_inside.sound.play();
+	await sleep(2000);
 
-	await sleep(1000);
 	blackout.visible = false;
 
 	P.t('My first semester with a major...');
@@ -13,28 +14,23 @@ async function start_metro1(){
 	P.t('Just few more finals');
 	P.t('And a few essays and projects to go');
 	//
-	P.t('Uh... Haven\'t got to sleep properly in weeks');
-	P.t('Man, I\'m just really looking forward to that summer break');
+	
+	// P.t('Uh... Haven\'t got to sleep properly in weeks');
+	// P.t('Man, I\'m just really looking forward to that summer break');
 
-	P.t("I just wanna go to my parent's home spend time with my dog");
-	P.t("I haven't visited in weeks...");
-	P.t("He'll miss me so much");
-	P.t("I miss him too");
-	Q.wait(1000);
-	P.t("It takes about an hour and a half to get home");
-	P.t("I'm going there right now");
-	P.t("But am I doing the right thing?");
-	P.t("I just have to many things to take care of...");
-	P.t("Maybe I should have stayed");
-
-	// P.t('So...');
-	// P.t('Next test is...');
-	// P.t("It's this Saturday");
+	// P.t("I just wanna go to my parent's home spend time with my dog");
+	// P.t("I haven't visited in weeks...");
+	// P.t("He'll miss me so much");
+	// P.t("I miss him too");
 	// Q.wait(1000);
-	// P.t("Wait...");
-	// P.t("Maybe I might have time to visit home");
-	// P.t("Tomorrow's classes are either canceled or over");
-	// P.t("And I don't have classes on Fridays")
+	// P.t("It takes about an hour and a half to get home");
+	// P.t("I'm going there right now");
+	// P.t("But am I doing the right thing?");
+	// P.t("I just have to many things to take care of...");
+	Q.wait(3000);
+	P.t("Leaving behind so much stuff to do and going to my parent's house...");
+	P.t("I kinda feel guilty about it");
+	P.t("Maybe I should have stayed");
 	Q.wait(1000);
 	P.t("Should I have stayed?");
 
@@ -47,12 +43,13 @@ async function start_metro1(){
         },
         "I miss my dog just too much": function(msg) {
         	P.t(msg);
+        	P.t("He's gonna miss me too");
         	C.hide();
         	metro1_friend_msg();
     	},
         "I'm sick and tired of sitting in library": function(msg) {
         	P.t(msg);
-        	P.t("Let me go home");
+        	P.t("Too sick");
         	C.hide();
         	metro1_friend_msg();
     	}
@@ -68,9 +65,9 @@ function metro1_friend_msg(){
 	// P.t("This is my only chance before the end of the semester...");
 
 	Q.do(function(){
-		resources.cellphone.sound.play();
+		resources.phone_vib.sound.play();
 	});
-	Q.wait(1000);
+	Q.wait(3000);
 
 	P.t("A message...");
 	P.t("It's from my clubmate");
@@ -80,7 +77,6 @@ function metro1_friend_msg(){
 	C.t({
 	    "[Check message]": function(msg) {
 	    	$.friend_msg1_checked = true;
-	    	P.t(msg);
 	    	C.hide();
 	    	metro1_friend_dialogue();
 	    },
@@ -96,7 +92,9 @@ function metro1_friend_msg(){
 }
 
 function metro1_friend_dialogue() {
-	F.s("I just finished doing my part in the presentation. Sent you through a mail. Check them and integrate the formats with other parts when you've got time");
+	Q.wait(2000);
+	F.s("I just finished doing my part in the presentation. Sent you through a mail");
+	F.s("Check them and integrate the formats with other parts when you've got time");
 	F.s("Are you done with your part too?");
 
 	C.s({
@@ -138,10 +136,11 @@ function metro1_friend_dialogue_2(){
 	F.s("You still caught up with all the finals?");
 	P.s("Hell lot of them");
 	F.s("I'm glad to see that you're not too insane yet");
-	P.s("I'm not? lol");
+	P.s("I'm not?");
 	P.s("I bet around this time of the semester everyone's losing there minds");
 	F.s("Everyone sure freakin is");
 	F.s("It's hard to get even a single text back from anyone");
+	Q.wait(1000);
 	F.s("Good luck with the rest of the finals");
 	P.s("Thanks");
 	F.s("Just text me when I you're finished okay?");
@@ -153,19 +152,19 @@ function metro1_friend_dialogue_2(){
 }
 
 function metro1_gf_msg(){
-	Q.do(function(){
-		resources.cellphone.sound.play();
-	});
 	Q.wait(1000);
+	Q.do(function(){
+		resources.phone_vib.sound.play();
+	});
+	Q.wait(3000);
 
 	P.t("Another message?");
-	P.t("Oh it's from my girlfriend");
+	P.t("Oh... it's from my girlfriend");
 
 	C.t({
 	    "[Check message]": function(msg) {
-	    	$.not_nice_to_gf = 0
+	    	$.not_nice_to_gf = 0;
 	    	$.gf_msg1_checked = true;
-	    	P.t(msg);
 	    	C.hide();
 	    	metro1_gf_dialogue();
 	    },
@@ -226,7 +225,7 @@ function metro1_gf_dialogue() {
 	    	C.hide();
 	    	metro1_gf_dialogue_2();
 	    },
-	    "Please save me from this hell": function(msg) {
+	    "Please... save me... from... this hell...": function(msg) {
 	    	$.gf_msg1_replied = true;
 	    	$.metro1_doing_great = false;
 	    	P.s(msg);
@@ -235,8 +234,8 @@ function metro1_gf_dialogue() {
 	    	Gf.s("This will be over soon");
 	    	Gf.s("How many test did you say you have left?");
 	    	P.s("I have a few");
-	    	P.s("3 actually");
-	    	Gf.s("It'll be over soon... Try not to lose too much sanity");
+	    	Gf.s("It'll be over soon...");
+	    	Gf.s("Let's try not to lose too much of our sanity");
 	    	P.s("Okay");
 	    	P.s("if I have any left");
 	    	Gf.s("XD");
@@ -258,23 +257,23 @@ function metro1_gf_dialogue() {
 function metro1_gf_dialogue_2() {
 	P.s("You have didn't take any finals yet right?");
 	P.s("You take them all next week");
-	Gf.s("Wow! good memory!");
+	Gf.s("Good memory!");
 	Gf.s("You deserve A+ for that");
-	Gf.s("The finals");
-	Gf.s("plus a few reports");
-	Gf.s("and some neverending essays...");
+	Gf.s("The finals... plus a few reports");
+	Gf.s("And some neverending essays...");
 	P.s("Still your semester ends earlier than mine");
 	Gf.s("Yeah like a day?");
 	Gf.s("Yours end on 16th right?");
 	Gf.s("Mine ends on 15th");
 	Gf.s("So yeah. Just one day");
-	Gf.s("But you know I need time to prepare for summer session...");
+	Q.wait(2000);
+	Gf.s("But you know I need time to prepare for summer session... right?");
 	P.s("Yeah I know that");
 	P.t("...");
 	P.s("You leave to California the very next week");
-	P.s("I can't believe we only get to spend like 2 days together");
+	P.s("I can't believe we only get to spend like a couple of days together");
 	P.s("And we already haven't met in like what... a month?");
-	Gf.s("2 days... at best");
+	Gf.s("Couple of days... at best");
 	Gf.s("We've talked about this...");
 
 	C.s({
@@ -285,7 +284,7 @@ function metro1_gf_dialogue_2() {
 	    		Gf.s("What happened to all the spirits?");
 	    		P.s("Ther're still here");
 	    	} else {
-	    		Gf.s("I made you feel worse didn't I...");
+	    		Gf.s("I made you feel worse didn't I");
 	    	}
 	    	P.s("It's fine");
 	    	P.s("It's so wrong for me to blame you");
@@ -296,8 +295,8 @@ function metro1_gf_dialogue_2() {
 	    "And I never liked it": function(msg) {
 	    	$.not_nice_to_gf++;
 	    	P.s(msg);
-	    	Q.wait(1000);
-	    	Gf.s("I see that you certainly don't");
+	    	Q.wait(2000);
+	    	Gf.s("Yeah. You certainly didn't");
 	    	C.hide();
 	    	metro1_gf_dialogue_3();
 	    },
@@ -306,15 +305,15 @@ function metro1_gf_dialogue_2() {
 	    	Gf.s("You still there?");
 	    	P.s("Yeah");
 	    	Gf.s("Wanna talk about it later?");
-	    	P.S("I think it'd be better if we do");
+	    	P.s("I think it'd be better if we do");
 	    	C.hide();
 	    	metro1_gf_dialogue_3();
 	    }
 	});
-
 }
 
 function metro1_gf_dialogue_3() {
+	Q.wait(1000);
 	Gf.s("I should get back to studying");
 	Gf.s("We spent way more time than we should have talking");
 	P.s("Yeah...");
@@ -328,7 +327,6 @@ function metro1_gf_dialogue_3() {
 	    		Gf.s("It's gonna be alright...");
 	    	} else {
 	    		Q.wait(2000);
-	    		Gf.s("<3");
 	    	}
 	    	C.hide();
 	    	end_metro1();
@@ -365,6 +363,7 @@ function end_metro1(){
 	Q.do(clearMsg);
 	Q.do(start_home1);
 	Q.do(function(){
+		resources.metro_inside.sound.stop();
 		blackout.visible = true;
 	});
 }

@@ -2,9 +2,11 @@
 //engineering mathematics
 
 async function start_test3(){	
+	await sleep(5000);
+	resources.room_low.sound.play();
+	resources.clock.sound.play();
 
-
-	await sleep(3000);
+	await sleep(2000);
 	blackout.visible = false;
 	bg_test.visible = true;
 	//clock ticking
@@ -20,7 +22,7 @@ async function start_test3(){
 		P.t("sinh(2t) = 2sinh(t)cosh(t)");
 		P.t("L(sinh(at)) = a/(s² - a²)");
 		P.t("sinh(0) = 0");
-		P.t("So L(f) must be equal to...");
+		P.t("So L(f) when f(t) = sinh²(t) must be equal to...");
 	} else {
 		P.t("I like this question");
 		P.t("It's short and simple");
@@ -50,7 +52,7 @@ async function start_test3(){
 
 function test3_after(){
 	Q.do(function(){
-		resources.cellphone.sound.play();
+		resources.clock.sound.stop();
 	});
 	Q.wait(1000);
 	
@@ -64,8 +66,8 @@ function test3_after(){
 	P.t("Another one down");
 	P.t("Now there's only one left");
 	if($.test3_correct){
-		P.t("Yessssss");
-		P.t("Yesssssssssssssssss");
+		P.t("Yes");
+		P.t("Yesssssssssss");
 		P.t("FINALLY");
 	} else {
 		P.t("I'm not so sure if I care anymore");
@@ -79,6 +81,7 @@ function end_test3(){
 	Q.do(clearMsg);
 	Q.do(start_metro2);
 	Q.do(function(){
+		resources.room_low.sound.stop();
 		blackout.visible = true;
 		bg_test.visible = false;
 	});

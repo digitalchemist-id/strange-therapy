@@ -262,6 +262,7 @@ Choice.prototype.show = async function(){
         this.option[i].alpha = 0;
         this.gradientShow[i] = true;
     }
+    await sleep(this.interval);
     for(var i=0;i<this.n;++i){
         this.button[i].interactive = true;
     }
@@ -269,6 +270,7 @@ Choice.prototype.show = async function(){
 
 Choice.prototype.hide = async function(){
     for(var i = 0; i<this.n; ++i){
+        this.button[i].interactive = false;
         this.button[i].off('pointerdown');
     }
     for(var i = 0; i<this.n; ++i) {
@@ -280,7 +282,8 @@ Choice.prototype.hide = async function(){
 }
 
 Choice.prototype.t = async function(obj) {    
-    Q.fqueue.push(function(){
+    Q.fqueue.push(
+        function(){
             var labels = Object.keys(obj); //get the keys and make an array of them
             this.n = labels.length;
 
@@ -303,7 +306,8 @@ Choice.prototype.t = async function(obj) {
 }
 
 Choice.prototype.s = async function(obj) {
-    Q.fqueue.push(function(){
+    Q.fqueue.push(
+        function(){
             var labels = Object.keys(obj);
             this.n = labels.length;
     
@@ -320,12 +324,10 @@ Choice.prototype.s = async function(obj) {
             }
         }.bind(this)
     );
-    Q.fqueue.push(this.show.bind(this));
+    Q.fqueue.push(
+        this.show.bind(this)
+    );
 }
-
-//making 2 choices in a function is still impossible because callback gets pushed into fqueue after choice was made
-//while other functions that should execute later gets pushed into fqueue immediately
-//There might be a bug of choices not showing when screen clicked too fast
 
 C = new Choice();
 

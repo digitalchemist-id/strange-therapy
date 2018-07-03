@@ -3,19 +3,23 @@
 //If you're holding on - text my friend?
 
 async function start_metro2(){
+    await sleep(2000);
+    resources.metro_inside.sound.play();
 	//setup
-	await sleep(1000);
+	await sleep(2000);
 	blackout.visible = false;
+
     Q.wait(3000);
 	P.t("How many times have I crossed this river?");
 	P.t("Must've been hell lot");
 	Q.wait(1000);
 	P.t("But somehow I never get tired of staring at this view");
 	Q.wait(1000);
-	Q.do(function(){
-		resources.cellphone.sound.play();
-	});
-	Q.wait(1000);
+    Q.do(function(){
+        resources.phone_vib.sound.play();
+    });    
+    Q.wait(2000);
+
 
 	C.t({
         "[Check message]": function(msg) {
@@ -214,6 +218,7 @@ function end_metro2(){
 	Q.wait(2000);
 	Q.do(clearMsg);
 	Q.do(function(){
+        resources.metro_inside.sound.stop();
 		blackout.visible = true;
 	});
 	Q.do(start_home3);

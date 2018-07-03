@@ -1,9 +1,11 @@
 //timeline = 13 June 16th Thu
-//Physical Chemistry 1
 
 async function start_test4(){	
+	await sleep(2000);
+	resources.room_low.sound.play();
+	resources.clock.sound.play();
 
-	await sleep(1000);
+	await sleep(2000);
 	blackout.visible = false;
 	bg_test.visible = true;
 	//clock ticking
@@ -50,7 +52,7 @@ async function start_test4(){
 
 function test4_after(){
 	Q.do(function(){
-		resources.cellphone.sound.play();
+		resources.clock.sound.stop();
 	});
 	Q.wait(1000);
 	
@@ -68,6 +70,7 @@ function end_test4(){
 	Q.do(clearMsg);
 	Q.do(start_metro3);
 	Q.do(function(){
+		resources.room_low.sound.stop();
 		blackout.visible = true;
 		bg_test.visible = false;
 	});

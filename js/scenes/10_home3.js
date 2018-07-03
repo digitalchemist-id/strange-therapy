@@ -5,8 +5,10 @@
 //And I immediately take him to vet...
 
 async function start_home3(){
+	await sleep(2000);
+	resources.room.sound.play();
 	//setup
-	await sleep(1000);
+	await sleep(2000);
 	blackout.visible = false;
 
 	P.s("I'm home!");
@@ -14,8 +16,8 @@ async function start_home3(){
 	Q.wait(2000);
 	P.t("Huh?");
 	P.t("Where did he...?");
-	Q.wait(1000);
-	P.s("Oh there you were");
+	Q.wait(3000);
+	P.s("Oh Hi. There you were");
 	P.s("Hiding between the bed again?");
 	P.s("You should take rest on your pillow, not this cramped hole");
 	P.s("Come on here buddy");
@@ -27,9 +29,12 @@ async function start_home3(){
 	P.s("Hmm");
 	P.s("It's okay");
 	P.s("I'll just go clean it up");
-	Q.wait(1000);
+	Q.wait(2000);
 	P.s("...");
 	P.s("Wait...");
+	Q.do(function(){
+		resources.room.sound.stop();
+	});
 	Q.wait(1000);
 	P.t("This isn't-");
 	Q.wait(1000);
@@ -37,12 +42,12 @@ async function start_home3(){
 	P.s("You threw up?");
 	P.s("This is...");
 	P.s("This is more than what you ate yesterday...");
-	Q.wait(1000);
+	Q.wait(2000);
 	P.s("Oh no...");
-	Q.wait(500);
+	Q.wait(1000);
 	P.s("No... No... No... No...");
 	P.s("No... No... No.......");
-	Q.wait(1000);
+	Q.wait(2000);
 	if($.room_panicked){
 		P.panic("It's okay right?");
 		P.panic("It's just nothing");
@@ -66,7 +71,11 @@ async function start_home3(){
 	P.s("I'll clean this up and...");
 	P.s("And I'll prepare so you can eat");
 	//leave room
-	Q.wait(2000);
+	Q.wait(1500);
+	Q.do(function(){
+		resources.dog_pain.sound.play();
+	});
+	Q.wait(500);
 	//hear screaming
 	P.s("What's wrong??");
 	P.s("WHAT'S HAPPENING???");
@@ -156,6 +165,7 @@ function home3_not_panic(){
 	P.t("I remember...");
 	P.t("Don't panic...");
 	P.t("No...");
+	P.t("");
 	Q.do(home3_panic);
 }
 
@@ -163,6 +173,7 @@ function end_home3(){
 	Q.wait(2000);
 	Q.do(clearMsg);
 	Q.do(function(){
+		resources.dog_panic.sound.stop();
 		blackout.visible = true;
 	});
 	Q.do(start_vet2);

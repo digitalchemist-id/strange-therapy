@@ -5,7 +5,8 @@
 async function start_outro(){	
 
 	await sleep(3000);
-	resources.bgm.sound.play();
+	resources.room.sound.play();
+	resources.twilight.sound.play();
 	await sleep(3000);
 	blackout.visible = false;
 	//config
@@ -17,7 +18,7 @@ async function start_outro(){
 		M.s("I'll just turn it off again");
 		Q.wait(2000);
 		Q.do(function(){
-			resources.bgm.sound.stop();
+			resources.twilight.sound.stop();
 		});
 		Q.wait(2000);
 		P.s("So...");
@@ -578,10 +579,10 @@ function outro_life(){
 	M.s("It took me to the cremation site");
 	M.s("I followed their procedures");
 	M.s("I gave them his body and received his ashes");
-	M.s("That last moment when I handed his body to them");
-	M.s("The moment that I knew would be the last time I see him...");
-	M.s("I remember that moment like a photograph");
-	M.s("He looked like he was the most beautiful doll I've ever seen");
+	// M.s("That last moment when I handed his body to them");
+	// M.s("The moment that I knew would be the last time I see him...");
+	// M.s("I remember that moment like a photograph");
+	// M.s("He looked like he was the most beautiful doll I've ever seen");
 	M.s("After that I went back to my rented room near school instead of my parent's house");
 	M.s("Days passed...");
 	M.s("And weeks passed");
@@ -597,11 +598,11 @@ function outro_life(){
 			M.s("Time is unforgiving");
 			M.s("So are the consequences of our choices");
 			M.s("We all learn it the hard way");
-			if(1/**/){
+			if($.never_learn){
 				P.s("Or just never learn it at all...");
 				M.s("Sorry?");
 				P.s("Nevermind. Please continue");
-			} else if(0/**/) {
+			} else if($.dont_care) {
 				P.s("Or just don't care at all...");
 				M.s("Sorry?");
 				P.s("Nevermind. Please continue");
@@ -861,7 +862,8 @@ function outro_hope(){
 	M.s("I still haven't found the answer");
 	M.s("But here's what I'm gonna say anyways");
 	Q.do(function(){
-		resources.bgm.sound.stop();
+		resources.room.sound.stop();
+		resources.twilight.sound.stop();
 	});
 	Q.wait(3000);
 	M.s("I am here");
@@ -882,6 +884,14 @@ function outro_hope(){
 	M.s("If this made you feel that talking to someone could make you feel better, please don't hesitate to get some real help");
 	Q.wait(2000);
 	M.s("Thank you for playing my game");
+	Q.wait(1000);
+	Q.do(function(){
+		resources.door_open.sound.play();
+	});
+	Q.wait(1000);
+	Q.do(function(){
+		resources.door_close.sound.play();
+	});
 	Q.do(end_outro);
 }
 

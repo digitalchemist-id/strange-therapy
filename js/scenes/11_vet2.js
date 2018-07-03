@@ -1,12 +1,10 @@
 //timeline = 11 June 15th Wed
-//His organs were far beyond able to recover
-//It would be almost a miracle for him to make it past this weekend
-//And I was forced to choose between putting him down(euthanize) and waiting for his end, hoping for the best
-//It's my fault right?
 
 async function start_vet2(){
+    await sleep(2000);
+    resources.room_high.sound.play();
 	//setup
-	await sleep(1000);
+	await sleep(2000);
 	blackout.visible = false;
 
 	V.s("His body");
@@ -101,6 +99,7 @@ function vet2_2(){
         },
         "This is all YOUR fault": function(msg) {
         	$.rude_to_vet = true;
+            $.never_learn = true;
             P.s(msg);
             P.s("You said he could be cured");
             P.s("I did everything you told me to do");
@@ -244,6 +243,7 @@ function end_vet2(){
     Q.wait(2000);
 	Q.do(clearMsg);
 	Q.do(function(){
+        resources.room_high.sound.stop();
 		blackout.visible = true;
 	});
 	Q.do(start_home4);

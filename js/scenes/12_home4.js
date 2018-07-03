@@ -1,12 +1,10 @@
 //timeline = 12 June 15th Wed
-//What am I going to do?
-//Study?
-//abandon
-//call her?
 
 async function start_home4(){
+    await sleep(2000);
+    resources.room.sound.play();
 	//setup
-	await sleep(1000);
+	await sleep(2000);
 	blackout.visible = false;
 	Q.wait(5000);
 	P.t("...");
@@ -251,6 +249,7 @@ function end_home4(){
     Q.wait(2000);
 	Q.do(clearMsg);
 	Q.do(function(){
+        resources.room.sound.stop();
 		blackout.visible = true;
 	});
 	Q.do(start_test4);

@@ -1,12 +1,11 @@
 //timeline = 6 June 12th Sun
-//I was full of both hope and desperation
-//he seemed really okay and vet told me first step for him recover was to eat
-//So I thought that could happen and I tried...
 
 async function start_vet1() {
-	
+    await sleep(2000);
+	resources.room_high.sound.play();
+
 	//loader
-	await sleep(1000);
+	await sleep(2000);
 	blackout.visible = false;
 	
 	P.t("He...");
@@ -60,7 +59,7 @@ function vet1_about(){
 	P.s("...");
 	P.s("I see it");
 	P.t("How...");
-	P.t("I could I not see things like that?");
+	P.t("How could I not see things like that?");
 	V.s("It got severe");
 	V.s("He wasn't like this Friday");
 	P.s("...");
@@ -107,6 +106,7 @@ function vet1_about(){
 }
 
 function vet1_about_2(){
+    Q.wait(1000);
     V.s("Usually what causes jaundice for dogs");
     V.s("Can be eliminated through a surgery");
     V.s("He has to go through X-rays, ultrasounds and other stuff like that to find out what exactly causes his symptom");
@@ -127,15 +127,14 @@ function vet1_about_2(){
     //he takes out a can and feeds him
     //P.s("Oh thank god he's eating");
     //V.s("...");
+    Q.wait(2000);
     V.s("It'll be hard for him to digest dry dog food");
     V.s("I'll give you a few of this can");
-    V.s("You need to keep this refrigerated");
-    Q.wait(1000);
-    V.s("Feed him 4 times a day");
-    V.s("Soak his dog food with water for about half an hour");
+    Q.wait(3000);
+    V.s("Feed him 4 times a day"); 
     V.s("Mix two spoonful of this can with swollen dog food, and microwave the mixture before you feed him");
-    V.s("And make sure that he get to drink often");
-    V.s("Did you get that?");
+    V.s("And also make him to drink often");
+    V.s("Did you get all that?");
     P.s("I got that");
     P.s("I can do that");
     V.s("Do you have any questions?");
@@ -150,9 +149,9 @@ function vet1_about_2(){
             V.s("We can only hope for the best");
             V.s("It is possible that he refuses food");
             V.s("Keep giving him food even if he does that");
-            Q.wait(1000);
+            Q.wait(2000);
             V.s("He's gonna be alright");
-            V.s("Just think about getting him to eat properly");
+            V.s("For now just think about getting him to eat properly");
             V.s("Your role is also important in his curing");
             V.s("Staying positive while taking care of him is the best you can do for now");
 
@@ -163,11 +162,11 @@ function vet1_about_2(){
         	$.realistic = true;
             P.s(msg);
             V.s("X-ray and ultrasound each cost about");
-            V.s("      ");
+            V.s("-----");
             V.s("Surgery cost will vary");
-            V.s("from      to      ");
+            V.s("from ----- to -----");
             P.s("...");
-            V.s("Hey");
+            Q.wait(2000);
             V.s("All this potential cost makes you worry, I understand that...");
             V.s("But only few worst cases require all those procedures");
             V.s("Instead of worrying, just focus on getting him fed for now");
@@ -193,6 +192,7 @@ function end_vet1(){
 	Q.do(clearMsg);
 	Q.do(start_home2);
 	Q.do(function(){
+        resources.room_high.sound.stop();
 		blackout.visible = true;
 	});
 }

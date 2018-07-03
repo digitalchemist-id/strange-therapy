@@ -3,8 +3,9 @@
 async function start_test1(){
 	//loader
 	
-
 	await sleep(2000);
+	resources.room_low.sound.play();
+	resources.clock.sound.play();
 	blackout.visible = false;
 	bg_test.visible = true;
 
@@ -45,8 +46,8 @@ function test1_choose(){
     	P.t("Gosh... I just don't care")
     	P.t("Let's just choose one");
 	} else {
-		P.t("I didn't panic");
 		P.t("Cool.");
+		Q.wait(1000);
 		P.t("Now this question is pretty straightforward");
 		P.t("It's asking out of the two compounds");
 		P.t("Which boils at higher temperature?");
@@ -89,17 +90,18 @@ function test1_choose(){
 
 function test1_after(){
 
+	Q.wait(500);
 	Q.do(function(){
-		resources.cellphone.sound.play();
+		resources.clock.sound.stop();
 	});
-	Q.wait(1000);
+	Q.wait(1500);
 	
 	//alarm ringing
 	A.s('Time\'s up!');
 
 	A.s('Everyone turn your tests in!');
 	//turns test in 
-	Q.wait(2000);
+	Q.wait(3000);
 
 	P.t('Oh');
 
@@ -120,6 +122,7 @@ function end_test1(){
 	Q.do(clearMsg);
 	Q.do(start_metro1);
 	Q.do(function(){
+		resources.room_low.sound.stop();
 		blackout.visible = true;
 		bg_test.visible = false;
 	});

@@ -1,18 +1,30 @@
 //timeline = 3 June 8th - 10th Wed - Fri
-//How did he lose so much weight?
-//Does what I do matter or not?
-//Granma takes him to vet and says he's sick
 
 async function start_home1() {
 	//loader
+	await sleep(2000);
+	resources.room.sound.play();
+
 	await sleep(1000);
 	blackout.visible = false;
+	Q.wait(1000);
 
 	P.s("I'm home!");
-	//dog greets me
+	Q.wait(500);
+	Q.do(function(){
+		resources.dog_whine.sound.play();
+	})
+	Q.wait(2500);
 	P.s("Oh..");
-	//I greet him
+	Q.wait(2000);
 	P.s("Yes, I missed you too");
+
+	Q.wait(500);
+	Q.do(function(){
+		resources.door_open.sound.play();
+	})
+	Q.wait(3500);
+
 	P.s("...");
 	P.s("Huh?");
 	P.s("How did you lose so much weight?");
@@ -22,7 +34,7 @@ async function start_home1() {
 	Gm.s("Oh it's you");
 	Gm.s("Welcome!");
 	Gm.s("It's been so long")
-	Gm.s("But to come without a phonecall or even a text...");
+	Gm.s("But without a phonecall or even a text...");
 	P.s("Hi grandma");
 	P.s("I wasn't planning to come but...");
 	P.s("I found out that I had time to visit");
@@ -74,20 +86,26 @@ async function start_home1() {
         	P.s(msg);
         	P.s("I asked you - please only feed him his food");
         	P.s("He won't eat his food if you feed him something-");
-        	Gm.s("Raising your voices against me again?");
+        	Gm.s("Are you raising your voices against me?");
         	Gm.s("You asked me - and I told you");
         	Gm.s("This thing was always your responsibility");
-        	P.s("Is it so hard not giving him some of our food?");
-        	Gm.s("Hey, whenever I'm eating something");
+        	P.s("Is not giving him some of our food so hard?");
+        	Gm.s("Hey, whenever there's food");
         	Gm.s("He's always there in my way");
-        	P.s("But I asked you please - multiple times!");
-        	Gm.s("And who takes care of him when you're neglecting your responsibilty?");
-        	P.s("That's because-");
-        	Gm.s("Because you're busy. Ha of course");
-        	Gm.s("Compare to this old, nothing in her hands-");
-        	P.s("Okay")
+        	Gm.s("And who's the one who takes care of him while you're not here?");
+        	P.s("Okay");
         	P.s("I'm sorry grandma");
         	P.s("I'm sorry");
+        	P.s("I've been so busy for the past couple of weeks...");
+        	Gm.s("Of course");
+        	Gm.s("I can always take care of him while you're in school");
+        	Gm.s("But you're a college student now. You should learn how to be thankful");
+        	P.s("I am...");
+        	Gm.s("So you're not gonna take it to a hospital?");
+        	P.s("I'll try to feed him eat");
+        	P.s("He'll be okay...");
+        	P.s("You're okay, right?");
+        	P.s("You should really start eating your food, not staring at ours");
         	C.hide();
         	home1_1();
         },
@@ -112,9 +130,14 @@ async function start_home1() {
 }
 
 function home1_1() {
+
+	
 	Q.wait(2000);
 	Q.do(clearMsg);
-
+	Q.do(function(){blackout.visible = true;});
+	Q.wait(3000);
+	Q.do(function(){blackout.visible = false;});
+	Q.wait(3000);
 	P.t("Wait...");
 	P.t("It's already 8 o'clock?");
 	P.t("So...");
@@ -123,7 +146,8 @@ function home1_1() {
 	P.t("Taking out time to eat, sleep, take a shower, get to school and et cetera...");
 	P.t("That's like less than 6 hours");
 	P.t("And the time is ticking as I have this simulation going on my head");
-	P.t("tick-tock")
+	P.t("tick-tock-tick-tock");
+	Q.wait(1000);
 	P.t("...");
 	P.t("I wonder if what I do for the next few hours will have any impact on the result at all");
 	P.t("I mean... It's a final exam right?");
@@ -161,7 +185,7 @@ function home1_1() {
 	    	$.straightforward = true;
 	    	P.t(msg);
 	    	P.t("What am I even thinking about?");
-	    	P.t("There is a test tomorrow, ergo I study today");
+	    	P.t("There is a test tomorrow, so I study today");
 	    	P.t("Nothing ever gets in between");
 	    	P.t("That's the way it's always been");
 	    	P.t("and that's the way it'll always be");
@@ -172,6 +196,12 @@ function home1_1() {
 }
 
 function home1_2(){
+	Q.wait(500);
+	Q.do(function(){
+		resources.door_open.sound.play();
+	})
+	Q.wait(3000);
+
 	if($.rude){
 		Gm.s("Hey");
 		P.s("Yes?");
@@ -234,6 +264,8 @@ function home1_3(){
 	P.s("I have to leave tomorrow morning to take a test");
 	P.s("I have to stay there for a while because I have to attend classes and take the tests...");
 	Q.wait(1000);
+	Gm.s("What are you gonna do about him then?");
+	Q.wait(1000);
 	P.s("In 6 days...");
 	P.s("It'll be over")
 	P.s("I'll be home right away");
@@ -270,13 +302,15 @@ function home1_4(){
 
 	Gm.s("So you're leaving tomorrow morning?");
 	Gm.s("You'll have breakfast right?");
-	P.s("I will");
+	P.s("No... I have to leave early");
 	Gm.s("Okay");
 	Gm.s("Good night");
 	P.s("Good night");
 
-	//Grandma leaves
-	Q.wait(1000);
+	Q.do(function(){
+		resources.door_close.sound.play();
+	})
+	Q.wait(4000);
 	P.t("Oh...");
 	Q.wait(1000);
 	P.t("I should have known...");
@@ -290,7 +324,7 @@ function home1_4(){
 	P.t("I am...");
 	P.t("So irresponsible...");
 	P.t("So terrible...");
-
+	Q.wait(3000);
 	P.t("No...");
 	P.t("It's not...");
 	P.t("Why am I crying?");
@@ -305,14 +339,15 @@ function home1_4(){
 	P.t("And gain some weight");
 	P.t("He can get better");
 	Q.wait(1000);
-	P.t("I promise...");
-	P.t("I will take full care of you");
+	P.t("I'm sorry I can't keep your side...");
 	P.t("I promise");
-	P.t("Please take care...");
+	P.t("I will take full care of you once it's over");
+	P.t("I promise");
 
 	if(!$.denial){
 		P.t("Please hold on...");
 	}
+
 	Q.do(end_home1);
 }
 
@@ -321,6 +356,7 @@ function end_home1() {
 	Q.do(clearMsg);
 	Q.do(start_test2);
 	Q.do(function(){
+		resources.room.sound.stop();
 		blackout.visible = true;
 	});
 }

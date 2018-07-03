@@ -3,6 +3,10 @@
 //I don't want to talk to you and I don't want to let you play this game again
 
 function kicked_out(){
+    Q.wait(3000);
+    resources.twilight.sound.stop();
+    resources.room.sound.stop();
+    Q.wait(500);
 	M.s("...");
 	M.s("Dear player");
 	M.s("When I said characters");
@@ -14,7 +18,14 @@ function kicked_out(){
 	M.s("And to tell you the truth, I'm not even a real therapist");
 	M.s("So there's no real reason for you to be here anymore");
 	M.s("Good bye");
-	Q.wait(1000);
+	Q.wait(2000);
+    Q.do(function(){
+        resources.door_open.sound.play();
+    });
+    Q.wait(1000);
+    Q.do(function(){
+        resources.door_close.sound.play();
+    });
 	C.s({
         "Heyyyy! I'm sorry! let me in!": function(msg) {
             P.s(msg);
