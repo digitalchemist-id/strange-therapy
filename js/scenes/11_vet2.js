@@ -12,8 +12,8 @@ async function start_vet2(){
 	V.s("I gave him this shot a couple of days ago");
 	V.s("But it didn't spread to the body");
 	V.s("It's still lingering like a lump")
-	V.s("It means his body can't properly intake nutrition anymore");
-	V.s("Even water");
+	V.s("It means his body won't properly take nutrition in anymore");
+	V.s("Even water...");
 	C.s({
         "And what does that mean?": function(msg) {
             P.s(msg);
@@ -70,8 +70,7 @@ function vet2_1(){
 }
 
 function vet2_2(){
-	V.s("I'd say it'd be a miracle");
-	V.s("If he made it past this weekend");
+	V.s("I'd say it'd be a miracle if he made it past this weekend");
 	V.s("You need to be prepared");
 	C.s({
         "This is all my fault": function(msg) {
@@ -125,10 +124,11 @@ function vet2_2(){
 
 
 function vet2_3(){
+    Q.wait(1000);
 	V.s("What remains from this point is");
 	V.s("Very painful stuff");
-	V.s("To relieve the amount of potential pain you both suffer...");
-	V.s("You might want to consider other options");
+	V.s("To relieve the amount of potential pain you both suffer");
+	V.s("You might want to consider about other options...");
 	
 	C.s({
         "Could you mean...?": function(msg) {
@@ -157,7 +157,7 @@ function vet2_4() {
     V.s("It's an option a lot of people end up choosing");
     V.s("Even those who love their pets very much");
 	C.s({
-        "That's not happening": function(msg) {
+        "That's not gonna happen": function(msg) {
             P.s(msg);
             P.s("I could... never...");
             V.s("I understand");
@@ -165,7 +165,7 @@ function vet2_4() {
             C.hide();
             vet2_5();
         },
-        "How does it work?": function(msg) {
+        "How does it work...?": function(msg) {
         	P.s(msg);
         	P.s("Euthanaisa...");
             C.hide();
@@ -220,27 +220,29 @@ function vet2_euthanasia() {
 
 function vet2_5(){
 	if(!$.rude_to_vet){
-        Q.wait(2000);
-		V.s("Hey...");
+        Q.wait(3000);
+        V.s("Um...")
 		V.s("I remember when you first visited here with him");
-		V.s("Just to check if he's just lost or abandoned");
-		V.s("You were wearing your highschool uniform");
-		V.s("And his hair was all cut very carelessly");
-		V.s("He was already an old dog back then - 10 years old at least");
-		V.s("Now he's older");
+		V.s("You came here to check if he's just lost or abandoned");
+		V.s("You were in highschool with your friend-");
+		V.s("And he was already an old dog back then - 10 years old at least");
+		V.s("Now he's even older");
+        Q.wait(1000);
         V.s("It could be something he already had way back then");
 		V.s("Something innate");
         V.s("It must be hard for you but...");
 		V.s("I think he was lucky to have you");
 		V.s("And I think he thinks the way I do too");
 		V.s("What happens now is... what must happen");
-		V.s("You did a good job");
+		V.s("Don't...");
+        Q.wait(1000);
+        V.s("Take it too hard");
 	}
 	Q.do(end_vet2);
 }
 
 function end_vet2(){
-    Q.wait(2000);
+    Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(function(){
         resources.room_high.sound.stop();

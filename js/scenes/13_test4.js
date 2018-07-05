@@ -1,7 +1,7 @@
 //timeline = 13 June 16th Thu
 
 async function start_test4(){	
-	await sleep(2000);
+	await sleep(4000);
 	resources.room_low.sound.play();
 	resources.clock.sound.play();
 
@@ -66,7 +66,7 @@ function test4_after(){
 }
 
 function end_test4(){
-	Q.wait(2000);
+	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(start_metro3);
 	Q.do(function(){

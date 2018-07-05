@@ -1,16 +1,20 @@
 //timeline = 8 June 15th Wed
 //engineering mathematics
 
-async function start_test3(){	
-	await sleep(5000);
+async function start_test3(){
+
+	await sleep(4000);
+	
 	resources.room_low.sound.play();
 	resources.clock.sound.play();
-
 	await sleep(2000);
+	T.t("3 days later");
+	await sleep(3000);
 	blackout.visible = false;
 	bg_test.visible = true;
 	//clock ticking
 	Q.wait(500);
+	Q.do(clearMsg);
 	T.t("Question #2-2");
 	T.t("Find Laplace transform of f(t) when");
 	T.t("f(t) = sinh²(t)");
@@ -77,7 +81,7 @@ function test3_after(){
 }
 
 function end_test3(){
-	Q.wait(2000);
+	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(start_metro2);
 	Q.do(function(){

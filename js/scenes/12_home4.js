@@ -9,7 +9,6 @@ async function start_home4(){
 	Q.wait(5000);
 	P.t("...");
 	Q.wait(3000);
-	P.t("Oh...");
 	P.t("What am I going to do now?");
 	C.t({
         "I'll study": function(msg) {
@@ -25,9 +24,8 @@ async function start_home4(){
             home4_choice();
         },
         "I'll call my girlfriend": function(msg) {
-            P.t(msg);
             C.hide();
-            if($.not_nice_to_gf < 2 || !$.gf_told){
+            if($.not_nice_to_gf < 2 || $.gf_told){
                 home4_gf_call();
             } else {
             	Q.wait(8000);
@@ -127,7 +125,7 @@ function home4_gf_call(){
 	Gf.s("Oh yeah...");
 	Gf.s("Your test...");
 	Gf.s("What are you gonna do?");
-	Gf.s("I mean, it's something you can't avoid");
+	Gf.s("I mean, it's something you can... not take");
 	Gf.s("You ARE gonna go take it right?");
 	C.s({
         "What should I do?": function(msg) {
@@ -144,7 +142,7 @@ function home4_gf_call(){
             P.s("...");
             Gf.s("It won't happen");
             Gf.s("Maybe you're thinking too much");
-            Gf.s("You'll be okay honey");
+            Gf.s("You'll be okay baby");
             Gf.s("You'll be okay");
             C.hide();
             end_home4();
@@ -193,15 +191,18 @@ function home4_gf_call(){
 }
 
 function home4_grandma(){
+    Q.wait(3000);
 	Gm.s("You're back?");
 	Gm.s("How are you?");
 	Gm.s("And how is it?");
 	P.s("Grandma...");
 	Gm.s("Are you...");
+    Q.wait(2000);
 	Gm.s("Is something wrong?");
 	P.s("I just came back from hospital");
 	P.s("He won't live past this weekend");
 	Gm.s("...");
+    Q.wait(1000);
 	Gm.s("We all gotta leave one day");
 	Gm.s("Why don't you let it rest in peace by itself?");
 	P.s("I'm gonna keep his side no matter what");
@@ -210,6 +211,7 @@ function home4_grandma(){
 	P.s("It's not yet");
 	P.s("But that's not important");
 	Gm.s("Oh honey...");
+    Q.wait(1000);
 	Gm.s("No");
 	Gm.s("Don't do that");
 	Gm.s("Don't do that to yourself");
@@ -229,10 +231,11 @@ function home4_grandma(){
 	Gm.s("I do");
 	Gm.s("I always have schedules");
 	Gm.s("But if you'd ask, I can always cancel them");
-	Gm.s("I'm always here for you honey");
+    Q.wait(1000);
+	Gm.s("I'm always here for you");
 	Gm.s("All you need to do is");
-	Gm.s("Just reach out");
-	Gm.s("Which you never seemed to be good at");
+	Gm.s("Just reach out-");
+	Gm.s("Something you never seemed to be good at");
 	P.s("...");
 	Gm.s("It's the least I can do");
 	Gm.s("I still think it's the best if we'd let it rest by itself");
@@ -246,7 +249,7 @@ function home4_grandma(){
 }
 
 function end_home4(){
-    Q.wait(2000);
+    Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(function(){
         resources.room.sound.stop();

@@ -1,7 +1,7 @@
 //timeline = 14 June 16th Thu
 
 async function start_metro3(){	
-    await sleep(2000);
+    await sleep(3000);
     resources.metro_inside.sound.play();
 
 	await sleep(2000);
@@ -23,7 +23,7 @@ function metro3_friend_told(){
 	Q.do(function(){
 		resources.phone_vib.sound.play();
 	});
-	Q.wait(1000);
+	Q.wait(2000);
 
 	C.t({
         "[Check message]": function(msg) {
@@ -86,10 +86,11 @@ function metro3_friend_told_check(){
 }
 
 function metro3_friend_untold(){
+    Q.wait(3000);
 	Q.do(function(){
 		resources.phone_vib.sound.play();
 	});
-	Q.wait(1000);
+	Q.wait(2000);
 
 	C.t({
         "[Check message]": function(msg) {
@@ -165,7 +166,7 @@ function metro3_gf_check(){
 	Gf.s("I'm home");
 	Gf.s("Since I have to pack my stuff for summer");
 	Gf.s("Today's like the last chane we can meet...");
-	Gf.s("Can I visit?");
+	Gf.s("Should I visit?");
 	Gf.s("What would you like me to do?");
 	C.s({
         "Good bye": function(msg) {
@@ -179,10 +180,10 @@ function metro3_gf_check(){
         "I'll call you later": function(msg) {
             P.s(msg);
             P.s("I first need to go home and");
-            P.s("Check");
+            P.s("See if...");
             Gf.s("Okay");
             Gf.s("It'll be alright");
-            Gf.s("I'll wait");
+            Gf.s("I'll wait for your call");
             C.hide();
             end_metro3();
         },
@@ -195,7 +196,7 @@ function metro3_gf_check(){
 }
 
 function end_metro3(){
-	Q.wait(2000);
+	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(start_outro);
 	Q.do(function(){

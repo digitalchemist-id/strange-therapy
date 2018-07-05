@@ -4,9 +4,11 @@
 
 function kicked_out(){
     Q.wait(3000);
-    resources.twilight.sound.stop();
-    resources.room.sound.stop();
-    Q.wait(500);
+    Q.do(function(){
+        resources.twilight.sound.stop();
+        resources.room.sound.stop();
+    });
+    Q.wait(2000);
 	M.s("...");
 	M.s("Dear player");
 	M.s("When I said characters");
@@ -16,6 +18,7 @@ function kicked_out(){
 	M.s("You know, just spamming with the first option without even reading");
 	M.s("But you don't seem to be the type who needs a therapy - either strange or not");
 	M.s("And to tell you the truth, I'm not even a real therapist");
+    Q.wait(1000);
 	M.s("So there's no real reason for you to be here anymore");
 	M.s("Good bye");
 	Q.wait(2000);
@@ -26,6 +29,7 @@ function kicked_out(){
     Q.do(function(){
         resources.door_close.sound.play();
     });
+    Q.wait(2000);
 	C.s({
         "Heyyyy! I'm sorry! let me in!": function(msg) {
             P.s(msg);

@@ -51,7 +51,7 @@ async function start_home1() {
 	P.s("How has he lost so much weight?");
 	P.s("Has he not been eating again?");
 	Gm.s("It seemed not to, I guess");
-	P.s("But I never saw him get this skinny");
+	P.s("But I don't think I saw him get this skinny");
 	P.s("Have you been feeding him something other than his food again?");
 	Gm.s("Hey, you're the one who's responsible for it");
 	Gm.s("I'm the one who's helping you");
@@ -62,7 +62,6 @@ async function start_home1() {
 	Gm.s("Maybe you should take it to a vet");
 	C.s({
         "Oh come on, he's not sick": function(msg) {
-        	$.denial = true;
         	P.s(msg);
         	P.s("He's just... not very appetitive for now");
         	P.s("He has lost and gained weight before");
@@ -72,7 +71,7 @@ async function start_home1() {
         	P.s("Grandma...");
         	Gm.s("If you're too busy I can take it this Friday");
         	P.s("Will you do that?");
-        	Gm.s("I always take it to a walk on Fridays");
+        	Gm.s("I always take it to the mountain on Fridays");
         	Gm.s("I'll just visit the vet's office on the way home");
         	P.s("Thanks grandma");
         	P.s("He'll be okay");
@@ -117,7 +116,7 @@ async function start_home1() {
         	Gm.s("Didn't you say you were very busy?");
         	Gm.s("I can take it to see a vet if you want");
         	P.s("Oh will you do that for me?");
-        	Gm.s("I always take it to a walk on Fridays");
+        	Gm.s("I always take it to the mountain on Fridays");
         	Gm.s("I'll just visit the vet's office on the way home");
         	P.s("Thanks grandma");
         	P.s("He'll be okay");
@@ -166,7 +165,7 @@ function home1_1() {
 	    	P.t(msg);
 	    	P.t("I mean, what's the point of hanging on everything so tight?");
 	    	P.t("What will happen is... what's gotta happen");
-	    	P.t("I probably won't have to torture myself trying to not waste a single minute");
+	    	P.t("I probably won't have to torture myself trying not to waste a single minute");
 	    	C.hide();
 	    	home1_2();
 	    },
@@ -216,7 +215,11 @@ function home1_2(){
 	} else {
 		Gm.s("Sweetie");
 		Gm.s("Are you studying?");
-		P.s("Yeah");
+		if($.destiny){
+			P.s("Uhh... I was");
+		} else {
+			P.s("Yeah");
+		}
 		P.s("You're coming from the vet's office right?");
 	}
 
@@ -265,40 +268,74 @@ function home1_3(){
 	P.s("I have to stay there for a while because I have to attend classes and take the tests...");
 	Q.wait(1000);
 	Gm.s("What are you gonna do about him then?");
-	Q.wait(1000);
-	P.s("In 6 days...");
-	P.s("It'll be over")
-	P.s("I'll be home right away");
-	P.s("I'll take him to the vet when I get here");
-	P.s("Can you take care of him instead of me meanwhile?");
+	C.s({
+        "...": function(msg) {
+        	P.s(msg);
+        	P.s("What... should I do?");
+        	Gm.s("How long will it take?");
+        	P.s("What?");
+        	Gm.s("For how long will you be busy?");
+        	P.s("It'll be all over in 6 days...");
+        	Gm.s("I can take care of him meanwhile");
+        	Gm.s("Don't worry about him");
+        	Gm.s("You have a job to do don't you?");
+        	P.s("I...");
+        	C.hide();
+        	home1_4();
+    	},
+        "In 6 days...": function(msg) {
+        	P.s(msg);
+			P.s("In 6 days...");
+			P.s("It'll be over");
+			P.s("I'll be home right away");
+			P.s("I'll take him to the vet when I get here");
+			P.s("Can you take care of him instead of me meanwhile?");
+			Gm.s("Okay");
+        	C.hide();
+        	home1_4();
+     	},
+        "He'll be okay": function(msg) {
+        	$.denial = true;
+        	P.s(msg);
+        	P.s("Don't worry about him");
+        	P.s("He'll eat again when he gets hungry");
+        	P.s("I'll take him to hospital next week to hear the results");
+        	Gm.s("If you say so...");
+        	C.hide();
+        	home1_4();
+     	}
+    });	
+}
 
-	Gm.s("Okay");
-	Gm.s("But you know this right?");
+function home1_4(){
+	Q.wait(1000);
+	Gm.s("Just keep in mind that...");
 	Gm.s("We have to be ready for what's coming");
+	Gm.s("He won't live forever");
 
 	C.s({
         "He can get better": function(msg) {
         	P.s(msg);
         	P.s("He's not-");
         	C.hide();
-        	home1_4()
+        	home1_5();
     	},
         "He WILL get better": function(msg) {
         	P.s(msg);
         	P.s("He's NOT-");
         	C.hide();
-        	home1_4()
+        	home1_5();
      	},
         "Grandma...": function(msg) {
         	P.s(msg)
         	C.hide();
-        	home1_4()
+        	home1_5();
      	}
     });	
 }
 
 
-function home1_4(){
+function home1_5(){
 
 	Gm.s("So you're leaving tomorrow morning?");
 	Gm.s("You'll have breakfast right?");
@@ -311,40 +348,35 @@ function home1_4(){
 		resources.door_close.sound.play();
 	})
 	Q.wait(4000);
-	P.t("Oh...");
-	Q.wait(1000);
-	P.t("I should have known...");
-	P.t("Why was I so stupid?");
-	P.t("Why am I so careless?");
-	P.t("I should have known the last time I saw him");
-	P.t("I just thought he had lost a bit of weight");
-	P.t("Why didn't I take him to a vet?");
-	P.t("Why didn't I ever even think of the possiblity");
-	P.t("That he could be sick?");
-	P.t("I am...");
-	P.t("So irresponsible...");
-	P.t("So terrible...");
-	Q.wait(3000);
-	P.t("No...");
-	P.t("It's not...");
-	P.t("Why am I crying?");
-	P.t("I don't even know how bad he is yet...");
-	P.t("For now from what I've heard");
-	P.t("It could just be lack of nutrition");
-	if(!$.careful){
-		P.t("It's gotta be");
-	}
-	Q.wait(1000);
-	P.t("If he regains his appetite");
-	P.t("And gain some weight");
-	P.t("He can get better");
-	Q.wait(1000);
-	P.t("I'm sorry I can't keep your side...");
-	P.t("I promise");
-	P.t("I will take full care of you once it's over");
-	P.t("I promise");
-
 	if(!$.denial){
+		P.t("Oh...");
+		Q.wait(1000);
+		P.t("Why was I so stupid?");
+		P.t("Why am I so careless?");
+		P.t("The last time I saw him-");
+		P.t("I just thought he had lost a bit of weight");
+		P.t("Why didn't I ever even think of the possiblity that he could be sick?");
+		Q.wait(1000);
+		P.t("I am...");
+		P.t("So irresponsible...");
+		P.t("So terrible...");
+		Q.wait(3000);
+		P.t("No...");
+		P.t("It's not...");
+		P.t("I don't even know how bad he is yet...");
+		P.t("For now from what I've heard");
+		P.t("It could just be lack of nutrition");
+		if(!$.careful){
+			P.t("It's gotta be");
+		}
+		Q.wait(1000);
+		P.t("If he regains his appetite and gain some weight");
+		P.t("He can get better");
+		Q.wait(1000);
+		P.t("I'm sorry I can't keep your side...");
+		P.t("I promise");
+		P.t("I will take full care of you once it's over");
+		P.t("I promise");
 		P.t("Please hold on...");
 	}
 
@@ -352,7 +384,7 @@ function home1_4(){
 }
 
 function end_home1() {
-	Q.wait(2000);
+	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(start_test2);
 	Q.do(function(){

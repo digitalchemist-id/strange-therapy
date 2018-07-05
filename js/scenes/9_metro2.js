@@ -14,7 +14,7 @@ async function start_metro2(){
 	P.t("Must've been hell lot");
 	Q.wait(1000);
 	P.t("But somehow I never get tired of staring at this view");
-	Q.wait(1000);
+	Q.wait(2500);
     Q.do(function(){
         resources.phone_vib.sound.play();
     });    
@@ -72,11 +72,10 @@ function metro2_gf_sthwrong(){
 	if(!$.gf_texted){
 		Gf.s("You wouldn't text me...");
 	} else {
-		Gf.s("Last time it seemed like you had something important to tell me");
+		Gf.s("Last time it seemed like you had something to tell me");
 		Gf.s("What is it?");
 	}
-	Gf.s("I know you're busy but");
-	Gf.s("Is everything alright?");
+	Gf.s("I know you're busy but... is everything alright?");
 	C.s({
         "Yeah. I'm just too busy": function(msg) {
         	$.not_nice_to_gf++;
@@ -85,6 +84,7 @@ function metro2_gf_sthwrong(){
             	P.s("It was nothing important");
             }
             Gf.s("You could have at least-");
+            Gf.s("You do know that I'm leaving to California in 3 days right?");
             Gf.s("You know what? nevermind...");
             Gf.s("Let's talk tomorrow");
             Gf.s("When your finals are over");
@@ -105,7 +105,7 @@ function metro2_gf_sthwrong(){
         "[don't reply]": function(msg) {
         	$.not_nice_to_gf++;
             P.t("...");
-            P.t("I don't have time for you");
+            P.t("I don't think I have time for a conversation right now...");
             P.t("Sorry");
             C.hide();
             end_metro2();
@@ -128,6 +128,9 @@ function metro2_gf_sthwrong_why(){
             Gf.s("Do you see the point in us dating?");
             P.s("That's different");
             Q.wait(1000);
+            Gf.s("You do know that I'm leaving to California in 3 days right?");
+            P.s("Yeah");
+            Q.wait(2000);
             Gf.s("I'll text you later");
             P.s("Okay");
             C.hide();
@@ -138,7 +141,7 @@ function metro2_gf_sthwrong_why(){
             P.s("I was just... too out of my mind");
             P.s("Things happened too quickly for me to keep track");
             P.s("I'm sorry");
-            Gf.s("It's okay...");
+            Gf.s("...");
             Gf.s("It must have been really hard for you");
             Gf.s("Is he okay?");
             P.s("Yeah. He's getting better");
@@ -178,7 +181,7 @@ function metro2_gf_msg_choose(){
     C.s({
         "I can't really leave his side for now...": function(msg) {
             P.s(msg);
-            P.s("Sorry");
+            P.s("I'm sorry... I really want to see you before you...");
             Gf.s("Don't worry");
             Gf.s("Of course I understand");
             Gf.s("It'll be fine");
@@ -187,9 +190,10 @@ function metro2_gf_msg_choose(){
             C.hide();
             end_metro2();
         },
-        "I think I will": function(msg) {
+        "Yeah, let's": function(msg) {
             P.s(msg);
-            P.s("He's getting better so");
+            P.s("I mean, we should see each other at least once before you leave");
+            P.s("And my dog's getting better so...");
             P.s("Spending like an hour outside... I think it'll be okay");
             Gf.s("That's great");
             Gf.s("I'll see you tomorrow then");
@@ -199,14 +203,15 @@ function metro2_gf_msg_choose(){
         },
         "Could you visit?": function(msg) {
             P.s(msg);
-            P.s("I don't think I can leave him alone while I'm with you");
-            P.s("So it'd be nice if you visit");
-            P.s("See each other and talk");
+            P.s("I mean, we should see each other at least once before you leave");
+            P.s("But I don't think I can leave him alone while I'm with you");
+            P.s("So... it'd be nice if you visit");
+            P.s("Spend some time together you know...");
             Gf.s("Yeah");
-            Gf.s("I mean, I said I would visit so");
+            Gf.s("I mean, I said I would visit right?");
             Gf.s("I'll go to your place");
             Gf.s("Maybe we can take him outside if he's in a good condition");
-            Gf.s("Getting some air might help him");
+            Gf.s("Getting him some air might help");
             P.s("Maybe");
             C.hide();
             end_metro2();
@@ -215,7 +220,7 @@ function metro2_gf_msg_choose(){
 }
 
 function end_metro2(){
-	Q.wait(2000);
+	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(function(){
         resources.metro_inside.sound.stop();

@@ -131,7 +131,7 @@ Message.prototype.draw = function() {
 
 Message.prototype.panic = function() {
 
-    Q.queue += 5;//panic
+    Q.queue += 4;//panic
     Q.canSkip = false;//unskippable
     pushHeight = this.textMetrics.height + 25;
     pushCount = this.textMetrics.height + 24; // - 1 to prevent pushing further

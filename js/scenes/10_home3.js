@@ -12,7 +12,14 @@ async function start_home3(){
 	blackout.visible = false;
 
 	P.s("I'm home!");
-	//enter my room
+	Q.wait(1000);
+	Q.do(function(){
+		resources.door_open.sound.play();
+	});
+	Q.wait(1500);
+	Q.do(function(){
+		resources.door_close.sound.play();
+	});
 	Q.wait(2000);
 	P.t("Huh?");
 	P.t("Where did he...?");
@@ -29,8 +36,9 @@ async function start_home3(){
 	P.s("Hmm");
 	P.s("It's okay");
 	P.s("I'll just go clean it up");
-	Q.wait(2000);
+	Q.wait(3000);
 	P.s("...");
+	Q.wait(2000);
 	P.s("Wait...");
 	Q.do(function(){
 		resources.room.sound.stop();
@@ -71,15 +79,19 @@ async function start_home3(){
 	P.s("I'll clean this up and...");
 	P.s("And I'll prepare so you can eat");
 	//leave room
-	Q.wait(1500);
+	Q.wait(1000);
+	Q.do(function(){
+		resources.door_open.sound.stop();
+	});
+	Q.wait(2500);
 	Q.do(function(){
 		resources.dog_pain.sound.play();
 	});
-	Q.wait(500);
-	//hear screaming
+	Q.wait(2000);
 	P.s("What's wrong??");
 	P.s("WHAT'S HAPPENING???");
 	P.s("Oh no");
+	P.s("No... No...");
 	P.s("It's okay...");
 	P.s("It's okay....");
 	P.s("I should...");
@@ -97,7 +109,7 @@ async function start_home3(){
 }	
 
 function home3_panic(){
-	P.panic("But this is not happening");
+	P.panic("This is not happening");
 	P.panic("Take him to hospital");
 	P.panic("Is he gonna die?");
 	P.panic("Was he like this when I was gone?");
@@ -122,7 +134,7 @@ function home3_panic(){
 	});
 	Q.wait(400);
 	P.panic("Take him to hospital");
-	Q.wait(400);
+	Q.wait(300);
 	P.panic("No");
 	Q.do(function(){
 		blackout.visible = false;
@@ -146,7 +158,7 @@ function home3_panic(){
 	});
 	Q.wait(800);
 	P.panic("Take him to hospital");
-	Q.wait(800);
+	Q.wait(600);
 	P.panic("What?");
 	Q.do(function(){
 		blackout.visible = false;
@@ -163,17 +175,16 @@ function home3_panic(){
 function home3_not_panic(){
 	P.t("The first step...");
 	P.t("I remember...");
-	P.t("Don't panic...");
 	P.t("No...");
 	P.t("");
 	Q.do(home3_panic);
 }
 
 function end_home3(){
-	Q.wait(2000);
+	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(function(){
-		resources.dog_panic.sound.stop();
+		resources.dog_pain.sound.stop();
 		blackout.visible = true;
 	});
 	Q.do(start_vet2);

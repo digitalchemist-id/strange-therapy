@@ -51,10 +51,8 @@ function test1_choose(){
 		P.t("Now this question is pretty straightforward");
 		P.t("It's asking out of the two compounds");
 		P.t("Which boils at higher temperature?");
-		P.t("And of course these two compounds have same formula - C5H12");
-		P.t("They differ by structure");
-		P.t("Structure affect attraction in a kind of way that");
-		P.t("More surface area leads to more attraction");
+		P.t("And of course these two compounds have same formula - C5H12 - they differ by structure");
+		P.t("Structure affect attraction in a kind of way that more surface area leads to more attraction");
 		P.t("Pentane is chain-shaped and the other one is ball-shaped");
 		P.t("So out of the two the one with higher boiling point is...");
 	}
@@ -118,7 +116,7 @@ function test1_after(){
 }
 
 function end_test1(){
-	Q.wait(2000);
+	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(start_metro1);
 	Q.do(function(){

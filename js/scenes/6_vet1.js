@@ -7,19 +7,20 @@ async function start_vet1() {
 	//loader
 	await sleep(2000);
 	blackout.visible = false;
-	
-	P.t("He...");
-	P.t("He doesn't seem too bad");
-	P.t("What a relief...");
-	P.t("I was so worried...");
 	Q.wait(1000);
-	V.s("You're...");
-	V.s("He's your dog right?");
+    Q.do(function(){
+        resources.dog_whine.sound.play();
+    });
+    Q.wait(2500);
+	P.t("He...");
+	P.t("He seems okay...");
+    P.t("What a relief...");
+	Q.wait(1000);
+    V.s("Came to pick him up?");
 	P.s("Yes");
-	P.s("I've come to pick him up");
 	V.s("Your grandma said you were busy");
-	V.s("Yet you're here so early");
-	V.s("Did you come because you were so worried?");
+	V.s("Yet you're here so early-");
+	V.s("You must have been so worried");
 	C.s({
         "That's none of your business": function(msg) {
             $.rude_to_vet = true;
@@ -29,20 +30,21 @@ async function start_vet1() {
             Q.wait(1000);
             V.s("Now about your dog...");
             C.hide();
-            vet1_about()
+            vet1_about();
         },
         "Is he okay?": function(msg) {
             P.s(msg);
             C.hide();
-            vet1_about()
+            vet1_about();
         },
-        "I just had to come...": function(msg) {
+        "I just had to come": function(msg) {
             P.s(msg);
+            V.s("Well...");
             V.s("I understand");
             Q.wait(1000);
             V.s("About him...");
             C.hide();
-            vet1_about()
+            vet1_about();
         }
     });
 }
@@ -93,7 +95,7 @@ function vet1_about(){
             P.s("Yes");
             V.s("Well...");
             V.s("He can");
-            P.t("Whew...");
+            P.s("Whew...");
             C.hide();
             vet1_about_2();
         },
@@ -111,9 +113,11 @@ function vet1_about_2(){
     V.s("Can be eliminated through a surgery");
     V.s("He has to go through X-rays, ultrasounds and other stuff like that to find out what exactly causes his symptom");
     V.s("With your consent, that is");
+    Q.wait(1500);
     V.s("But right now...");
     V.s("There are other issues");
     P.s("What kind of other issues?");
+    Q.wait(1000);
     V.s("The reason he had to be hospitalized");
     V.s("is because he was dehydrated and malnourished");
     V.s("He was injected with Ringer's solution overnight-");
@@ -161,10 +165,8 @@ function vet1_about_2(){
         "How much will... treatment cost?": function(msg) {
         	$.realistic = true;
             P.s(msg);
-            V.s("X-ray and ultrasound each cost about");
-            V.s("-----");
-            V.s("Surgery cost will vary");
-            V.s("from ----- to -----");
+            V.s("X-ray and ultrasound each cost about -----");
+            V.s("Surgery cost will vary - from ----- up to -----");
             P.s("...");
             Q.wait(2000);
             V.s("All this potential cost makes you worry, I understand that...");
@@ -188,7 +190,7 @@ function vet1_about_2(){
 
 
 function end_vet1(){
-	Q.wait(2000);
+	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(start_home2);
 	Q.do(function(){

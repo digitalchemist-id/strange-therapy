@@ -4,10 +4,10 @@
 
 async function start_outro(){	
 
-	await sleep(3000);
+	await sleep(4000);
 	resources.room.sound.play();
 	resources.twilight.sound.play();
-	await sleep(3000);
+	await sleep(4000);
 	blackout.visible = false;
 	//config
 
@@ -46,7 +46,7 @@ async function start_outro(){
             P.s("I donno");
             P.s("I was expecting... more");
             M.s("Huh");
-            M.s("And I thought THIS was long enouogh");
+            M.s("And I thought THIS was long enough");
             C.hide();
             outro_thoughts();
         },
@@ -125,6 +125,7 @@ function outro_questions_what_happened(){
     P.s("Or what could have happened");
     P.s("But what happened? like REALLY");
     P.s("Were my choices as good as yours... or other way around?");
+    Q.wait(1000);
     M.s("That's an interesting question");
     M.s("About my choices...");
     M.s("They don't matter. Remember that you're the player in this game-");
@@ -138,8 +139,9 @@ function outro_questions_what_happened(){
     P.s("Don't be like that");
     M.s("Hm");
     M.s("If you'd let me continue-");
+    Q.wait(1000);
     M.s("This game is based on my memory");
-    M.s("And a four page document log I happened to write the night after his death...");
+    M.s("And a four page log I happened to write the night after his death...");
     M.s("AND some other archived files");
     M.s("I wanted this experience to be as accurate as possible");
     M.s("Because it'd be also as cruel");
@@ -149,6 +151,7 @@ function outro_questions_what_happened(){
     M.s("So... they can be inaccurate");
     P.s("That's understandable");
     P.s("I won't criticize you for that");
+    Q.wait(1000);
     M.s("I also made decisions about what to put in the game and what to not");
     M.s("For example, my parents - who were living overseas at the time");
     M.s("I didn't put them in the story, even though they played a role like supporting me financially");
@@ -156,6 +159,7 @@ function outro_questions_what_happened(){
     M.s("So few options that would make this game extra boring and long were sacrificed for the storytelling issues");
     M.s("This game has enough boredom and length already");
     P.s("Huh");
+    Q.wait(1000);
     M.s("Even though you generally had fewer choices than I did-");
     M.s("I also I made you choose the things I wouldn't");
     M.s("And the things I couldn't");
@@ -258,6 +262,7 @@ function outro_questions_tests(){
 			M.s("Okay... Nevermind");
 			break;
 	}
+	Q.wait(1000);
 	P.s("But seriously, I can't believe you made me solve chemistry puzzles");
 	P.s("What kind of game makes you do that?");
 	P.s("You should make a game that players want to play, not a game that you wanna make");
@@ -319,7 +324,7 @@ function outro_questions_game_over(){
     P.s("I thought you said this games was about loss, life, love and hope");
     P.s("While you could argue that the story did contain a little bit of all four-");
     P.s("It was mostly about your loss");
-    P.s("What happened to life, love and hope?");
+    P.s("What happened to love, life and hope?");
     M.s("About that...");
     M.s("You have a few more stories to hear");
     P.s("Woah...");
@@ -337,7 +342,6 @@ function outro_questions_game_over(){
 	            outro_move_on();
 	        }
     	});
-    	outro_move_on();
     } else if($.outro_what_happened_asked){
 	    M.s("But before we move on, feel free to ask me if there's anything more you wanna ask");
 	    	C.s({
@@ -428,18 +432,19 @@ function outro_move_on_choose(){
 		    });
 		} else {
 			C.s({
+				"Tell me about love": function(msg) {
+		            $.love_told = true;
+		            P.s(msg);
+		            C.hide();
+		            outro_love();
+		        },
 		        "Tell me about life": function(msg) {
 		        	$.life_told = true;
 		            P.s(msg);
 		            C.hide();
 		            outro_life();
-		        },
-		        "Tell me about love": function(msg) {
-		            $.love_told = true;
-		            P.s(msg);
-		            C.hide();
-		            outro_love();
 		        }
+		        
 		    });
 		}
 	} else if($.hope_asked) {
@@ -483,17 +488,17 @@ function outro_move_on_choose(){
 		    });
 		} else {
 			C.s({
+				"Tell me about love": function(msg) {
+		            $.love_told = true;
+		            P.s(msg);
+		            C.hide();
+		            outro_love();
+		        },
 		        "Tell me about life": function(msg) {
 		        	$.life_told = true;
 		            P.s(msg);
 		            C.hide();
 		            outro_life();
-		        },
-		        "Tell me about love": function(msg) {
-		            $.love_told = true;
-		            P.s(msg);
-		            C.hide();
-		            outro_love();
 		        },
 		        "Tell me about hope": function(msg) {
 		            $.hope_asked_again = true;
@@ -544,17 +549,17 @@ function outro_move_on_choose(){
 		    });
 		} else {
 			C.s({
+				"Tell me about love": function(msg) {
+		            $.love_told = true;
+		            P.s(msg);
+		            C.hide();
+		            outro_love();
+		        },
 		        "Tell me about life": function(msg) {
 		        	$.life_told = true;
 		            P.s(msg);
 		            C.hide();
 		            outro_life();
-		        },
-		        "Tell me about love": function(msg) {
-		            $.love_told = true;
-		            P.s(msg);
-		            C.hide();
-		            outro_love();
 		        },
 		        "Tell me about hope": function(msg) {
 		            $.hope_asked = true;
@@ -575,14 +580,12 @@ function outro_life(){
 	M.s("I spent that night with the box next to me");
 	P.s("...");
 	M.s("It felt very... unreal");
+	Q.wait(1000);
 	M.s("The next morning I was picked up by a black sedan");
 	M.s("It took me to the cremation site");
 	M.s("I followed their procedures");
 	M.s("I gave them his body and received his ashes");
-	// M.s("That last moment when I handed his body to them");
-	// M.s("The moment that I knew would be the last time I see him...");
-	// M.s("I remember that moment like a photograph");
-	// M.s("He looked like he was the most beautiful doll I've ever seen");
+	Q.wait(1500);
 	M.s("After that I went back to my rented room near school instead of my parent's house");
 	M.s("Days passed...");
 	M.s("And weeks passed");
@@ -628,6 +631,7 @@ function outro_life(){
 }
 
 function outro_life_1(){
+	Q.wait(2000);
 	M.s("After about two months...");
 	M.s("I got a call from my old friends");
 	M.s("The friends that I didn't have a chance to meet often since I got into college");
@@ -640,6 +644,7 @@ function outro_life_1(){
 	M.s("And I did that");
 	M.s("And over time I knew I was feeling better");
 	M.s("Still guilty - but better");
+	Q.wait(1000);
 	M.s("I was able to sleep in my parent's home again");
 	M.s("I spent time with my grandma again");
 	if($.not_nice_to_gf < 2){
@@ -650,13 +655,15 @@ function outro_life_1(){
 	}
 	P.s("Life went on didn't it?");
 	M.s("Life went on");
+	Q.wait(1500);
 	M.s("2 years passed since all this happened");
 	M.s("I had to get a knee surgery from my childhood injury recently");
 	M.s("I had to stay in bed for months so I took off a semester from school");
-	M.s("With a lot of time in my hands, I often looked back to two years ago");
-	M.s("The dark times... and a story");
+	M.s("With a lot of time in my hands, I'd think about how I want to live my life - and I'd also look back to the past");
+	M.s("To the dark times... and a story");
 	M.s("A story that I've never told anyone about");
 	M.s("A story that I've put behind but also keep looking back");
+	Q.wait(1500);
 	M.s("So I decided to open up a fake therapy session-");
 	M.s("And waited for someone to visit and listen");
 	P.s("That person is me?");
@@ -665,16 +672,18 @@ function outro_life_1(){
 	M.s("While this story of mine doesn't have an end");
 	M.s("I wanted to leave something like a milestone");
 	M.s("And when I do that I really wanted to tell him... thank you");
-	M.s("I'm not sure if you felt the same way but");
+	Q.wait(1000);
 	M.s("The most terrible outcome of this story I could possibly think of-");
 	M.s("Was returning home and finding out that he had died while I was away for the tests");
 	M.s("I already failed to keep his side once. That happening would make it way more than twice");
+	Q.wait(1000);
 	M.s("So... thank you for not letting that happen");
 	M.s("Thank you for giving me some time to say goodbye");
 	M.s("Thank you for giving me... your death");
 	M.s("Thank you for reminding me of the simple wisdom - that whatever you gain, you must lose one day");
 	C.s({
         "What about the experiences?": function(msg) {
+        	$.experiences = true;
             P.s(msg);
             P.s("I don't think we just lose everything we gain");
             P.s("Experiences remain and affect us on how we behave");
@@ -690,6 +699,7 @@ function outro_life_1(){
             outro_move_on_choose();
         },
         "What about the feelings?": function(msg) {
+        	$.feelings = true;
             P.s(msg);
             P.s("Even if we eventually lose everything we gain");
             P.s("The feelings we go through - happiness, sadness, pain, love...");
@@ -706,6 +716,7 @@ function outro_life_1(){
             outro_move_on_choose();
         },
         "How touching...": function(msg) {
+        	$.lessons = true;
             P.s(msg);
             P.s("That's quite a life lesson you got there");
             M.s("Um-hum");
@@ -732,7 +743,8 @@ function outro_love(){
 	M.s("I was a highschool senior, and I was studying for college entrance test in the school library in a weekend");
 	P.s("Tests again?");
 	P.s("Why is your life so full of tests?");
-	M.s("I'd love to know why");
+	M.s("I'd really love to know why");
+	Q.wait(1000);
 	M.s("Anyway, I took a break and went out to drink some water from a purifier");
 	M.s("Then I saw a dog climbing down the stairs from the roof floor");
 	M.s("I still don't know how it got in to library building in the first place");
@@ -740,6 +752,7 @@ function outro_love(){
 	P.s("How high was the builing?");
 	M.s("It was like, 5 stories tall");
 	P.s("That's a mystery...");
+	Q.wait(1000);
 	M.s("I didn't know what to do so I told a friend about him");
 	M.s("He didn't know what to do so together we asked the adults");
 	M.s("And they didn't know either");
@@ -751,6 +764,7 @@ function outro_love(){
 	M.s("And I ended up calling some government organization - a ward office - for help");
 	M.s("I was really busy preparing for college entrance so I knew I wouldn't be able to take care of him");
 	M.s("They said they'll come pick him up later that night, so in the meantime I took him home and gave him something to eat");
+	Q.wait(1500);
 	M.s("Later when they came to pick him up with a truck");
 	M.s("I carried him downstairs and they told me to put him in a really small, dirty looking cage");
 	M.s("I was kind of scared of what would happen to him... but I tried to do as they said");
@@ -759,24 +773,33 @@ function outro_love(){
 	M.s("That two male adults tried to push and pull him in but he didn't even budge");
 	P.s("Was he big?");
 	M.s("He was medium-sized");
-	M.s("He was around 14kg when he was healthy");
-	M.s("He was much skinnier by the time. I still wonder where all that power came from");
-	P.s("So he chose you as his companion!");
+	M.s("He was around 14kg when he was healthy but much skinnier by the time. I still wonder where all that power came from");
+	P.s("So he chose you!");
+	P.s("You know, like a companion");
 	M.s("You could interpret it that way");
 	M.s("But now I know he's just awfully afraid of small containers. He'd never let anyone make him get inside one of those");
+	Q.wait(1500);
 	M.s("Anyway...");
 	M.s("I just couldn't watch him getting forced in, with all that resistance");
 	M.s("So I said I'll just take care of him");
 	M.s("I asked my parents about him and they said they'll help me take care of him while they're home");
 	M.s("He had been my family since then");
 	M.s("And in less than 2 years he became something important in my life");
-	M.s("Love can build from such a coincidence don't you think?");
-	//drink tea or sth
-	P.s("Hmm....");
 	Q.wait(1000);
+	M.s("Love can build from such a coincidence don't you think?");
+	M.s("I've seen more than one stray dog in my life");
+	M.s("If I hadn't taken a break and went to drink water while I was studying-");
+	M.s("If someone else had found him before I did-");
+	M.s("If he hadn't been in inside a school library building-");
+	M.s("If he wasn't afraid of being inside small containers-");
+	M.s("I wouldn't even have gotten a chance to love him like I did");
+	Q.wait(1000);
+	P.s("Hmm....");
+	Q.wait(2000);
 	M.s("The process of losing him");
 	M.s("Made me realise I loved him more than I thought I did");
 	M.s("We all suck at losing something precious to us right?");
+	Q.wait(1000);
 	M.s("To put it down in a sentence-");
 	M.s("About how much I loved him");
 	M.s("And how much I miss him");
@@ -823,29 +846,34 @@ function outro_hope(){
 	M.s("And this not-hope is important because");
 	M.s("Some things that won't happen");
 	M.s("Just will not happen");
-	M.s("I could cry hundreds of night in grief and pray thousands of days wishing that none of this would have happened");
+	M.s("I could cry hundreds of night in grief and pray thousands of days wishing for a second chance");
 	M.s("But you can't go back to fix what already had happened");
+	Q.wait(1000);
 	P.s("Er...");
 	P.s("I think when most people do that - crying or praying");
 	P.s("I know it's hard to take in and all but");
 	P.s("Don't they usually know what's impossible's just impossible?");
 	M.s("You're right");
 	M.s("But here's what I think");
+	Q.wait(1000);
 	M.s("Everyone handle grief in different ways");
 	M.s("But I think denial and compensation are essential parts when it comes to coping with grief");
-	M.s("I wanna go back to the time when it happened-");
+	M.s("I wanna go back to back to when it happened-");
 	M.s("If that's impossible, I just wanna see him again");
 	M.s("Just for minutes or seconds - I wanna see him again");
 	M.s("If that's impossible too, tell me he's gone somewhere over the rainbows and clouds");
 	M.s("Somewhere heavenly - away from the all the pain and agony");
 	M.s("Tell me I'll see him again when the time comes...");
+	Q.wait(1000);
 	M.s("We all settle at one point or another");
 	M.s("Finding out the not-hopes");
 	M.s("And finding out the point to settle that make sense to us somehow");
 	M.s("I think it's an important part of recovering");
 	M.s("And it takes time");
+	Q.wait(1000);
 	P.s("So basically what you're saying is... that wounds heal with time?");
 	P.s("And that's the hope you found?");
+	Q.wait(1000);
 	M.s("Not exactly");
 	M.s("I do think that the wounds heal with time for most people");
 	M.s("The rate they do might vary but in my experience, they all did");
@@ -853,14 +881,16 @@ function outro_hope(){
 	M.s("I don't think it gives them much hope");
 	M.s("I think it's kind of similar to saying that eating makes hunger go away to someone who's starving");
 	M.s("While it's true - it doesn't really help");
+	Q.wait(1000);
 	M.s("So I thought about it");
 	M.s("I thought about... if I can go back in time and tell something to myself from two years ago");
 	M.s("Say something to make him feel better and give him hope");
 	M.s("What could I say?");
 	M.s("What would I liked to have heard?");
-	Q.wait(500);
+	Q.wait(1500);
 	M.s("I still haven't found the answer");
 	M.s("But here's what I'm gonna say anyways");
+	Q.wait(1000);
 	Q.do(function(){
 		resources.room.sound.stop();
 		resources.twilight.sound.stop();
@@ -873,7 +903,13 @@ function outro_hope(){
 	M.s("You are here as well");
 	M.s("We've never been through what each other have been through");
 	M.s("But as you played through my game");
-	M.s("Maybe, maybe this made you feel what I felt");
+	if($.experiences) {
+		M.s("Maybe, maybe this made you experience what I experienced");
+	} else if($.feelings) {
+		M.s("Maybe, maybe this made you feel what I felt");
+	} else {
+		M.s("Maybe, maybe this made you learn what I learned");
+	}
 	M.s("And as you tried to understand me...");
 	M.s("Maybe there's someone who's willing understand your pain, too");
 	M.s("Someone... who you haven't let try yet");
@@ -882,13 +918,15 @@ function outro_hope(){
 	M.s("I'm not even close - counselor, psychiatrist - none of those");
 	M.s("I'm just someone who's bad at listening and even worse at talking");
 	M.s("If this made you feel that talking to someone could make you feel better, please don't hesitate to get some real help");
-	Q.wait(2000);
+	Q.wait(2500);
+	M.s("So...");
 	M.s("Thank you for playing my game");
-	Q.wait(1000);
+	M.s("I hope I see you again someday");
+	Q.wait(3000);
 	Q.do(function(){
 		resources.door_open.sound.play();
 	});
-	Q.wait(1000);
+	Q.wait(2000);
 	Q.do(function(){
 		resources.door_close.sound.play();
 	});
@@ -896,7 +934,7 @@ function outro_hope(){
 }
 
 function end_outro(){
-	Q.wait(2000);
+	Q.wait(4000);
 	Q.do(clearMsg);
 	// Q.do(function(){
 	// 	blackout.visible = true;

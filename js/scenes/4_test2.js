@@ -96,7 +96,7 @@ function test2_after(){
 }
 
 function end_test2(){
-	Q.wait(2000);
+	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(start_room);
 	Q.do(function(){

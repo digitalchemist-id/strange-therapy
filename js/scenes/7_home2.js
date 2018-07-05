@@ -21,7 +21,8 @@ async function start_home2(){
 	P.t("It's okay");
 	P.t("I'll stay by your side until you're well");
 	P.t("I'll feed you 4 times a day, make sure you drink...");
-	P.t("And check every excretion too");
+	P.t("And make sure you digest it as well");
+	P.t("I'll just study here by your side");
 	P.t("I'll only stay away for tests");
 	P.t("Around 3 hours of commute plus another 3 by test itself...");
 	Q.wait(1000);
@@ -38,7 +39,7 @@ async function start_home2(){
 		P.t("But haven't told anyone about this yet...");
 	}
 	Q.wait(2000);
-	P.t("Should I tell my girlfriend about this?");
+	P.t("Maybe I need to tell my girlfriend about this");
 	C.t({
         "[Text her]": function(msg) {
         	$.gf_texted = true;
@@ -66,7 +67,7 @@ function home2_gf_text() {
 		Gf.s("2 tests tomorrow");
 		Gf.s("So... yeah");
 		C.s({
-	        "I have something to tell you": function(msg) {
+	        "I have something to tell you...": function(msg) {
 	            P.s(msg);
 	            if($.not_nice_to_gf < 1){
 	            	$.gf_told = true;
@@ -162,7 +163,7 @@ function home2_project_msg() {
 	P.t("What am I gonna do?");
 	P.t("I definitely won't have time to prepare for the next test if I start working on the project now");
 	C.t({
-        "I can't do it": function(msg) {
+        "I can't do it...": function(msg) {
         	$.test3_studied = true;
             P.t(msg);
             P.t("All those group meetings and preparations... I just can't do it");
@@ -274,6 +275,7 @@ function home2_project_no(){
 }
 
 function home2_project_yes(){
+	Q.wait(2000);
 	P.s("Working on it now. You'll see it today");
 	F.s("Great");
 	if(!$.friend_msg1_checked || !$.friend_msg1_replied) {
@@ -287,6 +289,7 @@ function home2_project_yes(){
 }
 
 function home2_project_talk(){
+	Q.wait(2000);
 	P.s("You busy now?");
 	F.s("A lil. Why?");
 	P.s("I need to talk to you for a bit");
@@ -318,13 +321,12 @@ function home2_project_talk(){
 	F.s("Just join us later when he gets better");
 	Q.wait(3000);
 	P.t("Whew...");
-	P.t("What a relief...");
 	end_home2();
 }
 
 
 function end_home2(){
-	Q.wait(2000);
+	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(start_test3);
 	Q.do(function(){

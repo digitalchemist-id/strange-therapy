@@ -18,7 +18,7 @@ async function start_room() {
 	P.t("I NEED to");
 
 	if($.destiny){
-		P.t("Maybe I've done enough for today");
+		P.t("I've done enough for today");
 		P.t("No more torturing myself");
 		P.t("Studying few hours more or not won't even matter");
 	} else {
@@ -78,7 +78,7 @@ async function start_room() {
 }
 
 function room_call(){
-	Q.wait(1000);
+	Q.wait(2000);
 	Q.do(function(){
 		resources.phone_call.sound.play();
 	});
@@ -140,7 +140,7 @@ function room_call_answered() {
 }
 
 function room_msg(msg){
-	Q.wait(1000);
+	Q.wait(2500);
 	Q.do(function(){
 		resources.phone_vib.sound.play();
 	});
@@ -173,8 +173,9 @@ function room_msg_2(){
 	P.t("....");
 	Q.wait(3000);
 	//dialing sound
+	Gm.s("Hello?");
+	P.s("It's me...");
 	Gm.s("Hey!");
-	//Gm.s("It's been so long since you've come home");
 	Gm.s("Are you still busy with your homeworks and exams?");
 	P.s("Grandma...");
 	P.s("What happened?");
@@ -230,12 +231,12 @@ function room_choose(){
 	//P.s("Oh......");
 
 	C.t({
-        "[panic]": function(msg) {
+        "[Panic]": function(msg) {
         	$.room_panicked = true;
             C.hide();
             room_panic();
         },
-        "[don't panic]": function(msg) {
+        "[Don't panic]": function(msg) {
         	$.room_panicked = false;
             C.hide();
             room_dont_panic();
@@ -275,7 +276,7 @@ function room_panic() {
 	P.panic("And I...");
 	P.panic("I can't believe...");
 	P.panic("I let this happen...");
-	Q.wait(1500);
+	Q.wait(2000);
 	Q.do(clearMsg);
 	Q.do(function(){
 		blackout.visible = true;
@@ -284,8 +285,7 @@ function room_panic() {
 }
 
 function room_dont_panic() {
-	P.t("The first step to solving");
-	P.t("Every hard problem");
+	P.t("The first step to solving every hard problem-");
 	P.t("Is to not panic");
 	P.t("Let's try not to panic");
 	Q.wait(2000);
@@ -303,7 +303,6 @@ function room_dont_panic() {
 	P.t("How could I miss something so simple?");
 	P.t("Something so important?");
 	P.t("Why do I always miss it?");
-	
 	if($.careful){
 		P.t("Maybe I already knew");
 		P.t("I somehow already knew");
@@ -313,7 +312,6 @@ function room_dont_panic() {
 		P.t("Freaking idiot");
 		P.t("Why are you never careful?");
 	}
-
 	P.t("Oh.. my god");
 	P.t("He must be trembling");
 	P.t("He must be shivering with fear");
@@ -326,7 +324,7 @@ function room_dont_panic() {
 }
 
 function end_room(){
-	Q.wait(2000);
+	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(start_vet1);
 	Q.do(function(){

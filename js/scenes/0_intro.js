@@ -114,13 +114,13 @@ function intro_3(){
     P.s("Umm...");
 	P.s("What's this therapy about?");
 	M.s("This therapy");
-	M.s("It's something about loss, life, love and hope");
+	M.s("It's something about loss, love, life and hope");
 	C.s({
         "That's a lot to cover in a flash game": function(msg) {
             $.flashgame = true;
             P.s(msg);
             M.s("IT'S NOT FLASH");
-            M.s("This was written with html5 and javascript. They're totally different from flash");
+            M.s("This was written with html5 and javascript - with help from pixijs library. They're totally different from flash");
             P.s("Pfff, Whatever");
             P.s("Looks pretty flash to me");
             M.s("Anyway...");
@@ -138,7 +138,6 @@ function intro_3(){
         "That's a lot to cover in a therapy": function(msg) {
         	$.therapy = true;
             P.s(msg);
-            M.s("Yep");
             M.s("I know right?");
             M.s("Let's just say at least I tried");
             C.hide();
@@ -187,7 +186,7 @@ function intro_4(){
 }
 
 function intro_5(){
-	Q.wait(3000);
+	Q.wait(2500);
 	M.s("While you're playing this game...");
 	M.s("You'll have to make choices, like you're doing right now");
 	M.s("Some of them are easy, but some are going to be not-so-easy");
@@ -226,7 +225,7 @@ function intro_6(){
 	M.s("Shall we begin then?");
 	P.s("Yeah, I'm ready");
 	P.s("Let's get to it");
-	M.s("Let's go back to 2 years ago...");
+	M.s("Let's go back to 2 years ago");
 	M.s("You were getting used to college life - and caffein");
     M.s("It was near the end of a semester, and you were just another crazy kid taking one test and another");
 	M.s("So ready and excited for the summer break");

@@ -56,6 +56,7 @@ function setup() {
     //app.stage.addChild(animExample);
 
 	resources.clock.sound.loop = true;
+    resources.dog_pain.sound.loop = true;
     resources.twilight.sound.loop = true;
     resources.metro_inside.sound.loop = true;
     resources.phone_call.sound.loop = true;

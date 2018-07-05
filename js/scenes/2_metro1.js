@@ -28,7 +28,8 @@ async function start_metro1(){
 	// P.t("But am I doing the right thing?");
 	// P.t("I just have to many things to take care of...");
 	Q.wait(3000);
-	P.t("Leaving behind so much stuff to do and going to my parent's house...");
+	P.t("Although having so much stuff to do-");
+	P.t("Going to my parent's house...");
 	P.t("I kinda feel guilty about it");
 	P.t("Maybe I should have stayed");
 	Q.wait(1000);
@@ -49,7 +50,7 @@ async function start_metro1(){
     	},
         "I'm sick and tired of sitting in library": function(msg) {
         	P.t(msg);
-        	P.t("Too sick");
+        	P.t("I'll be okay...");
         	C.hide();
         	metro1_friend_msg();
     	}
@@ -63,7 +64,7 @@ function metro1_friend_msg(){
 	// P.t("Next week's classes are not canceled");
 	// P.t("And plenty more tests are coming up");
 	// P.t("This is my only chance before the end of the semester...");
-
+	Q.wait(1000);
 	Q.do(function(){
 		resources.phone_vib.sound.play();
 	});
@@ -94,7 +95,7 @@ function metro1_friend_msg(){
 function metro1_friend_dialogue() {
 	Q.wait(2000);
 	F.s("I just finished doing my part in the presentation. Sent you through a mail");
-	F.s("Check them and integrate the formats with other parts when you've got time");
+	F.s("Check them and integrate the formats when you've got time");
 	F.s("Are you done with your part too?");
 
 	C.s({
@@ -137,7 +138,7 @@ function metro1_friend_dialogue_2(){
 	P.s("Hell lot of them");
 	F.s("I'm glad to see that you're not too insane yet");
 	P.s("I'm not?");
-	P.s("I bet around this time of the semester everyone's losing there minds");
+	P.s("But I bet around this time of the semester everyone's losing there minds lol");
 	F.s("Everyone sure freakin is");
 	F.s("It's hard to get even a single text back from anyone");
 	Q.wait(1000);
@@ -193,7 +194,7 @@ function metro1_gf_dialogue() {
 	    	$.gf_msg1_replied = true;
 	    	$.metro1_doing_great = true;
 	    	P.s(msg);
-	    	Gf.s("Wow!");
+	    	Gf.s("Wow...");
 	    	Gf.s("Congrats!");
 	    	Gf.s("You're so full of energy!")
 	    	if($.test1_correct && $.project_under_control){
@@ -215,9 +216,9 @@ function metro1_gf_dialogue() {
 	    	// 	Gf.s("Cuz it scares me?");
 	    	// 	Gf.s("Idk XD");
 	    	} else {
-	    		P.s("I don't know!");
+	    		P.s("Yeah, but I don't know why!");
 	    		P.s("Maybe I just want to feel like I'm doing great");
-	    		P.s("And that's important!");
+	    		P.s("And that's important");
 	    		Gf.s("Of course it is!");
 	    		Gf.s("I'm sure you're actually doing alright");
 	    		Gf.s("So don't worry XD");
@@ -277,7 +278,7 @@ function metro1_gf_dialogue_2() {
 	Gf.s("We've talked about this...");
 
 	C.s({
-	    "Yeah... I just can't help feeling a bit sad": function(msg) {
+	    "Yeah... I just can't help feeling a bit down": function(msg) {
 	    	P.s(msg);
 	    	Gf.s("Hey...");
 	    	if($.metro1_doing_great){
@@ -359,7 +360,7 @@ function metro1_gf_dialogue_3() {
 }
 
 function end_metro1(){
-	Q.wait(2000);
+	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(start_home1);
 	Q.do(function(){
