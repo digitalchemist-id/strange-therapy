@@ -86,8 +86,8 @@ function intro_2(){
         "I love it!": function(msg) {
             P.s(msg);
             P.s("What's the name of the music?");
-            M.s("It's ----------- by --------");
-            M.s("You can check more of his stuff out later in his soundcloud account");
+            M.s("It's Feelings of Twilight by ShadyDave");
+            M.s("You can check more of the stuff out later in Soundcloud");
             C.hide();
             intro_3();
         },
@@ -109,10 +109,11 @@ function intro_2(){
 
 
 function intro_3(){
-	P.s("So...");
     Q.wait(500);
+	P.s("So...");
+    Q.wait(1000);
     P.s("Umm...");
-	P.s("What's this therapy about?");
+	P.s("What's this thing about?");
 	M.s("This therapy");
 	M.s("It's something about loss, love, life and hope");
 	C.s({

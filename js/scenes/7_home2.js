@@ -140,6 +140,7 @@ function home2_gf_text_2() {
 	P.s("I need to take care of him");
 	Gf.s("I think that's a good decision");
 	Gf.s("I'll make sure I visit after my tests are done");
+	$.visit = true;
 	Gf.s("He's gonna be fine...");
 	P.s("Thank you for saying that");
 	P.s("You should get back to studying. I think I took too much of your time");

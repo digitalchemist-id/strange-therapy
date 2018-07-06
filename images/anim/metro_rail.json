@@ -1,0 +1,39 @@
+{"frames": {
+
+"metro_rail1.png":
+{
+	"frame": {"x":0,"y":0,"w":360,"h":640},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":360,"h":640},
+	"sourceSize": {"w":360,"h":640},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"metro_rail2.png":
+{
+	"frame": {"x":0,"y":640,"w":360,"h":640},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":360,"h":640},
+	"sourceSize": {"w":360,"h":640},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"metro_rail3.png":
+{
+	"frame": {"x":0,"y":1280,"w":360,"h":640},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":360,"h":640},
+	"sourceSize": {"w":360,"h":640},
+	"pivot": {"x":0.5,"y":0.5}
+}},
+"meta": {
+	"app": "https://www.codeandweb.com/texturepacker",
+	"version": "1.0",
+	"image": "metro_rail.png",
+	"format": "RGBA8888",
+	"size": {"w":360,"h":1920},
+	"scale": "1",
+	"smartupdate": "$TexturePacker:SmartUpdate:b54e0ae9ac7b0abff4b4304bc96ef609:d6dacf069301cce870f033be1e9780c5:b94a016215d8790311b995238d2ca15d$"
+}
+}

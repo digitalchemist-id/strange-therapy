@@ -7,13 +7,18 @@ async function start_metro2(){
     resources.metro_inside.sound.play();
 	//setup
 	await sleep(2000);
+    app.stage.addChildAt(bg_metro_day, 0);
+    app.stage.addChildAt(animMetroRail,1);
+    app.stage.addChildAt(metro_p1,2);
+    app.stage.addChildAt(metro_p4,2);
+    app.stage.addChildAt(metro_sit,2);
 	blackout.visible = false;
 
     Q.wait(3000);
 	P.t("How many times have I crossed this river?");
 	P.t("Must've been hell lot");
 	Q.wait(1000);
-	P.t("But somehow I never get tired of staring at this view");
+	P.t("But somehow I never get tired of staring at the view");
 	Q.wait(2500);
     Q.do(function(){
         resources.phone_vib.sound.play();
@@ -33,14 +38,21 @@ async function start_metro2(){
         "[Don't]": function(msg) {
             $.not_nice_to_gf++;
             C.hide();
+            metro2_end();
         }
     });
 }
 
 function metro2_gf_msg(){
+    Q.do(function(){
+        app.stage.addChildAt(metro_phone,2);
+        metro_sit.visible = false;
+    });
+    Q.wait(1000);
 	Gf.s("I've finally finished all of my tests");
 	Gf.s("FINALLY");
 	Gf.s("I'm checking out from the dorm and going home tomorrow");
+    Q.wait(1000);
 	Gf.s("You doing well?");
 	P.s("I just finished my second last test");
 	P.s("I'm taking a subway ride home");
@@ -53,15 +65,21 @@ function metro2_gf_msg(){
 	Gf.s("That's great to hear");
 	Gf.s("I'm glad...");
 	P.s("I'm just trying everything I can");
+    Q.wait(1000);
 	Gf.s("After I get home");
 	Gf.s("Tomorrow");
 	Gf.s("Will you have time to see me?");
 	Gf.s("You know, maybe have dinner or something");
 	Gf.s("We don't have much time together you know...");
-	Q.do(metro2_gf_msg_choose);
+	metro2_gf_msg_choose();
 }
 
 function metro2_gf_sthwrong(){
+    Q.do(function(){
+        app.stage.addChildAt(metro_phone,2);
+        metro_sit.visible = false;
+    });
+    Q.wait(1000);
 	Gf.s("I've finally finished all of my tests");
 	Gf.s("FINALLY...");
 	Gf.s("I'm checking out from the dorm and going home tomorrow");
@@ -85,6 +103,7 @@ function metro2_gf_sthwrong(){
             }
             Gf.s("You could have at least-");
             Gf.s("You do know that I'm leaving to California in 3 days right?");
+            Q.wait(1500);
             Gf.s("You know what? nevermind...");
             Gf.s("Let's talk tomorrow");
             Gf.s("When your finals are over");
@@ -98,6 +117,7 @@ function metro2_gf_sthwrong(){
             P.s("My dog was hospitalized last Sunday");
             P.s("I picked him up and I'm trying to take care of him at my parent's house");
             Gf.s("Oh no...");
+            Q.wait(1000);
             Gf.s("Why didn't you tell me?");
             C.hide();
             metro2_gf_sthwrong_why();
@@ -208,7 +228,9 @@ function metro2_gf_msg_choose(){
             P.s("So... it'd be nice if you visit");
             P.s("Spend some time together you know...");
             Gf.s("Yeah");
-            Gf.s("I mean, I said I would visit right?");
+            if($.visit){
+                Gf.s("I mean, I said I would visit right?");
+            }
             Gf.s("I'll go to your place");
             Gf.s("Maybe we can take him outside if he's in a good condition");
             Gf.s("Getting him some air might help");
@@ -220,9 +242,20 @@ function metro2_gf_msg_choose(){
 }
 
 function end_metro2(){
+    Q.wait(1500);
+    Q.do(function(){
+        metro_phone.visible = false;
+        metro_sit.visible = true;
+    });
 	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(function(){
+        app.stage.removeChild(bg_metro_day);
+        app.stage.removeChild(animMetroRail);
+        app.stage.removeChild(metro_p1);
+        app.stage.removeChild(metro_p4);
+        app.stage.removeChild(metro_phone);
+        app.stage.removeChild(metro_sit);
         resources.metro_inside.sound.stop();
 		blackout.visible = true;
 	});

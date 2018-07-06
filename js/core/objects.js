@@ -156,6 +156,7 @@ let Character = function(config){
 Character.prototype.s = function(txt){
     newMsg = new Message(txt, this.align, this.bgColor, this.txtColor);
     newMsg.speak = true;
+    newMsg.alpha = 0.9;
     newMsg.setup();
     Q.fqueue.push(newMsg.draw.bind(newMsg));//bind method lets this function work in ticker
 }
@@ -205,7 +206,7 @@ let Choice = function(){
         wordWrapWidth: 300 
     });
     this.color = 0xffffff;
-    this.alpha = 0.7;
+    this.alpha = 0.9;
     this.n;
     this.length = 320;
 

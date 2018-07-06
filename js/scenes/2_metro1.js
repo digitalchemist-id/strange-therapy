@@ -5,6 +5,10 @@ async function start_metro1(){
 	resources.metro_inside.sound.play();
 	await sleep(2000);
 
+	app.stage.addChildAt(bg_metro_night, 0);
+    app.stage.addChildAt(animMetroRail,1);
+	app.stage.addChildAt(metro_p1,2);
+	app.stage.addChildAt(metro_sit,2);
 	blackout.visible = false;
 
 	P.t('My first semester with a major...');
@@ -69,7 +73,10 @@ function metro1_friend_msg(){
 		resources.phone_vib.sound.play();
 	});
 	Q.wait(3000);
-
+	Q.do(function(){
+		metro_sit.visible = false
+		app.stage.addChildAt(metro_phone,2);
+	});
 	P.t("A message...");
 	P.t("It's from my clubmate");
 	P.t("Oh man... I almost forgot...");
@@ -86,7 +93,7 @@ function metro1_friend_msg(){
 	    	P.t("I can check that later...");
 	    	P.t("It's not like I've done my part anyway");
 	    	P.t("Right now I just want to... rest");
-	    	P.t("While I can")
+	    	P.t("While I can");
 	    	C.hide();
 	    	metro1_gf_msg();}
 	});
@@ -94,6 +101,7 @@ function metro1_friend_msg(){
 
 function metro1_friend_dialogue() {
 	Q.wait(2000);
+	F.s("Hey");
 	F.s("I just finished doing my part in the presentation. Sent you through a mail");
 	F.s("Check them and integrate the formats when you've got time");
 	F.s("Are you done with your part too?");
@@ -153,11 +161,20 @@ function metro1_friend_dialogue_2(){
 }
 
 function metro1_gf_msg(){
+	Q.do(function(){
+		metro_phone.visible = false;
+		metro_sit.visible = true;
+	});
 	Q.wait(1000);
+
 	Q.do(function(){
 		resources.phone_vib.sound.play();
 	});
 	Q.wait(3000);
+	Q.do(function(){
+		metro_phone.visible = true;
+		metro_sit.visible = false;
+	});
 
 	P.t("Another message?");
 	P.t("Oh... it's from my girlfriend");
@@ -267,7 +284,7 @@ function metro1_gf_dialogue_2() {
 	Gf.s("Yours end on 16th right?");
 	Gf.s("Mine ends on 15th");
 	Gf.s("So yeah. Just one day");
-	Q.wait(2000);
+	Q.wait(1500);
 	Gf.s("But you know I need time to prepare for summer session... right?");
 	P.s("Yeah I know that");
 	P.t("...");
@@ -287,6 +304,7 @@ function metro1_gf_dialogue_2() {
 	    	} else {
 	    		Gf.s("I made you feel worse didn't I");
 	    	}
+	    	Q.wait(1000);
 	    	P.s("It's fine");
 	    	P.s("It's so wrong for me to blame you");
 	    	Gf.s("Thank you for saying that");
@@ -360,10 +378,19 @@ function metro1_gf_dialogue_3() {
 }
 
 function end_metro1(){
+	Q.do(function(){
+		metro_phone.visible = false;
+		metro_sit.visible = true;
+	});
 	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(start_home1);
 	Q.do(function(){
+		app.stage.removeChild(bg_metro_night);
+		app.stage.removeChild(animMetroRail);
+		app.stage.removeChild(metro_p1);
+		app.stage.removeChild(metro_phone);
+		app.stage.removeChild(metro_sit);
 		resources.metro_inside.sound.stop();
 		blackout.visible = true;
 	});

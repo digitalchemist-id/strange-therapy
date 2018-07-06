@@ -6,10 +6,20 @@ document.body.appendChild(app.view);
 
 loader
     .add("images/example.png")//example image
-    .add("images/anim/cat.json")
     .add("images/bg/test.png")
-    .add("images/sprite/bunny.png")
-    .add("clock", "sounds/clock.wav")
+    .add("images/bg/metro_day.png")
+    .add("images/bg/metro_evening.png")
+    .add("images/bg/metro_night.png")
+    .add("images/anim/cat.json")//example anim
+    .add("images/anim/metro_rail.json")
+    .add("images/sprite/bunny.png")//example sprite
+    .add("images/sprite/metro_p1.png")
+    .add("images/sprite/metro_p2.png")
+    .add("images/sprite/metro_p3.png")
+    .add("images/sprite/metro_p4.png")
+    .add("images/sprite/metro_phone.png")
+    .add("images/sprite/metro_sit.png")
+    .add("clock", "sounds/clock.wav")//sounds
     .add("dog_pain", "sounds/dog_pain.wav")
     .add("dog_whine", "sounds/dog_whine.mp3")
     .add("door_close", "sounds/door_close.wav")
@@ -30,30 +40,48 @@ function setup() {
 
     //bg
     bg_test = new Sprite(resources["images/bg/test.png"].texture);
+    bg_metro_day = new Sprite(resources["images/bg/metro_day.png"].texture);
+    bg_metro_evening = new Sprite(resources["images/bg/metro_evening.png"].texture);
+    bg_metro_night = new Sprite(resources["images/bg/metro_night.png"].texture);
+    app.stage.addChildAt(bg_test, 0);
+
+    //anims
+    var animExampleArray = [];
+    for (var i = 0; i < 4; i++) {
+        animExampleArray.push(PIXI.Texture.fromFrame('cat' + i + '.png'));
+    }
+    var animExample = new PIXI.extras.AnimatedSprite(animExampleArray);
+
+    animExample.x = app.screen.width / 2;
+    animExample.y = app.screen.height / 2;
+    animExample.anchor.set(0.5);
+    animExample.animationSpeed = 0.1;
+    animExample.play();
+    //app.stage.addChild(animExample);
+
+    var animMetroRailArray = [];
+    for (var i = 1; i < 4; i++) {
+        animMetroRailArray.push(PIXI.Texture.fromFrame('metro_rail' + i + '.png'));
+    }
+    animMetroRail = new PIXI.extras.AnimatedSprite(animMetroRailArray);
+    animMetroRail.animationSpeed = 0.75;
+    animMetroRail.play();
+
+
 	//sprites
 	bunny = new Sprite(resources["images/sprite/bunny.png"].texture);
+    metro_p1 = new Sprite(resources["images/sprite/metro_p1.png"].texture);
+    metro_p2 = new Sprite(resources["images/sprite/metro_p2.png"].texture);
+    metro_p3 = new Sprite(resources["images/sprite/metro_p3.png"].texture);
+    metro_p4 = new Sprite(resources["images/sprite/metro_p4.png"].texture);
+    metro_phone = new Sprite(resources["images/sprite/metro_phone.png"].texture);
+    metro_sit = new Sprite(resources["images/sprite/metro_sit.png"].texture);
 
-	//anims
-	var animExampleArray = [];
 
-	for (var i = 0; i < 4; i++) {
-	    animExampleArray.push(PIXI.Texture.fromFrame('cat' + i + '.png'));
-	}
-
-	var animExample = new PIXI.extras.AnimatedSprite(animExampleArray);
-
-	app.stage.addChildAt(bg_test, 0);
 	app.stage.addChild(bunny);
 
     bg_test.visible = false;
 
-	animExample.x = app.screen.width / 2;
-    animExample.y = app.screen.height / 2;
-	animExample.anchor.set(0.5);
-    animExample.animationSpeed = 0.1;
-    animExample.play();
-
-    //app.stage.addChild(animExample);
 
 	resources.clock.sound.loop = true;
     resources.dog_pain.sound.loop = true;
@@ -79,14 +107,15 @@ function setup() {
     //     console.log("not true");
     // }
     
-    // //undefined acts like false
+    //undefined acts like false
 
     // $.count = 0;
     // $.count += 1;
     // console.log($.count);
     $ = {};
+    $.not_nice_to_gf = 1;
 
-    start_intro();
+    start_metro3();
 
     state = play;
     
