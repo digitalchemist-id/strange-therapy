@@ -8,6 +8,8 @@ async function start_outro(){
 	resources.room.sound.play();
 	resources.twilight.sound.play();
 	await sleep(4000);
+    app.stage.addChildAt(bg_intro, 0);
+    app.stage.addChildAt(intro_sit,1);
 	blackout.visible = false;
 	//config
 
@@ -936,7 +938,9 @@ function outro_hope(){
 function end_outro(){
 	Q.wait(4000);
 	Q.do(clearMsg);
-	// Q.do(function(){
-	// 	blackout.visible = true;
-	// });
+	Q.do(function(){
+        app.stage.removeChild(bg_intro);
+        app.stage.removeChild(intro_sit);
+		blackout.visible = true;
+	});
 }

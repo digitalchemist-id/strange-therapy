@@ -9,6 +9,10 @@ function kicked_out(){
         resources.room.sound.stop();
     });
     Q.wait(2000);
+    Q.do(function(){
+        intro_lookdown.visible = false;
+        intro_sit.visible = true;
+    });
 	M.s("...");
 	M.s("Dear player");
 	M.s("When I said characters");
@@ -19,7 +23,7 @@ function kicked_out(){
 	M.s("But you don't seem to be the type who needs a therapy - either strange or not");
 	M.s("And to tell you the truth, I'm not even a real therapist");
     Q.wait(1000);
-	M.s("So there's no real reason for you to be here anymore");
+	M.s("So... there's no real reason for you to be here anymore");
 	M.s("Good bye");
 	Q.wait(2000);
     Q.do(function(){
@@ -29,7 +33,13 @@ function kicked_out(){
     Q.do(function(){
         resources.door_close.sound.play();
     });
-    Q.wait(2000);
+    Q.do(function(){
+        app.stage.removeChild(bg_intro);
+        app.stage.removeChild(intro_sit);
+        app.stage.removeChild(intro_lookdown);
+        blackout.visible = true;
+    });
+    Q.wait(4000);
 	C.s({
         "Heyyyy! I'm sorry! let me in!": function(msg) {
             P.s(msg);
@@ -43,7 +53,7 @@ function kicked_out(){
             P.s("There's no game without a player! Why did you even make this if you're not gonna let people play?");
             M.s("You had your game");
             M.s("You just don't have it anymore");
-            M.s("How cruel");
+            P.s("How cruel");
             C.hide();
             kicked_out_1();
         },

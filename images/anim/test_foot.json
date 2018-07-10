@@ -1,6 +1,6 @@
 {"frames": {
 
-"metro_rail1.png":
+"test_foot1.png":
 {
 	"frame": {"x":0,"y":0,"w":360,"h":640},
 	"rotated": false,
@@ -9,18 +9,27 @@
 	"sourceSize": {"w":360,"h":640},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"metro_rail2.png":
+"test_foot2.png":
 {
-	"frame": {"x":0,"y":640,"w":360,"h":640},
+	"frame": {"x":360,"y":0,"w":360,"h":640},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":360,"h":640},
 	"sourceSize": {"w":360,"h":640},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"metro_rail3.png":
+"test_foot3.png":
 {
-	"frame": {"x":0,"y":1280,"w":360,"h":640},
+	"frame": {"x":720,"y":0,"w":360,"h":640},
+	"rotated": false,
+	"trimmed": false,
+	"spriteSourceSize": {"x":0,"y":0,"w":360,"h":640},
+	"sourceSize": {"w":360,"h":640},
+	"pivot": {"x":0.5,"y":0.5}
+},
+"test_foot4.png":
+{
+	"frame": {"x":1080,"y":0,"w":360,"h":640},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":360,"h":640},
@@ -30,10 +39,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "metro_rail.png",
+	"image": "test_foot.png",
 	"format": "RGBA8888",
-	"size": {"w":360,"h":1920},
+	"size": {"w":1440,"h":640},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:9ae0bf6c8ea7f8c36b8aae67045ebea1:d6dacf069301cce870f033be1e9780c5:b94a016215d8790311b995238d2ca15d$"
+	"smartupdate": "$TexturePacker:SmartUpdate:e389a3a560621fdb81af6280eee8fa59:c3041dbd599e7f33671540bc7274ac50:7dbdc8e424b1f2f28489a8f1d5394615$"
 }
 }

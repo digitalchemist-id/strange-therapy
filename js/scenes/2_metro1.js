@@ -4,7 +4,6 @@ async function start_metro1(){
 	await sleep(2000);
 	resources.metro_inside.sound.play();
 	await sleep(2000);
-
 	app.stage.addChildAt(bg_metro_night, 0);
     app.stage.addChildAt(animMetroRail,1);
 	app.stage.addChildAt(metro_p1,2);

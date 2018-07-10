@@ -1,11 +1,15 @@
 //timeline = 0
 
-function start_intro(){
-
-	resources.twilight.sound.play();
+async function start_intro(){
+    await sleep(2000);
+    resources.twilight.sound.play();
     resources.room.sound.play();
-
-    Q.wait(1000);
+    await sleep(2000);
+    app.stage.addChildAt(bg_intro, 0);
+    app.stage.addChildAt(intro_sit,1);
+    app.stage.addChildAt(intro_lookdown,1);
+    intro_lookdown.visible = false;
+    blackout.visible = false;
 
 	M.s("Hi!");
 	M.s("Welcome to strange therapy");
@@ -38,6 +42,10 @@ function start_intro(){
 }
 
 function intro_1(){
+    Q.do(function(){
+        intro_lookdown.visible = true;
+        intro_sit.visible = false;
+    });
 	M.s("An interactive story, a visual novel, a simulator, whatever you'd like to call it");
 	M.s("I personally want you to think that it's something kinda like a therapy");
 	P.s("Hmmm...");
@@ -73,6 +81,10 @@ function intro_1(){
 }
 
 function intro_2(){
+    Q.do(function(){
+        intro_lookdown.visible = false;
+        intro_sit.visible = true;
+    });
 	M.s("What do you think of the music?");
 	M.s("I added it to a game cuz, what's a therapy without a good piano piece playing in the background?");
 	C.s({
@@ -88,6 +100,7 @@ function intro_2(){
             P.s("What's the name of the music?");
             M.s("It's Feelings of Twilight by ShadyDave");
             M.s("You can check more of the stuff out later in Soundcloud");
+            P.s("Good stuff");
             C.hide();
             intro_3();
         },
@@ -109,11 +122,15 @@ function intro_2(){
 
 
 function intro_3(){
-    Q.wait(500);
+    Q.wait(1500);
 	P.s("So...");
     Q.wait(1000);
     P.s("Umm...");
 	P.s("What's this thing about?");
+    Q.do(function(){
+        intro_lookdown.visible = true;
+        intro_sit.visible = false;
+    });
 	M.s("This therapy");
 	M.s("It's something about loss, love, life and hope");
 	C.s({
@@ -148,6 +165,10 @@ function intro_3(){
 }
 
 function intro_4(){
+    Q.do(function(){
+        intro_lookdown.visible = false;
+        intro_sit.visible = true;
+    });
 	if($.flashgame){
 		M.s("To be a little more precise, this WEB game is about my personal experience");
 	} else if($.webgame){
@@ -187,7 +208,11 @@ function intro_4(){
 }
 
 function intro_5(){
-	Q.wait(2500);
+	Q.wait(1500);
+    Q.do(function(){
+        intro_lookdown.visible = true;
+        intro_sit.visible = false;
+    });
 	M.s("While you're playing this game...");
 	M.s("You'll have to make choices, like you're doing right now");
 	M.s("Some of them are easy, but some are going to be not-so-easy");
@@ -223,6 +248,10 @@ function intro_5(){
 
 function intro_6(){
     Q.wait(1000);
+    Q.do(function(){
+        intro_lookdown.visible = false;
+        intro_sit.visible = true;
+    });
 	M.s("Shall we begin then?");
 	P.s("Yeah, I'm ready");
 	P.s("Let's get to it");
@@ -236,6 +265,9 @@ function intro_6(){
 function end_intro(){
 	Q.wait(3000);
 	Q.do(function(){
+        app.stage.removeChild(bg_intro);
+        app.stage.removeChild(intro_sit);
+        app.stage.removeChild(intro_lookdown);
         resources.twilight.sound.stop();
         resources.room.sound.stop();
         blackout.visible = true;

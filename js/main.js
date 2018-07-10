@@ -6,19 +6,29 @@ document.body.appendChild(app.view);
 
 loader
     .add("images/example.png")//example image
-    .add("images/bg/test.png")
+    .add("images/bg/intro.png")
+    .add("images/bg/test.png")//bg
     .add("images/bg/metro_day.png")
     .add("images/bg/metro_evening.png")
     .add("images/bg/metro_night.png")
     .add("images/anim/cat.json")//example anim
-    .add("images/anim/metro_rail.json")
+    .add("images/anim/metro_rail.json")//anim
+    .add("images/anim/test_foot.json")
     .add("images/sprite/bunny.png")//example sprite
-    .add("images/sprite/metro_p1.png")
+    .add("images/sprite/intro_sit.png")
+    .add("images/sprite/intro_lookdown.png")
+    .add("images/sprite/metro_p1.png")//sprite
     .add("images/sprite/metro_p2.png")
     .add("images/sprite/metro_p3.png")
     .add("images/sprite/metro_p4.png")
     .add("images/sprite/metro_phone.png")
     .add("images/sprite/metro_sit.png")
+    .add("images/sprite/test_assist.png")
+    .add("images/sprite/test_head_down.png")
+    .add("images/sprite/test_head_up.png")
+    .add("images/sprite/test_panic.png")
+    .add("images/sprite/test_sit_down.png")
+    .add("images/sprite/test_sit_up.png")
     .add("clock", "sounds/clock.wav")//sounds
     .add("dog_pain", "sounds/dog_pain.wav")
     .add("dog_whine", "sounds/dog_whine.mp3")
@@ -39,11 +49,11 @@ loader
 function setup() {
 
     //bg
+    bg_intro = new Sprite(resources["images/bg/intro.png"].texture);
     bg_test = new Sprite(resources["images/bg/test.png"].texture);
     bg_metro_day = new Sprite(resources["images/bg/metro_day.png"].texture);
     bg_metro_evening = new Sprite(resources["images/bg/metro_evening.png"].texture);
     bg_metro_night = new Sprite(resources["images/bg/metro_night.png"].texture);
-    app.stage.addChildAt(bg_test, 0);
 
     //anims
     var animExampleArray = [];
@@ -67,21 +77,33 @@ function setup() {
     animMetroRail.animationSpeed = 0.75;
     animMetroRail.play();
 
+    var animTestFootArray = [];
+    for (var i = 1; i < 5; i++) {
+        animTestFootArray.push(PIXI.Texture.fromFrame('test_foot' + i + '.png'));
+    }
+    animTestFoot = new PIXI.extras.AnimatedSprite(animTestFootArray);
+    animTestFoot.animationSpeed = 0.05;
+    animTestFoot.play();
+
 
 	//sprites
 	bunny = new Sprite(resources["images/sprite/bunny.png"].texture);
+    intro_sit = new Sprite(resources["images/sprite/intro_sit.png"].texture);
+    intro_lookdown = new Sprite(resources["images/sprite/intro_lookdown.png"].texture);
     metro_p1 = new Sprite(resources["images/sprite/metro_p1.png"].texture);
     metro_p2 = new Sprite(resources["images/sprite/metro_p2.png"].texture);
     metro_p3 = new Sprite(resources["images/sprite/metro_p3.png"].texture);
     metro_p4 = new Sprite(resources["images/sprite/metro_p4.png"].texture);
     metro_phone = new Sprite(resources["images/sprite/metro_phone.png"].texture);
     metro_sit = new Sprite(resources["images/sprite/metro_sit.png"].texture);
-
+    test_assist = new Sprite(resources["images/sprite/test_assist.png"].texture);
+    test_head_down = new Sprite(resources["images/sprite/test_head_down.png"].texture);
+    test_head_up = new Sprite(resources["images/sprite/test_head_up.png"].texture);
+    test_panic = new Sprite(resources["images/sprite/test_panic.png"].texture);
+    test_sit_up = new Sprite(resources["images/sprite/test_sit_up.png"].texture);
+    test_sit_down = new Sprite(resources["images/sprite/test_sit_down.png"].texture);
 
 	app.stage.addChild(bunny);
-
-    bg_test.visible = false;
-
 
 	resources.clock.sound.loop = true;
     resources.dog_pain.sound.loop = true;
@@ -111,11 +133,11 @@ function setup() {
 
     // $.count = 0;
     // $.count += 1;
-    // console.log($.count);
+    // // console.log($.count);
     $ = {};
-    $.not_nice_to_gf = 1;
+    // $.not_nice_to_gf = 1;
 
-    start_metro3();
+    start_intro();
 
     state = play;
     
