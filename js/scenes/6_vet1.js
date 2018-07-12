@@ -3,9 +3,11 @@
 async function start_vet1() {
     await sleep(2000);
 	resources.room_high.sound.play();
-
-	//loader
 	await sleep(2000);
+    app.stage.addChildAt(bg_vet, 0);
+    app.stage.addChildAt(vet_stand, 2);
+    app.stage.addChildAt(vet_dog, 1);
+    app.stage.addChildAt(vet_vet_stand, 1);
 	blackout.visible = false;
 	Q.wait(1000);
     Q.do(function(){
@@ -37,7 +39,7 @@ async function start_vet1() {
             C.hide();
             vet1_about();
         },
-        "I just had to come": function(msg) {
+        "I had to come...": function(msg) {
             P.s(msg);
             V.s("Well...");
             V.s("I understand");
@@ -194,6 +196,10 @@ function end_vet1(){
 	Q.do(clearMsg);
 	Q.do(start_home2);
 	Q.do(function(){
+        app.stage.removeChild(bg_vet);
+        app.stage.removeChild(vet_vet_stand);
+        app.stage.removeChild(vet_dog);
+        app.stage.removeChild(vet_stand);
         resources.room_high.sound.stop();
 		blackout.visible = true;
 	});

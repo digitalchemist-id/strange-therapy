@@ -5,6 +5,8 @@ async function start_home4(){
     resources.room.sound.play();
 	//setup
 	await sleep(2000);
+    app.stage.addChildAt(bg_home, 0);
+    app.stage.addChildAt(home_chair, 1);
 	blackout.visible = false;
 	Q.wait(5000);
 	P.t("...");
@@ -252,6 +254,8 @@ function end_home4(){
     Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(function(){
+        app.stage.removeChild(bg_home);
+        app.stage.removeChild(home_chair);
         resources.room.sound.stop();
 		blackout.visible = true;
 	});

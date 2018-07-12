@@ -7,8 +7,9 @@
 async function start_home3(){
 	await sleep(2000);
 	resources.room.sound.play();
-	//setup
 	await sleep(2000);
+    app.stage.addChildAt(bg_home, 0);
+    app.stage.addChildAt(home_chair, 1);
 	blackout.visible = false;
 
 	P.s("I'm home!");
@@ -184,6 +185,8 @@ function end_home3(){
 	Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(function(){
+		app.stage.removeChild(bg_home);
+		app.stage.removeChild(home_chair);
 		resources.dog_pain.sound.stop();
 		blackout.visible = true;
 	});

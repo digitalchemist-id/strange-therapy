@@ -1,8 +1,6 @@
 //timeline = 1, June 8th Wed
 
 async function start_test1(){
-	//loader
-	
 	await sleep(2000);
 	resources.room_low.sound.play();
 	resources.clock.sound.play();
@@ -116,6 +114,7 @@ function test1_after(){
         test_sit_up.visible = true;
         test_head_down.visible = false;
         test_head_up.visible = true;
+        animTestFoot.stop();
     });
 	A.s('Everyone turn your tests in!');
 	
@@ -148,6 +147,7 @@ function end_test1(){
 		app.stage.removeChild(test_panic);
 		app.stage.removeChild(test_sit_up);
 		app.stage.removeChild(test_sit_down);
+		animTestFoot.play();
 		resources.room_low.sound.stop();
 		blackout.visible = true;
 	});

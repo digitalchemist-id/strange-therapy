@@ -3,13 +3,26 @@
 
 async function start_test3(){
 
+
 	await sleep(4000);
-	
 	resources.room_low.sound.play();
 	resources.clock.sound.play();
 	await sleep(2000);
+	app.stage.addChildAt(bg_test, 0);
+    app.stage.addChildAt(animTestFoot,1);
+	app.stage.addChildAt(test_assist,2);
+	app.stage.addChildAt(test_head_down,2);
+	app.stage.addChildAt(test_head_up,2);
+	app.stage.addChildAt(test_panic,2);
+	app.stage.addChildAt(test_sit_up,2);
+	app.stage.addChildAt(test_sit_down,2);
+	test_head_up.visible = false;
+	test_panic.visible = false;
+	test_sit_up.visible = false;
+	blackout.visible = false;
+	
 	T.t("3 days later");
-	await sleep(3000);
+	await sleep(2000);
 	blackout.visible = false;
 	bg_test.visible = true;
 	//clock ticking
@@ -85,8 +98,15 @@ function end_test3(){
 	Q.do(clearMsg);
 	Q.do(start_metro2);
 	Q.do(function(){
+		app.stage.removeChild(bg_test);
+	    app.stage.removeChild(animTestFoot);
+		app.stage.removeChild(test_assist);
+		app.stage.removeChild(test_head_down);
+		app.stage.removeChild(test_head_up);
+		app.stage.removeChild(test_panic);
+		app.stage.removeChild(test_sit_up);
+		app.stage.removeChild(test_sit_down);
 		resources.room_low.sound.stop();
 		blackout.visible = true;
-		bg_test.visible = false;
 	});
 }

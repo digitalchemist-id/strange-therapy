@@ -4,8 +4,19 @@ async function start_home1() {
 	//loader
 	await sleep(2000);
 	resources.room.sound.play();
-
-	await sleep(1000);
+	await sleep(2000);
+	app.stage.addChildAt(home_dog_bed, 2);
+    app.stage.addChildAt(bg_home, 0);
+	app.stage.addChildAt(home_bed_pet, 1);
+    app.stage.addChildAt(home_bed_lookdown, 1);
+	app.stage.addChildAt(home_bed_lookside, 1);
+	app.stage.addChildAt(home_chair, 1);
+	app.stage.addChildAt(home_grandma, 1);
+	home_bed_pet.visible = false;
+	home_bed_lookdown.visible = false;
+	home_bed_lookside.visible = false;
+	home_dog_bed.visible = false;
+	home_grandma.visible = false;
 	blackout.visible = false;
 	Q.wait(1000);
 
@@ -13,7 +24,7 @@ async function start_home1() {
 	Q.wait(500);
 	Q.do(function(){
 		resources.dog_whine.sound.play();
-	})
+	});
 	Q.wait(2500);
 	P.s("Oh..");
 	Q.wait(2000);
@@ -22,15 +33,27 @@ async function start_home1() {
 	Q.wait(500);
 	Q.do(function(){
 		resources.door_open.sound.play();
-	})
-	Q.wait(3500);
-
+	});
+	Q.wait(4500);
+	Q.do(function(){
+		home_dog_bed.visible = true;
+		home_bed_lookdown.visible = true;
+	});
+	Q.wait(1000);
 	P.s("...");
 	P.s("Huh?");
 	P.s("How did you lose so much weight?");
 	P.s("Last time I saw you...");
-	//Grandma comes to check
+	Q.wait(1000);
+	Q.do(function(){
+		home_grandma.visible = true;
+	});
 	Gm.s("Who is it?");
+	Q.wait(500);
+	Q.do(function(){
+		home_bed_lookdown.visible = false;
+		home_bed_lookside.visible = true;
+	});
 	Gm.s("Oh it's you");
 	Gm.s("Welcome!");
 	Gm.s("It's been so long")
@@ -46,9 +69,20 @@ async function start_home1() {
 	P.s("But my semester ends soon");
 	P.s("It ends in about a week");
 	Gm.s("That's great");
+	Q.wait(500);
+	Q.do(function(){
+		home_bed_lookside.visible = false;
+		home_bed_lookdown.visible = true;
+	});
 	Q.wait(1000);
 	P.s("Grandma...");
 	P.s("How has he lost so much weight?");
+	Q.wait(1000);
+	Q.do(function(){
+		home_bed_lookdown.visible = false;
+		home_bed_lookside.visible = true;
+	});
+	Q.wait(500);
 	P.s("Has he not been eating again?");
 	Gm.s("It seemed not to, I guess");
 	P.s("But I don't think I saw him get this skinny");
@@ -63,9 +97,17 @@ async function start_home1() {
 	C.s({
         "Oh come on, he's not sick": function(msg) {
         	P.s(msg);
+        	Q.do(function(){
+				home_bed_lookside.visible = false;
+				home_bed_pet.visible = true;
+			});
         	P.s("He's just... not very appetitive for now");
         	P.s("He has lost and gained weight before");
         	P.s("He will regain his appetite and his weight, too");
+        	Q.do(function(){
+				home_bed_pet.visible = false;
+				home_bed_lookside.visible = true;
+			});
         	Gm.s("Well... I think you still should take it to a vet");
         	Gm.s("You know it's an old dog");
         	P.s("Grandma...");
@@ -75,6 +117,10 @@ async function start_home1() {
         	Gm.s("I'll just visit the vet's office on the way home");
         	P.s("Thanks grandma");
         	P.s("He'll be okay");
+        	Q.do(function(){
+				home_bed_lookside.visible = false;
+				home_bed_pet.visible = true;
+			});
         	P.s("You're okay, right?");
         	P.s("You should really start eating your food, not staring at ours");
         	C.hide();
@@ -103,6 +149,10 @@ async function start_home1() {
         	Gm.s("So you're not gonna take it to a hospital?");
         	P.s("I'll try to feed him eat");
         	P.s("He'll be okay...");
+        	Q.do(function(){
+				home_bed_lookside.visible = false;
+				home_bed_pet.visible = true;
+			});
         	P.s("You're okay, right?");
         	P.s("You should really start eating your food, not staring at ours");
         	C.hide();
@@ -120,6 +170,10 @@ async function start_home1() {
         	Gm.s("I'll just visit the vet's office on the way home");
         	P.s("Thanks grandma");
         	P.s("He'll be okay");
+        	Q.do(function(){
+				home_bed_lookside.visible = false;
+				home_bed_pet.visible = true;
+			});
         	P.s("You're okay, right?");
         	P.s("You should really start eating your food, not staring at ours");
         	C.hide();
@@ -129,13 +183,18 @@ async function start_home1() {
 }
 
 function home1_1() {
-
-	
 	Q.wait(2000);
 	Q.do(clearMsg);
-	Q.do(function(){blackout.visible = true;});
+	Q.do(function(){
+		home_bed_pet.visible = false;
+		home_dog_bed.visible = false;
+		home_grandma.visible = false;
+		blackout.visible = true;
+	});
 	Q.wait(3000);
-	Q.do(function(){blackout.visible = false;});
+	Q.do(function(){
+		blackout.visible = false;
+	});
 	Q.wait(3000);
 	P.t("Wait...");
 	P.t("It's already 8 o'clock?");
@@ -388,6 +447,8 @@ function end_home1() {
 	Q.do(clearMsg);
 	Q.do(start_test2);
 	Q.do(function(){
+		app.stage.removeChild(bg_home);
+		app.stage.removeChild(home_chair);
 		resources.room.sound.stop();
 		blackout.visible = true;
 	});

@@ -11,6 +11,7 @@ async function start_metro3(){
     app.stage.addChildAt(metro_p2,2);
     app.stage.addChildAt(metro_p3,2);
     app.stage.addChildAt(metro_p4,2);
+    app.stage.addChildAt(metro_p5,2);
     app.stage.addChildAt(metro_sit,2);
     app.stage.addChildAt(metro_phone,2);
     metro_phone.visible = false;
@@ -266,6 +267,7 @@ function end_metro3(){
         app.stage.removeChild(metro_p2);
         app.stage.removeChild(metro_p3);
         app.stage.removeChild(metro_p4);
+        app.stage.removeChild(metro_p5);
         app.stage.removeChild(metro_sit);
         app.stage.removeChild(metro_phone);
         resources.metro_inside.sound.stop();

@@ -8,6 +8,8 @@ async function start_metro1(){
     app.stage.addChildAt(animMetroRail,1);
 	app.stage.addChildAt(metro_p1,2);
 	app.stage.addChildAt(metro_sit,2);
+	app.stage.addChildAt(metro_phone,2);
+	metro_phone.visible = false;
 	blackout.visible = false;
 
 	P.t('My first semester with a major...');
@@ -34,8 +36,8 @@ async function start_metro1(){
 	P.t("Although having so much stuff to do-");
 	P.t("Going to my parent's house...");
 	P.t("I kinda feel guilty about it");
-	P.t("Maybe I should have stayed");
-	Q.wait(1000);
+	P.t("Maybe I should have stayed...");
+	Q.wait(2000);
 	P.t("Should I have stayed?");
 
 	C.t({
@@ -73,8 +75,8 @@ function metro1_friend_msg(){
 	});
 	Q.wait(3000);
 	Q.do(function(){
-		metro_sit.visible = false
-		app.stage.addChildAt(metro_phone,2);
+		metro_sit.visible = false;
+		metro_phone.visible = true;
 	});
 	P.t("A message...");
 	P.t("It's from my clubmate");
@@ -89,7 +91,7 @@ function metro1_friend_msg(){
 	    },
 	    "[Don't]": function(msg) {
 	    	$.friend_msg1_checked = false;
-	    	P.t("I can check that later...");
+	    	P.t("I can check that later");
 	    	P.t("It's not like I've done my part anyway");
 	    	P.t("Right now I just want to... rest");
 	    	P.t("While I can");
@@ -155,7 +157,6 @@ function metro1_friend_dialogue_2(){
 	P.s("Of course");
 	F.s("See ya");
 	P.s("Cool");
-
 	Q.do(metro1_gf_msg);
 }
 
@@ -171,8 +172,8 @@ function metro1_gf_msg(){
 	});
 	Q.wait(3000);
 	Q.do(function(){
-		metro_phone.visible = true;
 		metro_sit.visible = false;
+		metro_phone.visible = true;
 	});
 
 	P.t("Another message?");
@@ -190,7 +191,6 @@ function metro1_gf_msg(){
 	    	$.gf_msg1_checked = false;
 	    	$.gf_msg1_replied = false;
 	    	P.t("This moment...");
-	    	P.t("This moment of peace is really important to me");
 	    	P.t("I don't know if I'll ever get to rest a single moment if I don't now");
 	    	P.t("And I know she's just as busy");
 	    	P.t("I'll just check on it later");
@@ -263,7 +263,6 @@ function metro1_gf_dialogue() {
 	    	$.not_nice_to_gf++;
 	    	$.gf_msg1_replied = false;
 	    	P.t("I'll text her later");
-	    	P.t("This moment of peace is really important to me");
 	    	P.t("I don't know if I'll ever get to rest a single moment if I don't now");
 	    	C.hide();
 	    	end_metro1();

@@ -5,6 +5,7 @@ async function start_vet2(){
     resources.room_high.sound.play();
 	//setup
 	await sleep(2000);
+    app.stage.addChildAt(bg_vet_dark, 0);
 	blackout.visible = false;
 
 	V.s("His body");
@@ -245,6 +246,7 @@ function end_vet2(){
     Q.wait(3000);
 	Q.do(clearMsg);
 	Q.do(function(){
+        app.stage.removeChild(bg_vet_dark);
         resources.room_high.sound.stop();
 		blackout.visible = true;
 	});

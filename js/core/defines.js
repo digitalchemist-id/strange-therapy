@@ -4,15 +4,11 @@ let app = new Application({
     height: 640,                       
     antialiasing: true, 
     transparent: false,
-    backgroundColor: 0x1099bb,
+    backgroundColor: 0x000000,
     resolution: 1
 });
 
-/***********************************
-***variables across the functions***
-***********************************/
 
-//setup
 let state;
 
 var style = new TextStyle ({
@@ -23,29 +19,20 @@ var style = new TextStyle ({
     wordWrapWidth: 300 
 });
 
-
-//message
 var msgArray = [];
 var pushCount, pushHeight;
 
-// let msgLine = new Graphics();
-// msgLine.lineStyle(4, 0xffd900, 1);
-// msgLine.moveTo(0, 240);
-// msgLine.lineTo(360, 240);
-// app.stage.addChild(msgLine);
+loadBox = new Graphics();
+loadBox.beginFill(0xffffff, 1);
+loadBox.drawRect(0, 0, 360, 640);
+loadBox.endFill();
+app.stage.addChildAt(loadBox, 0);
 
-// let choiceLine = new Graphics();
-// choiceLine.lineStyle(4, 0xffd900, 1);
-// choiceLine.moveTo(0, 490);
-// choiceLine.lineTo(360, 490);
-// app.stage.addChild(choiceLine);
-
-//var cover = new PIXI.display.Group(1, false);
-//app.stage.addChild(new PIXI.display.Layer(cover));
-
-let blackout = new Graphics();
-blackout.beginFill(0x000000, 1);
-blackout.drawRect(0, 0, 360, 640);
-blackout.endFill();
-app.stage.addChild(blackout); //NOT YET IMPLEMENTED need to addchild at the frontmost
-blackout.visible = false;
+loadText = new Text("LOADING", {
+    fontFamily : 'Verdana',
+    fontSize: 44,
+    fill : 0x000000
+});
+loadText.x = 72;
+loadText.y = 400;
+app.stage.addChild(loadText);

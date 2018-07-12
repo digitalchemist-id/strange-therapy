@@ -5,11 +5,11 @@
 async function start_metro2(){
     await sleep(2000);
     resources.metro_inside.sound.play();
-	//setup
 	await sleep(2000);
     app.stage.addChildAt(bg_metro_day, 0);
     app.stage.addChildAt(animMetroRail,1);
     app.stage.addChildAt(metro_p1,2);
+    app.stage.addChildAt(metro_p3,2);
     app.stage.addChildAt(metro_p4,2);
     app.stage.addChildAt(metro_sit,2);
 	blackout.visible = false;
@@ -253,6 +253,7 @@ function end_metro2(){
         app.stage.removeChild(bg_metro_day);
         app.stage.removeChild(animMetroRail);
         app.stage.removeChild(metro_p1);
+        app.stage.removeChild(metro_p3);
         app.stage.removeChild(metro_p4);
         app.stage.removeChild(metro_phone);
         app.stage.removeChild(metro_sit);

@@ -5,10 +5,14 @@ async function start_intro(){
     resources.twilight.sound.play();
     resources.room.sound.play();
     await sleep(2000);
-    app.stage.addChildAt(bg_intro, 0);
+    app.stage.addChildAt(animIntroSteam,2);
     app.stage.addChildAt(intro_sit,1);
     app.stage.addChildAt(intro_lookdown,1);
+    app.stage.addChildAt(intro_drink,1);
+    app.stage.addChildAt(intro_teapot,1);
+    app.stage.addChildAt(bg_intro,0);
     intro_lookdown.visible = false;
+    intro_drink.visible = false;
     blackout.visible = false;
 
 	M.s("Hi!");
@@ -43,12 +47,24 @@ async function start_intro(){
 
 function intro_1(){
     Q.do(function(){
-        intro_lookdown.visible = true;
         intro_sit.visible = false;
+        intro_lookdown.visible = true;
     });
 	M.s("An interactive story, a visual novel, a simulator, whatever you'd like to call it");
 	M.s("I personally want you to think that it's something kinda like a therapy");
 	P.s("Hmmm...");
+    Q.do(function(){
+        intro_lookdown.visible = false;
+        intro_drink.visible = true;
+        animIntroSteam.visible = false;
+    });
+    Q.wait(2000);
+    Q.do(function(){
+        intro_drink.visible = false;
+        intro_sit.visible = true;
+        animIntroSteam.visible = true;
+    });
+    Q.wait(1000);
 	M.s("You'll get what you came here for in a minute");
 	M.s("Before that, let's just get to know each other before you play this thing!");
 	M.s("You know, chat a little like they do in other therapies");
@@ -57,7 +73,7 @@ function intro_1(){
         	$.rude_to_me = 1;
             P.s(msg);
             P.s("I didn't click this thing to 'get to know you'");
-            M.s("Oh...");
+            M.s("Oh");
             M.s("Please be a little more patient");
             M.s("Say...");
             C.hide();
@@ -81,10 +97,6 @@ function intro_1(){
 }
 
 function intro_2(){
-    Q.do(function(){
-        intro_lookdown.visible = false;
-        intro_sit.visible = true;
-    });
 	M.s("What do you think of the music?");
 	M.s("I added it to a game cuz, what's a therapy without a good piano piece playing in the background?");
 	C.s({
@@ -128,8 +140,8 @@ function intro_3(){
     P.s("Umm...");
 	P.s("What's this thing about?");
     Q.do(function(){
-        intro_lookdown.visible = true;
         intro_sit.visible = false;
+        intro_lookdown.visible = true;
     });
 	M.s("This therapy");
 	M.s("It's something about loss, love, life and hope");
@@ -137,11 +149,19 @@ function intro_3(){
         "That's a lot to cover in a flash game": function(msg) {
             $.flashgame = true;
             P.s(msg);
+            Q.do(function(){
+                intro_lookdown.visible = false;
+                intro_sit.visible = true;
+            });
             M.s("IT'S NOT FLASH");
             M.s("This was written with html5 and javascript - with help from pixijs library. They're totally different from flash");
             P.s("Pfff, Whatever");
             P.s("Looks pretty flash to me");
             M.s("Anyway...");
+            Q.do(function(){
+                intro_sit.visible = false;
+                intro_lookdown.visible = true;
+            });
             C.hide();
             intro_4();
         },
@@ -165,10 +185,6 @@ function intro_3(){
 }
 
 function intro_4(){
-    Q.do(function(){
-        intro_lookdown.visible = false;
-        intro_sit.visible = true;
-    });
 	if($.flashgame){
 		M.s("To be a little more precise, this WEB game is about my personal experience");
 	} else if($.webgame){
@@ -176,6 +192,10 @@ function intro_4(){
 	} else {
 		M.s("To be a little more precise, this therapy is about my personal experience");
 	}
+    Q.do(function(){
+        intro_lookdown.visible = false;
+        intro_sit.visible = true;
+    });
 	M.s("You're gonna play as me and go through what happened to me years ago");
 	M.s("What happened... or what could have happened");
 	P.s("I thought therapists listen, not talk");
@@ -210,8 +230,8 @@ function intro_4(){
 function intro_5(){
 	Q.wait(1500);
     Q.do(function(){
-        intro_lookdown.visible = true;
         intro_sit.visible = false;
+        intro_lookdown.visible = true;
     });
 	M.s("While you're playing this game...");
 	M.s("You'll have to make choices, like you're doing right now");
@@ -250,11 +270,20 @@ function intro_6(){
     Q.wait(1000);
     Q.do(function(){
         intro_lookdown.visible = false;
-        intro_sit.visible = true;
+        intro_drink.visible = true;
+        animIntroSteam.visible = false;
     });
+    Q.wait(2000);
+    Q.do(function(){
+        intro_drink.visible = false;
+        intro_sit.visible = true;
+        animIntroSteam.visible = true;
+    });
+    Q.wait(2000);
 	M.s("Shall we begin then?");
 	P.s("Yeah, I'm ready");
 	P.s("Let's get to it");
+    //look down
 	M.s("Let's go back to 2 years ago");
 	M.s("You were getting used to college life - and caffein");
     M.s("It was near the end of a semester, and you were just another crazy kid taking one test and another");
@@ -268,6 +297,9 @@ function end_intro(){
         app.stage.removeChild(bg_intro);
         app.stage.removeChild(intro_sit);
         app.stage.removeChild(intro_lookdown);
+        app.stage.removeChild(intro_drink);
+        app.stage.removeChild(intro_teapot);
+        app.stage.removeChild(animIntroSteam);
         resources.twilight.sound.stop();
         resources.room.sound.stop();
         blackout.visible = true;

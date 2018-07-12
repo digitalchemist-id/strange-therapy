@@ -1,6 +1,6 @@
 {"frames": {
 
-"metro_rail1.png":
+"intro_steam_hot1.png":
 {
 	"frame": {"x":0,"y":0,"w":360,"h":640},
 	"rotated": false,
@@ -9,18 +9,9 @@
 	"sourceSize": {"w":360,"h":640},
 	"pivot": {"x":0.5,"y":0.5}
 },
-"metro_rail2.png":
+"intro_steam_hot2.png":
 {
 	"frame": {"x":0,"y":640,"w":360,"h":640},
-	"rotated": false,
-	"trimmed": false,
-	"spriteSourceSize": {"x":0,"y":0,"w":360,"h":640},
-	"sourceSize": {"w":360,"h":640},
-	"pivot": {"x":0.5,"y":0.5}
-},
-"metro_rail3.png":
-{
-	"frame": {"x":0,"y":1280,"w":360,"h":640},
 	"rotated": false,
 	"trimmed": false,
 	"spriteSourceSize": {"x":0,"y":0,"w":360,"h":640},
@@ -30,10 +21,10 @@
 "meta": {
 	"app": "https://www.codeandweb.com/texturepacker",
 	"version": "1.0",
-	"image": "metro_rail.png",
+	"image": "intro_steam.png",
 	"format": "RGBA8888",
-	"size": {"w":360,"h":1920},
+	"size": {"w":360,"h":1280},
 	"scale": "1",
-	"smartupdate": "$TexturePacker:SmartUpdate:e5505e793151e9ff61ad018096825b67:0647496e4f78c3a695a8752aa67814f2:b94a016215d8790311b995238d2ca15d$"
+	"smartupdate": "$TexturePacker:SmartUpdate:678b153b01159071b6df614e09b45a38:c62a416e02fe1b05399c947b2736429e:33be7d2ae24c2e8c3170bbf3da5dc32a$"
 }
 }

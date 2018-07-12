@@ -22,7 +22,7 @@ async function start_outro(){
 		Q.do(function(){
 			resources.twilight.sound.stop();
 		});
-		Q.wait(2000);
+		Q.wait(4000);
 		P.s("So...");
 		M.s("So...");
 		P.s("After that?");
@@ -52,9 +52,11 @@ async function start_outro(){
             C.hide();
             outro_thoughts();
         },
-        "Well... it had to happen": function(msg) {
+        "Your tea's gone cold": function(msg) {
             P.s(msg);
-            M.s("I guess it did");
+            M.s("Huh");
+            Q.wait(1500);
+            M.s("Long story it was");
             C.hide();
             outro_thoughts();
         }
@@ -224,6 +226,7 @@ function outro_questions_tests(){
 	P.s("How many did I get right?");
 	M.s("If you insist...");
 	M.s("Hmmm... Let's see");
+	Q.wait(1000);
 	switch($.test_correct){
 		case null:
 		case 0:
@@ -253,7 +256,6 @@ function outro_questions_tests(){
 			M.s("Which is impressive");
 			P.s("I nailed it!");
 			M.s("Great job");
-			P.s("Oh I'm flattered");
 			break;
 		case 4:
 			M.s("You got all four right");
@@ -330,7 +332,7 @@ function outro_questions_game_over(){
     M.s("About that...");
     M.s("You have a few more stories to hear");
     P.s("Woah...");
-    P.s("Don't tell me I've only finished a quater of this game");
+    P.s("Don't tell me I've only finished like a quater of this game");
     P.s("Have I??");
     M.s("No");
     M.s("Don't worry. This game is not THAT long-");
@@ -647,7 +649,7 @@ function outro_life_1(){
 	M.s("And over time I knew I was feeling better");
 	M.s("Still guilty - but better");
 	Q.wait(1000);
-	M.s("I was able to sleep in my parent's home again");
+	M.s("I was able to sleep in my parent's house again");
 	M.s("I spent time with my grandma again");
 	if($.not_nice_to_gf < 2){
 		M.s("My girlfriend returned from LA");
@@ -659,6 +661,7 @@ function outro_life_1(){
 	M.s("Life went on");
 	Q.wait(1500);
 	M.s("2 years passed since all this happened");
+	Q.wait(1000);
 	M.s("I had to get a knee surgery from my childhood injury recently");
 	M.s("I had to stay in bed for months so I took off a semester from school");
 	M.s("With a lot of time in my hands, I'd think about how I want to live my life - and I'd also look back to the past");
@@ -670,7 +673,7 @@ function outro_life_1(){
 	M.s("And waited for someone to visit and listen");
 	P.s("That person is me?");
 	M.s("That person is you");
-	M.s("After some retrospection-");
+	M.s("After some retrospection");
 	M.s("While this story of mine doesn't have an end");
 	M.s("I wanted to leave something like a milestone");
 	M.s("And when I do that I really wanted to tell him... thank you");
@@ -722,7 +725,7 @@ function outro_life_1(){
             P.s(msg);
             P.s("That's quite a life lesson you got there");
             M.s("Um-hum");
-            M.s("Speaking of lessons - think that's kind of why I made this game");
+            M.s("Speaking of lessons - I think that's kind of why I made this game");
             M.s("I mean, how often do you get to be forced to choose somebody else's life-choices?");
             P.s("Yeah. You really don't");
             Q.wait(1000);
@@ -734,7 +737,7 @@ function outro_life_1(){
 
 function outro_love(){
 	M.s("For this one-");
-	M.s("Instead of telling you about love itself, I'll tell you about how I met him");
+	M.s("Instead of saying something about love itself, I'll tell you about how I met him");
 	M.s("You may have been already told, but I only spent 2 years of life with him");
 	if($.rude_to_vet){
 		P.s("I don't remember having been told");
@@ -826,13 +829,13 @@ function outro_not_hope(){
 function outro_not_hope_again(){
 	M.s("You went for the hope again?");
 	M.s("I asked you to save it for the last");
-	M.s("It's important for the storytelling");
+	M.s("It's important for the plot");
 	M.s("Was it just make a mistake?");
 	M.s("Or did you wanna see how the system works...?");
 	P.s("I just clicked it because you gave me an option");
 	P.s("If it was so important why did you leave an option for it?");
 	M.s("I thought you'd listen");
-	M.s("But fine. I'll just take it away from you now");
+	M.s("But fine. I'll just take it away from you now. Ask other options first, then you'll hear about hope");
 	outro_move_on_choose();
 }
 
@@ -913,7 +916,7 @@ function outro_hope(){
 		M.s("Maybe, maybe this made you learn what I learned");
 	}
 	M.s("And as you tried to understand me...");
-	M.s("Maybe there's someone who's willing understand your pain, too");
+	M.s("Maybe there's someone who's willing understand you, too");
 	M.s("Someone... who you haven't let try yet");
 	Q.wait(2000);
 	M.s("You know by now that I'm not a therapist");

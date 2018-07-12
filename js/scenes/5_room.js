@@ -1,10 +1,11 @@
 //timeline = 5 June 11th Sat
 
 async function start_room() {
+	await sleep(2000);
 	resources.room.sound.play();
-
-	//loader
-	await sleep(3000);
+	await sleep(2000);
+    app.stage.addChildAt(bg_home, 0);
+    app.stage.addChildAt(home_chair, 1);
 	blackout.visible = false;
 
 	Q.wait(1000);
@@ -328,6 +329,8 @@ function end_room(){
 	Q.do(clearMsg);
 	Q.do(start_vet1);
 	Q.do(function(){
+		app.stage.removeChild(bg_room);
+		app.stage.removeChild(room_chair);
 		resources.room.sound.stop();
 		blackout.visible = true;
 	});
