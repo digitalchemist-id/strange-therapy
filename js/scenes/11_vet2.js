@@ -184,7 +184,7 @@ function vet2_4() {
         },
         "How does it work...?": function(msg) {
         	P.s(msg);
-        	P.s("Euthanaisa...");
+        	P.s("Euthanasia...");
             C.hide();
             vet2_euthanasia();
         },

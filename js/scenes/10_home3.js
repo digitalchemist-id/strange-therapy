@@ -4,6 +4,7 @@ async function start_home3(){
 	await sleep(4000);
 	resources.room.sound.play();
 	await sleep(2000);
+    app.stage.addChildAt(home_bed_lookside, 1);
     app.stage.addChildAt(home_bed_lookdown, 1);
     app.stage.addChildAt(home_stand, 1);
     app.stage.addChildAt(home_books, 1);
@@ -18,6 +19,7 @@ async function start_home3(){
     app.stage.addChildAt(home_vomit, 1);
     app.stage.addChildAt(home_mat, 1);
     app.stage.addChildAt(bg_home, 0);
+    home_bed_lookside.visible = false;
     home_bed_lookdown.visible = false;
     home_stand.visible = false;
     home_floor_search.visible = false;
@@ -248,6 +250,7 @@ function end_home3(){
 	Q.wait(4000);
 	Q.do(clearMsg);
 	Q.do(function(){
+		app.stage.removeChild(home_bed_lookside);
 		app.stage.removeChild(home_bed_lookdown);
 		app.stage.removeChild(home_stand);
 		app.stage.removeChild(home_books);

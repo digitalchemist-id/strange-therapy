@@ -63,7 +63,7 @@ function test4_after(){
 	Q.do(function(){
 		resources.clock.sound.stop();
 	});
-	Q.wait(1000);
+	Q.wait(2000);
 	A.s('Time\'s up!');
 	Q.do(function(){
         test_sit_down.visible = false;

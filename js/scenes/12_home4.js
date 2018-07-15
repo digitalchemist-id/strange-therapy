@@ -218,6 +218,9 @@ function home4_grandma(){
         home_bed_lookdown.visible = true;
     });
     Q.wait(3000);
+    Q.do(function(){
+        home_grandma.visible = true;
+    });
 	Gm.s("You're back?");
 	Gm.s("How are you?");
 	Gm.s("And how is it?");
