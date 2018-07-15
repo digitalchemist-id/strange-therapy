@@ -16,8 +16,8 @@ I am the sole creator for the code and art in this game - except for the followi
 
 ### Code
 
-* [pixiJS](https://github.com/pixijs/pixi.js)
-* [pixiJS sound](https://github.com/pixijs/pixi-sound)
+* [pixiJS](https://github.com/pixijs/pixi.js) (MIT License)
+* [pixiJS sound](https://github.com/pixijs/pixi-sound) (MIT License)
 
 ### Sound
 
