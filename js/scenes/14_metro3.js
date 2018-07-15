@@ -93,7 +93,6 @@ function metro3_friend_told(){
 			}
         },
         "[Don't reply]": function(msg) {
-            P.s(msg);
             C.hide();
             if($.not_nice_to_gf < 2) {
 				metro3_gf();
@@ -134,7 +133,6 @@ function metro3_friend_untold(){
 			}
         },
         "[Don't reply]": function(msg) {
-            P.s(msg);
             C.hide();
             if($.not_nice_to_gf < 2) {
 				metro3_gf();
@@ -207,7 +205,6 @@ function metro3_gf_told(){
             end_metro3();
         },
         "[Don't reply]": function(msg) {
-            P.s(msg);
             C.hide();
             end_metro3();
         }
@@ -244,7 +241,6 @@ function metro3_gf_untold(){
             end_metro3();
         },
         "[Don't reply]": function(msg) {
-            P.s(msg);
             C.hide();
             end_metro3();
         }
