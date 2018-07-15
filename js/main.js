@@ -80,7 +80,7 @@ loader
     .add("dog_whine", "sounds/dog_whine.mp3")
     .add("door_close", "sounds/door_close.wav")
     .add("door_open", "sounds/door_open.wav")
-    .add("twilight", "sounds/feelings_of_twilight.wav")
+    .add("twilight", "sounds/feelings_of_twilight.mp3")
     .add("metro_inside", "sounds/metro_inside.wav")
     .add("phone_call", "sounds/phone_call.wav")
     .add("phone_vib", "sounds/phone_vib.wav")
