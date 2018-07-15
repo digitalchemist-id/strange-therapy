@@ -3,6 +3,13 @@
 ***********************/
 document.body.appendChild(app.view);
 loader
+    .add("images/icon.png", function(){
+        icon = new Sprite(resources["images/icon.png"].texture);
+        icon.height = 42;
+        icon.width = 42;
+        icon.alpha = 0.8;
+        app.stage.addChild(icon);
+    })
     .add("images/bg/intro.png")//bg
     .add("images/bg/test.png")
     .add("images/bg/metro_day.png")
@@ -30,16 +37,42 @@ loader
     .add("images/sprite/metro_p2.png")
     .add("images/sprite/metro_p3.png")
     .add("images/sprite/metro_p4.png")
+    .add("images/sprite/metro_p5.png")
     .add("images/sprite/metro_phone.png")
     .add("images/sprite/metro_sit.png")
     .add("images/sprite/home_dog_bed.png")
+    .add("images/sprite/home_dog_cushion.png")
+    .add("images/sprite/home_dog_eat.png")
+    .add("images/sprite/home_dog_pain.png")
     .add("images/sprite/home_bed_lookdown.png")
     .add("images/sprite/home_bed_lookside.png")
     .add("images/sprite/home_bed_pet.png")
+    .add("images/sprite/home_bed_phone.png")
+    .add("images/sprite/home_bed_call.png")
     .add("images/sprite/home_chair.png")
     .add("images/sprite/home_grandma.png")
+    .add("images/sprite/home_books.png")
+    .add("images/sprite/home_bowl.png")
+    .add("images/sprite/home_cushion.png")
+    .add("images/sprite/home_desk_study.png")
+    .add("images/sprite/home_desk_look.png")
+    .add("images/sprite/home_desk_front.png")
+    .add("images/sprite/home_floor_panic.png")
+    .add("images/sprite/home_floor_search.png")
+    .add("images/sprite/home_floor_watch.png")
+    .add("images/sprite/home_floor_wipe.png")
+    .add("images/sprite/home_mat.png")
+    .add("images/sprite/home_stand.png")
+    .add("images/sprite/home_vomit.png")
     .add("images/sprite/room_chair.png")
+    .add("images/sprite/room_phone.png")
+    .add("images/sprite/room_study.png")
+    .add("images/sprite/room_text.png")
+    .add("images/sprite/room_call.png")
+    .add("images/sprite/room_panic.png")
     .add("images/sprite/vet_vet_stand.png")
+    .add("images/sprite/vet_vet_back.png")
+    .add("images/sprite/vet_vet_side.png")
     .add("images/sprite/vet_dog.png")
     .add("images/sprite/vet_stand.png")
     .add("clock", "sounds/clock.wav")//sounds
@@ -47,16 +80,19 @@ loader
     .add("dog_whine", "sounds/dog_whine.mp3")
     .add("door_close", "sounds/door_close.wav")
     .add("door_open", "sounds/door_open.wav")
-    .add("twilight", "sounds/feelings_of_twilight.mp3")
+    .add("twilight", "sounds/feelings_of_twilight.wav")
     .add("metro_inside", "sounds/metro_inside.wav")
     .add("phone_call", "sounds/phone_call.wav")
     .add("phone_vib", "sounds/phone_vib.wav")
     .add("room", "sounds/room.wav")
     .add("room_high", "sounds/room_high.wav")
     .add("room_low", "sounds/room_low.wav")
-    .add("send", "sounds/send.wav")
-    .add("send_high", "sounds/send_high.wav")
-    .add("seng_low", "sounds/send_low.wav")
+    .add("microwave", "sounds/microwave.wav")
+    .add("drink", "sounds/drink.wav")
+    .add("send_1", "sounds/send_1.wav")
+    .add("send_2", "sounds/send_2.wav")
+    .add("send_3", "sounds/send_3.wav")
+    .add("send_4", "sounds/send_4.wav")
     .on("progress", loadProgressHandler)
     .load(setup);
 
@@ -65,7 +101,7 @@ function loadProgressHandler(loader, resource){
     //console.log("loading: " + resource.url); 
     //console.log("progress: " + loader.progress + "%"); 
 
-    var color = 0x1 * Math.floor(loader.progress/100*240) + 0x100 * Math.floor(loader.progress/100*240) + 0x10000 * Math.floor(loader.progress/100*240);
+    var color = 0x1 * Math.floor(loader.progress/100*244) + 0x100 * Math.floor(loader.progress/100*244) + 0x10000 * Math.floor(loader.progress/100*244);
     
     loadBox.beginFill(0xffffff - color, 1);
     loadBox.drawRect(0, 0, 360, 640);
@@ -84,8 +120,7 @@ function setup() {
     bg_vet = new Sprite(resources["images/bg/vet.png"].texture);
     bg_vet_dark = new Sprite(resources["images/bg/vet_dark.png"].texture);
 
-
-    //anims
+    //animations
     var animIntroSteamArray = [];
     for (var i = 1; i < 3; i++) {
         animIntroSteamArray.push(PIXI.Texture.fromFrame('intro_steam_hot' + i + '.png'));
@@ -115,7 +150,7 @@ function setup() {
         animOutroSteamArray.push(PIXI.Texture.fromFrame('outro_steam_cold' + i + '.png'));
     }
     animOutroSteam = new PIXI.extras.AnimatedSprite(animOutroSteamArray);
-    animOutroSteam.animationSpeed = 0.75;
+    animOutroSteam.animationSpeed = 0.05;
     animOutroSteam.play();
 
 	//sprites
@@ -133,16 +168,42 @@ function setup() {
     metro_p2 = new Sprite(resources["images/sprite/metro_p2.png"].texture);
     metro_p3 = new Sprite(resources["images/sprite/metro_p3.png"].texture);
     metro_p4 = new Sprite(resources["images/sprite/metro_p4.png"].texture);
+    metro_p5 = new Sprite(resources["images/sprite/metro_p5.png"].texture);
     metro_phone = new Sprite(resources["images/sprite/metro_phone.png"].texture);
     metro_sit = new Sprite(resources["images/sprite/metro_sit.png"].texture);
-    home_chair = new Sprite(resources["images/sprite/home_chair.png"].texture);
     home_bed_lookdown = new Sprite(resources["images/sprite/home_bed_lookdown.png"].texture);
     home_bed_lookside = new Sprite(resources["images/sprite/home_bed_lookside.png"].texture);
     home_bed_pet = new Sprite(resources["images/sprite/home_bed_pet.png"].texture);
+    home_bed_phone = new Sprite(resources["images/sprite/home_bed_phone.png"].texture);
+    home_bed_call = new Sprite(resources["images/sprite/home_bed_call.png"].texture);
+    home_books = new Sprite(resources["images/sprite/home_books.png"].texture);
+    home_bowl = new Sprite(resources["images/sprite/home_bowl.png"].texture);
+    home_chair = new Sprite(resources["images/sprite/home_chair.png"].texture);
+    home_cushion = new Sprite(resources["images/sprite/home_cushion.png"].texture);
+    home_desk_look = new Sprite(resources["images/sprite/home_desk_look.png"].texture);
+    home_desk_study = new Sprite(resources["images/sprite/home_desk_study.png"].texture);
+    home_desk_front = new Sprite(resources["images/sprite/home_desk_front.png"].texture);
     home_dog_bed = new Sprite(resources["images/sprite/home_dog_bed.png"].texture);
+    home_dog_cushion = new Sprite(resources["images/sprite/home_dog_cushion.png"].texture);
+    home_dog_eat = new Sprite(resources["images/sprite/home_dog_eat.png"].texture);
+    home_dog_pain = new Sprite(resources["images/sprite/home_dog_pain.png"].texture);
+    home_floor_panic = new Sprite(resources["images/sprite/home_floor_panic.png"].texture);
+    home_floor_search = new Sprite(resources["images/sprite/home_floor_search.png"].texture);
+    home_floor_watch = new Sprite(resources["images/sprite/home_floor_watch.png"].texture);
+    home_floor_wipe = new Sprite(resources["images/sprite/home_floor_wipe.png"].texture);
     home_grandma = new Sprite(resources["images/sprite/home_grandma.png"].texture);
+    home_mat = new Sprite(resources["images/sprite/home_mat.png"].texture);
+    home_stand = new Sprite(resources["images/sprite/home_stand.png"].texture);
+    home_vomit = new Sprite(resources["images/sprite/home_vomit.png"].texture);
     room_chair = new Sprite(resources["images/sprite/room_chair.png"].texture);
+    room_phone = new Sprite(resources["images/sprite/room_phone.png"].texture);
+    room_study = new Sprite(resources["images/sprite/room_study.png"].texture);
+    room_text = new Sprite(resources["images/sprite/room_text.png"].texture);
+    room_call = new Sprite(resources["images/sprite/room_call.png"].texture);
+    room_panic = new Sprite(resources["images/sprite/room_panic.png"].texture);
     vet_vet_stand = new Sprite(resources["images/sprite/vet_vet_stand.png"].texture);
+    vet_vet_side = new Sprite(resources["images/sprite/vet_vet_side.png"].texture);
+    vet_vet_back = new Sprite(resources["images/sprite/vet_vet_back.png"].texture);
     vet_dog = new Sprite(resources["images/sprite/vet_dog.png"].texture);
     vet_stand = new Sprite(resources["images/sprite/vet_stand.png"].texture);
 
@@ -186,8 +247,6 @@ function setup() {
 
     $ = {};
     
-    // $.not_nice_to_gf = 1;
-    
     state = play;
 
     app.ticker.add(delta => gameLoop(delta)); //60 frames per second without lag -> 16.67ms per frame
@@ -201,9 +260,11 @@ function start(){
     C.t({
         "Enter": function(msg) {
             app.stage.removeChild(loadBox);
+            app.stage.removeChild(icon);
             clearMsg();
             C.hide();
-            start_home1();
+            //blackout.visible = true;//dev
+            start_intro();
         }
     });
 }

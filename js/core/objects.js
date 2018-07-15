@@ -60,7 +60,7 @@ app.stage.addChild(Q.clickBox);
 ****Messages****
 ***************/
 
-let Message = function(txt, align, bgColor, txtColor) {
+let Message = function(txt, align, bgColor, txtColor, sound) {
     this.txt = txt;
     this.alpha = 0.7;
     this.align = align;
@@ -78,6 +78,7 @@ let Message = function(txt, align, bgColor, txtColor) {
     this.textMetrics = TextMetrics.measureText(txt, this.style);
     this.msgContainer = new Container();
     this.speak = false;
+    this.sound = sound;
 }
 
 Message.prototype.setup = function() {
@@ -118,27 +119,33 @@ Message.prototype.draw = function() {
     this.textMetrics.lineWidths.forEach(function(element){
         txtLength += element;
     });
-    //console.log(txtLength);
     Q.queue += Math.floor(txtLength/2.2) + 50; //adjusts speed of autoskip
-    //console.log(queue);
     pushHeight = this.textMetrics.height + 25;
     pushCount = this.textMetrics.height + 24; // - 1 to prevent pushing further
     this.msgContainer.position.y = 250;
     msgArray.push(this.msgContainer);
     app.stage.addChild(this.msgContainer);
-    //resources.send.sound.play();
+    if(this.sound == 4){
+        resources.send_4.sound.play();
+    } else if(this.sound == 3){
+        resources.send_3.sound.play();
+    } else if(this.sound == 2) {
+        resources.send_2.sound.play();
+    } else {
+        resources.send_1.sound.play();
+    }
 }
 
 Message.prototype.panic = function() {
 
-    Q.queue += 4;//panic
+    Q.queue += 5;//panic
     Q.canSkip = false;//unskippable
     pushHeight = this.textMetrics.height + 25;
     pushCount = this.textMetrics.height + 24; // - 1 to prevent pushing further
     this.msgContainer.position.y = 250;
     msgArray.push(this.msgContainer);
     app.stage.addChild(this.msgContainer);
-    //resources.send.sound.play();
+    resources.send_2.sound.play();
 }
 
 /**************
@@ -149,12 +156,12 @@ let Character = function(config){
     this.bgColor = config.bgColor;
     this.txtColor= config.txtColor;
     this.align = config.align;
-    //this.sound = config.sound;
+    this.sound = config.sound;
 }
 
 //s is for speak
 Character.prototype.s = function(txt){
-    newMsg = new Message(txt, this.align, this.bgColor, this.txtColor);
+    newMsg = new Message(txt, this.align, this.bgColor, this.txtColor, this.sound);
     newMsg.speak = true;
     newMsg.alpha = 0.9;
     newMsg.setup();
@@ -163,33 +170,33 @@ Character.prototype.s = function(txt){
 
 //t is for think 
 Character.prototype.t = function(txt){
-    newMsg = new Message(txt, this.align, this.bgColor, this.txtColor);
+    newMsg = new Message(txt, this.align, this.bgColor, this.txtColor, this.sound);
     newMsg.setup();
     Q.fqueue.push(newMsg.draw.bind(newMsg));
 }
 
 Character.prototype.panic = function(txt){
-    newMsg = new Message(txt, this.align, this.bgColor, this.txtColor);
+    newMsg = new Message(txt, this.align, this.bgColor, this.txtColor, this.sound);
     newMsg.setup();
     Q.fqueue.push(newMsg.panic.bind(newMsg));
 }
 
 //Me - black
-M = new Character({bgColor:0x000000, txtColor:0xffffff, align: 'left'});
+M = new Character({bgColor:0x000000, txtColor:0xffffff, align: 'left', sound: 2});
 //Player - white 
-P = new Character({bgColor:0xffffff, txtColor:0x000000, align: 'right'});
+P = new Character({bgColor:0xffffff, txtColor:0x000000, align: 'right', sound: 3});
 //Text - gray
-T = new Character({bgColor:0x888888, txtColor:0xffffff, align: 'left'});
+T = new Character({bgColor:0x888888, txtColor:0xffffff, align: 'left', sound: 1});
 //Grandmother
-Gm = new Character({bgColor:0xbf9f48, txtColor:0xffffff, align: 'left'});
+Gm = new Character({bgColor:0xbf9f48, txtColor:0xffffff, align: 'left', sound: 4});
 //Vet
-V = new Character({bgColor:0x177748, txtColor:0xffffff, align: 'left'});
+V = new Character({bgColor:0x177748, txtColor:0xffffff, align: 'left', sound: 1});
 //Friend
-F = new Character({bgColor:0x004d47, txtColor:0xffffff, align: 'left'});
+F = new Character({bgColor:0x004d47, txtColor:0xffffff, align: 'left', sound: 2});
 //Girlfriend
-Gf = new Character({bgColor:0xb15647, txtColor:0xffffff, align: 'left'});
+Gf = new Character({bgColor:0xb15647, txtColor:0xffffff, align: 'left', sound: 4});
 //Assistant
-A = new Character({bgColor:0x6b503c, txtColor:0xffffff, align: 'left'});
+A = new Character({bgColor:0x6b503c, txtColor:0xffffff, align: 'left', sound: 2});
 
 /************
 ***choices***

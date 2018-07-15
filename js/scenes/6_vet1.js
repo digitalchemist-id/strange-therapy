@@ -1,19 +1,21 @@
 //timeline = 6 June 12th Sun
 
 async function start_vet1() {
-    await sleep(2000);
+    await sleep(4000);
 	resources.room_high.sound.play();
 	await sleep(2000);
     app.stage.addChildAt(bg_vet, 0);
-    app.stage.addChildAt(vet_stand, 2);
+    app.stage.addChildAt(vet_stand, 1);
     app.stage.addChildAt(vet_dog, 1);
     app.stage.addChildAt(vet_vet_stand, 1);
-	blackout.visible = false;
-	Q.wait(1000);
-    Q.do(function(){
-        resources.dog_whine.sound.play();
-    });
-    Q.wait(2500);
+    app.stage.addChildAt(vet_vet_side, 1);
+    app.stage.addChildAt(vet_vet_back, 1);
+    vet_vet_side.visible = false;
+    vet_vet_back.visible = false;
+	await sleep(1000);
+    resources.dog_whine.sound.play();
+    await sleep(3500);
+    blackout.visible = false;
 	P.t("He...");
 	P.t("He seems okay...");
     P.t("What a relief...");
@@ -56,6 +58,10 @@ function vet1_about(){
 	V.s("You heard that his liver is... not good right?");
 	P.s("Dysfunctional?");
 	V.s("Yes");
+    Q.do(function(){
+        vet_vet_stand.visible = false;
+        vet_vet_side.visible = true;
+    });
 	V.s("If you see here...");
 	V.s("Do you see that his sclera- the white part if his eyes");
 	V.s("Do you see how it's colored?");
@@ -69,10 +75,13 @@ function vet1_about(){
 	P.s("...");
 	V.s("If you take a close look beneath his fur...");
 	V.s("Like this...");
-	V.s("All yellow");
 	V.s("Do you see it?");
 	P.t("Oh god...");
 	V.s("His gums too");
+    Q.do(function(){
+        vet_vet_side.visible = false;
+        vet_vet_stand.visible = true;
+    });
 	V.s("This is called jaundice");
 	V.s("It's a very common symptom of liver dysfunction");
 	C.s({
@@ -83,7 +92,7 @@ function vet1_about(){
             V.s("Could be Inflammation of organs");
             V.s("Could be presense of stones...");
             V.s("Worst case, it could be tumor");
-            V.s("...A cancer");
+            V.s("A cancer");
             P.t("A cancer");
             P.t("...");
             P.t("Is it worse than aging?");
@@ -118,6 +127,7 @@ function vet1_about_2(){
     Q.wait(1500);
     V.s("But right now...");
     V.s("There are other issues");
+    P.s("What...");
     P.s("What kind of other issues?");
     Q.wait(1000);
     V.s("The reason he had to be hospitalized");
@@ -130,13 +140,18 @@ function vet1_about_2(){
     V.s("His body won't be able to handle any kind of treatment or surgery at this state");
     V.s("He has to eat and regain some weight");
     V.s("That's the first step");
-    //he takes out a can and feeds him
-    //P.s("Oh thank god he's eating");
-    //V.s("...");
+    Q.do(function(){
+        vet_vet_stand.visible = false;
+        vet_vet_back.visible = true;
+    });
     Q.wait(2000);
     V.s("It'll be hard for him to digest dry dog food");
     V.s("I'll give you a few of this can");
     Q.wait(3000);
+    Q.do(function(){
+        vet_vet_back.visible = false;
+        vet_vet_stand.visible = true;
+    });
     V.s("Feed him 4 times a day"); 
     V.s("Mix two spoonful of this can with swollen dog food, and microwave the mixture before you feed him");
     V.s("And also make him to drink often");
@@ -171,7 +186,7 @@ function vet1_about_2(){
             V.s("Surgery cost will vary - from ----- up to -----");
             P.s("...");
             Q.wait(2000);
-            V.s("All this potential cost makes you worry, I understand that...");
+            V.s("All this cost makes you worry, I understand that...");
             V.s("But only few worst cases require all those procedures");
             V.s("Instead of worrying, just focus on getting him fed for now");
             V.s("If you can do that properly, things can turn out to be much better than expected");
@@ -192,15 +207,17 @@ function vet1_about_2(){
 
 
 function end_vet1(){
-	Q.wait(3000);
+	Q.wait(4000);
 	Q.do(clearMsg);
-	Q.do(start_home2);
 	Q.do(function(){
         app.stage.removeChild(bg_vet);
         app.stage.removeChild(vet_vet_stand);
+        app.stage.removeChild(vet_vet_side);
+        app.stage.removeChild(vet_vet_back);
         app.stage.removeChild(vet_dog);
         app.stage.removeChild(vet_stand);
         resources.room_high.sound.stop();
 		blackout.visible = true;
 	});
+    Q.do(start_home2);
 }

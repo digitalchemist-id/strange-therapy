@@ -1,15 +1,22 @@
 //timeline = 5 June 11th Sat
 
-async function start_room() {
-	await sleep(2000);
+async function start_room(){
+	await sleep(4000);
 	resources.room.sound.play();
 	await sleep(2000);
-    app.stage.addChildAt(bg_home, 0);
-    app.stage.addChildAt(home_chair, 1);
+    app.stage.addChildAt(bg_room, 0);
+    app.stage.addChildAt(room_panic, 1);
+    app.stage.addChildAt(room_call, 1);
+    app.stage.addChildAt(room_text, 1);
+    app.stage.addChildAt(room_study, 1);
+    app.stage.addChildAt(room_phone, 1);
+    app.stage.addChildAt(room_chair, 1);
+    room_panic.visible = false;
+    room_call.visible = false;
+    room_text.visible = false;
 	blackout.visible = false;
 
 	Q.wait(1000);
-	//studying...
 	P.t("...");
 	Q.wait(2000);
 	P.t("......");
@@ -25,14 +32,22 @@ async function start_room() {
 	} else {
 		P.t("Few minutes of break will help me focus more");
 	}
-	Q.wait(3000);
-	//grabs a phone
-	P.t("Oh yeah");
+	Q.wait(1000);
+	Q.do(function(){
+		room_phone.visible = false;
+		room_study.visible = false;
+		room_text.visible = true;
+	});
+	Q.wait(4000);
+	P.t("Oh yeah...");
+	Q.wait(1000);
 	P.t("This just reminds me...");
 	if(!$.friend_msg1_checked){
 		P.t("I completely forgot about my friend's message");
 		Q.wait(3000);
-		F.s("I just finished doing my part in the presentation. Sent you through a mail. Check them and integrate the formats with other parts when you've got time");
+		F.s("Hey");
+		F.s("I just finished doing my part in the presentation. Sent you through a mail");
+		F.s("Check them and integrate the formats when you've got time");
 		F.s("Are you done with your part too?");
 		P.s("Shoot...");
 	} else if(!$.friend_msg1_replied){
@@ -61,9 +76,14 @@ async function start_room() {
             	P.t("I didn't reply my friend back when he asked me about the project but...");
             }
             P.t("I'm gonna keep my promise");
-            P.t("No more procrastinating");
+            P.t("So no more procrastinating");
+            Q.do(function(){
+				room_text.visible = false;
+				room_phone.visible = true;
+				room_study.visible = true;
+			});
             C.hide();
-            room_call();
+            room_callf();
         },
         "I have time... tomorrow": function(msg) {
             P.t(msg);
@@ -73,28 +93,34 @@ async function start_room() {
             P.t("It's not like it's overdue");
             P.t("...");
             C.hide();
-            room_call();
+            room_callf();
         }
     });
 }
 
-function room_call(){
-	Q.wait(2000);
+function room_callf(){
+	Q.wait(5000);
 	Q.do(function(){
 		resources.phone_call.sound.play();
 	});
-	Q.wait(3000);
-
+	Q.wait(2000);
+	Q.do(function(){
+		room_phone.visible = false;
+		room_study.visible = false;
+		room_text.visible = true;
+	});
+	Q.wait(1000);
 	P.t("Huh?");
 	P.t("A phone call?");
 	P.t("It's been forever since I've ever got a phone call");
 	P.t("it's from grandma...?");
 	P.t("Why would she call me?");
-	//P.t("Is it because I haven't visited home in a while?");
 
 	C.t({
 	    "[Answer]": function(msg) {
 	    	$.Grandma_phone1_answered = true;
+	    	room_text.visible = false;
+	    	room_call.visible = true;
 	    	resources.phone_call.sound.stop();
 	    	C.hide();
 	    	room_call_answered();
@@ -105,18 +131,19 @@ function room_call(){
 		    	P.t("For gods sake!");
 		    	P.t("Why won't people just leave me alone?");
 		    	P.t("Cellphone must be worst human invention ever made");
-		    	Q.do(function(){
-		    		resources.phone_call.sound.stop();
-		    	});
 	    	} else {
 	    		P.t("Hm");
 	    		P.t("It's probably not important");
 	    		P.t("Maybe It's because of things I left at home");
 	    		P.t("Like the files I don't need anymore");
-	    		Q.do(function(){
-	    			resources.phone_call.sound.stop();
-	    		});
+	    		P.t("I'll call her back later");
 	    	}
+	    	Q.do(function(){
+	    		resources.phone_call.sound.stop();
+	    		room_text.visible = false;
+				room_phone.visible = true;
+				room_study.visible = true;
+	    	});
 	    	C.hide();
 	    	room_msg();
 	    }
@@ -140,13 +167,18 @@ function room_call_answered() {
 	Q.do(room_unite);
 }
 
-function room_msg(msg){
+function room_msg(){
 	Q.wait(2500);
 	Q.do(function(){
 		resources.phone_vib.sound.play();
 	});
-	Q.wait(3000);
-
+	Q.wait(2000);
+	Q.do(function(){
+		room_phone.visible = false;
+		room_study.visible = false;
+		room_text.visible = true;
+	});
+	Q.wait(1000);
 	P.t("Now she sent me a text");
 	P.t("...");
 	P.t("She calls me once in a while but I she never texts me");
@@ -161,7 +193,7 @@ function room_msg(msg){
         	P.t("Something doesn't feel right");
         	P.t("I should probably check it");
         	C.hide();
-        	room_msg_2()
+        	room_msg_2();
         }
     });
 }
@@ -173,7 +205,11 @@ function room_msg_2(){
 	Q.wait(1000);
 	P.t("....");
 	Q.wait(3000);
-	//dialing sound
+	Q.do(function(){
+		room_text.visible = false;
+	    room_call.visible = true;
+	});
+	Q.wait(1000);
 	Gm.s("Hello?");
 	P.s("It's me...");
 	Gm.s("Hey!");
@@ -186,17 +222,19 @@ function room_msg_2(){
 
 
 function room_unite(){
-	Gm.s("I took him to vet to hear the results");
+	Gm.s("I took it to vet to hear the results");
 	Gm.s("He says its liver is dysfunctional");
 	P.s("...");
 	Gm.s("He said that it needed to go through even further diagnosis");
 	Gm.s("It'be better if it stayed there overnight for some treatment");
 	Gm.s("It might even need a surgery");
 	P.s("...");
+	Q.wait(1000);
 	P.s("The office is close now right?");
 	Gm.s("It sure is");
 	P.s("And he needs to be picked up tomorrow...?");
 	Gm.s("Yes");
+	Q.wait(1000);
 	C.s({
         "I'll be there": function(msg) {
         P.s(msg);
@@ -225,17 +263,19 @@ function room_unite2(){
 }
 
 function room_choose(){
-	//hang up
+	Q.do(function(){
+		room_call.visible = false;
+	    room_text.visible = true;
+	});
 	Q.wait(4000);
 	P.t("...");
 	Q.wait(2000);
-	//P.s("Oh......");
 
 	C.t({
         "[Panic]": function(msg) {
         	$.room_panicked = true;
             C.hide();
-            room_panic();
+            room_panicf();
         },
         "[Don't panic]": function(msg) {
         	$.room_panicked = false;
@@ -245,9 +285,14 @@ function room_choose(){
     });
 }
 
-function room_panic() {
-
-	P.panic("Hospitalized");
+function room_panicf() {
+	Q.do(function(){
+		room_text.visible = false;
+	    room_panic.visible = true;
+	    room_chair.x = 20;
+	});
+	Q.wait(3000);
+	P.t("Hospitalized");
 	P.panic("But he always refuse to stay in small containers");
 	P.panic("I know he'd NEVER let himself be hospitalized");
 	P.panic("He's freaking too scared of entering anywhere closed");
@@ -260,7 +305,19 @@ function room_panic() {
 	P.panic("How could I miss something so simple?");
 	P.panic("Something so important?");
 	P.panic("Why do I always miss it?");
-	
+	P.panic("But he always refuse to stay in small containers");
+	P.panic("I know he'd NEVER let himself be hospitalized");
+	P.panic("He's freaking too scared of entering anywhere closed");
+	P.panic("That why in the first place-");
+	P.panic("Hospitalized?");
+	P.panic("How is that possible?");
+	P.panic("Is he that sick?");
+	P.panic("I should have known...");
+	P.panic("Why have I not known");
+	P.panic("How could I miss something so simple?");
+	P.panic("Something so important?");
+	P.panic("Why do I always miss it?");
+
 	if($.careful){
 		P.panic("Maybe I already knew");
 		P.panic("I somehow already knew");
@@ -274,10 +331,8 @@ function room_panic() {
 	P.panic("Oh.. my god");
 	P.panic("He must be trembling");
 	P.panic("He must be shivering with fear");
-	P.panic("And I...");
-	P.panic("I can't believe...");
-	P.panic("I let this happen...");
-	Q.wait(2000);
+	P.t("...");
+	Q.wait(500);
 	Q.do(clearMsg);
 	Q.do(function(){
 		blackout.visible = true;
@@ -290,6 +345,12 @@ function room_dont_panic() {
 	P.t("Is to not panic");
 	P.t("Let's try not to panic");
 	Q.wait(2000);
+	Q.do(function(){
+		room_text.visible = false;
+	    room_panic.visible = true;
+	    room_chair.x = 20;
+	});
+	Q.wait(1000);
 	P.t("Hospitalized...");
 	P.t("But he always refuse to stay in small containers");
 	P.t("I know he'd NEVER let himself be hospitalized");
@@ -310,28 +371,27 @@ function room_dont_panic() {
 		P.t("But I didn't want to admit");
 	} else {
 		P.t("And I was so confident that he wasn't sick");
-		P.t("Freaking idiot");
-		P.t("Why are you never careful?");
+		P.t("Why are you never so careful?");
 	}
 	P.t("Oh.. my god");
 	P.t("He must be trembling");
 	P.t("He must be shivering with fear");
-	P.t("And I...");
-	P.t("I can't believe...");
-	P.t("I let this happen...");
-	P.t("...");
 	Q.do(end_room);
-
 }
 
 function end_room(){
-	Q.wait(3000);
+	Q.wait(4000);
 	Q.do(clearMsg);
-	Q.do(start_vet1);
 	Q.do(function(){
 		app.stage.removeChild(bg_room);
+		app.stage.removeChild(room_panic);
+		app.stage.removeChild(room_call);
+		app.stage.removeChild(room_text);
+		app.stage.removeChild(room_study);
+		app.stage.removeChild(room_phone);
 		app.stage.removeChild(room_chair);
 		resources.room.sound.stop();
 		blackout.visible = true;
 	});
+	Q.do(start_vet1);
 }

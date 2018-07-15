@@ -1,12 +1,25 @@
 //timeline = 12 June 15th Wed
 
 async function start_home4(){
-    await sleep(2000);
+    await sleep(4000);
     resources.room.sound.play();
-	//setup
 	await sleep(2000);
-    app.stage.addChildAt(bg_home, 0);
+    app.stage.addChildAt(home_bed_lookside, 1);
+    app.stage.addChildAt(home_bed_call, 1);
+    app.stage.addChildAt(home_bed_lookdown, 1);
+    app.stage.addChildAt(home_grandma, 1);
+    app.stage.addChildAt(home_books, 1);
     app.stage.addChildAt(home_chair, 1);
+    app.stage.addChildAt(home_dog_cushion, 1);
+    app.stage.addChildAt(home_cushion, 1);
+    app.stage.addChildAt(home_bowl, 1);
+    app.stage.addChildAt(home_mat, 1);
+    app.stage.addChildAt(bg_home, 0);
+    home_bed_lookdown.visible = true;
+    home_dog_cushion.visible = true;
+    home_bed_call.visible = false;
+    home_bed_phone.visible = false;
+    home_grandma.visible = false;
 	blackout.visible = false;
 	Q.wait(5000);
 	P.t("...");
@@ -17,8 +30,8 @@ async function start_home4(){
         	$.test4_studied = true;
             P.t(msg);
             P.t("Oh of course I'll study");
-            P.t("Duh");
-            P.t("Test tomorrow?");
+            P.t("For the test tomorrow?");
+            Q.wait(2000);
             P.t("But what if...");
             P.t("What if while I'm gone he...");
             P.t("...");
@@ -26,11 +39,20 @@ async function start_home4(){
             home4_choice();
         },
         "I'll call my girlfriend": function(msg) {
+            P.t(msg);
+            Q.do(function(){
+                home_bed_lookdown.visible = false;
+                home_bed_call.visible = true;
+            });
             C.hide();
             if($.not_nice_to_gf < 2 || $.gf_told){
                 home4_gf_call();
             } else {
             	Q.wait(8000);
+                Q.do(function(){
+                    home_bed_call.visible = false;
+                    home_bed_lookdown.visible = true;
+                });
             	P.t("She's not answering");
             	P.t("What am I...");
             	P.t("What am I gonna do?");
@@ -40,10 +62,8 @@ async function start_home4(){
 	            P.t("My last day at school");
 	            P.t("What if while I'm gone he...");
 	            P.t("...");
-	            C.hide();
 	            home4_choice();
             }
-
         },
         "I don't know": function(msg) {
             P.t(msg);
@@ -67,7 +87,7 @@ async function start_home4(){
 
 function home4_choice(){
 	C.t({
-        "It's gonna be alright": function(msg) {
+        "It's gonna be alright...": function(msg) {
             P.t(msg);
             P.t("I've tried...");
             P.t("I tried with everything I can");
@@ -122,7 +142,7 @@ function home4_gf_call(){
 	P.s("I knew this would happen someday but");
 	P.s("I never expected it to be this soon-");
 	P.s("When I have the least time to prepare myself");
-	P.s("What if tomorrow when I'm away");
+	P.s("What if tomorrow when I'm away...");
 	P.s("While I'm away he...");
 	Gf.s("Oh yeah...");
 	Gf.s("Your test...");
@@ -193,10 +213,18 @@ function home4_gf_call(){
 }
 
 function home4_grandma(){
+    Q.do(function(){
+        home_bed_call.visible = false;
+        home_bed_lookdown.visible = true;
+    });
     Q.wait(3000);
 	Gm.s("You're back?");
 	Gm.s("How are you?");
 	Gm.s("And how is it?");
+    Q.do(function(){
+        home_bed_lookdown.visible = false;
+        home_bed_lookside.visible = true;
+    });
 	P.s("Grandma...");
 	Gm.s("Are you...");
     Q.wait(2000);
@@ -251,11 +279,20 @@ function home4_grandma(){
 }
 
 function end_home4(){
-    Q.wait(3000);
+    Q.wait(4000);
 	Q.do(clearMsg);
 	Q.do(function(){
-        app.stage.removeChild(bg_home);
+        app.stage.removeChild(home_bed_lookside);
+        app.stage.removeChild(home_bed_call);
+        app.stage.removeChild(home_bed_lookdown);
+        app.stage.removeChild(home_grandma);
+        app.stage.removeChild(home_books);
         app.stage.removeChild(home_chair);
+        app.stage.removeChild(home_dog_cushion);
+        app.stage.removeChild(home_cushion);
+        app.stage.removeChild(home_bowl);
+        app.stage.removeChild(home_mat);
+        app.stage.removeChild(bg_home);
         resources.room.sound.stop();
 		blackout.visible = true;
 	});

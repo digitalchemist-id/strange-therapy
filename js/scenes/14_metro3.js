@@ -1,9 +1,8 @@
 //timeline = 14 June 16th Thu
 
 async function start_metro3(){	
-    await sleep(3000);
+    await sleep(4000);
     resources.metro_inside.sound.play();
-
 	await sleep(2000);
     app.stage.addChildAt(bg_metro_evening, 0);
     app.stage.addChildAt(animMetroRail,1);
@@ -23,7 +22,7 @@ async function start_metro3(){
 	} else if($.not_nice_to_gf < 2) {
 		metro3_gf();
 	} else {
-        Q.wait(3000);
+        Q.wait(2000);
 		end_metro3();
 	}
 }
@@ -58,8 +57,8 @@ function metro3_friend(){
 function metro3_friend_told(){
     Q.wait(1000);
     Q.do(function(){
-        metro_phone.visible = true;
         metro_sit.visible = false;
+        metro_phone.visible = true;
     });
     Q.wait(1500);
 	F.s("You alright?");
@@ -108,8 +107,8 @@ function metro3_friend_told(){
 function metro3_friend_untold(){
     Q.wait(1000);
     Q.do(function(){
-        metro_phone.visible = true;
         metro_sit.visible = false;
+        metro_phone.visible = true;
     });
     Q.wait(1500);
 	F.s("There's a group meeting tomorrow 2pm");
@@ -216,6 +215,7 @@ function metro3_gf_told(){
 }
 
 function metro3_gf_untold(){
+    $.not_nice_to_gf += 2;
     Q.wait(1000);
     Q.do(function(){
         metro_phone.visible = true;
@@ -257,9 +257,8 @@ function end_metro3(){
         metro_phone.visible = false;
         metro_sit.visible = true;
     });
-	Q.wait(3000);
+	Q.wait(5000);
 	Q.do(clearMsg);
-	Q.do(start_outro);
 	Q.do(function(){
         app.stage.removeChild(bg_metro_evening);
         app.stage.removeChild(animMetroRail);
@@ -273,4 +272,5 @@ function end_metro3(){
         resources.metro_inside.sound.stop();
 		blackout.visible = true;
 	});
+    Q.do(start_outro);
 }

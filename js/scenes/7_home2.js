@@ -1,35 +1,46 @@
 //timeline = 7 June 12th Sun
 
 async function start_home2(){
-	await sleep(2000);
+	await sleep(4000);
 	resources.room.sound.play();
-	await sleep(2000);
-    app.stage.addChildAt(bg_home, 0);
+	resources.microwave.sound.play();
+	await sleep(7000);
+    app.stage.addChildAt(home_bed_phone, 1);
+    app.stage.addChildAt(home_bed_lookdown, 1);
+    app.stage.addChildAt(home_floor_watch, 1);
+    app.stage.addChildAt(home_dog_eat, 1);
     app.stage.addChildAt(home_chair, 1);
+    app.stage.addChildAt(home_dog_cushion, 1);
+    app.stage.addChildAt(home_cushion, 1);
+    app.stage.addChildAt(home_bowl, 1);
+    app.stage.addChildAt(bg_home, 0);
+    home_bed_phone.visible = false;
+    home_bed_lookdown.visible = false;
+    home_dog_cushion.visible = false;
 	blackout.visible = false;
-	
-	Q.wait(3000);
-	P.t("Two spoonful of these mixed with soaked dog food");
-	P.t("Microwaved");
 	P.t("There");
 	Q.wait(2000);
 	P.s("Here it is");
 	P.s("You need to eat it");
-
 	Q.wait(1000);
 	P.s("Drink some water too");
 	P.t("Whew...");
 	P.t("It's okay");
-	P.t("I'll stay by your side until you're well");
+	P.t("I'll stay by your side until you're cured");
 	P.t("I'll feed you 4 times a day, make sure you drink...");
 	P.t("And make sure you digest it as well");
 	P.t("I'll just study here by your side");
 	P.t("I'll only stay away for tests");
 	P.t("Around 3 hours of commute plus another 3 by test itself...");
-	Q.wait(1000);
+	Q.wait(2500);
 	P.t("...");
 	P.t("I can handle it");
-	Q.wait(3000);
+	Q.wait(2500);
+	Q.do(function(){
+		home_floor_watch.visible = false;
+		home_bed_lookdown.visible = true;
+	});
+	Q.wait(1000);
 	P.t("Hm...");
 	if($.room_panicked){
 		P.t("I was completely panicked yesterday..");
@@ -40,7 +51,8 @@ async function start_home2(){
 		P.t("But haven't told anyone about this yet...");
 	}
 	Q.wait(2000);
-	P.t("Maybe I need to tell my girlfriend about this");
+	P.t("Maybe...");
+	P.t("I need to tell my girlfriend about this");
 	C.t({
         "[Text her]": function(msg) {
         	$.gf_texted = true;
@@ -62,6 +74,10 @@ async function start_home2(){
 
 function home2_gf_text() {
 	Q.wait(2000);
+	Q.do(function(){
+		home_bed_lookdown.visible = false;
+		home_bed_phone.visible = true;
+	});
 	P.s("How are you doing?");
 	Q.wait(1000);
 	if($.not_nice_to_gf < 2){
@@ -152,11 +168,25 @@ function home2_gf_text_2() {
 }
 
 function home2_project_msg() {
-	Q.wait(1000);
+	Q.wait(2000);
+	Q.do(function(){
+		home_dog_eat.visible = false;
+		home_dog_cushion.visible = true;
+	});
+	Q.wait(500);
+	Q.do(function(){
+		home_bed_phone.visible = false;
+		home_bed_lookdown.visible = true;
+	});
+	Q.wait(3000);
 	Q.do(function(){
 		resources.phone_vib.sound.play();
 	});
 	Q.wait(2000);
+	Q.do(function(){
+		home_bed_lookdown.visible = false;
+		home_bed_phone.visible = true;
+	});
 	F.s("You still working on the project?");
 	F.s("Everyone else's file is ready except for yours");
 	Q.wait(1000);
@@ -211,6 +241,7 @@ function home2_project_no(){
             P.s(msg);
             P.s("I found out that I don't have time to work on this project");
             P.s("I'm sorry");
+            Q.wait(1000);
             F.s("Screw you");
             if($.project_under_control){
             	F.s("You said you finished most of you part");
@@ -232,12 +263,12 @@ function home2_project_no(){
         "My dog is very sick": function(msg) {
         	$.friend_told = true;
             P.s(msg);
-            P.s("Vet said that it could even be cancer...");//
+            P.s("Vet said that it could even be cancer...");
             P.s("I can't leave his side");
             P.s("He needs to be taken care of");
             Q.wait(1000);
             F.s("Okay");
-            F.s("I understand");
+            F.s("I understand...");
             F.s("But you could have at least finished your part");
             if($.room_panicked){
             	P.s("I was so panicked");
@@ -246,7 +277,7 @@ function home2_project_no(){
         	}
             P.s("I'm really sorry");
             P.s("I'll send you what I have done so far... It's bit unpolished but everything that needs to be there is there");
-            F.s("I understand");
+            F.s("Got it");
             F.s("I hope he gets better");
            	P.s("Thank you so much");
            	P.s("Please tell the others that I'm sorry");
@@ -257,6 +288,7 @@ function home2_project_no(){
         	$.friendship_over = true;
             P.s(msg);
             P.s("I'm sorry");
+            Q.wait(1500);
             F.s("Screw you");
             F.s("You could have told me earlier");
             if(!$.friend_msg1_checked || !$.friend_msg1_replied) {
@@ -328,13 +360,20 @@ function home2_project_talk(){
 
 
 function end_home2(){
-	Q.wait(3000);
+	Q.wait(4000);
 	Q.do(clearMsg);
-	Q.do(start_test3);
 	Q.do(function(){
-		app.stage.removeChild(bg_home);
+		app.stage.removeChild(home_bed_phone);
+		app.stage.removeChild(home_bed_lookdown);
+		app.stage.removeChild(home_floor_watch);
+		app.stage.removeChild(home_dog_eat);
 		app.stage.removeChild(home_chair);
+		app.stage.removeChild(home_dog_cushion);
+		app.stage.removeChild(home_cushion);
+		app.stage.removeChild(home_bowl);
+		app.stage.removeChild(bg_home);
 		resources.room.sound.stop();
 		blackout.visible = true;
 	});
+	Q.do(start_test3);
 }

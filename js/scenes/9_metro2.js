@@ -1,9 +1,7 @@
 //timeline = 9 June 15th Wed
-//Gf finished her semester - a text
-//If you're holding on - text my friend?
 
 async function start_metro2(){
-    await sleep(2000);
+    await sleep(4000);
     resources.metro_inside.sound.play();
 	await sleep(2000);
     app.stage.addChildAt(bg_metro_day, 0);
@@ -12,6 +10,8 @@ async function start_metro2(){
     app.stage.addChildAt(metro_p3,2);
     app.stage.addChildAt(metro_p4,2);
     app.stage.addChildAt(metro_sit,2);
+    app.stage.addChildAt(metro_phone,2);
+    metro_phone.visible = false;
 	blackout.visible = false;
 
     Q.wait(3000);
@@ -29,7 +29,7 @@ async function start_metro2(){
 	C.t({
         "[Check message]": function(msg) {
 	        C.hide();
-	        if($.gf_told){ //$.gf_msg1_checked && $.gf_msg1_replied = true &&
+	        if($.gf_told){
 	        	metro2_gf_msg();
 	        }else{
 	        	metro2_gf_sthwrong();
@@ -45,8 +45,8 @@ async function start_metro2(){
 
 function metro2_gf_msg(){
     Q.do(function(){
-        app.stage.addChildAt(metro_phone,2);
         metro_sit.visible = false;
+        metro_phone.visible = true;
     });
     Q.wait(1000);
 	Gf.s("I've finally finished all of my tests");
@@ -76,8 +76,8 @@ function metro2_gf_msg(){
 
 function metro2_gf_sthwrong(){
     Q.do(function(){
-        app.stage.addChildAt(metro_phone,2);
         metro_sit.visible = false;
+        metro_phone.visible = true;
     });
     Q.wait(1000);
 	Gf.s("I've finally finished all of my tests");
@@ -247,7 +247,7 @@ function end_metro2(){
         metro_phone.visible = false;
         metro_sit.visible = true;
     });
-	Q.wait(3000);
+	Q.wait(4000);
 	Q.do(clearMsg);
 	Q.do(function(){
         app.stage.removeChild(bg_metro_day);

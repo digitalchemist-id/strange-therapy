@@ -1,11 +1,16 @@
 //timeline = 11 June 15th Wed
 
 async function start_vet2(){
-    await sleep(2000);
+    await sleep(4000);
     resources.room_high.sound.play();
-	//setup
 	await sleep(2000);
     app.stage.addChildAt(bg_vet_dark, 0);
+    app.stage.addChildAt(vet_stand, 1);
+    app.stage.addChildAt(vet_dog, 1);
+    app.stage.addChildAt(vet_vet_stand, 1);
+    app.stage.addChildAt(vet_vet_side, 1);
+    vet_vet_side.visible = true;
+    vet_vet_stand.visible = false;
 	blackout.visible = false;
 
 	V.s("His body");
@@ -15,6 +20,7 @@ async function start_vet2(){
 	V.s("It's still lingering like a lump")
 	V.s("It means his body won't properly take nutrition in anymore");
 	V.s("Even water...");
+    Q.wait(1000);
 	C.s({
         "And what does that mean?": function(msg) {
             P.s(msg);
@@ -37,11 +43,16 @@ async function start_vet2(){
 
 
 function vet2_1(){
+    Q.do(function(){
+        vet_vet_side.visible = false;
+        vet_vet_stand.visible = true;
+    });
 	V.s("His conditions have much deteriorated from last visit");
 	V.s("I'm afraid to say at this point...");
 	V.s("Any sort of treatment is meaningless");
 	V.s("His organs are beyond repairs");
 	V.s("I'm sorry");
+    Q.wait(1000);
 	C.s({
         "How much time does he have?": function(msg) {
             P.s(msg);
@@ -58,12 +69,14 @@ function vet2_1(){
             V.s("Eventually, it does");
             V.s("We're often just");
             V.s("Not reminded");
+            Q.wait(1000);
             C.hide();
             vet2_2();
         },
         "...": function(msg) {
             P.s(msg);
             V.s("...");
+            Q.wait(2000);
             C.hide();
             vet2_2();
         }
@@ -73,6 +86,7 @@ function vet2_1(){
 function vet2_2(){
 	V.s("I'd say it'd be a miracle if he made it past this weekend");
 	V.s("You need to be prepared");
+    Q.wait(1000);
 	C.s({
         "This is all my fault": function(msg) {
         	$.rude_to_vet = false;
@@ -84,11 +98,10 @@ function vet2_2(){
             P.s("And I'd say that I care while I just ditch all my responsiblilties");
             P.s("He could have been saved");
             P.s("I could have save him");
-            V.s("That's not the case");
             if($.this_happens){
-                V.s("As I said");
+                V.s("As I said...");
             }
-            V.s("Every single pets and pet owners eventually go through this process");
+            V.s("Every single pets and pet owners eventually go through this");
             V.s("Process of dying");
             V.s("Process of losing");
             V.s("No one's reponsible for that process");
@@ -105,9 +118,11 @@ function vet2_2(){
             P.s("I did everything you told me to do");
             P.s("You told me he just needed to be fed");
             P.s("That was a lie");
+            P.s("You have no idea how much I sacrificed for him...");
             P.s("You needed to do everything you can to cure him instead of just waiting");
-            V.s("Sorry")
-            V.s("But that's not the case");
+            Q.wait(1000);
+            V.s("I'm sorry but...")
+            V.s("That's not the case");
             V.s("As I told you, he was already too weak last Sunday");
             V.s("He had miraculous chances");
             V.s("And now he doesn't");
@@ -125,12 +140,12 @@ function vet2_2(){
 
 
 function vet2_3(){
-    Q.wait(1000);
+    Q.wait(2000);
 	V.s("What remains from this point is");
 	V.s("Very painful stuff");
 	V.s("To relieve the amount of potential pain you both suffer");
 	V.s("You might want to consider about other options...");
-	
+	Q.wait(3000);
 	C.s({
         "Could you mean...?": function(msg) {
             P.s(msg);
@@ -157,6 +172,7 @@ function vet2_4() {
 	V.s("Putting him down");
     V.s("It's an option a lot of people end up choosing");
     V.s("Even those who love their pets very much");
+    Q.wait(1000);
 	C.s({
         "That's not gonna happen": function(msg) {
             P.s(msg);
@@ -191,7 +207,8 @@ function vet2_euthanasia() {
 	V.s("Second injection will be administered");
 	V.s("And his heart will slowly stop");
 	V.s("The process will take about 20 to 30 minutes");
-	V.s("And it will cost         ");
+	V.s("And it will cost -----");
+    Q.wait(1000);
 	C.s({
         "If it'll make him comfortable...": function(msg) {
             P.s(msg);
@@ -222,11 +239,10 @@ function vet2_euthanasia() {
 function vet2_5(){
 	if(!$.rude_to_vet){
         Q.wait(3000);
-        V.s("Um...")
+        V.s("...")
 		V.s("I remember when you first visited here with him");
 		V.s("You came here to check if he's just lost or abandoned");
-		V.s("You were in highschool with your friend-");
-		V.s("And he was already an old dog back then - 10 years old at least");
+		V.s("He was already an old dog back then - 10 years old at least");
 		V.s("Now he's even older");
         Q.wait(1000);
         V.s("It could be something he already had way back then");
@@ -243,10 +259,14 @@ function vet2_5(){
 }
 
 function end_vet2(){
-    Q.wait(3000);
+    Q.wait(4000);
 	Q.do(clearMsg);
 	Q.do(function(){
         app.stage.removeChild(bg_vet_dark);
+        app.stage.removeChild(vet_stand);
+        app.stage.removeChild(vet_dog);
+        app.stage.removeChild(vet_vet_stand);
+        app.stage.removeChild(vet_vet_side);
         resources.room_high.sound.stop();
 		blackout.visible = true;
 	});

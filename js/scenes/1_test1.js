@@ -1,7 +1,7 @@
 //timeline = 1, June 8th Wed
 
 async function start_test1(){
-	await sleep(2000);
+	await sleep(4000);
 	resources.room_low.sound.play();
 	resources.clock.sound.play();
 	await sleep(2000);
@@ -18,9 +18,7 @@ async function start_test1(){
 	test_sit_up.visible = false;
 	blackout.visible = false;
 
-	//clock ticking
 	Q.wait(1000);
-	//T.t('2016 Spring Semester Organic Chemistry 1 finals');
 	T.t('Question #10 c)');
 	T.t('Of the following compounds');
 	T.t('which has higher boling point?');
@@ -124,7 +122,7 @@ function test1_after(){
 
 	if($.test1_correct){
 		P.t('That didn\'t go so bad');
-		P.t('Actually, it was better than I expected');
+		P.t('Actually, that was better than I expected');
 	} else {
 		P.t('That did\'t go so well');
 		P.t("Actually, that was kinda terrible...");
@@ -135,9 +133,8 @@ function test1_after(){
 }
 
 function end_test1(){
-	Q.wait(3000);
+	Q.wait(4000);
 	Q.do(clearMsg);
-	Q.do(start_metro1);
 	Q.do(function(){
 		app.stage.removeChild(bg_test);
 	    app.stage.removeChild(animTestFoot);
@@ -147,8 +144,8 @@ function end_test1(){
 		app.stage.removeChild(test_panic);
 		app.stage.removeChild(test_sit_up);
 		app.stage.removeChild(test_sit_down);
-		animTestFoot.play();
 		resources.room_low.sound.stop();
 		blackout.visible = true;
 	});
+	Q.do(start_metro1);
 }

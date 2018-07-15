@@ -1,15 +1,30 @@
 //timeline = 10 June 15th Wed
-//when I returned from test 3, I found out that he threw up everything I fed him
-//I kept trying to make him eat.
-//suddenly he screams with pain
-//And I immediately take him to vet...
 
 async function start_home3(){
-	await sleep(2000);
+	await sleep(4000);
 	resources.room.sound.play();
 	await sleep(2000);
-    app.stage.addChildAt(bg_home, 0);
+    app.stage.addChildAt(home_bed_lookdown, 1);
+    app.stage.addChildAt(home_stand, 1);
+    app.stage.addChildAt(home_books, 1);
     app.stage.addChildAt(home_chair, 1);
+    app.stage.addChildAt(home_floor_search, 1);
+    app.stage.addChildAt(home_floor_panic, 1);
+    app.stage.addChildAt(home_dog_pain, 1);
+    app.stage.addChildAt(home_dog_cushion, 1);
+    app.stage.addChildAt(home_cushion, 1);
+    app.stage.addChildAt(home_floor_wipe, 1);
+    app.stage.addChildAt(home_bowl, 1);
+    app.stage.addChildAt(home_vomit, 1);
+    app.stage.addChildAt(home_mat, 1);
+    app.stage.addChildAt(bg_home, 0);
+    home_bed_lookdown.visible = false;
+    home_stand.visible = false;
+    home_floor_search.visible = false;
+    home_floor_panic.visible = false;
+    home_dog_pain.visible = false;
+    home_dog_cushion.visible = false;
+    home_floor_wipe.visible = false;
 	blackout.visible = false;
 
 	P.s("I'm home!");
@@ -22,24 +37,50 @@ async function start_home3(){
 		resources.door_close.sound.play();
 	});
 	Q.wait(2000);
+	Q.do(function(){
+		home_stand.visible = true;
+	});
 	P.t("Huh?");
 	P.t("Where did he...?");
-	Q.wait(3000);
+	Q.wait(5000);
+	Q.do(function(){
+		home_stand.visible = false;
+		home_floor_search.visible = true;
+	});
 	P.s("Oh Hi. There you were");
-	P.s("Hiding between the bed again?");
-	P.s("You should take rest on your pillow, not this cramped hole");
+	P.s("Hiding behind the bed again?");
+	P.s("You should take rest on your cushion, not this cramped hole");
 	P.s("Come on here buddy");
-	Q.wait(2000);
+	Q.wait(1000);
+	Q.do(function(){
+		home_floor_search.visible = false;
+		home_floor_panic.visible = true;
+		home_dog_cushion.visible = true;
+	});
+	Q.wait(3000);
+	Q.do(function(){
+		home_floor_panic.visible = false;
+		home_bed_lookside.visible = true;
+	});
 	P.s("Hey");
 	P.s("That's a lot of dump you took there");
+	Q.do(function(){
+		home_bed_lookside.visible = false;
+		home_bed_lookdown.visible = true;
+	});
 	P.s("You forgot how to use your pad?");
 	P.s("You were just too lazy right?");
 	P.s("Hmm");
 	P.s("It's okay");
-	P.s("I'll just go clean it up");
-	Q.wait(3000);
-	P.s("...");
+	P.s("Lemme just clean it up real quick");
 	Q.wait(2000);
+	Q.do(function(){
+		home_bed_lookdown.visible = false;
+		home_floor_wipe.visible = true;
+	});
+	Q.wait(1000);
+	P.s("...");
+	Q.wait(3000);
 	P.s("Wait...");
 	Q.do(function(){
 		resources.room.sound.stop();
@@ -78,19 +119,26 @@ async function start_home3(){
 	P.s("Oh no...");
 	P.s("First I'll...");
 	P.s("I'll clean this up and...");
-	P.s("And I'll prepare so you can eat");
-	//leave room
+	P.s("And I'll give you something to eat...");
+	Q.do(function(){
+		home_floor_wipe.visible = false;
+	});
 	Q.wait(1000);
 	Q.do(function(){
 		resources.door_open.sound.stop();
 	});
 	Q.wait(2500);
 	Q.do(function(){
+		home_dog_cushion.visible = false;
+		home_dog_pain.visible = true;
 		resources.dog_pain.sound.play();
 	});
 	Q.wait(2000);
 	P.s("What's wrong??");
 	P.s("WHAT'S HAPPENING???");
+	Q.do(function(){
+		home_floor_panic.visible = true;
+	});
 	P.s("Oh no");
 	P.s("No... No...");
 	P.s("It's okay...");
@@ -110,22 +158,36 @@ async function start_home3(){
 }	
 
 function home3_panic(){
-	P.panic("This is not happening");
+	Q.wait(1000);
+	P.t("This is not happening");
+	P.panic("What's happening?");
 	P.panic("Take him to hospital");
 	P.panic("Is he gonna die?");
 	P.panic("Was he like this when I was gone?");
+	P.panic("Is he gonna die?");
+	P.panic("What's happening?");
 	P.panic("What about the test tomorrow?");
 	P.panic("I never saw this coming");
+	P.panic("Is he gonna die?");
 	P.panic("Of course you saw this coming");
 	P.panic("But I thought he was eating alright");
+	P.panic("Is he gonna die?");
 	P.panic("What are you doing?");
+	P.panic("What's happening?");
 	P.panic("I'm trying to settle him down");
+	P.panic("What's happening?");
+	P.panic("Is he gonna die?");
 	P.panic("Will he settle down?");
+	P.panic("What's happening?");
 	P.panic("What the hell is going on?");
 	P.panic("What will happen to me? to him?");
+	P.panic("Is he gonna die?");
 	P.panic("I don't wanna think");
 	P.panic("But you can't stop thinking");
+	P.panic("What's happening?");
 	P.panic("Stop that");
+	P.panic("Is he gonna die?");
+	P.panic("What's happening?");
 	P.panic("Oh my god...");
 	P.panic("Do something Just do something");
 	P.panic("This is so painful");
@@ -150,16 +212,17 @@ function home3_panic(){
 	P.panic("I couldn't cure him");
 	P.panic("I let him die");
 	P.panic("SHUT UP");
-	P.panic("Did you really think just feeding him would magically cure him? How stupid");
+	P.panic("Did you really think just feeding him would magically cure him?");
+	P.panic("How stupid...");
 	P.panic("I thought you didn't believe in magic");
 	P.panic("Please stop all this pain");
 	Q.do(clearMsg);
 	Q.do(function(){
 		blackout.visible = true;
 	});
-	Q.wait(800);
+	Q.wait(500);
 	P.panic("Take him to hospital");
-	Q.wait(600);
+	Q.wait(400);
 	P.panic("What?");
 	Q.do(function(){
 		blackout.visible = false;
@@ -182,11 +245,23 @@ function home3_not_panic(){
 }
 
 function end_home3(){
-	Q.wait(3000);
+	Q.wait(4000);
 	Q.do(clearMsg);
 	Q.do(function(){
-		app.stage.removeChild(bg_home);
+		app.stage.removeChild(home_bed_lookdown);
+		app.stage.removeChild(home_stand);
+		app.stage.removeChild(home_books);
 		app.stage.removeChild(home_chair);
+		app.stage.removeChild(home_floor_search);
+		app.stage.removeChild(home_floor_panic);
+		app.stage.removeChild(home_dog_pain);
+		app.stage.removeChild(home_dog_cushion);
+		app.stage.removeChild(home_cushion);
+		app.stage.removeChild(home_floor_wipe);
+		app.stage.removeChild(home_bowl);
+		app.stage.removeChild(home_vomit);
+		app.stage.removeChild(home_mat);
+		app.stage.removeChild(bg_home);
 		resources.dog_pain.sound.stop();
 		blackout.visible = true;
 	});

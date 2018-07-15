@@ -1,6 +1,9 @@
 //timeline = 0
 
 async function start_intro(){
+    resources.door_open.sound.play();
+    await sleep(2000);
+    resources.door_close.sound.play();
     await sleep(2000);
     resources.twilight.sound.play();
     resources.room.sound.play();
@@ -57,6 +60,7 @@ function intro_1(){
         intro_lookdown.visible = false;
         intro_drink.visible = true;
         animIntroSteam.visible = false;
+        resources.drink.sound.play();
     });
     Q.wait(2000);
     Q.do(function(){
@@ -110,9 +114,8 @@ function intro_2(){
         "I love it!": function(msg) {
             P.s(msg);
             P.s("What's the name of the music?");
-            M.s("It's Feelings of Twilight by ShadyDave");
+            M.s("It's Feelings of Twilight by Luster");
             M.s("You can check more of the stuff out later in Soundcloud");
-            P.s("Good stuff");
             C.hide();
             intro_3();
         },
@@ -154,7 +157,7 @@ function intro_3(){
                 intro_sit.visible = true;
             });
             M.s("IT'S NOT FLASH");
-            M.s("This was written with html5 and javascript - with help from pixijs library. They're totally different from flash");
+            M.s("This was written with html5 and javascript - with help from pixiJS creative engine. They're totally different from flash");
             P.s("Pfff, Whatever");
             P.s("Looks pretty flash to me");
             M.s("Anyway...");
@@ -220,7 +223,9 @@ function intro_4(){
         "'Strange', huh": function(msg) {
             P.s(msg);
             M.s("That's right");
-            M.s("There's nothing wrong with being strange");
+            P.s("You're not trying to justify anything wierd that happens in this game that way, are you?");
+            M.s("Hmm...");
+            M.s("I haven't thought about that... but maybe");
             C.hide();
             intro_5();
         }     
@@ -253,7 +258,7 @@ function intro_5(){
         },
         "I'll be on guard": function(msg) {
             P.s(msg);
-            M.s("That's great");
+            M.s("Glad to hear that");
             C.hide();
             intro_6();
         },
@@ -272,6 +277,7 @@ function intro_6(){
         intro_lookdown.visible = false;
         intro_drink.visible = true;
         animIntroSteam.visible = false;
+        resources.drink.sound.play();
     });
     Q.wait(2000);
     Q.do(function(){
@@ -279,11 +285,18 @@ function intro_6(){
         intro_sit.visible = true;
         animIntroSteam.visible = true;
     });
-    Q.wait(2000);
+    Q.wait(2500);
+    Q.do(function(){
+        intro_lookdown.visible = false;
+        intro_sit.visible = true;
+    });
 	M.s("Shall we begin then?");
 	P.s("Yeah, I'm ready");
 	P.s("Let's get to it");
-    //look down
+    Q.do(function(){
+        intro_sit.visible = false;
+        intro_lookdown.visible = true;
+    });
 	M.s("Let's go back to 2 years ago");
 	M.s("You were getting used to college life - and caffein");
     M.s("It was near the end of a semester, and you were just another crazy kid taking one test and another");
@@ -292,7 +305,7 @@ function intro_6(){
 }
 
 function end_intro(){
-	Q.wait(3000);
+	Q.wait(4000);
 	Q.do(function(){
         app.stage.removeChild(bg_intro);
         app.stage.removeChild(intro_sit);
