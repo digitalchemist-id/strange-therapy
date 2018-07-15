@@ -294,7 +294,6 @@ Choice.prototype.t = async function(obj) {
         function(){
             var labels = Object.keys(obj); //get the keys and make an array of them
             this.n = labels.length;
-
             for(var i = 0; i < this.n; ++i) {
                 this.speech[i].visible = false;
                 this.text[i].text = labels[i];
@@ -307,7 +306,7 @@ Choice.prototype.t = async function(obj) {
                 )(obj[labels[i]], labels[i]));
             }
         }.bind(this)
-    );
+    );//From ncase/coming-out-simulator-2014
     Q.fqueue.push(
         this.show.bind(this)
     );
