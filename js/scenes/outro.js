@@ -265,12 +265,12 @@ function outro_questions_tests(){
 	switch($.test_correct){
 		case null:
 		case 0:
-			P.s("Umm...");
-			P.s("You got all of them wrong");
-			P.s("Zero");
-			M.s("What?");
-			M.s("Man... I thought I could get lucky...");
-			M.s("But I guess not");
+			M.s("Umm...");
+			M.s("You got all of them wrong");
+			M.s("Zero");
+			P.s("What?");
+			P.s("Man... I thought I could get lucky...");
+			P.s("But I guess not");
 			break;
 		case 1:
 			M.s("You got one right");
