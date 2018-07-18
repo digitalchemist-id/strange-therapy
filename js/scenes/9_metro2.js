@@ -38,7 +38,7 @@ async function start_metro2(){
         "[Don't]": function(msg) {
             $.not_nice_to_gf++;
             C.hide();
-            metro2_end();
+            end_metro2();
         }
     });
 }
