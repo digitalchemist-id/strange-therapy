@@ -17,6 +17,7 @@ async function start_home4(){
     app.stage.addChildAt(bg_home, 0);
     home_bed_lookdown.visible = true;
     home_dog_cushion.visible = true;
+    home_bed_lookside.visible = false;
     home_bed_call.visible = false;
     home_bed_phone.visible = false;
     home_grandma.visible = false;
