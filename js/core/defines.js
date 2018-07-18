@@ -37,6 +37,14 @@ loadText.x = 72;
 loadText.y = 400;
 app.stage.addChild(loadText);
 
+let almostText = new Text("Almost ready...", {
+    fontFamily : 'Verdana',
+    fontSize: 14,
+    fill : 0x888888
+});
+almostText.x = 130;
+almostText.y = 460;
+
 let icon;
 let bg_intro, bg_test, bg_metro_day, bg_metro_evening, bg_metro_night, bg_home, bg_room, bg_vet, bg_vet_dark, blackout;
 let animIntroSteam, animTestFoot, animMetroRail, animOutroSteam;

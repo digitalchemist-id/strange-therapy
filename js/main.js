@@ -91,7 +91,9 @@ loader
     .add("drink", "sounds/drink.wav")
     .add("send_1", "sounds/send_1.wav")
     .add("send_2", "sounds/send_2.wav")
-    .add("send_3", "sounds/send_3.wav")
+    .add("send_3", "sounds/send_3.wav", function(){
+        app.stage.addChild(almostText);
+    })
     .add("send_4", "sounds/send_4.wav")
     .on("progress", loadProgressHandler)
     .load(setup);
@@ -256,6 +258,7 @@ function setup() {
 
 function start(){
     app.stage.removeChild(loadText);
+    app.stage.removeChild(almostText);
     M.s("Come on in!");
     C.t({
         "Enter": function(msg) {
