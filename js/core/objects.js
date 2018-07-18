@@ -108,8 +108,6 @@ Message.prototype.setup = function() {
         msgTxt.pivot.set(this.textMetrics.width, 0);
     }
     this.msgContainer.addChild(msgTxt);
-
-    
 }
 
 Message.prototype.draw = function() {
