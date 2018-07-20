@@ -21,7 +21,7 @@ async function start_test1(){
 	Q.wait(1000);
 	T.t('Question #10 c)');
 	T.t('Of the following compounds');
-	T.t('which has higher boling point?');
+	T.t('which has higher boilng point?');
 	
 	T.t('1. pentane');
 	T.t('2. 2,2-dimethylpropane');
