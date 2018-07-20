@@ -12,7 +12,7 @@ async function start_metro1(){
 	metro_phone.visible = false;
 	blackout.visible = false;
 
-	P.t('My first semester with a major');
+	P.t('My first semester with a major-');
 	P.t('It have been a tough one');
 	P.t('I had to work hard to catch up');
 	P.t('And FINALLY now it\'s almost over');

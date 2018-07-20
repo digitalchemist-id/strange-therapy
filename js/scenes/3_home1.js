@@ -124,7 +124,7 @@ async function start_home1() {
 				home_bed_pet.visible = false;
 				home_bed_lookside.visible = true;
 			});
-        	Gm.s("Well... I think you still should take it to a vet");
+        	Gm.s("Well... I still think you should take it to a vet");
         	Gm.s("You know it's an old dog");
         	P.s("Grandma...");
         	Gm.s("If you're too busy I can take it this Friday");
@@ -251,7 +251,7 @@ function home1_1() {
 	P.t("...");
 	P.t("I wonder if what I do for the next few hours will have any impact on the result at all");
 	P.t("I mean... It's a final exam right?");
-	P.t("That means it tests for what I've learn in this whole semester");
+	P.t("That means it tests for what I've learned through this whole semester");
 	P.t("Will few hours of studying and reviewing even matter?");
 	P.t("I really doubt that");
 	P.t("Like REALLY");

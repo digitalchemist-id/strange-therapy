@@ -70,7 +70,7 @@ async function start_home3(){
 		home_bed_lookside.visible = false;
 		home_bed_lookdown.visible = true;
 	});
-	P.s("You forgot how to use your pad?");
+	P.s("Forgot how to use your pad?");
 	P.s("You were just too lazy right?");
 	P.s("Hmm");
 	P.s("It's okay");

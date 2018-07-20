@@ -269,10 +269,10 @@ function home4_grandma(){
 	Gm.s("I'm always here for you");
 	Gm.s("All you need to do is");
 	Gm.s("Just reach out-");
-	Gm.s("Something you never seemed to be good at");
+	Gm.s("Something you never seem to be good at");
 	P.s("...");
 	Gm.s("It's the least I can do");
-	Gm.s("I still think it's the best if we'd let it rest by itself");
+	Gm.s("I still think it'd be best if we let it rest by itself");
 	Gm.s("But if you ask, I'll stay home and keep its side while you're away");
 	Gm.s("I'll make sure it stays comfortable");
 	Gm.s("You don't have to worry about it");

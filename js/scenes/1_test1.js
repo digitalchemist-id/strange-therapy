@@ -21,7 +21,7 @@ async function start_test1(){
 	Q.wait(1000);
 	T.t('Question #10 c)');
 	T.t('Of the following compounds');
-	T.t('which has higher boilng point?');
+	T.t('which has a higher boilng point?');
 	
 	T.t('1. pentane');
 	T.t('2. 2,2-dimethylpropane');
@@ -65,7 +65,7 @@ function test1_choose(){
 		P.t("And of course these two compounds have same formula - C5H12 - they differ by structure");
 		P.t("Structure affect attraction in a kind of way that more surface area leads to more attraction");
 		P.t("Pentane is chain-shaped and the other one is ball-shaped");
-		P.t("So out of the two the one with higher boiling point is...");
+		P.t("So out of the two the one with a higher boiling point is...");
 	}
 	C.t({
 		'1. pentane': function(msg) {

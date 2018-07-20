@@ -180,8 +180,8 @@ function metro3_gf_told(){
     });
     Q.wait(1500);
 	Gf.s("I'm home");
-	Gf.s("Since I have to pack my stuff for summer");
-	Gf.s("Today's like the last chane we can meet...");
+	Gf.s("Since I have to pack my stuff tomorrow");
+	Gf.s("Today's like the last chance we can meet...");
 	Gf.s("Should I visit?");
 	Gf.s("What would you like me to do?");
 	C.s({
@@ -190,7 +190,7 @@ function metro3_gf_told(){
             Q.wait(3000);
             Gf.s("Okay...");
             Q.wait(3000);
-            Gf.s("Take Care");
+            Gf.s("Take care");
             C.hide();
             end_metro3();
         },

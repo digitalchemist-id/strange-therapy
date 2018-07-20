@@ -352,7 +352,7 @@ function room_dont_panic() {
 	});
 	Q.wait(1000);
 	P.t("Hospitalized...");
-	P.t("But he always refuse to stay in small containers");
+	P.t("But he always refuses to stay in small containers");
 	P.t("I know he'd NEVER let himself be hospitalized");
 	P.t("He's freaking too scared of entering anywhere closed");
 	P.t("That why in the first place-");
@@ -367,7 +367,7 @@ function room_dont_panic() {
 	P.t("Why do I always miss it?");
 	if($.careful){
 		P.t("Maybe I already knew");
-		P.t("I somehow already knew");
+		P.t("I somehow already knew-");
 		P.t("But I didn't want to admit");
 	} else {
 		P.t("And I was so confident that he wasn't sick");

@@ -172,7 +172,7 @@ function outro_questions_what_happened(){
     M.s("AND some other archived files");
     M.s("I wanted this experience to be as accurate as possible");
     M.s("Because it'd be also as cruel");
-    M.s("But I don't REALLY remember everthing correctly");
+    M.s("But I don't REALLY remember everything correctly");
     M.s("I had to rewrite the script several times because I found out later that what I thought had happened-");
     M.s("Was not really what had happened");
     M.s("So... they can be inaccurate");
@@ -816,7 +816,7 @@ function outro_love(){
 	M.s("Anyway, I took a break and went out to drink some water from a purifier");
 	M.s("Then I saw a dog climbing down the stairs from the roof floor");
 	M.s("I still don't know how it got in to library building in the first place");
-	P.s("And he climbed up the stairs to roof floor?");
+	P.s("Did he climb up the stairs to roof floor?");
 	P.s("How high was the builing?");
 	M.s("It was like, 5 stories tall");
 	P.s("That's a mystery...");
@@ -837,7 +837,7 @@ function outro_love(){
         intro_sit.visible = false;
         intro_lookdown.visible = true;
     });
-	M.s("Later when they came to pick him up with a truck");
+	M.s("Later when they came to pick him up with a truck-");
 	M.s("I carried him downstairs and they told me to put him in a really small, dirty looking cage");
 	M.s("I was kind of scared of what would happen to him... but I tried to do as they said");
 	M.s("But I couldn't");
@@ -876,11 +876,11 @@ function outro_love(){
         intro_lookdown.visible = true;
     });
 	M.s("The process of losing him");
-	M.s("Made me realise I loved him more than I thought I did");
+	M.s("Made me realise that I loved him more than I thought I did");
 	M.s("We all suck at losing something precious to us right?");
 	Q.wait(1000);
-	M.s("To put it down in a sentence-");
-	M.s("About how much I loved him");
+	M.s("To put it down in a sentence");
+	M.s("About how much I loved him-");
 	M.s("And how much I miss him");
 	M.s("I think this saying goes well");
 	M.s("If love could have saved him, he would have lived forever");
@@ -943,12 +943,12 @@ function outro_hope(){
 	M.s("Some things that won't happen");
 	M.s("Just will not happen");
 	M.s("I could cry hundreds of night in grief and pray thousands of days wishing for a second chance");
-	M.s("But I can't go back to fix what already had happened");
+	M.s("But I can't go back to fix what already has happened");
 	Q.wait(1000);
 	P.s("Er...");
 	P.s("I think when most people do that - crying or praying");
 	P.s("I know it's hard to take in and all but");
-	P.s("Don't they usually know what's impossible's just impossible?");
+	P.s("Don't they usually know what's impossible's - impossible?");
 	M.s("You're right");
 	M.s("But here's what I think");
 	Q.wait(1000);
@@ -962,7 +962,7 @@ function outro_hope(){
 	M.s("If that's impossible, I just wanna see him again");
 	M.s("Just for minutes or seconds - I wanna see him again");
 	M.s("If that's impossible too, tell me he's gone somewhere over the rainbows and clouds");
-	M.s("Somewhere far away from the all the pain and agony...");
+	M.s("Somewhere far away from all the pain and agony...");
 	M.s("Tell me I'll see him again when the time comes...");
 	Q.wait(1000);
 	Q.do(function(){
@@ -971,7 +971,7 @@ function outro_hope(){
     });
 	M.s("We all settle at one point or another");
 	M.s("Finding out the not-hopes");
-	M.s("And finding out the point to settle that make sense to us somehow");
+	M.s("And finding out the point to settle that makes sense to us somehow");
 	M.s("I think it's an important part of recovering");
 	M.s("And it takes time");
 	Q.wait(1000);
@@ -981,7 +981,7 @@ function outro_hope(){
 	M.s("Not exactly");
 	M.s("I do think that the wounds heal with time for most people");
 	M.s("The rate they do might vary but in my experience, they all did");
-	M.s("But saying that to a person going through a grief...");
+	M.s("But saying that to a person going through grief...");
 	M.s("I don't think it gives them much hope");
 	M.s("I think it's kind of similar to saying that eating makes hunger go away to someone who's starving");
 	M.s("While it's true - it doesn't really help");

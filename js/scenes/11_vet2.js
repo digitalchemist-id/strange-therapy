@@ -200,7 +200,7 @@ function vet2_4() {
 
 function vet2_euthanasia() {
 	V.s("There are several ways");
-	V.s("We use most common two-step methods");
+	V.s("We use the most common two-step method");
 	V.s("Which we first inject target with a sedative");
 	V.s("Then he will sleep and lose consciousness slowly");
 	V.s("After that, when you're ready...");
