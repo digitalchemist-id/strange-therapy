@@ -116,7 +116,7 @@ function home2_gf_text() {
 	            C.hide();
 	     	},
 	        "My dog is really sick": function(msg) {
-	        $.gf_told = false;
+	        $.gf_told = true;
 	            P.s(msg);
 	            P.s("He was hospitalized yesterday");
 	            P.s("Right now I'm at parent's house. I picked him up this morning");

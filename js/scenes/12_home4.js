@@ -148,7 +148,7 @@ function home4_gf_call(){
 	Gf.s("Oh yeah...");
 	Gf.s("Your test...");
 	Gf.s("What are you gonna do?");
-	Gf.s("I mean, it's something you can... not take");
+	Gf.s("I mean, it's something you can't... not take");
 	Gf.s("You ARE gonna go take it right?");
 	C.s({
         "What should I do?": function(msg) {
