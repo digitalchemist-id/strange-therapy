@@ -87,7 +87,7 @@ function test1_choose(){
         "dimeth... what?": function(msg) {
         	P.t(msg);
         	P.t("Uh");
-        	P.t("I\"ll just go with 2,2-dimethylpropane because I like the way it sounds");
+        	P.t("I'll just go with 2,2-dimethylpropane because I like the way it sounds");
         	P.t("If it sounds the way I think, that is");
         	$.test1_correct = false;
         	$.test_correct = 0;
@@ -105,7 +105,7 @@ function test1_after(){
 	});
 	Q.wait(1500);
 	
-	A.s("Time\"s up!");
+	A.s("Time's up!");
 	Q.do(function(){
         test_panic.visible = false;
         test_sit_down.visible = false;
@@ -121,12 +121,12 @@ function test1_after(){
 	P.t("Oh");
 
 	if($.test1_correct){
-		P.t("That didn\"t go so bad");
+		P.t("That didn't go so bad");
 		P.t("Actually, that was better than I expected");
 	} else {
-		P.t("That did\"t go so well");
+		P.t("That did't go so well");
 		P.t("Actually, that was kinda terrible...");
-		P.t("Let\"s just forget about it quickly and prepare for the next one quick");
+		P.t("Let's just forget about it quickly and prepare for the next one quick");
 	}
 
 	Q.do(end_test1);
