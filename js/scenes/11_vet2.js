@@ -18,7 +18,7 @@ async function start_vet2(){
 	V.s("I gave him this shot a couple of days ago");
 	V.s("But it didn't spread to the body");
 	V.s("It's still lingering like a lump")
-	V.s("It means his body won't properly take nutrition in anymore");
+	V.s("It means his body won't properly take nutrition in any more");
 	V.s("Even water...");
     Q.wait(1000);
 	C.s({
@@ -47,7 +47,7 @@ function vet2_1(){
         vet_vet_side.visible = false;
         vet_vet_stand.visible = true;
     });
-	V.s("His conditions have much deteriorated from last visit");
+	V.s("His conditions have much deteriorated from the last visit");
 	V.s("I'm afraid to say at this point...");
 	V.s("Any sort of treatment is meaningless");
 	V.s("His organs are beyond repairs");
@@ -93,18 +93,18 @@ function vet2_2(){
             P.s(msg);
             P.s("I should have come here more often");
             P.s("I should have checked for his health more often");
-            P.s("And I'd not even visit for weeks just because I think I'm busy and tired...");
+            P.s("And I would not even visit for weeks just because I think I'm busy and tired...");
             P.s("Hang out with friends and be lazy when I get chance...");
-            P.s("And I'd say that I care while I just ditch all my responsiblilties");
+            P.s("And I'd say that I care while I just ditch all my responsibilities");
             P.s("He could have been saved");
-            P.s("I could have save him");
+            P.s("I could have saved him");
             if($.this_happens){
                 V.s("As I said...");
             }
             V.s("Every single pets and pet owners eventually go through this");
             V.s("Process of dying");
             V.s("Process of losing");
-            V.s("No one's reponsible for that process");
+            V.s("No one's responsible for that process");
             V.s("Instead, you're the one who saved him");
             V.s("You're the one who gave him life");
             C.hide();
@@ -204,7 +204,7 @@ function vet2_euthanasia() {
 	V.s("Which we first inject target with a sedative");
 	V.s("Then he will sleep and lose consciousness slowly");
 	V.s("After that, when you're ready...");
-	V.s("Second injection will be administered");
+	V.s("The second injection will be administered");
 	V.s("And his heart will slowly stop");
 	V.s("The process will take about 20 to 30 minutes");
 	V.s("And it will cost -----");

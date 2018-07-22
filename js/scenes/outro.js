@@ -57,7 +57,7 @@ async function start_outro(){
             P.s("That's the end of the story?");
             P.s("I was expecting...");
             M.s("What were you expecting?");
-            P.s("I donno");
+            P.s("I dunno");
             P.s("I was expecting... more");
             M.s("Huh");
             M.s("And I thought THIS was long enough");
@@ -69,7 +69,7 @@ async function start_outro(){
             M.s("Huh");
             Q.wait(500);
             M.s("Long story it was");
-            M.s("And here you are mentioning temperature of my tea");
+            M.s("And here you are mentioning the temperature of my tea");
             P.s("You did say loss after all, so...");
             M.s("Yeah...");
             C.hide();
@@ -147,7 +147,7 @@ function outro_questions_what_happened(){
     P.s("You said it was what happened to you");
     P.s("Or what could have happened");
     P.s("But what happened? like REALLY");
-    P.s("Were my choices as good as yours... or other way around?");
+    P.s("Were my choices as good as yours... or the other way around?");
     Q.wait(1000);
     M.s("That's an interesting question");
     M.s("About my choices...");
@@ -168,7 +168,7 @@ function outro_questions_what_happened(){
     M.s("If you'd let me continue-");
     Q.wait(1000);
     M.s("This game is based on my memory");
-    M.s("And a four page document I happened to write the night after his death...");
+    M.s("And a four-page document I happened to write the night after his death...");
     M.s("AND some other archived files");
     M.s("I wanted this experience to be as accurate as possible");
     M.s("Because it'd be also as cruel");
@@ -306,7 +306,7 @@ function outro_questions_tests(){
 	P.s("What kind of game makes you do that?");
 	P.s("You should make a game that players want to play, not a game that you wanna make");
 	P.s("I thought that was like, Game Dev 101");
-	P.s("Who'd wanna play games with chemistry puzzles except for some wierd geek?");
+	P.s("Who'd wanna play games with chemistry puzzles except for some weird geek?");
 	M.s("I know right?");
 	M.s("I'll take that into consideration when I work on my next project");
 
@@ -360,14 +360,14 @@ function outro_questions_tests(){
 }
 
 function outro_questions_game_over(){
-    P.s("I thought you said this games was about loss, life, love and hope");
+    P.s("I thought you said this game was about loss, life, love, and hope");
     P.s("While you could argue that the story did contain a little bit of all four-");
     P.s("It was mostly about your loss");
-    P.s("What happened to love, life and hope?");
+    P.s("What happened to love, life, and hope?");
     M.s("About that...");
     M.s("You have a few more stories to hear");
     P.s("Woah...");
-    P.s("Don't tell me I've only finished like a quater of this game");
+    P.s("Don't tell me I've only finished like a quarter of this game");
     P.s("Have I??");
     M.s("No");
     M.s("Don't worry. This game is not THAT long-");
@@ -629,7 +629,7 @@ function outro_life(){
 	M.s("I followed their procedures");
 	M.s("I gave them his body and received his ashes");
 	Q.wait(1500);
-	M.s("After that I went back to my rented room near school instead of my parent's house");
+	M.s("After that, I went back to my rented room near school instead of my parent's house");
 	M.s("Days passed...");
 	M.s("And weeks passed");
 	M.s("And I just stayed there");
@@ -680,7 +680,7 @@ function outro_life_1(){
 	M.s("The friends that I didn't have a chance to meet often since I got into college");
 	M.s("They wanted to say goodbye to their friends before their enlistment to the military");
 	M.s("Conscription still exists in my country, you know");
-	M.s("They were getting ready to leave for around two years of military services - away from home, friends and family");
+	M.s("They were getting ready to leave for around two years of military services - away from home, friends, and family");
 	M.s("I wanted to see them before they leave, too");
 	M.s("So I decided to go meet them");
 	M.s("Hang out with them");
@@ -808,30 +808,30 @@ function outro_love(){
 	} else {
 		P.s("Yeah. The vet said something about it");
 	}
-	M.s("I was a highschool senior, and I was studying for college entrance test in the school library in a weekend");
+	M.s("I was a high school senior, and I was studying for college entrance test in the school library on a weekend");
 	P.s("Tests again?");
 	P.s("Why is your life so full of tests?");
 	M.s("I'd really love to know why");
 	Q.wait(1000);
 	M.s("Anyway, I took a break and went out to drink some water from a purifier");
 	M.s("Then I saw a dog climbing down the stairs from the roof floor");
-	M.s("I still don't know how it got in to library building in the first place");
+	M.s("I still don't know how it got into library building in the first place");
 	P.s("Did he climb up the stairs to roof floor?");
-	P.s("How high was the builing?");
+	P.s("How high was the building?");
 	M.s("It was like, 5 stories tall");
 	P.s("That's a mystery...");
 	Q.wait(1000);
 	M.s("I didn't know what to do so I told a friend about him");
 	M.s("He didn't know what to do so together we asked the adults");
 	M.s("And they didn't know either");
-	M.s("So me and my friend took him outside school");
+	M.s("So I and my friend took him outside school");
 	M.s("We tried everywhere - a police box, animal hospital");
 	M.s("Nobody seemed to know what should be done about him");
-	M.s("The vet told me that he was an unregistered dog, and that by the looks of it he was probably abandoned");
+	M.s("The vet told me that he was an unregistered dog and that by the looks of it he was probably abandoned");
 	M.s("I searched if there's anything like an animal shelter or animal protect facility that exists near me");
 	M.s("And I ended up calling some government organization - a ward office - for help");
 	M.s("I was really busy preparing for college entrance so I knew I wouldn't be able to take care of him");
-	M.s("They said they'll come pick him up later that night, so in the meantime I took him home and gave him something to eat");
+	M.s("They said they'll come to pick him up later that night so in the meantime, I took him home and gave him something to eat");
 	Q.wait(1500);
 	Q.do(function(){
         intro_sit.visible = false;
@@ -876,7 +876,7 @@ function outro_love(){
         intro_lookdown.visible = true;
     });
 	M.s("The process of losing him");
-	M.s("Made me realise that I loved him more than I thought I did");
+	M.s("Made me realize that I loved him more than I thought I did");
 	M.s("We all suck at losing something precious to us right?");
 	Q.wait(1000);
 	M.s("To put it down in a sentence");
@@ -899,7 +899,7 @@ function outro_not_hope(){
     });
 	M.s("You'll get it eventually");
 	M.s("Please choose other options first - and then hope");
-	P.s("That's kinda wierd but...");
+	P.s("That's kinda weird but...");
 	P.s("Okay");
 	outro_move_on_choose();
 }
@@ -1026,7 +1026,7 @@ function outro_hope(){
 	}
 	M.s("And as you tried to understand me...");
 	M.s("Maybe there's someone who's willing understand you, too");
-	M.s("Someone... who you haven't let try yet");
+	M.s("Someone... who you haven't let to try yet");
 	Q.wait(2000);
 	M.s("You know by now that I'm not a therapist");
 	M.s("I'm not even close - counselor, psychiatrist - none of those");

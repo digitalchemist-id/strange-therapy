@@ -110,8 +110,8 @@ function metro3_friend_untold(){
         metro_phone.visible = true;
     });
     Q.wait(1500);
-	F.s("There's a group meeting tomorrow 2pm");
-	F.s("GSR 417 at library");
+	F.s("There's a group meeting tomorrow 2 pm");
+	F.s("GSR 417 at the library");
 	C.s({
         "I'll be there": function(msg) {
             P.s(msg);

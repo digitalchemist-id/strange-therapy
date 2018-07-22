@@ -29,7 +29,7 @@ async function start_test2(){
 	T.t("A + B → C");
 	T.t("And a little side reaction involving reactant A and byproduct D, (because nothing in life works the way we intend to)");
 	T.t("A → D");
-	T.t("In this reactor fractional conversion of A is 0.8, and fractional yield of C from A is 0.4");
+	T.t("In this reactor, fractional conversion of A is 0.8, and fractional yield of C from A is 0.4");
 	T.t("What is the value of fractional selectivity of C from A?");
 
 	P.t("Okay");
@@ -43,10 +43,10 @@ async function start_test2(){
 		P.t("conversion...");
 		P.t("yield...");
 		P.t("and selectivity");
-		P.t("I can't help but to think that they are connected to each other somehow...");
+		P.t("I can't help but think that they are connected to each other somehow...");
 		P.t("But how...?");
 	} else {
-		P.t("The keywords of this problem are conversion, yield and selectivity");
+		P.t("The keywords of this problem are conversion, yield, and selectivity");
 		P.t("conversion of A means how much of A went through reaction out of all the A fed to reactor");
 		P.t("yield of C from A means how much of A was spent to make C out of all the A fed to reactor");
 		P.t("selectivity of C from A means how much of A was spent to make C out of all the A that went through reaction");
@@ -106,7 +106,7 @@ function test2_after(){
 	}
 	Q.wait(1000);
 	P.t("Whew...");
-	P.t("Back to my room I guess");
+	P.t("Back to my room, I guess");
 	if(!$.destiny){
 		P.t("There's no time to waste");
 	}

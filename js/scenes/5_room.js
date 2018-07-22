@@ -28,9 +28,9 @@ async function start_room(){
 	if($.destiny){
 		P.t("I've done enough for today");
 		P.t("No more torturing myself");
-		P.t("Studying few hours more or not won't even matter");
+		P.t("Studying a few hours more or not won't even matter");
 	} else {
-		P.t("Few minutes of break will help me focus more");
+		P.t("Few minutes of a break will help me focus more");
 	}
 	Q.wait(1000);
 	Q.do(function(){
@@ -128,14 +128,14 @@ function room_callf(){
 	    "[Don't]": function(msg) {
 	    	$.Grandma_phone1_answered = false;
 	    	if(!$.friend_msg1_checked && !$.gf_msg1_checked){
-		    	P.t("For gods sake!");
+		    	P.t("For god's sake!");
 		    	P.t("Why won't people just leave me alone?");
 		    	P.t("Cellphone must be worst human invention ever made");
 	    	} else {
 	    		P.t("Hm");
 	    		P.t("It's probably not important");
 	    		P.t("Maybe It's because of things I left at home");
-	    		P.t("Like the files I don't need anymore");
+	    		P.t("Like the files I don't need any more");
 	    		P.t("I'll call her back later");
 	    	}
 	    	Q.do(function(){
@@ -154,7 +154,7 @@ function room_call_answered() {
 	Q.wait(2000);
 	P.s("Hello?");
 	Gm.s("Hey!");
-	Gm.s("Are you still busy with your homeworks and exams?");
+	Gm.s("Are you still busy with your homework and exams?");
 	P.s("Pretty much...");
 	P.s("Is something the matter?");
 	Gm.s("Yes... actually");
@@ -213,7 +213,7 @@ function room_msg_2(){
 	Gm.s("Hello?");
 	P.s("It's me...");
 	Gm.s("Hey!");
-	Gm.s("Are you still busy with your homeworks and exams?");
+	Gm.s("Are you still busy with your homework and exams?");
 	P.s("Grandma...");
 	P.s("What happened?");
 	Gm.s("Well");
@@ -222,7 +222,7 @@ function room_msg_2(){
 
 
 function room_unite(){
-	Gm.s("I took it to vet to hear the results");
+	Gm.s("I took it to the vet to hear the results");
 	Gm.s("He says its liver is dysfunctional");
 	P.s("...");
 	Gm.s("He said that it needed to go through even further diagnosis");
@@ -230,7 +230,7 @@ function room_unite(){
 	Gm.s("It might even need a surgery");
 	P.s("...");
 	Q.wait(1000);
-	P.s("The office is close now right?");
+	P.s("The office is closed now right?");
 	Gm.s("It sure is");
 	P.s("And he needs to be picked up tomorrow...?");
 	Gm.s("Yes");
@@ -293,7 +293,7 @@ function room_panicf() {
 	});
 	Q.wait(3000);
 	P.t("Hospitalized");
-	P.panic("But he always refuse to stay in small containers");
+	P.panic("But he always refuses to stay in small containers");
 	P.panic("I know he'd NEVER let himself be hospitalized");
 	P.panic("He's freaking too scared of entering anywhere closed");
 	P.panic("That why in the first place-");
@@ -305,7 +305,7 @@ function room_panicf() {
 	P.panic("How could I miss something so simple?");
 	P.panic("Something so important?");
 	P.panic("Why do I always miss it?");
-	P.panic("But he always refuse to stay in small containers");
+	P.panic("But he always refuses to stay in small containers");
 	P.panic("I know he'd NEVER let himself be hospitalized");
 	P.panic("He's freaking too scared of entering anywhere closed");
 	P.panic("That why in the first place-");
@@ -325,7 +325,7 @@ function room_panicf() {
 	} else {
 		P.panic("And I was so confident that he wasn't sick");
 		P.panic("Freaking idiot");
-		P.panic("Why are you never careful?");
+		P.panic("Why are you always not careful?");
 	}
 
 	P.panic("Oh.. my god");

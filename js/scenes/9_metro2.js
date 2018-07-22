@@ -56,9 +56,9 @@ function metro2_gf_msg(){
 	Gf.s("You doing well?");
 	P.s("I just finished my second last test");
 	P.s("I'm taking a subway ride home");
-	Gf.s("Only one left tomorrow");
+	Gf.s("So there's just only one left tomorrow");
 	Gf.s("That's cool");
-	Gf.s("How is you dog doing...?");
+	Gf.s("How is your dog doing...?");
 	P.s("He's alright");
 	P.s("I mean he's eating alright");
 	P.s("He's eating and digesting... I think he's gonna get better");
@@ -102,7 +102,7 @@ function metro2_gf_sthwrong(){
             	P.s("It was nothing important");
             }
             Gf.s("You could have at least-");
-            Gf.s("You do know that I'm leaving to California in 3 days right?");
+            Gf.s("You do know that I'm leaving for California in 3 days right?");
             Q.wait(1500);
             Gf.s("You know what? nevermind...");
             Gf.s("Let's talk tomorrow");
@@ -148,7 +148,7 @@ function metro2_gf_sthwrong_why(){
             Gf.s("Do you see the point in us dating?");
             P.s("That's different");
             Q.wait(1000);
-            Gf.s("You do know that I'm leaving to California in 3 days right?");
+            Gf.s("You do know that I'm leaving for California in 3 days right?");
             P.s("Yeah");
             Q.wait(2000);
             Gf.s("I'll text you later");

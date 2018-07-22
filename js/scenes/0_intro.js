@@ -147,7 +147,7 @@ function intro_3(){
         intro_lookdown.visible = true;
     });
 	M.s("This therapy");
-	M.s("It's something about loss, love, life and hope");
+	M.s("It's something about loss, love, life, and hope");
 	C.s({
         "That's a lot to cover in a flash game": function(msg) {
             $.flashgame = true;
@@ -223,7 +223,7 @@ function intro_4(){
         "'Strange', huh": function(msg) {
             P.s(msg);
             M.s("That's right");
-            P.s("You're not trying to justify anything wierd that happens in this game that way, are you?");
+            P.s("You're not trying to justify anything weird that happens in this game that way, are you?");
             M.s("Hmm...");
             M.s("I haven't thought about that... but maybe");
             C.hide();
@@ -239,7 +239,7 @@ function intro_5(){
         intro_lookdown.visible = true;
     });
 	M.s("While you're playing this game...");
-	M.s("You'll have to make choices, like you're doing right now");
+	M.s("You'll have to make choices - like you're doing right now");
 	M.s("Some of them are easy, but some are going to be not-so-easy");
 	M.s("Not only will it affect what happens, But also your interaction with other characters");
 	M.s("This game is going to make them count");
@@ -298,7 +298,7 @@ function intro_6(){
         intro_lookdown.visible = true;
     });
 	M.s("Let's go back to 2 years ago");
-	M.s("You were getting used to college life - and caffein");
+	M.s("You were getting used to college life - and caffeine");
     M.s("It was near the end of a semester, and you were just another crazy kid taking one test and another");
 	M.s("So ready and excited for the summer break");
     Q.do(end_intro);

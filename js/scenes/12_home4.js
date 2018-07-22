@@ -30,7 +30,7 @@ async function start_home4(){
         "I'll study": function(msg) {
         	$.test4_studied = true;
             P.t(msg);
-            P.t("Oh of course I'll study");
+            P.t("Oh, of course - I'll study");
             P.t("For the test tomorrow?");
             Q.wait(2000);
             P.t("But what if...");
@@ -111,7 +111,7 @@ function home4_choice(){
         },
         "I have to keep his side": function(msg) {
             P.t(msg);
-            P.t("I'll defintely fail this class if I do that");
+            P.t("I'll definitely fail this class if I do that");
             P.t("All the hard work");
             P.t("This whole semester...");
             P.t("...");
@@ -134,7 +134,7 @@ function home4_gf_call(){
 	Gf.s("Did your dog...");
 	P.s("He's here now");
 	P.s("He suddenly screamed with pain like an hour ago");
-	P.s("So I took him to hospital immediately");
+	P.s("So I took him to the hospital immediately");
 	P.s("And now the vet says he won't live past this weekend");
 	P.s("What am I gonna do?");
 	Gf.s("That's... really bad...");
@@ -165,7 +165,7 @@ function home4_gf_call(){
             P.s("...");
             Gf.s("It won't happen");
             Gf.s("Maybe you're thinking too much");
-            Gf.s("You'll be okay baby");
+            Gf.s("You'll be okay, baby");
             Gf.s("You'll be okay");
             C.hide();
             end_home4();
@@ -233,7 +233,7 @@ function home4_grandma(){
 	Gm.s("Are you...");
     Q.wait(2000);
 	Gm.s("Is something wrong?");
-	P.s("I just came back from hospital");
+	P.s("I just came back from the hospital");
 	P.s("He won't live past this weekend");
 	Gm.s("...");
     Q.wait(1000);
@@ -244,7 +244,7 @@ function home4_grandma(){
 	Gm.s("I thought-");
 	P.s("It's not yet");
 	P.s("But that's not important");
-	Gm.s("Oh honey...");
+	Gm.s("Oh, honey...");
     Q.wait(1000);
 	Gm.s("No");
 	Gm.s("Don't do that");
@@ -261,9 +261,9 @@ function home4_grandma(){
 	Gm.s("You have?");
 	P.s("No...");
 	P.s("But I thought");
-	P.s("You had schedules");
+	P.s("You had schedule");
 	Gm.s("I do");
-	Gm.s("I always have schedules");
+	Gm.s("I always have schedule");
 	Gm.s("But if you'd ask, I can always cancel them");
     Q.wait(1000);
 	Gm.s("I'm always here for you");

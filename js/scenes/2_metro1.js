@@ -12,12 +12,12 @@ async function start_metro1(){
 	metro_phone.visible = false;
 	blackout.visible = false;
 
-	P.t('My first semester with a major-');
-	P.t('It have been a tough one');
-	P.t('I had to work hard to catch up');
-	P.t('And FINALLY now it\'s almost over');
-	P.t('Just few more finals');
-	P.t('And a few essays and projects to go');
+	P.t("My first semester with a major-");
+	P.t("It has been a tough one");
+	P.t("I had to work hard to catch up");
+	P.t("And FINALLY now it's almost over");
+	P.t("Just a few more finals");
+	P.t("And a few essays and projects to go");
 	Q.wait(2000);
 	P.t("Despite having so much stuff to do...");
 	P.t("Going to my parent's house-");
@@ -92,7 +92,7 @@ function metro1_friend_dialogue() {
 	    	P.s("I'm finished with most of the parts");
 	    	P.s("I just need to wrap things up");
 	    	F.s("That's great to hear");
-	    	F.s("But you should have it done by weekend");
+	    	F.s("But you should have it done by the weekend");
 	    	P.s("That's no problem");
 	    	C.hide();
 	    	metro1_friend_dialogue_2();
@@ -101,7 +101,7 @@ function metro1_friend_dialogue() {
 	    	$.friend_msg1_replied = true;
 	    	P.s(msg);
 	    	P.s("I just finished a test so... first things first");
-	    	P.s("But I'll make sure I finish my part up by weekend");
+	    	P.s("But I'll make sure I finish my part up by the weekend");
 	    	F.s("Yeah, our first draft should really be ready by then");
 	    	P.s("You have my word");
 	    	C.hide();
@@ -124,7 +124,7 @@ function metro1_friend_dialogue_2(){
 	P.s("Hell lot of them");
 	F.s("I'm glad to see that you're not too insane yet");
 	P.s("I'm not?");
-	P.s("But I bet around this time of the semester everyone's losing there minds lol");
+	P.s("But I bet around this time of the semester everyone's losing their minds lol");
 	F.s("Everyone sure freakin is");
 	F.s("It's hard to get even a single text back from anyone");
 	Q.wait(1000);
@@ -217,7 +217,7 @@ function metro1_gf_dialogue() {
 	    	Gf.s("Oh... poor you");
 	    	Gf.s("It's okay");
 	    	Gf.s("This will be over soon");
-	    	Gf.s("How many test did you say you have left?");
+	    	Gf.s("How many tests did you say you have left?");
 	    	P.s("I have a few");
 	    	Gf.s("It'll be over soon...");
 	    	Gf.s("Let's try not to lose too much of our sanity");
@@ -264,7 +264,7 @@ function metro1_gf_dialogue_2() {
 	    	Gf.s("Hey...");
 	    	if($.metro1_doing_great){
 	    		Gf.s("What happened to all the spirits?");
-	    		P.s("Ther're still here");
+	    		P.s("They're still here");
 	    	} else {
 	    		Gf.s("I made you feel worse didn't I");
 	    	}
@@ -299,7 +299,7 @@ function metro1_gf_dialogue_2() {
 function metro1_gf_dialogue_3() {
 	Q.wait(1000);
 	Gf.s("I should get back to studying");
-	Gf.s("We spent way more time than we should have talking");
+	Gf.s("We spent way more time talking than we should have");
 	P.s("Yeah...");
 	P.s("Back to studying");
 	P.s("Alright");

@@ -163,7 +163,7 @@ function home3_panic(){
 	Q.wait(1000);
 	P.t("This is not happening");
 	P.panic("What's happening?");
-	P.panic("Take him to hospital");
+	P.panic("Take him to the hospital");
 	P.panic("Is he gonna die?");
 	P.panic("Was he like this when I was gone?");
 	P.panic("Is he gonna die?");
@@ -198,7 +198,7 @@ function home3_panic(){
 		blackout.visible = true;
 	});
 	Q.wait(400);
-	P.panic("Take him to hospital");
+	P.panic("Take him to the hospital");
 	Q.wait(300);
 	P.panic("No");
 	Q.do(function(){
@@ -223,7 +223,7 @@ function home3_panic(){
 		blackout.visible = true;
 	});
 	Q.wait(500);
-	P.panic("Take him to hospital");
+	P.panic("Take him to the hospital");
 	Q.wait(400);
 	P.panic("What?");
 	Q.do(function(){
@@ -233,7 +233,7 @@ function home3_panic(){
 	P.panic("How am I...");
 	P.panic("Go right now before it's too late");
 	P.panic("I'm right");
-	P.panic("Take him to hostipal");
+	P.panic("Take him to the hostipal");
 	P.t("Hospital... right now");
 	Q.do(end_home3);
 }

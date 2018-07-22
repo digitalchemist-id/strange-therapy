@@ -19,12 +19,12 @@ async function start_test1(){
 	blackout.visible = false;
 
 	Q.wait(1000);
-	T.t('Question #10 c)');
-	T.t('Of the following compounds');
-	T.t('which has a higher boilng point?');
+	T.t("Question #10 c)");
+	T.t("Of the following compounds");
+	T.t("which has a higher boiling point?");
 	
-	T.t('1. pentane');
-	T.t('2. 2,2-dimethylpropane');
+	T.t("1. pentane");
+	T.t("2. 2,2-dimethylpropane");
 
 	P.t("Okay");
 	P.t("To solve this question");
@@ -61,34 +61,34 @@ function test1_choose(){
 		Q.wait(1000);
 		P.t("Now this question is pretty straightforward");
 		P.t("It's asking out of the two compounds");
-		P.t("Which boils at higher temperature?");
+		P.t("Which boils at a higher temperature?");
 		P.t("And of course these two compounds have same formula - C5H12 - they differ by structure");
 		P.t("Structure affect attraction in a kind of way that more surface area leads to more attraction");
 		P.t("Pentane is chain-shaped and the other one is ball-shaped");
-		P.t("So out of the two the one with a higher boiling point is...");
+		P.t("So out of the two, the one with a higher boiling point is...");
 	}
 	C.t({
-		'1. pentane': function(msg) {
-			P.t('is it...');
-			P.t(msg + '?');
+		"1. pentane": function(msg) {
+			P.t("is it...");
+			P.t(msg + "?");
 			$.test1_correct = true;
 			$.test_correct = 1;
 			C.hide();
 			test1_after();
 		},
-        '2. 2,2-dimethylpropane': function(msg) {
-        	P.t('is it...');
-        	P.t(msg + '?');
+        "2. 2,2-dimethylpropane": function(msg) {
+        	P.t("is it...");
+        	P.t(msg + "?");
         	$.test1_correct = false;
         	$.test_correct = 0;
         	C.hide();
         	test1_after();
         },
-        'dimeth... what?': function(msg) {
+        "dimeth... what?": function(msg) {
         	P.t(msg);
-        	P.t('Uh');
-        	P.t('I\'ll just go with 2,2-dimethylpropane because I like the way it sounds');
-        	P.t('If it sounds the way I think, that is');
+        	P.t("Uh");
+        	P.t("I\"ll just go with 2,2-dimethylpropane because I like the way it sounds");
+        	P.t("If it sounds the way I think, that is");
         	$.test1_correct = false;
         	$.test_correct = 0;
         	C.hide();
@@ -105,7 +105,7 @@ function test1_after(){
 	});
 	Q.wait(1500);
 	
-	A.s('Time\'s up!');
+	A.s("Time\"s up!");
 	Q.do(function(){
         test_panic.visible = false;
         test_sit_down.visible = false;
@@ -114,19 +114,19 @@ function test1_after(){
         test_head_up.visible = true;
         animTestFoot.stop();
     });
-	A.s('Everyone turn your tests in!');
+	A.s("Everyone turn your tests in!");
 	
 	Q.wait(3000);
 
-	P.t('Oh');
+	P.t("Oh");
 
 	if($.test1_correct){
-		P.t('That didn\'t go so bad');
-		P.t('Actually, that was better than I expected');
+		P.t("That didn\"t go so bad");
+		P.t("Actually, that was better than I expected");
 	} else {
-		P.t('That did\'t go so well');
+		P.t("That did\"t go so well");
 		P.t("Actually, that was kinda terrible...");
-		P.t('Let\'s just forget about it quickly and prepare for the next one quick');
+		P.t("Let\"s just forget about it quickly and prepare for the next one quick");
 	}
 
 	Q.do(end_test1);

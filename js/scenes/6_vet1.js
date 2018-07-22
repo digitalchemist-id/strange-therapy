@@ -90,10 +90,10 @@ function vet1_about(){
             V.s("There can be many causes");
             V.s("Could be aging");
             V.s("Could be Inflammation of organs");
-            V.s("Could be presense of stones...");
-            V.s("Worst case, it could be tumor");
-            V.s("A cancer");
-            P.t("A cancer");
+            V.s("Could be presence of stones...");
+            V.s("Worst case, it could be a tumor");
+            V.s("Cancer");
+            P.t("Cancer");
             P.t("...");
             P.t("Is it worse than aging?");
             C.hide();
@@ -154,7 +154,7 @@ function vet1_about_2(){
     });
     V.s("Feed him 4 times a day"); 
     V.s("Mix two spoonful of this can with swollen dog food, and microwave the mixture before you feed him");
-    V.s("And also make him to drink often");
+    V.s("And also make him drink often");
     V.s("Did you get all that?");
     P.s("I got that");
     P.s("I can do that");
@@ -187,7 +187,7 @@ function vet1_about_2(){
             P.s("...");
             Q.wait(2000);
             V.s("All this cost makes you worry, I understand that...");
-            V.s("But only few worst cases require all those procedures");
+            V.s("But only a few worst cases require all those procedures");
             V.s("Instead of worrying, just focus on getting him fed for now");
             V.s("If you can do that properly, things can turn out to be much better than expected");
             V.s("Your role of staying positive is also very important in his curing");

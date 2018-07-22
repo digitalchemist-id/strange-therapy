@@ -22,7 +22,7 @@ function kicked_out(){
     Q.wait(1000);
 	M.s("And to tell you the truth, I'm not even a real therapist");
 	M.s("So... there's no real reason for you to be here anymore");
-	M.s("Good bye");
+	M.s("Goodbye");
 	Q.wait(2000);
     Q.do(function(){
         resources.door_open.sound.play();

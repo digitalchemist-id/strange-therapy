@@ -73,7 +73,7 @@ async function start_home1() {
 	Gm.s("Oh it's you");
 	Gm.s("Welcome!");
 	Gm.s("It's been so long")
-	Gm.s("But without a phonecall or even a text...");
+	Gm.s("But without a phone call or even a text...");
 	P.s("Hi grandma");
 	P.s("I wasn't planning to come but...");
 	P.s("I found out that I had time to visit");
@@ -81,7 +81,7 @@ async function start_home1() {
 	Gm.s("Just same as always");
 	Gm.s("How have YOU been?");
 	P.s("Busy as hell...");
-	P.s("Busier than ever actaully");
+	P.s("Busier than ever actually");
 	P.s("But my semester ends soon");
 	P.s("It ends in about a week");
 	Gm.s("That's great");
@@ -131,7 +131,7 @@ async function start_home1() {
         	P.s("Will you do that?");
         	Gm.s("I always take it to the mountain on Fridays");
         	Gm.s("I'll just visit the vet's office on the way home");
-        	P.s("Thanks grandma");
+        	P.s("Thanks, grandma");
         	P.s("He'll be okay");
         	Q.do(function(){
 				home_bed_lookside.visible = false;
@@ -155,7 +155,7 @@ async function start_home1() {
         	Gm.s("He's always there in my way");
         	Gm.s("And who's the one who takes care of him while you're not here?");
         	P.s("Okay");
-        	P.s("I'm sorry grandma");
+        	P.s("I'm sorry, grandma");
         	P.s("I'm sorry");
         	P.s("I've been so busy for the past couple of weeks...");
         	Gm.s("Of course");
@@ -189,10 +189,10 @@ async function start_home1() {
 				home_bed_pet.visible = false;
 				home_bed_lookside.visible = true;
 			});
-        	P.s("Oh will you do that for me?");
+        	P.s("Oh, will you do that for me?");
         	Gm.s("I always take it to the mountain on Fridays");
         	Gm.s("I'll just visit the vet's office on the way home");
-        	P.s("Thanks grandma");
+        	P.s("Thanks, grandma");
         	P.s("He'll be okay");
         	Q.do(function(){
 				home_bed_lookside.visible = false;
@@ -243,7 +243,7 @@ function home1_1() {
 	P.t("So...");
 	P.t("Counting for the 100th time")
 	P.t("I've only got 15 hours until the next exam");
-	P.t("Taking out time to eat, sleep, take a shower, get to school and et cetera...");
+	P.t("Taking out time to eat, sleep, take a shower, get to school and etcetera...");
 	P.t("That's like less than 6 hours");
 	P.t("And the time is ticking as I have this simulation going on my head");
 	P.t("tick-tock-tick-tock");
@@ -273,7 +273,7 @@ function home1_1() {
 	    "It's the process of struggling that has meaning": function(msg) {
 	    	$.struggle = true;
 	    	P.t(msg);
-	    	P.t("How I spend next few hours might not have huge impact on this semester's result");
+	    	P.t("How I spend next few hours might not have a huge impact on this semester's result");
 	    	P.t("But even if that's true");
 	    	P.t("I will regret so much for not making every minute count if I mess it up");
 	    	P.t("I want to try my best with what I have left");
@@ -421,7 +421,7 @@ function home1_3(){
         	P.s("Don't worry about him");
         	P.s("It's probably just lack of nutrition");
         	P.s("He'll eat again when he gets hungry");
-        	P.s("I'll take him to hospital next week to hear the results");
+        	P.s("I'll take him to the hospital next week to hear the results");
         	Gm.s("If you say so...");
         	C.hide();
         	home1_4();
@@ -485,7 +485,7 @@ function home1_5(){
 		P.t("Why am I so stupid?");
 		P.t("The last time I saw him-");
 		P.t("I just thought he had lost a bit of weight");
-		P.t("Why didn't I ever even think of the possiblity that he could be sick?");
+		P.t("Why didn't I ever even think of the possibility that he could be sick?");
 		Q.wait(3000);
 		Q.do(function(){
 			home_desk_front.visible = false;
@@ -503,7 +503,7 @@ function home1_5(){
 			P.t("It's gotta be");
 		}
 		Q.wait(1000);
-		P.t("If he regains his appetite and gain some weight");
+		P.t("If he regains his appetite and gains some weight");
 		P.t("He can get better");
 		Q.wait(3000);
 		Q.do(function(){

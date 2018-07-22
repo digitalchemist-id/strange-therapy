@@ -31,7 +31,7 @@ async function start_home2(){
 	P.t("And make sure you digest it as well");
 	P.t("I'll just study here by your side");
 	P.t("I'll only stay away for tests");
-	P.t("Around 3 hours of commute plus another 3 by test itself...");
+	P.t("Around 3 hours of commute plus another 3 by the test itself...");
 	Q.wait(2500);
 	P.t("...");
 	P.t("I can handle it");
@@ -63,7 +63,7 @@ async function start_home2(){
         	$.gf_texted = false;
         	$.gf_told = false;
             P.t("She's too busy");
-            P.t("What's the point of telling be girlfriend that my dog is sick?");
+            P.t("What's the point of telling be my girlfriend that my dog is sick?");
             P.t("It's not like she can help with anything");
             P.t("It'll only bother her");
             C.hide();
@@ -88,17 +88,17 @@ function home2_gf_text() {
 	            P.s(msg);
 	            if($.not_nice_to_gf < 1){
 	            	$.gf_told = true;
-	            	Gf.s("Oh what is it?");
+	            	Gf.s("Oh, what is it?");
 	            	Gf.s("Something urgent?");
 	            	P.s("Actually");
 	            	P.s("My dog...");
 	            	P.s("He's sick");
 	            	Gf.s("Oh... no...");
 	            	P.s("I'm at my parent's home right now");
-	            	P.s("He was hospitalized yesterday and I just picked him up from hospital");
+	            	P.s("He was hospitalized yesterday and I just picked him up from the hospital");
 	            	Gf.s("What did the vet say?");
 	            	P.s("He said my dog's liver is dysfunctional...");
-	            	P.s("And that currently he's very weak and need to be fed to recover");
+	            	P.s("And that currently he's very weak and needs to be fed to recover");
 	            	Gf.s("That's terrible news...");
 	            	home2_gf_text_2();
 	            } else {
@@ -124,7 +124,7 @@ function home2_gf_text() {
 	            Gf.s("Oh... no...");
 	            Gf.s("What did the vet say?");
 	            P.s("He said my dog's liver is dysfunctional...");
-	            P.s("And that currently he's very weak and need to be fed to recover");
+	            P.s("And that currently he's very weak and needs to be fed to recover");
 	            Gf.s("That's terrible news...");
 	            home2_gf_text_2();
 	            C.hide();
@@ -208,7 +208,7 @@ function home2_project_msg() {
         	$.test3_studied = false;
         	$.friend_told = false;
             P.t(msg);
-            P.t("That means I'll have to stay away for longer...");
+            P.t("That means I'll have to stay away for longer time...");
             Q.wait(1000);
             P.t("But promises are promises");
             P.t("They're meant to be kept");
@@ -246,7 +246,7 @@ function home2_project_no(){
             if($.project_under_control){
             	F.s("You said you finished most of you part");
             } else {
-                F.s("You freaking promised you'd finish your part by weekend");
+                F.s("You freaking promised you'd finish your part by the weekend");
             }
             F.s("Everyone takes tests");
             F.s("Everyone's busy as hell");
@@ -276,7 +276,7 @@ function home2_project_no(){
             	P.s("Things got too over my head");
         	}
             P.s("I'm really sorry");
-            P.s("I'll send you what I have done so far... It's bit unpolished but everything that needs to be there is there");
+            P.s("I'll send you what I have done so far... It's a bit unpolished but everything that needs to be there is there");
             F.s("Got it");
             F.s("I hope he gets better");
            	P.s("Thank you so much");
@@ -318,7 +318,7 @@ function home2_project_yes(){
 		F.s("I knew you were a man of your word");
 	}
 	P.s("I am");
-	P.s("Well... at leat I try");
+	P.s("Well... at least I try");
 	end_home2();
 }
 
@@ -338,7 +338,7 @@ function home2_project_talk(){
 	F.s("Is it bad?");
 	P.s("It seems like his liver is dysfunctional");
 	F.s("Shit");
-	F.s("I'm sorry man");
+	F.s("I'm sorry, man");
 	P.s("I couldn't finish my part yet");
 	P.s("And I also need to study for the test tomorrow");
 	P.s("I don't think I can participate in the preparations for the presentation later cuz I really can't leave his side");
